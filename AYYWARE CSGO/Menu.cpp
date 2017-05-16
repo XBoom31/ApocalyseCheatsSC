@@ -1156,7 +1156,7 @@ void CColorTab::Setup()
 	//MenuGroup.PlaceLabledControl("Menu Opacity", this, &MenuOpacity);
 
 	//Inner
-	MenuInside.SetPosition(408, 258);
+	MenuInside.SetPosition(16, 379);
 	MenuInside.SetSize(360, 100);
 	MenuInside.SetText("Menu Inner Color");
 	RegisterControl(&MenuInside);
