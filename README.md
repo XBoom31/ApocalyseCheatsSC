@@ -1,5 +1,4 @@
 # ApocalyseCheatsSC
-PastaSqad
 
 18/05/2017
 - Fixed autowall
