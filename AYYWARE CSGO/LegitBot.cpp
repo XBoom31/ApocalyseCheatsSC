@@ -1,11 +1,10 @@
 /*
-Rest In Peace ApocalypseCheats
+Syn's AyyWare Framework 2015
 */
 
 #include "LegitBot.h"
 #include "RenderManager.h"
 #include <iostream>
-
 
 void CLegitBot::Init()
 {
@@ -15,13 +14,11 @@ void CLegitBot::Init()
 
 void CLegitBot::Draw()
 {
-	
+
 }
 
 void CLegitBot::Move(CUserCmd *pCmd, bool &bSendPacket)
 {
-	//WCONF Master
-
 	// Master switch
 	if (!Menu::Window.LegitBotTab.Active.GetState())
 		return;
@@ -43,14 +40,6 @@ void CLegitBot::SyncWeaponSettings()
 
 	if (!pWeapon)
 		return;
-	/*if (GameUtils::IsAK(pWeapon))
-	{
-		Speed = Menu::Window.LegitBotTab.WeaponSnipSpeed.GetValue();
-		FoV = Menu::Window.LegitBotTab.WeaponSnipFoV.GetValue();
-		RecoilControl = Menu::Window.LegitBotTab.WeaponSnipRecoil.GetState();
-		PSilent = Menu::Window.LegitBotTab.WeaponSnipPSilent.GetState();
-		Inacc = Menu::Window.LegitBotTab.WeaponSnipInacc.GetValue();
-	}*/
 
 	if (GameUtils::IsPistol(pWeapon))
 	{
@@ -78,24 +67,6 @@ void CLegitBot::SyncWeaponSettings()
 	}
 	else if (GameUtils::IsSniper(pWeapon))
 	{
-		bool scoped(GameUtils::IsScopedWeapon(pWeapon) && !pWeapon->IsScoped());
-		bool aimscoped(Menu::Window.LegitBotTab.WeaponSnipEnable.GetState());
-
-		if (aimscoped)
-		{
-			FoV = Menu::Window.LegitBotTab.WeaponSnipFoV.GetValue();
-		}
-		else
-		{
-			if (scoped)
-			{
-				FoV = Menu::Window.LegitBotTab.WeaponSnipFoV.GetValue();
-			}
-			else
-			{
-				FoV = 0;
-			}
-		}
 		Speed = Menu::Window.LegitBotTab.WeaponSnipSpeed.GetValue();
 		FoV = Menu::Window.LegitBotTab.WeaponSnipFoV.GetValue();
 		RecoilControl = Menu::Window.LegitBotTab.WeaponSnipRecoil.GetState();
@@ -164,7 +135,7 @@ void CLegitBot::DoAimbot(CUserCmd *pCmd, bool &bSendPacket)
 			return;
 		}
 		SyncWeaponSettings();
-		
+
 	}
 	else
 		return;
@@ -482,7 +453,7 @@ bool CLegitBot::AimAtPoint(IClientEntity* pLocal, Vector point, CUserCmd *pCmd, 
 		Inaccuracy *= Inacc;
 		start_t = clock();
 	}
-	
+
 	point += Inaccuracy;
 	Vector angles;
 	Vector src = pLocal->GetOrigin() + pLocal->GetViewOffset();

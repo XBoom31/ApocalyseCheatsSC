@@ -1,12 +1,13 @@
 /*
-Rest In Peace ApocalypseCheats
+Syn's AyyWare Framework 2015
 */
 
 #include "Hooks.h"
 #include "Hacks.h"
 #include "Chams.h"
 #include "Menu.h"
-#include "ESP.h"
+#include <intrin.h>
+
 #include "Interfaces.h"
 #include "RenderManager.h"
 #include "MiscHacks.h"
@@ -113,7 +114,7 @@ void Hooks::Initialise()
 	//Utilities::Log("DrawModelExecute Hooked");
 
 	// Setup ClientMode Hooks
-	VMTClientMode.Initialise((DWORD*)Interfaces::clientmode);
+	VMTClientMode.Initialise((DWORD*)Interfaces::ClientMode);
 	VMTClientMode.HookMethod((DWORD)CreateMoveClient_Hooked, 24);
 
 	oOverrideView = (OverrideViewFn)VMTClientMode.HookMethod((DWORD)&Hooked_OverrideView, 18);
@@ -150,7 +151,7 @@ void ClanTag()
 	switch (Menu::Window.MiscTab.OtherClantag.GetIndex())
 	{
 	case 0:
-		SetClanTag("", "");
+		// No 
 		break;
 	case 1:
 	{
@@ -161,27 +162,26 @@ void ClanTag()
 			motion++;
 		int value = ServerTime % 19;
 		switch (value) {
-		case 0:SetClanTag("           ", "Apocalypse"); break;
-		case 1:SetClanTag("          A", "Apocalypse"); break;
-		case 2:SetClanTag("         Ap", "Apocalypse"); break;
-		case 3:SetClanTag("        Apo", "Apocalypse"); break;
-		case 4:SetClanTag("       Apoc", "Apocalypse"); break;
-		case 5:SetClanTag("      Apoca", "Apocalypse"); break;
-		case 6:SetClanTag("     Apocal", "Apocalypse"); break;
-		case 7:SetClanTag("    Apocaly", "Apocalypse"); break;
-		case 8:SetClanTag("   Apocalyp", "Apocalypse"); break;
-		case 9:SetClanTag("  Apocalyps", "Apocalypse"); break;
-		case 10:SetClanTag("Apocalypse", "Apocalypse"); break;
-		case 11:SetClanTag("pocalypse ", "Apocalypse"); break;
-		case 12:SetClanTag("ocalypse  ", "Apocalypse"); break;
-		case 13:SetClanTag("calypse   ", "Apocalypse"); break;
-		case 14:SetClanTag("alypse    ", "Apocalypse"); break;
-		case 15:SetClanTag("lypse     ", "Apocalypse"); break;
-		case 16:SetClanTag("ypse      ", "Apocalypse"); break;
-		case 17:SetClanTag("pse       ", "Apocalypse"); break;
-		case 18:SetClanTag("se        ", "Apocalypse"); break;
-		case 19:SetClanTag("e         ", "Apocalypse"); break;
-		case 20:SetClanTag("          ", "Apocalypse"); break;
+		case 0:SetClanTag("          ", "pasteware"); break;
+		case 1:SetClanTag("         p", "pasteware"); break;
+		case 2:SetClanTag("        pa", "pasteware"); break;
+		case 3:SetClanTag("       pas", "pasteware"); break;
+		case 4:SetClanTag("      past", "pasteware"); break;
+		case 5:SetClanTag("     paste", "pasteware"); break;
+		case 6:SetClanTag("    pastew", "pasteware"); break;
+		case 7:SetClanTag("   pastewa", "pasteware"); break;
+		case 8:SetClanTag("  pastewar", "pasteware"); break;
+		case 9:SetClanTag(" pasteware", "pasteware"); break;
+		case 10:SetClanTag("pasteware ", "pasteware"); break;
+		case 11:SetClanTag("asteware  ", "pasteware"); break;
+		case 12:SetClanTag("steware   ", "pasteware"); break;
+		case 13:SetClanTag("teware    ", "pasteware"); break;
+		case 14:SetClanTag("eware     ", "pasteware"); break;
+		case 15:SetClanTag("ware      ", "pasteware"); break;
+		case 16:SetClanTag("are       ", "pasteware"); break;
+		case 17:SetClanTag("re        ", "pasteware"); break;
+		case 18:SetClanTag("e         ", "pasteware"); break;
+		case 19:SetClanTag("          ", "pasteware"); break;
 		}
 		counter++;
 	}
@@ -193,15 +193,26 @@ void ClanTag()
 
 		if (counter % 48 == 0)
 			motion++;
-		int value = ServerTime % 1;
+		int value = ServerTime % 17;
 		switch (value) {
-		case 0:SetClanTag("ApocalypseCheats - Beta", "ApocalypseCheats - Beta"); break;
-		case 1:SetClanTag("XBoom", "XBoom"); break;
-		case 2:SetClanTag("Derank service", "Derank service"); break;
-		case 3:SetClanTag("Rekt by free cheats", "Rekt by free cheats"); break;
-		case 4:SetClanTag("Skeet is trash", "Skeet is trash"); break;
-		case 5:SetClanTag("Suicide Rate Raiser", "Suicide Rate Raiser"); break;
-	    case 6:SetClanTag("UnknownCheats", "UnknownCheats"); break;
+		case 0:SetClanTag("          ", "skeet.cc"); break;
+		case 1:SetClanTag("         s", "skeet.cc"); break;
+		case 2:SetClanTag("        sk", "skeet.cc"); break;
+		case 3:SetClanTag("       ske", "skeet.cc"); break;
+		case 4:SetClanTag("      skee", "skeet.cc"); break;
+		case 5:SetClanTag("     skeet", "skeet.cc"); break;
+		case 6:SetClanTag("    skeet.", "skeet.cc"); break;
+		case 7:SetClanTag("   skeet.c", "skeet.cc"); break;
+		case 8:SetClanTag(" skeet.cc", "skeet.cc"); break;
+		case 9:SetClanTag("skeet.cc ", "skeet.cc"); break;
+		case 10:SetClanTag("keet.cc  ", "skeet.cc"); break;
+		case 11:SetClanTag("eet.cc   ", "skeet.cc"); break;
+		case 12:SetClanTag("et.cc    ", "skeet.cc"); break;
+		case 13:SetClanTag("t.cc     ", "skeet.cc"); break;
+		case 14:SetClanTag(".cc      ", "skeet.cc"); break;
+		case 15:SetClanTag("cc       ", "skeet.cc"); break;
+		case 16:SetClanTag("c        ", "skeet.cc"); break;
+		case 17:SetClanTag("         ", "skeet.cc"); break;
 		}
 		counter++;
 	}
@@ -236,7 +247,7 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 		//	CUserCmd* pCmd = &cmdlist[sequence_number % 150];
 
 
-			// Backup for safety
+		// Backup for safety
 		Vector origView = pCmd->viewangles;
 		Vector viewforward, viewright, viewup, aimforward, aimright, aimup;
 		Vector qAimAngles;
@@ -332,17 +343,9 @@ void __fastcall PaintTraverse_Hooked(PVOID pPanels, int edx, unsigned int vguiPa
 		}
 	}
 	else if (FocusOverlayPanel == vguiPanel)
-	{ 
-		
-		if (Menu::Window.MiscTab.OtherWatermark.GetState())
-		{
-			RECT scrn = Render::GetViewport();
-			//Render::GradientV(8, 8, 160, 18, Color(0, 0, 0, 0), Color(7, 39, 17, 255));
-			RECT TextSize = Render::GetTextSize(Render::Fonts::ESP, "ApocalypseCheats");
-			Render::Text(scrn.right - TextSize.right - 20, 10, Color(Menu::Window.ColorTab.MenuInnerR.GetValue(), Menu::Window.ColorTab.MenuInnerG.GetValue(), Menu::Window.ColorTab.MenuInnerB.GetValue(), 255), Render::Fonts::MenuBold, "ApocalypseCheats");
-			Render::Text(10, 10, Color(Menu::Window.ColorTab.MenuInnerR.GetValue(), Menu::Window.ColorTab.MenuInnerG.GetValue(), Menu::Window.ColorTab.MenuInnerB.GetValue(), 255), Render::Fonts::MenuBold, "Private");
-		}
-		
+	{
+		//Render::GradientV(8, 8, 160, 18, Color(0, 0, 0, 0), Color(7, 39, 17, 255));
+		Render::Text(10, 10, Color(255, 255, 255, 220), Render::Fonts::Menu, "INTERWEBZ : CSS");
 		if (Interfaces::Engine->IsConnected() && Interfaces::Engine->IsInGame())
 			Hacks::DrawHacks();
 
@@ -407,7 +410,7 @@ void __fastcall Hooked_DrawModelExecute(void* thisptr, int edx, void* ctx, void*
 		int HandsStyle = Menu::Window.VisualsTab.OtherNoHands.GetIndex();
 		if (ChamsStyle != 0 && Menu::Window.VisualsTab.FiltersPlayers.GetState() && strstr(ModelName, "models/player"))
 		{
-			if (pLocal /*&& (!Menu::Window.VisualsTab.FiltersEnemiesOnly.GetState() || pModelEntity->GetTeamNum() != pLocal->GetTeamNum())*/)
+			if (pLocal/* && (!Menu::Window.VisualsTab.FiltersEnemiesOnly.GetState() || pModelEntity->GetTeamNum() != pLocal->GetTeamNum())*/)
 			{
 				IMaterial *covered = ChamsStyle == 1 ? CoveredLit : CoveredFlat;
 				IMaterial *open = ChamsStyle == 1 ? OpenLit : OpenFlat;
@@ -637,16 +640,16 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 	{
 		IClientEntity *pLocal = Interfaces::EntList->GetClientEntity(Interfaces::Engine->GetLocalPlayer());
 
-	/*	for (int i = 1; i < 65; i++)
+		/*	for (int i = 1; i < 65; i++)
 		{
-			IClientEntity* pEnt = Interfaces::EntList->GetClientEntity(i);
-			if (!pEnt) continue;
-			if (pEnt->IsDormant()) continue;
-			if (pEnt->GetHealth() < 1) continue;
-			if (pEnt->GetLifeState() != 0) continue;
+		IClientEntity* pEnt = Interfaces::EntList->GetClientEntity(i);
+		if (!pEnt) continue;
+		if (pEnt->IsDormant()) continue;
+		if (pEnt->GetHealth() < 1) continue;
+		if (pEnt->GetLifeState() != 0) continue;
 
-			*(float*)((DWORD)pEnt + eyeangles) = pEnt->GetTargetYaw();
-			//Msg("%f\n", *(float*)((DWORD)pEnt + m_angEyeAnglesYaw));
+		*(float*)((DWORD)pEnt + eyeangles) = pEnt->GetTargetYaw();
+		//Msg("%f\n", *(float*)((DWORD)pEnt + m_angEyeAnglesYaw));
 		} */
 
 		if (Menu::Window.MiscTab.KnifeEnable.GetState() && pLocal)
@@ -672,55 +675,23 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 			{
 				if (WeaponEnt->GetClientClass()->m_ClassID == (int)CSGOClassID::CKnife)
 				{
-				
-						if (Model == 0) // Karambit
-						{
-							*Weapon->ModelIndex() = iKarambit; // m_nModelIndex
-							*Weapon->ViewModelIndex() = iKarambit;
-							*Weapon->WorldModelIndex() = iKarambit + 1;
-							*Weapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 507;
+					if (Model == 0) // Karambit
+					{
+						*Weapon->ModelIndex() = iKarambit; // m_nModelIndex
+						*Weapon->ViewModelIndex() = iKarambit;
+						*Weapon->WorldModelIndex() = iKarambit + 1;
+						*Weapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 507;
 
-							if (Skin == 0)
-								*Weapon->FallbackPaintKit() = 416; // Doppler Sapphire
-							else if (Skin == 1)
-								*Weapon->FallbackPaintKit() = 415; // Doppler Ruby
-							else if (Skin == 2)
-								*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
-							else if (Skin == 3)
-								*Weapon->FallbackPaintKit() = 558; // Lore
-							else if (Skin == 4)
-								*Weapon->FallbackPaintKit() = 5; // forest
-							else if (Skin == 5)
-								*Weapon->FallbackPaintKit() = 12; // Crimson
-							else if (Skin == 6)
-								*Weapon->FallbackPaintKit() = 59; // saughter
-							else if (Skin == 7)
-								*Weapon->FallbackPaintKit() = 29; // bone mask
-							else if (Skin == 8)
-								*Weapon->FallbackPaintKit() = 38; // fade
-							else if (Skin == 9)
-								*Weapon->FallbackPaintKit() = 40; // Night
-							else if (Skin == 10)
-								*Weapon->FallbackPaintKit() = 42; // blue steel
-							else if (Skin == 11)
-								*Weapon->FallbackPaintKit() = 43; // stained
-							else if (Skin == 12)
-								*Weapon->FallbackPaintKit() = 44; // case hard
-							else if (Skin == 13)
-								*Weapon->FallbackPaintKit() = 72; // safari mesh, ce-si permite petreus
-							else if (Skin == 14)
-								*Weapon->FallbackPaintKit() = 77; // boreal forest
-							else if (Skin == 15)
-								*Weapon->FallbackPaintKit() = 98; // Untraviolet
-							else if (Skin == 16)
-								*Weapon->FallbackPaintKit() = 414; // ruginit ca petreus
-							else if (Skin == 17)
-								*Weapon->FallbackPaintKit() = 413; // ROMANIA4EVER IS DA BEST
-
-						}
-					
-
-					else if (Model == 1) // Bayo
+						if (Skin == 0)
+							*Weapon->FallbackPaintKit() = 416; // Doppler Sapphire
+						else if (Skin == 1)
+							*Weapon->FallbackPaintKit() = 415; // Doppler Ruby
+						else if (Skin == 2)
+							*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
+						else if (Skin == 3)
+							*Weapon->FallbackPaintKit() = 558; // Lore
+					}
+					else if (Model == 1) // Karambit
 					{
 						*Weapon->ModelIndex() = iBayonet; // m_nModelIndex
 						*Weapon->ViewModelIndex() = iBayonet;
@@ -735,391 +706,12 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 							*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
 						else if (Skin == 3)
 							*Weapon->FallbackPaintKit() = 558; // Lore
-						else if (Skin == 4)
-							*Weapon->FallbackPaintKit() = 5; // forest
-						else if (Skin == 5)
-							*Weapon->FallbackPaintKit() = 12; // Crimson
-						else if (Skin == 6)
-							*Weapon->FallbackPaintKit() = 59; // saughter
-						else if (Skin == 7)
-							*Weapon->FallbackPaintKit() = 29; // bone mask
-						else if (Skin == 8)
-							*Weapon->FallbackPaintKit() = 38; // fade
-						else if (Skin == 9)
-							*Weapon->FallbackPaintKit() = 40; // Night
-						else if (Skin == 10)
-							*Weapon->FallbackPaintKit() = 42; // blue steel
-						else if (Skin == 11)
-							*Weapon->FallbackPaintKit() = 43; // stained
-						else if (Skin == 12)
-							*Weapon->FallbackPaintKit() = 44; // case hard
-						else if (Skin == 13)
-							*Weapon->FallbackPaintKit() = 72; // safari mesh, ce-si permite petreus
-						else if (Skin == 14)
-							*Weapon->FallbackPaintKit() = 77; // boreal forest
-						else if (Skin == 15)
-							*Weapon->FallbackPaintKit() = 98; // Untraviolet
-						else if (Skin == 16)
-							*Weapon->FallbackPaintKit() = 414; // ruginit ca petreus
-						else if (Skin == 17)
-							*Weapon->FallbackPaintKit() = 413; // ROMANIA4EVER IS DA BEST
 					}
-					else if (Model == 2) // m8Bayo
-					{
-						*Weapon->ModelIndex() = iM9Bayonet; // m_nModelIndex
-						*Weapon->ViewModelIndex() = iM9Bayonet;
-						*Weapon->WorldModelIndex() = iM9Bayonet + 1;
-						*Weapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 508;
 
-						if (Skin == 0)
-							*Weapon->FallbackPaintKit() = 416; // Doppler Sapphire
-						else if (Skin == 1)
-							*Weapon->FallbackPaintKit() = 415; // Doppler Ruby
-						else if (Skin == 2)
-							*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
-						else if (Skin == 3)
-							*Weapon->FallbackPaintKit() = 558; // Lore
-						else if (Skin == 4)
-							*Weapon->FallbackPaintKit() = 5; // forest
-						else if (Skin == 5)
-							*Weapon->FallbackPaintKit() = 12; // Crimson
-						else if (Skin == 6)
-							*Weapon->FallbackPaintKit() = 59; // saughter
-						else if (Skin == 7)
-							*Weapon->FallbackPaintKit() = 29; // bone mask
-						else if (Skin == 8)
-							*Weapon->FallbackPaintKit() = 38; // fade
-						else if (Skin == 9)
-							*Weapon->FallbackPaintKit() = 40; // Night
-						else if (Skin == 10)
-							*Weapon->FallbackPaintKit() = 42; // blue steel
-						else if (Skin == 11)
-							*Weapon->FallbackPaintKit() = 43; // stained
-						else if (Skin == 12)
-							*Weapon->FallbackPaintKit() = 44; // case hard
-						else if (Skin == 13)
-							*Weapon->FallbackPaintKit() = 72; // safari mesh, ce-si permite petreus
-						else if (Skin == 14)
-							*Weapon->FallbackPaintKit() = 77; // boreal forest
-						else if (Skin == 15)
-							*Weapon->FallbackPaintKit() = 98; // Untraviolet
-						else if (Skin == 16)
-							*Weapon->FallbackPaintKit() = 414; // ruginit ca petreus
-						else if (Skin == 17)
-							*Weapon->FallbackPaintKit() = 413; // ROMANIA4EVER IS DA BEST
-					}
-					else if (Model == 3) // flip
-					{
-						*Weapon->ModelIndex() = iFlip; // m_nModelIndex
-						*Weapon->ViewModelIndex() = iFlip;
-						*Weapon->WorldModelIndex() = iFlip + 1;
-						*Weapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 505;
-
-						if (Skin == 0)
-							*Weapon->FallbackPaintKit() = 416; // Doppler Sapphire
-						else if (Skin == 1)
-							*Weapon->FallbackPaintKit() = 415; // Doppler Ruby
-						else if (Skin == 2)
-							*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
-						else if (Skin == 3)
-							*Weapon->FallbackPaintKit() = 558; // Lore
-						else if (Skin == 4)
-							*Weapon->FallbackPaintKit() = 5; // forest
-						else if (Skin == 5)
-							*Weapon->FallbackPaintKit() = 12; // Crimson
-						else if (Skin == 6)
-							*Weapon->FallbackPaintKit() = 59; // saughter
-						else if (Skin == 7)
-							*Weapon->FallbackPaintKit() = 29; // bone mask
-						else if (Skin == 8)
-							*Weapon->FallbackPaintKit() = 38; // fade
-						else if (Skin == 9)
-							*Weapon->FallbackPaintKit() = 40; // Night
-						else if (Skin == 10)
-							*Weapon->FallbackPaintKit() = 42; // blue steel
-						else if (Skin == 11)
-							*Weapon->FallbackPaintKit() = 43; // stained
-						else if (Skin == 12)
-							*Weapon->FallbackPaintKit() = 44; // case hard
-						else if (Skin == 13)
-							*Weapon->FallbackPaintKit() = 72; // safari mesh, ce-si permite petreus
-						else if (Skin == 14)
-							*Weapon->FallbackPaintKit() = 77; // boreal forest
-						else if (Skin == 15)
-							*Weapon->FallbackPaintKit() = 98; // Untraviolet
-						else if (Skin == 16)
-							*Weapon->FallbackPaintKit() = 414; // ruginit ca petreus
-						else if (Skin == 17)
-							*Weapon->FallbackPaintKit() = 413; // ROMANIA4EVER IS DA BEST
-					}
-					else if (Model == 4) // gut
-					{
-						*Weapon->ModelIndex() = iGut; // m_nModelIndex
-						*Weapon->ViewModelIndex() = iGut;
-						*Weapon->WorldModelIndex() = iGut + 1;
-						*Weapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 506;
-
-						if (Skin == 0)
-							*Weapon->FallbackPaintKit() = 416; // Doppler Sapphire
-						else if (Skin == 1)
-							*Weapon->FallbackPaintKit() = 415; // Doppler Ruby
-						else if (Skin == 2)
-							*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
-						else if (Skin == 3)
-							*Weapon->FallbackPaintKit() = 558; // Lore
-						else if (Skin == 4)
-							*Weapon->FallbackPaintKit() = 5; // forest
-						else if (Skin == 5)
-							*Weapon->FallbackPaintKit() = 12; // Crimson
-						else if (Skin == 6)
-							*Weapon->FallbackPaintKit() = 59; // saughter
-						else if (Skin == 7)
-							*Weapon->FallbackPaintKit() = 29; // bone mask
-						else if (Skin == 8)
-							*Weapon->FallbackPaintKit() = 38; // fade
-						else if (Skin == 9)
-							*Weapon->FallbackPaintKit() = 40; // Night
-						else if (Skin == 10)
-							*Weapon->FallbackPaintKit() = 42; // blue steel
-						else if (Skin == 11)
-							*Weapon->FallbackPaintKit() = 43; // stained
-						else if (Skin == 12)
-							*Weapon->FallbackPaintKit() = 44; // case hard
-						else if (Skin == 13)
-							*Weapon->FallbackPaintKit() = 72; // safari mesh, ce-si permite petreus
-						else if (Skin == 14)
-							*Weapon->FallbackPaintKit() = 77; // boreal forest
-						else if (Skin == 15)
-							*Weapon->FallbackPaintKit() = 98; // Untraviolet
-						else if (Skin == 16)
-							*Weapon->FallbackPaintKit() = 414; // ruginit ca petreus
-						else if (Skin == 17)
-							*Weapon->FallbackPaintKit() = 413; // ROMANIA4EVER IS DA BEST
-					}
-					else if (Model == 5) // huntsman
-					{
-						*Weapon->ModelIndex() = iHuntsman; // m_nModelIndex
-						*Weapon->ViewModelIndex() = iHuntsman;
-						*Weapon->WorldModelIndex() = iHuntsman + 1;
-						*Weapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 509;
-
-						if (Skin == 0)
-							*Weapon->FallbackPaintKit() = 416; // Doppler Sapphire
-						else if (Skin == 1)
-							*Weapon->FallbackPaintKit() = 415; // Doppler Ruby
-						else if (Skin == 2)
-							*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
-						else if (Skin == 3)
-							*Weapon->FallbackPaintKit() = 558; // Lore
-						else if (Skin == 4)
-							*Weapon->FallbackPaintKit() = 5; // forest
-						else if (Skin == 5)
-							*Weapon->FallbackPaintKit() = 12; // Crimson
-						else if (Skin == 6)
-							*Weapon->FallbackPaintKit() = 59; // saughter
-						else if (Skin == 7)
-							*Weapon->FallbackPaintKit() = 29; // bone mask
-						else if (Skin == 8)
-							*Weapon->FallbackPaintKit() = 38; // fade
-						else if (Skin == 9)
-							*Weapon->FallbackPaintKit() = 40; // Night
-						else if (Skin == 10)
-							*Weapon->FallbackPaintKit() = 42; // blue steel
-						else if (Skin == 11)
-							*Weapon->FallbackPaintKit() = 43; // stained
-						else if (Skin == 12)
-							*Weapon->FallbackPaintKit() = 44; // case hard
-						else if (Skin == 13)
-							*Weapon->FallbackPaintKit() = 72; // safari mesh, ce-si permite petreus
-						else if (Skin == 14)
-							*Weapon->FallbackPaintKit() = 77; // boreal forest
-						else if (Skin == 15)
-							*Weapon->FallbackPaintKit() = 98; // Untraviolet
-						else if (Skin == 16)
-							*Weapon->FallbackPaintKit() = 414; // ruginit ca petreus
-						else if (Skin == 17)
-							*Weapon->FallbackPaintKit() = 413; // ROMANIA4EVER IS DA BEST
-					}
-					else if (Model == 6) // falchion
-					{
-						*Weapon->ModelIndex() = iFalchion; // m_nModelIndex
-						*Weapon->ViewModelIndex() = iFalchion;
-						*Weapon->WorldModelIndex() = iFalchion + 1;
-						*Weapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 512;
-
-						if (Skin == 0)
-							*Weapon->FallbackPaintKit() = 416; // Doppler Sapphire
-						else if (Skin == 1)
-							*Weapon->FallbackPaintKit() = 415; // Doppler Ruby
-						else if (Skin == 2)
-							*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
-						else if (Skin == 3)
-							*Weapon->FallbackPaintKit() = 558; // Lore
-						else if (Skin == 4)
-							*Weapon->FallbackPaintKit() = 5; // forest
-						else if (Skin == 5)
-							*Weapon->FallbackPaintKit() = 12; // Crimson
-						else if (Skin == 6)
-							*Weapon->FallbackPaintKit() = 59; // saughter
-						else if (Skin == 7)
-							*Weapon->FallbackPaintKit() = 29; // bone mask
-						else if (Skin == 8)
-							*Weapon->FallbackPaintKit() = 38; // fade
-						else if (Skin == 9)
-							*Weapon->FallbackPaintKit() = 40; // Night
-						else if (Skin == 10)
-							*Weapon->FallbackPaintKit() = 42; // blue steel
-						else if (Skin == 11)
-							*Weapon->FallbackPaintKit() = 43; // stained
-						else if (Skin == 12)
-							*Weapon->FallbackPaintKit() = 44; // case hard
-						else if (Skin == 13)
-							*Weapon->FallbackPaintKit() = 72; // safari mesh, ce-si permite petreus
-						else if (Skin == 14)
-							*Weapon->FallbackPaintKit() = 77; // boreal forest
-						else if (Skin == 15)
-							*Weapon->FallbackPaintKit() = 98; // Untraviolet
-						else if (Skin == 16)
-							*Weapon->FallbackPaintKit() = 414; // ruginit ca petreus
-						else if (Skin == 17)
-							*Weapon->FallbackPaintKit() = 413; // ROMANIA4EVER IS DA BEST
-					}
-					else if (Model == 7) // bowie
-					{
-						*Weapon->ModelIndex() = iBowie; // m_nModelIndex
-						*Weapon->ViewModelIndex() = iBowie;
-						*Weapon->WorldModelIndex() = iBowie + 1;
-						*Weapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 514;
-
-						if (Skin == 0)
-							*Weapon->FallbackPaintKit() = 416; // Doppler Sapphire
-						else if (Skin == 1)
-							*Weapon->FallbackPaintKit() = 415; // Doppler Ruby
-						else if (Skin == 2)
-							*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
-						else if (Skin == 3)
-							*Weapon->FallbackPaintKit() = 558; // Lore
-						else if (Skin == 4)
-							*Weapon->FallbackPaintKit() = 5; // forest
-						else if (Skin == 5)
-							*Weapon->FallbackPaintKit() = 12; // Crimson
-						else if (Skin == 6)
-							*Weapon->FallbackPaintKit() = 59; // saughter
-						else if (Skin == 7)
-							*Weapon->FallbackPaintKit() = 29; // bone mask
-						else if (Skin == 8)
-							*Weapon->FallbackPaintKit() = 38; // fade
-						else if (Skin == 9)
-							*Weapon->FallbackPaintKit() = 40; // Night
-						else if (Skin == 10)
-							*Weapon->FallbackPaintKit() = 42; // blue steel
-						else if (Skin == 11)
-							*Weapon->FallbackPaintKit() = 43; // stained
-						else if (Skin == 12)
-							*Weapon->FallbackPaintKit() = 44; // case hard
-						else if (Skin == 13)
-							*Weapon->FallbackPaintKit() = 72; // safari mesh, ce-si permite petreus
-						else if (Skin == 14)
-							*Weapon->FallbackPaintKit() = 77; // boreal forest
-						else if (Skin == 15)
-							*Weapon->FallbackPaintKit() = 98; // Untraviolet
-						else if (Skin == 16)
-							*Weapon->FallbackPaintKit() = 414; // ruginit ca petreus
-						else if (Skin == 17)
-							*Weapon->FallbackPaintKit() = 413; // ROMANIA4EVER IS DA BEST
-					}
-					else if (Model == 8) // butterfly
-					{
-						*Weapon->ModelIndex() = iButterfly; // m_nModelIndex
-						*Weapon->ViewModelIndex() = iButterfly;
-						*Weapon->WorldModelIndex() = iButterfly + 1;
-						*Weapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 515;
-
-						if (Skin == 0)
-							*Weapon->FallbackPaintKit() = 416; // Doppler Sapphire
-						else if (Skin == 1)
-							*Weapon->FallbackPaintKit() = 415; // Doppler Ruby
-						else if (Skin == 2)
-							*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
-						else if (Skin == 3)
-							*Weapon->FallbackPaintKit() = 558; // Lore
-						else if (Skin == 4)
-							*Weapon->FallbackPaintKit() = 5; // forest
-						else if (Skin == 5)
-							*Weapon->FallbackPaintKit() = 12; // Crimson
-						else if (Skin == 6)
-							*Weapon->FallbackPaintKit() = 59; // saughter
-						else if (Skin == 7)
-							*Weapon->FallbackPaintKit() = 29; // bone mask
-						else if (Skin == 8)
-							*Weapon->FallbackPaintKit() = 38; // fade
-						else if (Skin == 9)
-							*Weapon->FallbackPaintKit() = 40; // Night
-						else if (Skin == 10)
-							*Weapon->FallbackPaintKit() = 42; // blue steel
-						else if (Skin == 11)
-							*Weapon->FallbackPaintKit() = 43; // stained
-						else if (Skin == 12)
-							*Weapon->FallbackPaintKit() = 44; // case hard
-						else if (Skin == 13)
-							*Weapon->FallbackPaintKit() = 72; // safari mesh, ce-si permite petreus
-						else if (Skin == 14)
-							*Weapon->FallbackPaintKit() = 77; // boreal forest
-						else if (Skin == 15)
-							*Weapon->FallbackPaintKit() = 98; // Untraviolet
-						else if (Skin == 16)
-							*Weapon->FallbackPaintKit() = 414; // ruginit ca petreus
-						else if (Skin == 17)
-							*Weapon->FallbackPaintKit() = 413; // ROMANIA4EVER IS DA BEST
-					}
-					else if (Model == 9) // shadowdg
-					{
-						*Weapon->ModelIndex() = iDagger; // m_nModelIndex
-						*Weapon->ViewModelIndex() = iDagger;
-						*Weapon->WorldModelIndex() = iDagger + 1;
-						*Weapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 516;
-
-						if (Skin == 0)
-							*Weapon->FallbackPaintKit() = 416; // Doppler Sapphire
-						else if (Skin == 1)
-							*Weapon->FallbackPaintKit() = 415; // Doppler Ruby
-						else if (Skin == 2)
-							*Weapon->FallbackPaintKit() = 409; // Tiger Tooth
-						else if (Skin == 3)
-							*Weapon->FallbackPaintKit() = 558; // Lore
-						else if (Skin == 4)
-							*Weapon->FallbackPaintKit() = 5; // forest
-						else if (Skin == 5)
-							*Weapon->FallbackPaintKit() = 12; // Crimson
-						else if (Skin == 6)
-							*Weapon->FallbackPaintKit() = 59; // saughter
-						else if (Skin == 7)
-							*Weapon->FallbackPaintKit() = 29; // bone mask
-						else if (Skin == 8)
-							*Weapon->FallbackPaintKit() = 38; // fade
-						else if (Skin == 9)
-							*Weapon->FallbackPaintKit() = 40; // Night
-						else if (Skin == 10)
-							*Weapon->FallbackPaintKit() = 42; // blue steel
-						else if (Skin == 11)
-							*Weapon->FallbackPaintKit() = 43; // stained
-						else if (Skin == 12)
-							*Weapon->FallbackPaintKit() = 44; // case hard
-						else if (Skin == 13)
-							*Weapon->FallbackPaintKit() = 72; // safari mesh, ce-si permite petreus
-						else if (Skin == 14)
-							*Weapon->FallbackPaintKit() = 77; // boreal forest
-						else if (Skin == 15)
-							*Weapon->FallbackPaintKit() = 98; // Untraviolet
-						else if (Skin == 16)
-							*Weapon->FallbackPaintKit() = 414; // ruginit ca petreus
-						else if (Skin == 17)
-							*Weapon->FallbackPaintKit() = 413; // ROMANIA4EVER IS DA BEST
-					}
 					*Weapon->OwnerXuidLow() = 0;
 					*Weapon->OwnerXuidHigh() = 0;
 					*Weapon->FallbackWear() = 0.001f;
-					*Weapon->m_AttributeManager()->m_Item()->ItemIDHigh() = 2;
+					*Weapon->m_AttributeManager()->m_Item()->ItemIDHigh() = 1;
 				}
 			}
 		}
@@ -1159,7 +751,7 @@ void GetViewModelFOV(float& fov)
 
 
 		if (Menu::Window.VisualsTab.Active.GetState())
-		fov += Menu::Window.VisualsTab.OtherViewmodelFOV.GetValue();
+			fov += Menu::Window.VisualsTab.OtherViewmodelFOV.GetValue();
 	}
 }
 

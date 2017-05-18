@@ -1,5 +1,5 @@
 /*
-Syn's Apocalypse Framework 2017
+Syn's AyyWare Framework 2015
 */
 
 #include "RageBot.h"
@@ -151,7 +151,7 @@ Vector BestPoint(IClientEntity *targetPlayer, Vector &final)
 }
 
 // Functionality
-void CRageBot::DoAimbot(CUserCmd *pCmd,bool &bSendPacket) 
+void CRageBot::DoAimbot(CUserCmd *pCmd, bool &bSendPacket) // Creds to encore1337 for getting it to work
 {
 	IClientEntity* pTarget = nullptr;
 	IClientEntity* pLocal = hackManager.pLocal();
@@ -186,7 +186,7 @@ void CRageBot::DoAimbot(CUserCmd *pCmd,bool &bSendPacket)
 			if (HitBox >= 0)
 			{
 				Vector ViewOffset = pLocal->GetOrigin() + pLocal->GetViewOffset();
-				Vector View; 
+				Vector View;
 				Interfaces::Engine->GetViewAngles(View);
 				float FoV = FovToPlayer(ViewOffset, View, pTarget, HitBox);
 				if (FoV < Menu::Window.RageBotTab.AimbotFov.GetValue())
@@ -226,7 +226,7 @@ void CRageBot::DoAimbot(CUserCmd *pCmd,bool &bSendPacket)
 			pTarget = nullptr;
 			HitBox = -1;
 		}
-	} 
+	}
 
 	Globals::Target = pTarget;
 	Globals::TargetID = TargetID;
@@ -264,7 +264,7 @@ void CRageBot::DoAimbot(CUserCmd *pCmd,bool &bSendPacket)
 		}
 
 		float pointscale = Menu::Window.RageBotTab.TargetPointscale.GetValue() - 5.f; // Aim height
-//		float value = Menu::Window.RageBotTab.AccuracyHitchance.GetValue(); // Hitchance
+																					  //		float value = Menu::Window.RageBotTab.AccuracyHitchance.GetValue(); // Hitchance
 
 		Vector Point;
 		Vector AimPoint = GetHitboxPosition(pTarget, HitBox) + Vector(0, 0, pointscale);
@@ -279,11 +279,9 @@ void CRageBot::DoAimbot(CUserCmd *pCmd,bool &bSendPacket)
 		}
 
 		// Lets open fire
-		if (GameUtils::IsScopedWeapon(pWeapon) && !pWeapon->IsScoped() && Menu::Window.RageBotTab.AccuracyAutoScope.GetState())
+		if (GameUtils::IsScopedWeapon(pWeapon) && !pWeapon->IsScoped() && Menu::Window.RageBotTab.AccuracyAutoScope.GetState()) // Autoscope
 		{
 			pCmd->buttons |= IN_ATTACK2;
-			
-	
 		}
 		else
 		{
@@ -317,10 +315,6 @@ void CRageBot::DoAimbot(CUserCmd *pCmd,bool &bSendPacket)
 			{
 				pCmd->forwardmove = 0.f;
 				pCmd->sidemove = 0.f;
-				
-			}
-			if (Menu::Window.RageBotTab.AccuracyAutoCrouch.GetState())
-			{
 				pCmd->buttons |= IN_DUCK;
 			}
 		}
@@ -333,7 +327,7 @@ void CRageBot::DoAimbot(CUserCmd *pCmd,bool &bSendPacket)
 		{
 			static bool WasFiring = false;
 			WasFiring = !WasFiring;
-			
+
 			if (WasFiring)
 			{
 				pCmd->buttons &= ~IN_ATTACK;
@@ -504,7 +498,7 @@ int CRageBot::HitScan(IClientEntity* pEntity)
 
 	// Get the hitboxes to scan
 #pragma region GetHitboxesToScan
-	bool HitScanMode = Menu::Window.RageBotTab.TargetHitscan.GetState();
+	int HitScanMode = Menu::Window.RageBotTab.TargetHitscan.GetState();
 	int iSmart = Menu::Window.RageBotTab.AccuracySmart.GetValue();
 	bool AWall = Menu::Window.RageBotTab.AccuracyAutoWall.GetState();
 	bool Multipoint = Menu::Window.RageBotTab.TargetMultipoint.GetState();
@@ -531,7 +525,7 @@ int CRageBot::HitScan(IClientEntity* pEntity)
 	}
 	else
 	{
-		if (HitScanMode == false)
+		if (HitScanMode == 0)
 		{
 			// No Hitscan, just a single hitbox
 			switch (Menu::Window.RageBotTab.TargetHitbox.GetIndex())
@@ -561,52 +555,28 @@ int CRageBot::HitScan(IClientEntity* pEntity)
 			switch (HitScanMode)
 			{
 			case 1:
-				// On
+				// Low
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Head);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Neck);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::NeckLower);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Stomach);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Pelvis);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::UpperChest);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Chest);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LowerChest);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftUpperArm);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::RightUpperArm);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftThigh);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::RightThigh);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftHand);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::RightHand);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftFoot);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::RightFoot);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftShin);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::RightShin);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftLowerArm);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::RightLowerArm);
 				break;
-				/*case 2:
+			case 2:
 				// Normal
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Head);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Neck);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::NeckLower);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Stomach);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Pelvis);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::UpperChest);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Chest);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LowerChest);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftUpperArm);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::RightUpperArm);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftThigh);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::RightThigh);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftHand);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::RightHand);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftFoot);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::RightFoot);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftShin);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::RightShin);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftLowerArm);
-				HitBoxesToScan.push_back((int)CSGOHitboxID::RightLowerArm);
 				break;
-			/*case 3:
+			case 3:
 				// High
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Head);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::Neck);
@@ -644,11 +614,9 @@ int CRageBot::HitScan(IClientEntity* pEntity)
 				HitBoxesToScan.push_back((int)CSGOHitboxID::RightShin);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::LeftLowerArm);
 				HitBoxesToScan.push_back((int)CSGOHitboxID::RightLowerArm);
-			}*/
 			}
 		}
 	}
-
 #pragma endregion Get the list of shit to scan
 
 	// check hits
@@ -815,7 +783,7 @@ bool CRageBot::AimAtPoint(IClientEntity* pLocal, Vector point, CUserCmd *pCmd, b
 			ChokedPackets = -1;
 			ReturnValue = false;
 		}
-		
+
 		//pCmd->viewangles.z = 0;
 	}
 
@@ -828,8 +796,6 @@ namespace AntiAims // CanOpenFire checks for fake anti aims?
 
 	void JitterPitch(CUserCmd *pCmd)
 	{
-
-		float speed = Menu::Window.RageBotTab.AntiAimSpeed.GetValue();
 		static bool up = true;
 		if (up)
 		{
@@ -844,7 +810,7 @@ namespace AntiAims // CanOpenFire checks for fake anti aims?
 	}
 
 	void FakePitch(CUserCmd *pCmd, bool &bSendPacket)
-	{	
+	{
 		static int ChokedPackets = -1;
 		ChokedPackets++;
 		if (ChokedPackets < 1)
@@ -893,7 +859,7 @@ namespace AntiAims // CanOpenFire checks for fake anti aims?
 	void FakeEdge(CUserCmd *pCmd, bool &bSendPacket)
 	{
 		IClientEntity* pLocal = hackManager.pLocal();
-		
+
 		Vector vEyePos = pLocal->GetOrigin() + pLocal->GetViewOffset();
 
 		CTraceFilter filter;
@@ -991,7 +957,7 @@ namespace AntiAims // CanOpenFire checks for fake anti aims?
 		}
 		pCmd->viewangles.y += 360.0f;
 	}
-	
+
 	void BackJitter(CUserCmd *pCmd)
 	{
 		int random = rand() % 100;
@@ -1033,9 +999,8 @@ namespace AntiAims // CanOpenFire checks for fake anti aims?
 
 	void Jitter(CUserCmd *pCmd)
 	{
-		
 		static int jitterangle = 0;
-		float speed = Menu::Window.RageBotTab.AntiAimSpeed.GetValue();
+
 		if (jitterangle <= 1)
 		{
 			pCmd->viewangles.y += 90;
@@ -1317,16 +1282,17 @@ namespace AntiAims // CanOpenFire checks for fake anti aims?
 
 			if (aaEdge = false)
 			{
-			//Nothing
+				//Nothing
 			}
 			else if (aaEdge = true)
 			{
 				pCmd->viewangles.y = angle.y;
 			}
-			
+
 		}
 	}
 }
+
 
 // AntiAim
 void CRageBot::DoAntiAim(CUserCmd *pCmd, bool &bSendPacket) // pCmd->viewangles.y = 0xFFFFF INT_MAX or idk
@@ -1335,7 +1301,7 @@ void CRageBot::DoAntiAim(CUserCmd *pCmd, bool &bSendPacket) // pCmd->viewangles.
 
 	if ((pCmd->buttons & IN_USE) || pLocal->GetMoveType() == MOVETYPE_LADDER)
 		return;
-	
+
 	// If the aimbot is doing something don't do anything
 	if ((IsAimStepping || pCmd->buttons & IN_ATTACK) && !Menu::Window.RageBotTab.AimbotPerfectSilentAim.GetState())
 		return;
@@ -1424,7 +1390,7 @@ void CRageBot::DoAntiAim(CUserCmd *pCmd, bool &bSendPacket) // pCmd->viewangles.
 		AntiAims::FakeStatic(pCmd, bSendPacket);
 		break;
 	case 4:
-		// Fake InverseAntiAims::Static(pCmd);
+		// Fake Inverse
 		AntiAims::TFake(pCmd, bSendPacket);
 		break;
 	case 5:
@@ -1442,7 +1408,7 @@ void CRageBot::DoAntiAim(CUserCmd *pCmd, bool &bSendPacket) // pCmd->viewangles.
 	case 8:
 		// Back Jitter
 		AntiAims::BackJitter(pCmd);
-		break; 
+		break;
 	case 9:
 		// T Inverse
 		pCmd->viewangles.y -= 180;

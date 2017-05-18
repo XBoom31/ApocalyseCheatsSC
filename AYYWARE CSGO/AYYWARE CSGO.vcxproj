@@ -40,7 +40,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>false</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -174,7 +174,6 @@
   <ItemGroup>
     <ClCompile Include="AntiAntiAim.cpp" />
     <ClCompile Include="Autowall.cpp" />
-    <ClCompile Include="C:\Users\XBoom\Desktop\src\Skins.cpp" />
     <ClCompile Include="Chams.cpp" />
     <ClCompile Include="Controls.cpp" />
     <ClCompile Include="CRC32.cpp" />

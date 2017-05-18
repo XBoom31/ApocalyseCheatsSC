@@ -296,9 +296,6 @@
     <ClCompile Include="Resolver.cpp">
       <Filter>Source Files\Hacks</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\XBoom\Desktop\src\Skins.cpp">
-      <Filter>Source Files\Common</Filter>
-    </ClCompile>
     <ClCompile Include="nosmoke.cpp">
       <Filter>Source Files\Hacks</Filter>
     </ClCompile>

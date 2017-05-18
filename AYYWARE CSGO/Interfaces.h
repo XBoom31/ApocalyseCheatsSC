@@ -1,5 +1,5 @@
 /*
-Syn's Apocalypse Framework
+Syn's AyyWare Framework
 */
 
 #pragma once
@@ -9,13 +9,13 @@ Syn's Apocalypse Framework
 #include "SDK.h"
 
 // Namespace to contain all the valve interfaces
-class IClientModeShared
-{
-public:
-
-};
 namespace Interfaces
 {
+	class IClientModeShared
+	{
+	public:
+	};
+
 	// Gets handles to all the interfaces needed
 	void Initialise();
 
@@ -25,10 +25,10 @@ namespace Interfaces
 	extern IClientEntityList* EntList;
 	extern ISurface* Surface;
 	extern IVDebugOverlay* DebugOverlay;
-	extern IClientModeShared *clientmode;
+	extern IClientModeShared* ClientMode;
+
 	extern CGlobalVarsBase *Globals;
 	extern DWORD *Prediction;
-	extern DWORD *ClientMode;
 	extern CMaterialSystem* MaterialSystem;
 	extern CVRenderView* RenderView;
 	extern IVModelRender* ModelRender;

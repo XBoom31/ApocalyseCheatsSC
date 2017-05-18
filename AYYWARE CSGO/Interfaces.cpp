@@ -1,5 +1,5 @@
 /*
-Rest In Peace ApocalypseCheats
+Syn's AyyWare Framework 2015
 */
 
 #include "Interfaces.h"
@@ -20,7 +20,7 @@ CreateInterface_t StdFactory = NULL;
 
 void Interfaces::Initialise()
 {
-	
+
 	//Get function pointers to the CreateInterface function of each module
 	EngineFactory = (CreateInterface_t)GetProcAddress((HMODULE)Offsets::Modules::Engine, "CreateInterface");
 	ClientFactory = (CreateInterface_t)GetProcAddress((HMODULE)Offsets::Modules::Client, "CreateInterface");
@@ -36,7 +36,7 @@ void Interfaces::Initialise()
 	char* VGUISurfaceInterfaceName = (char*)Utilities::Memory::FindTextPattern("vguimatsurface.dll", "VGUI_Surface0");
 	char* EntityListInterfaceName = (char*)Utilities::Memory::FindTextPattern("client.dll", "VClientEntityList0");
 	char* EngineDebugThingInterface = (char*)Utilities::Memory::FindTextPattern("engine.dll", "VDebugOverlay0");
-	char* EngineClientInterfaceName = (char*)Utilities::Memory::FindTextPattern("engine.dll","VEngineClient0");
+	char* EngineClientInterfaceName = (char*)Utilities::Memory::FindTextPattern("engine.dll", "VEngineClient0");
 	char* ClientPredictionInterface = (char*)Utilities::Memory::FindTextPattern("client.dll", "VClientPrediction0");
 	char* MatSystemInterfaceName = (char*)Utilities::Memory::FindTextPattern("materialsystem.dll", "VMaterialSystem0");
 	char* EngineRenderViewInterface = (char*)Utilities::Memory::FindTextPattern("engine.dll", "VEngineRenderView0");
@@ -62,29 +62,21 @@ void Interfaces::Initialise()
 	Trace = (IEngineTrace*)EngineFactory(EngineTraceInterfaceName, NULL);
 	PhysProps = (IPhysicsSurfaceProps*)PhysFactory(PhysPropsInterfaces, NULL);
 	CVar = (ICVar*)StdFactory(VEngineCvarName, NULL);
-
+	ClientMode = **(IClientModeShared***)((*(DWORD**)Interfaces::Client)[10] + 0x5);
 	// Get ClientMode Pointer
-	clientmode = **(IClientModeShared***)((*(uintptr_t**)Client)[10] + 0x5);
-	
+	DWORD p = Utilities::Memory::FindPattern("client.dll", (BYTE*)"\xC7\x05\x00\x00\x00\x00\x00\x00\x00\x00\xA8\x01\x75\x1A\x83\xC8\x01\xA3\x00\x00\x00\x00\xE8\x00\x00\x00\x00\x68\x00\x00\x00\x00\xE8\x00\x00\x00\x00\x83\xC4\x04\xA1\x00\x00\x00\x00\xB9\x00\x00\x00\x00\x56", "xx????????xxxxxxxx????x????x????x????xxxx????x????x");
+
+
 	// Search through the first entry of the Client VTable
 	// The initializer contains a pointer to the 'GlobalsVariables' Table
-	PDWORD pdwClient = (PDWORD)*(PDWORD)Client;
-	DWORD dwInitAddr = (DWORD)(pdwClient[0]);
-	for (DWORD dwIter = 0; dwIter <= 0xFF; dwIter++)
-	{
-		if (*(PBYTE)(dwInitAddr + dwIter - 1) == 0x08 && *(PBYTE)(dwInitAddr + dwIter) == 0xA3)
-		{
-			Globals = (CGlobalVarsBase*)*(PDWORD)*(PDWORD)(dwInitAddr + dwIter + 1);
-			break;
-		}
-	}
+
+	Globals = **(CGlobalVarsBase***)((*(DWORD**)Interfaces::Client)[0] + 0x1B);
 
 	PDWORD pdwClientVMT = *(PDWORD*)Client;
 	pInput = *(CInput**)((*(DWORD**)Client)[15] + 0x1);
 
 	Utilities::Log("Interfaces Ready");
 }
-
 
 // Namespace to contain all the valve interfaces
 namespace Interfaces
@@ -95,6 +87,7 @@ namespace Interfaces
 	IClientEntityList* EntList;
 	ISurface* Surface;
 	IVDebugOverlay* DebugOverlay;
+	IClientModeShared* ClientMode;
 	CGlobalVarsBase *Globals;
 	DWORD *Prediction;
 	CMaterialSystem* MaterialSystem;
@@ -105,6 +98,5 @@ namespace Interfaces
 	IPhysicsSurfaceProps* PhysProps;
 	ICVar *CVar;
 	CInput* pInput;
-	IClientModeShared *clientmode;
-	
+
 };

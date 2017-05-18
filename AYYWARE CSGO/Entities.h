@@ -1,5 +1,5 @@
 /*
-Rest In Peace ApocalypseCheats
+Syn's AyyWare Framework 2015
 */
 
 #pragma once
@@ -27,29 +27,61 @@ class CSWeaponInfo
 {
 public:
 	char _0x0000[2048];
-	__int32 m_IsFullAuto; //0x0800 
+	__int32 m_iAmmoType; //0x07B0 
 	char _0x0804[52];
-	__int32 weapon_type; //0x0838 
-	__int32 weapon_team; //0x083C 
-	__int32 weapon_id; //0x0840 
-	char _0x0844[4];
-	float heat_ps; //0x0848 
-	__int32 price; //0x084C 
-	float m_flArmorRatio; //0x0850
-	float player_speed; //0x0854 
-	float player_speed_alt; //0x0858 
-	__int32 crosshair_min_distance; //0x085C 
-	__int32 crosshair_delta; //0x0860 
+	__int32 m_iWeaponType; //0x0838 
+	__int32 m_iTeam; //0x083C 
+	__int32 m_iWeaponId; //0x0840 
+	BYTE m_IsFullAuto; //0x0844
+	char _0x0845[3];
+	float m_flHeatPerShot; //0x0848 
+	__int32 m_iWeaponPrice; //0x084C 
+	float m_flArmorRatio; //0x0850 
+	float m_flMaxPlayerSpeed; //0x0854 
+	float m_flMaxPlayerSpeedAlt; //0x0858 
+	__int32 m_iCrosshairMinDistance; //0x085C 
+	__int32 m_iCrosshairDeltaDistance; //0x0860 
 	float m_flPenetration; //0x0864 
 	__int32 m_iDamage; //0x0868 
 	float m_flRange; //0x086C 
 	float m_flRangeModifier; //0x0870 
-	__int32 bullets; //0x0874 
-	float cycle_time; //0x0878 
-	float cycle_time_alt; //0x087C 
+	__int32 m_iBullets; //0x0874 
+	float m_flCycleTime; //0x0878 
+	float m_flCycleTimeAlt; //0x087C 
 	char _0x0880[416];
-	float spread; //0x0A20 
-	float spread_alt; //0x0A24 
+	float m_flSpread; //0x0A20 
+	float m_flSpreadAlt; //0x0A24 
+	float m_flInaccuracyCrouch; //0x09D8 
+	float m_flInaccuracyCrouchAlt; //0x09DC 
+	float m_flInaccuracyStand; //0x09E0 
+	float m_flInaccuracyStandAlt; //0x09E4 
+	float m_flInaccuracyJump; //0x09E8 
+	float m_flInaccuracyJumpAlt; //0x09EC 
+	float m_flInaccuracyLand; //0x09F0 
+	float m_flInaccuracyLandAlt; //0x09F4 
+	float m_flInaccuracyLadder; //0x09F8 
+	float m_flInaccuracyLadderAlt; //0x09FC 
+	float m_flInaccuracyFire; //0x0A00 
+	float m_flInaccuracyFireAlt; //0x0A04 
+	float m_flInaccuracyMove; //0x0A08 
+	float m_flInaccuracyMoveAlt; //0x0A0C 
+	float m_flRecoveryTimeStand; //0x0A10 
+	float m_flRecoveryTimeCrouch; //0x0A14 
+	float m_flInaccuracyReload; //0x0A18 
+	float m_flInaccuracyAltSwitch; //0x0A1C 
+	float m_flRecoilAngle; //0x0A20 
+	float m_flRecoilAngleAlt; //0x0A24 
+	float m_flRecoilAngleVariance; //0x0A28 
+	float m_flRecoilAngleVarianceAlt; //0x0A2C 
+	float m_flRecoilMagnitude; //0x0A30 
+	float m_flRecoilMagnitudeAlt; //0x0A34 
+	float m_flRecoilMagnitudeVariance; //0x0A38 
+	float m_flRecoilMagnitudeVarianceAlt; //0x0A3C 
+	__int32 m_iRecoilSeed; //0x0A40 
+	float m_flFlinchVelocityModifierLarge; //0x0A44 
+	float m_flFlinchVelocityModifierSmall; //0x0A48 
+	float m_flTimeToIdle; //0x0A4C 
+	float m_flIdleInterval; //0x0A50 
 };
 
 enum class CSGOClassID
@@ -326,254 +358,254 @@ enum moveTypes
 
 /*enum class CSGOClassID
 {
-	CTestTraceline = 189,
-	CTEWorldDecal = 190,
-	CTESpriteSpray = 187,
-	CTESprite = 186,
-	CTESparks = 185,
-	CTESmoke = 184,
-	CTEShowLine = 182,
-	CTEProjectedDecal = 179,
-	CTEPlayerDecal = 178,
-	CTEPhysicsProp = 175,
-	CTEParticleSystem = 174,
-	CTEMuzzleFlash = 173,
-	CTELargeFunnel = 171,
-	CTEKillPlayerAttachments = 170,
-	CTEImpact = 169,
-	CTEGlowSprite = 168,
-	CTEShatterSurface = 181,
-	CTEFootprintDecal = 165,
-	CTEFizz = 164,
-	CTEExplosion = 162,
-	CTEEnergySplash = 161,
-	CTEEffectDispatch = 160,
-	CTEDynamicLight = 159,
-	CTEDecal = 157,
-	CTEClientProjectile = 156,
-	CTEBubbleTrail = 155,
-	CTEBubbles = 154,
-	CTEBSPDecal = 153,
-	CTEBreakModel = 152,
-	CTEBloodStream = 151,
-	CTEBloodSprite = 150,
-	CTEBeamSpline = 149,
-	CTEBeamRingPoint = 148,
-	CTEBeamRing = 147,
-	CTEBeamPoints = 146,
-	CTEBeamLaser = 145,
-	CTEBeamFollow = 144,
-	CTEBeamEnts = 143,
-	CTEBeamEntPoint = 142,
-	CTEBaseBeam = 141,
-	CTEArmorRicochet = 140,
-	CTEMetalSparks = 172,
-	CSteamJet = 135,
-	CSmokeStack = 128,
-	DustTrail = 238,
-	CFireTrail = 62,
-	SporeTrail = 244,
-	SporeExplosion = 243,
-	RocketTrail = 241,
-	SmokeTrail = 242,
-	CPropVehicleDriveable = 117,
-	ParticleSmokeGrenade = 240,
-	CParticleFire = 96,
-	MovieExplosion = 239,
-	CTEGaussExplosion = 167,
-	CEnvQuadraticBeam = 55,
-	CEmbers = 45,
-	CEnvWind = 59,
-	CPrecipitation = 111,
-	CPrecipitationBlocker = 112,
-	CBaseTempEntity = 18,
-	NextBotCombatCharacter = 0,
-	CBaseAttributableItem = 4,
-	CEconEntity = 44,
-	CWeaponXM1014 = 236,
-	CWeaponTaser = 231,
-	CSmokeGrenade = 126,
-	CWeaponSG552 = 228,
-	CWeaponSawedoff = 224,
-	CWeaponNOVA = 220,
-	CIncendiaryGrenade = 85,
-	CMolotovGrenade = 93,
-	CWeaponM3 = 212,
-	CKnifeGG = 90,
-	CKnife = 89,
-	CHEGrenade = 82,
-	CFlashbang = 64,
-	CWeaponElite = 203,
-	CDecoyGrenade = 40,
-	CDEagle = 39,
-	CWeaponUSP = 235,
-	CWeaponM249 = 211,
-	CWeaponUMP45 = 234,
-	CWeaponTMP = 233,
-	CWeaponTec9 = 232,
-	CWeaponSSG08 = 230,
-	CWeaponSG556 = 229,
-	CWeaponSG550 = 227,
-	CWeaponScout = 226,
-	CWeaponSCAR20 = 225,
-	CSCAR17 = 122,
-	CWeaponP90 = 223,
-	CWeaponP250 = 222,
-	CWeaponP228 = 221,
-	CWeaponNegev = 219,
-	CWeaponMP9 = 218,
-	CWeaponMP7 = 217,
-	CWeaponMP5Navy = 216,
-	CWeaponMag7 = 215,
-	CWeaponMAC10 = 214,
-	CWeaponM4A1 = 213,
-	CWeaponHKP2000 = 210,
-	CWeaponGlock = 209,
-	CWeaponGalilAR = 208,
-	CWeaponGalil = 207,
-	CWeaponG3SG1 = 206,
-	CWeaponFiveSeven = 205,
-	CWeaponFamas = 204,
-	CWeaponBizon = 199,
-	CWeaponAWP = 198,
-	CWeaponAug = 197,
-	CAK47 = 1,
-	CWeaponCSBaseGun = 201,
-	CWeaponCSBase = 200,
-	CC4 = 29,
-	CBaseCSGrenade = 8,
-	CSmokeGrenadeProjectile = 127,
-	CMolotovProjectile = 94,
-	CDecoyProjectile = 41,
-	CFireCrackerBlast = 60,
-	CInferno = 86,
-	CChicken = 31,
-	CFootstepControl = 66,
-	CCSGameRulesProxy = 34,
-	CWeaponCubemap = 0,
-	CWeaponCycler = 202,
-	CTEPlantBomb = 176,
-	CTEFireBullets = 163,
-	CTERadioIcon = 180,
-	CPlantedC4 = 104,
-	CCSTeam = 38,
-	CCSPlayerResource = 36,
-	CCSPlayer = 35,
-	CCSRagdoll = 37,
-	CTEPlayerAnimEvent = 177,
-	CHostage = 83,
-	CHostageCarriableProp = 84,
-	CBaseCSGrenadeProjectile = 9,
-	CHandleTest = 81,
-	CTeamplayRoundBasedRulesProxy = 139,
-	CSpriteTrail = 133,
-	CSpriteOriented = 132,
-	CSprite = 131,
-	CRagdollPropAttached = 120,
-	CRagdollProp = 119,
-	CPredictedViewModel = 113,
-	CPoseController = 109,
-	CGameRulesProxy = 80,
-	CInfoLadderDismount = 87,
-	CFuncLadder = 72,
-	CTEFoundryHelpers = 166,
-	CEnvDetailController = 51,
-	CWorld = 237,
-	CWaterLODControl = 196,
-	CWaterBullet = 195,
-	CVoteController = 194,
-	CVGuiScreen = 193,
-	CPropJeep = 116,
-	CPropVehicleChoreoGeneric = 0,
-	CTriggerSoundOperator = 192,
-	CBaseVPhysicsTrigger = 22,
-	CTriggerPlayerMovement = 191,
-	CBaseTrigger = 20,
-	CTest_ProxyToggle_Networkable = 188,
-	CTesla = 183,
-	CBaseTeamObjectiveResource = 17,
-	CTeam = 138,
-	CSunlightShadowControl = 137,
-	CSun = 136,
-	CParticlePerformanceMonitor = 97,
-	CSpotlightEnd = 130,
-	CSpatialEntity = 129,
-	CSlideshowDisplay = 125,
-	CShadowControl = 124,
-	CSceneEntity = 123,
-	CRopeKeyframe = 121,
-	CRagdollManager = 118,
-	CPhysicsPropMultiplayer = 102,
-	CPhysBoxMultiplayer = 100,
-	CPropDoorRotating = 115,
-	CBasePropDoor = 16,
-	CDynamicProp = 43,
-	CProp_Hallucination = 114,
-	CPostProcessController = 110,
-	CPointCommentaryNode = 108,
-	CPointCamera = 107,
-	CPlayerResource = 106,
-	CPlasma = 105,
-	CPhysMagnet = 103,
-	CPhysicsProp = 101,
-	CStatueProp = 134,
-	CPhysBox = 99,
-	CParticleSystem = 98,
-	CMovieDisplay = 95,
-	CMaterialModifyControl = 92,
-	CLightGlow = 91,
-	CInfoOverlayAccessor = 88,
-	CFuncTrackTrain = 79,
-	CFuncSmokeVolume = 78,
-	CFuncRotating = 77,
-	CFuncReflectiveGlass = 76,
-	CFuncOccluder = 75,
-	CFuncMoveLinear = 74,
-	CFuncMonitor = 73,
-	CFunc_LOD = 68,
-	CTEDust = 158,
-	CFunc_Dust = 67,
-	CFuncConveyor = 71,
-	CFuncBrush = 70,
-	CBreakableSurface = 28,
-	CFuncAreaPortalWindow = 69,
-	CFish = 63,
-	CFireSmoke = 61,
-	CEnvTonemapController = 58,
-	CEnvScreenEffect = 56,
-	CEnvScreenOverlay = 57,
-	CEnvProjectedTexture = 54,
-	CEnvParticleScript = 53,
-	CFogController = 65,
-	CEnvDOFController = 52,
-	CCascadeLight = 30,
-	CEnvAmbientLight = 50,
-	CEntityParticleTrail = 49,
-	CEntityFreezing = 48,
-	CEntityFlame = 47,
-	CEntityDissolve = 46,
-	CDynamicLight = 42,
-	CColorCorrectionVolume = 33,
-	CColorCorrection = 32,
-	CBreakableProp = 27,
-	CBeamSpotlight = 25,
-	CBaseButton = 5,
-	CBaseToggle = 19,
-	CBasePlayer = 15,
-	CBaseFlex = 12,
-	CBaseEntity = 11,
-	CBaseDoor = 10,
-	CBaseCombatCharacter = 6,
-	CBaseAnimatingOverlay = 3,
-	CBoneFollower = 26,
-	CBaseAnimating = 2,
-	CAI_BaseNPC = 0,
-	CBeam = 24,
-	CBaseViewModel = 21,
-	CBaseParticleEntity = 14,
-	CBaseGrenade = 13,
-	CBaseCombatWeapon = 7,
-	CBaseWeaponWorldModel = 23
+CTestTraceline = 189,
+CTEWorldDecal = 190,
+CTESpriteSpray = 187,
+CTESprite = 186,
+CTESparks = 185,
+CTESmoke = 184,
+CTEShowLine = 182,
+CTEProjectedDecal = 179,
+CTEPlayerDecal = 178,
+CTEPhysicsProp = 175,
+CTEParticleSystem = 174,
+CTEMuzzleFlash = 173,
+CTELargeFunnel = 171,
+CTEKillPlayerAttachments = 170,
+CTEImpact = 169,
+CTEGlowSprite = 168,
+CTEShatterSurface = 181,
+CTEFootprintDecal = 165,
+CTEFizz = 164,
+CTEExplosion = 162,
+CTEEnergySplash = 161,
+CTEEffectDispatch = 160,
+CTEDynamicLight = 159,
+CTEDecal = 157,
+CTEClientProjectile = 156,
+CTEBubbleTrail = 155,
+CTEBubbles = 154,
+CTEBSPDecal = 153,
+CTEBreakModel = 152,
+CTEBloodStream = 151,
+CTEBloodSprite = 150,
+CTEBeamSpline = 149,
+CTEBeamRingPoint = 148,
+CTEBeamRing = 147,
+CTEBeamPoints = 146,
+CTEBeamLaser = 145,
+CTEBeamFollow = 144,
+CTEBeamEnts = 143,
+CTEBeamEntPoint = 142,
+CTEBaseBeam = 141,
+CTEArmorRicochet = 140,
+CTEMetalSparks = 172,
+CSteamJet = 135,
+CSmokeStack = 128,
+DustTrail = 238,
+CFireTrail = 62,
+SporeTrail = 244,
+SporeExplosion = 243,
+RocketTrail = 241,
+SmokeTrail = 242,
+CPropVehicleDriveable = 117,
+ParticleSmokeGrenade = 240,
+CParticleFire = 96,
+MovieExplosion = 239,
+CTEGaussExplosion = 167,
+CEnvQuadraticBeam = 55,
+CEmbers = 45,
+CEnvWind = 59,
+CPrecipitation = 111,
+CPrecipitationBlocker = 112,
+CBaseTempEntity = 18,
+NextBotCombatCharacter = 0,
+CBaseAttributableItem = 4,
+CEconEntity = 44,
+CWeaponXM1014 = 236,
+CWeaponTaser = 231,
+CSmokeGrenade = 126,
+CWeaponSG552 = 228,
+CWeaponSawedoff = 224,
+CWeaponNOVA = 220,
+CIncendiaryGrenade = 85,
+CMolotovGrenade = 93,
+CWeaponM3 = 212,
+CKnifeGG = 90,
+CKnife = 89,
+CHEGrenade = 82,
+CFlashbang = 64,
+CWeaponElite = 203,
+CDecoyGrenade = 40,
+CDEagle = 39,
+CWeaponUSP = 235,
+CWeaponM249 = 211,
+CWeaponUMP45 = 234,
+CWeaponTMP = 233,
+CWeaponTec9 = 232,
+CWeaponSSG08 = 230,
+CWeaponSG556 = 229,
+CWeaponSG550 = 227,
+CWeaponScout = 226,
+CWeaponSCAR20 = 225,
+CSCAR17 = 122,
+CWeaponP90 = 223,
+CWeaponP250 = 222,
+CWeaponP228 = 221,
+CWeaponNegev = 219,
+CWeaponMP9 = 218,
+CWeaponMP7 = 217,
+CWeaponMP5Navy = 216,
+CWeaponMag7 = 215,
+CWeaponMAC10 = 214,
+CWeaponM4A1 = 213,
+CWeaponHKP2000 = 210,
+CWeaponGlock = 209,
+CWeaponGalilAR = 208,
+CWeaponGalil = 207,
+CWeaponG3SG1 = 206,
+CWeaponFiveSeven = 205,
+CWeaponFamas = 204,
+CWeaponBizon = 199,
+CWeaponAWP = 198,
+CWeaponAug = 197,
+CAK47 = 1,
+CWeaponCSBaseGun = 201,
+CWeaponCSBase = 200,
+CC4 = 29,
+CBaseCSGrenade = 8,
+CSmokeGrenadeProjectile = 127,
+CMolotovProjectile = 94,
+CDecoyProjectile = 41,
+CFireCrackerBlast = 60,
+CInferno = 86,
+CChicken = 31,
+CFootstepControl = 66,
+CCSGameRulesProxy = 34,
+CWeaponCubemap = 0,
+CWeaponCycler = 202,
+CTEPlantBomb = 176,
+CTEFireBullets = 163,
+CTERadioIcon = 180,
+CPlantedC4 = 104,
+CCSTeam = 38,
+CCSPlayerResource = 36,
+CCSPlayer = 35,
+CCSRagdoll = 37,
+CTEPlayerAnimEvent = 177,
+CHostage = 83,
+CHostageCarriableProp = 84,
+CBaseCSGrenadeProjectile = 9,
+CHandleTest = 81,
+CTeamplayRoundBasedRulesProxy = 139,
+CSpriteTrail = 133,
+CSpriteOriented = 132,
+CSprite = 131,
+CRagdollPropAttached = 120,
+CRagdollProp = 119,
+CPredictedViewModel = 113,
+CPoseController = 109,
+CGameRulesProxy = 80,
+CInfoLadderDismount = 87,
+CFuncLadder = 72,
+CTEFoundryHelpers = 166,
+CEnvDetailController = 51,
+CWorld = 237,
+CWaterLODControl = 196,
+CWaterBullet = 195,
+CVoteController = 194,
+CVGuiScreen = 193,
+CPropJeep = 116,
+CPropVehicleChoreoGeneric = 0,
+CTriggerSoundOperator = 192,
+CBaseVPhysicsTrigger = 22,
+CTriggerPlayerMovement = 191,
+CBaseTrigger = 20,
+CTest_ProxyToggle_Networkable = 188,
+CTesla = 183,
+CBaseTeamObjectiveResource = 17,
+CTeam = 138,
+CSunlightShadowControl = 137,
+CSun = 136,
+CParticlePerformanceMonitor = 97,
+CSpotlightEnd = 130,
+CSpatialEntity = 129,
+CSlideshowDisplay = 125,
+CShadowControl = 124,
+CSceneEntity = 123,
+CRopeKeyframe = 121,
+CRagdollManager = 118,
+CPhysicsPropMultiplayer = 102,
+CPhysBoxMultiplayer = 100,
+CPropDoorRotating = 115,
+CBasePropDoor = 16,
+CDynamicProp = 43,
+CProp_Hallucination = 114,
+CPostProcessController = 110,
+CPointCommentaryNode = 108,
+CPointCamera = 107,
+CPlayerResource = 106,
+CPlasma = 105,
+CPhysMagnet = 103,
+CPhysicsProp = 101,
+CStatueProp = 134,
+CPhysBox = 99,
+CParticleSystem = 98,
+CMovieDisplay = 95,
+CMaterialModifyControl = 92,
+CLightGlow = 91,
+CInfoOverlayAccessor = 88,
+CFuncTrackTrain = 79,
+CFuncSmokeVolume = 78,
+CFuncRotating = 77,
+CFuncReflectiveGlass = 76,
+CFuncOccluder = 75,
+CFuncMoveLinear = 74,
+CFuncMonitor = 73,
+CFunc_LOD = 68,
+CTEDust = 158,
+CFunc_Dust = 67,
+CFuncConveyor = 71,
+CFuncBrush = 70,
+CBreakableSurface = 28,
+CFuncAreaPortalWindow = 69,
+CFish = 63,
+CFireSmoke = 61,
+CEnvTonemapController = 58,
+CEnvScreenEffect = 56,
+CEnvScreenOverlay = 57,
+CEnvProjectedTexture = 54,
+CEnvParticleScript = 53,
+CFogController = 65,
+CEnvDOFController = 52,
+CCascadeLight = 30,
+CEnvAmbientLight = 50,
+CEntityParticleTrail = 49,
+CEntityFreezing = 48,
+CEntityFlame = 47,
+CEntityDissolve = 46,
+CDynamicLight = 42,
+CColorCorrectionVolume = 33,
+CColorCorrection = 32,
+CBreakableProp = 27,
+CBeamSpotlight = 25,
+CBaseButton = 5,
+CBaseToggle = 19,
+CBasePlayer = 15,
+CBaseFlex = 12,
+CBaseEntity = 11,
+CBaseDoor = 10,
+CBaseCombatCharacter = 6,
+CBaseAnimatingOverlay = 3,
+CBoneFollower = 26,
+CBaseAnimating = 2,
+CAI_BaseNPC = 0,
+CBeam = 24,
+CBaseViewModel = 21,
+CBaseParticleEntity = 14,
+CBaseGrenade = 13,
+CBaseCombatWeapon = 7,
+CBaseWeaponWorldModel = 23
 };*/
 
 enum class CSGOHitboxID
@@ -708,7 +740,7 @@ public:
 		return call_vfunc<OrigFn>(this, 484)(this);
 	}
 
-	void UpdateAccPenalty() 
+	void UpdateAccPenalty()
 	{
 		typedef void(__thiscall *OrigFn)(void *);
 		return call_vfunc<OrigFn>(this, 485)(this);
@@ -721,7 +753,7 @@ public:
 
 	CSWeaponInfo* GetCSWpnData()
 	{
-		static DWORD GetCSWpnDataAddr = Utilities::Memory::FindPattern("client.dll", (PBYTE)"\x55\x8B\xEC\x81\xEC\x00\x00\x00\x00\xB8\x00\x00\x00\x00\x57", "xxxxx????x????x");
+		static DWORD GetCSWpnDataAddr = Utilities::Memory::FindPattern("client.dll", (PBYTE)"\x55\x8B\xEC\x81\xEC\x00\x00\x00\x00\x53\x57\x8B\xF9\xBB\x00\x00\x00\x00", "xxxxx????xxxxx????");
 		if (GetCSWpnDataAddr)
 		{
 			CSWeaponInfo* retData;
@@ -857,13 +889,13 @@ public:
 	CNETVAR_FUNC(float, GetLowerBodyYaw, 0xE6996CCF); //m_flLowerBodyYawTarget
 	CNETVAR_FUNC(int, GetFlags, 0xE456D580); //m_fFlags
 	CNETVAR_FUNC(float, GetTargetYaw, 0xE6996CCF)
-	CNETVAR_FUNC(Vector, GetOrigin, 0x1231CE10); //m_vecOrigin 0x0134
+		CNETVAR_FUNC(Vector, GetOrigin, 0x1231CE10); //m_vecOrigin 0x0134
 	CNETVAR_FUNC(Vector, GetRotation, 0x6BEA197A); //m_angRotation
 	CNETVAR_FUNC(int, GetTeamNum, 0xC08B6C6E); //m_iTeamNum
 	CNETVAR_FUNC(int, GetMaxHealth, 0xC52E1C28); //m_iMaxHealth
 	CNETVAR_FUNC(int, GetHealth, 0xA93054E3); //m_iHealth
 	CNETVAR_FUNC(float, GetFlashDuration, 0x4B5938D5); //m_flFlashDuration
-	CNETVAR_FUNC(float , GetFlashAlpha, 0xFE79FB98); //m_flFlashMaxAlpha
+	CNETVAR_FUNC(float, GetFlashAlpha, 0xFE79FB98); //m_flFlashMaxAlpha
 	CNETVAR_FUNC(unsigned char, GetLifeState, 0xD795CCFC); //m_lifeState
 	CNETVAR_FUNC(HANDLE, GetActiveWeaponHandle, 0xB4FECDA3); //m_hActiveWeapon
 	CNETVAR_FUNC(int, GetTickBase, 0xD472B079); //m_nTickBase
@@ -880,15 +912,15 @@ public:
 	CNETVAR_FUNC(float, GetSimulationTime, 0xC4560E44); //m_flSimulationTime
 	CNETVAR_FUNC(float, GetAnimTime, 0xD27E8416);
 	CNETVAR_FUNC(bool, IsScoped, 0x61B9C22C); //m_bIsScoped
-	//CNETVAR_FUNC(int, GetPlayerCompRank, 0x75671F7F);
-	// ----------------------------------------------//
+											  //CNETVAR_FUNC(int, GetPlayerCompRank, 0x75671F7F);
+											  // ----------------------------------------------//
 
 	bool IsAlive()
 	{
 		return (GetLifeState() == LIFE_ALIVE && GetHealth() > 0);
 	}
 
-	int GetMoveType() 
+	int GetMoveType()
 	{
 		if (!this)
 			return 0;
