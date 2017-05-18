@@ -6,4 +6,5 @@ PastaSqad
 - Fixed legitbot
 - Fixed ragebot
 - Updated offsets
+
 Happy pasting! :>
