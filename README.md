@@ -6,5 +6,5 @@
 - Fixed ragebot
 - Updated offsets
 
-Contributor: FZCat1337
+Contributor: FZCat1337 |
 Happy pasting! :>
