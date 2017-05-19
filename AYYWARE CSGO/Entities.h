@@ -753,7 +753,7 @@ public:
 
 	CSWeaponInfo* GetCSWpnData()
 	{
-		static DWORD GetCSWpnDataAddr = Utilities::Memory::FindPattern("client.dll", (PBYTE)"\x55\x8B\xEC\x81\xEC\x00\x00\x00\x00\x53\x57\x8B\xF9\xBB\x00\x00\x00\x00", "xxxxx????xxxxx????");
+		static DWORD GetCSWpnDataAddr = Utilities::Memory::FindPattern("client.dll", (PBYTE)"\x55\x8B\xEC\x81\xEC\x00\x00\x00\x00\xB8\x00\x00\x00\x00\x57", "xxxxx????x????x");
 		if (GetCSWpnDataAddr)
 		{
 			CSWeaponInfo* retData;
