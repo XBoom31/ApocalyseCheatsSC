@@ -6,6 +6,34 @@ Rest In Peace ApocalypseCheats
 
 #include "GUI.h"
 
+
+class CTextField : public CControl
+{
+public:
+	CTextField();
+	std::string getText();
+	void SetText(std::string);
+private:
+	std::string text;
+	bool IsGettingKey;
+	void Draw(bool hover);
+	void OnUpdate();
+	void OnClick();
+};
+
+class CTextField2 : public CControl
+{
+public:
+	CTextField2();
+	std::string getText();
+	void SetText(std::string);
+private:
+	std::string text;
+	bool IsGettingKey;
+	void Draw(bool hover);
+	void OnUpdate();
+	void OnClick();
+};
 class CCheckBox : public CControl
 {
 public:

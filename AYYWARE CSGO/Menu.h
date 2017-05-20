@@ -145,13 +145,14 @@ public:
 	CCheckBox OptionsHelmet;
 	CCheckBox OptionsKit;
 	CCheckBox OptionsDefuse;
+	CCheckBox OtherWireframe;
 	//CCheckBox OptionsGlow;
 	CComboBox OptionsChams;
 	CCheckBox OptionsSkeleton;
 	CCheckBox OptionsVisibleOnly;
 	CCheckBox OptionsAimSpot;
 	CCheckBox OptionsCompRank;
-	
+	CCheckBox OtherAsus;
 
 	// Filters Settings
 	CGroupBox FiltersGroup;
@@ -187,11 +188,11 @@ public:
 	void Setup();
 
 	// Knife Changer
-	CGroupBox KnifeGroup;
+	/*CGroupBox KnifeGroup;
 	CCheckBox KnifeEnable;
 	CComboBox KnifeModel;
 	CComboBox KnifeSkin;
-	CButton   KnifeApply;
+	CButton   KnifeApply;*/
 
 	// Other Settings
 	CGroupBox OtherGroup;
@@ -276,6 +277,81 @@ public:
 	CSlider  MenuInnerB;
 	CSlider  MenuOpacity;
 };
+class CSkinchangerTab : public CTab
+{
+public:
+	void Setup();
+
+	// Knife Changer/Skin Changer
+	CLabel SkinActive;
+	CCheckBox SkinEnable;
+	CButton   SkinApply;
+
+	// Knife
+	CGroupBox KnifeGroup;
+	CComboBox KnifeModel;
+	CComboBox KnifeSkin;
+
+	// Pistols
+	CGroupBox PistolGroup;
+	CComboBox GLOCKSkin;
+	CComboBox USPSSkin;
+	CComboBox DEAGLESkin;
+	CComboBox MAGNUMSkin;
+	CComboBox DUALSSkin;
+	CComboBox FIVESEVENSkin;
+	CComboBox TECNINESkin;
+	CComboBox P2000Skin;
+	CComboBox P250Skin;
+
+	// MPs
+	CGroupBox MPGroup;
+	CComboBox MAC10Skin;
+	CComboBox P90Skin;
+	CComboBox UMP45Skin;
+	CComboBox BIZONSkin;
+	CComboBox MP7Skin;
+	CComboBox MP9Skin;
+
+	// Rifles
+	CGroupBox Riflegroup;
+	CComboBox M41SSkin;
+	CComboBox M4A4Skin;
+	CComboBox AK47Skin;
+	CComboBox AUGSkin;
+	CComboBox FAMASSkin;
+	CComboBox GALILSkin;
+	CComboBox SG553Skin;
+
+
+	// Machineguns
+	CGroupBox MachinegunsGroup;
+	CComboBox NEGEVSkin;
+	CComboBox M249Skin;
+
+	// Snipers
+	CGroupBox Snipergroup;
+	CComboBox SCAR20Skin;
+	CComboBox G3SG1Skin;
+	CComboBox SSG08Skin;
+	CComboBox AWPSkin;
+
+	// Shotguns
+	CGroupBox Shotgungroup;
+	CComboBox MAG7Skin;
+	CComboBox XM1014Skin;
+	CComboBox SAWEDOFFSkin;
+	CComboBox NOVASkin;
+
+	// Skinsettings
+	CGroupBox SkinsettingsGroup;
+	CCheckBox StatTrakEnable;
+	/*
+*/
+	CTextField StatTrackAmount;
+	CTextField2 SkinName;
+	CTextField2 KnifeName;
+};
 
 class CSettingsTab : public CTab
 {
@@ -302,6 +378,7 @@ public:
 	CMiscTab MiscTab;
 	CColorTab ColorTab;
 	CSettingsTab SettingsTab;
+	CSkinchangerTab SkinchangerTab;
 
 	CButton SaveButton;
 	CButton LoadButton;

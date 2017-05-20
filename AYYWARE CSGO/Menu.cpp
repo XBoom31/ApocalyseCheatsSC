@@ -105,6 +105,7 @@ void ApocalypseWindow::Setup()
 	RegisterTab(&MiscTab);
 	RegisterTab(&ColorTab);
 	RegisterTab(&SettingsTab);
+	RegisterTab(&SkinchangerTab);
 
 	RECT Client = GetClientArea();
 	Client.bottom -= 29;
@@ -115,7 +116,7 @@ void ApocalypseWindow::Setup()
 	MiscTab.Setup();
 	ColorTab.Setup();
 	SettingsTab.Setup();
-
+	SkinchangerTab.Setup();
 }
 
 void CRageBotTab::Setup()
@@ -576,7 +577,10 @@ void CVisualTab::Setup()
 	
 	OptionsCompRank.SetFileId("opt_comprank");
 	OptionsGroup.PlaceLabledControl("Player Ranks", this, &OptionsCompRank);
+	
 
+	OtherWireframe.SetFileId("opt_wireframe");
+	OptionsGroup.PlaceLabledControl("Wireframe", this, &OtherWireframe);
 	
 #pragma endregion Setting up the Options controls
 
@@ -660,6 +664,9 @@ void CVisualTab::Setup()
 	OtherNoSmoke.SetFileId("otr_nosmoke");
 	OtherGroup.PlaceLabledControl("NoSmoke", this, &OtherNoSmoke);
 
+	OtherNoSmoke.SetFileId("otr_asus");
+	OtherGroup.PlaceLabledControl("AsusWalls", this, &OtherAsus);
+
 	
 #pragma endregion Setting up the Other controls
 }
@@ -669,7 +676,7 @@ void CMiscTab::Setup()
 	SetTitle("Misc");
 
 #pragma region Knife
-	KnifeGroup.SetPosition(16, 16);
+	/*KnifeGroup.SetPosition(16, 16);
 	KnifeGroup.SetSize(360, 126);
 	KnifeGroup.SetText("Knife Changer");
 	RegisterControl(&KnifeGroup);
@@ -716,7 +723,7 @@ void CMiscTab::Setup()
 	KnifeApply.SetText("Apply Knife");
 	KnifeApply.SetCallback(KnifeApplyCallbk);
 	KnifeGroup.PlaceLabledControl("", this, &KnifeApply);
-
+*/
 #pragma endregion
 
 #pragma region Other
@@ -1212,7 +1219,805 @@ void CSettingsTab::Setup()
 	Unload.SetCallback(Unloadbk);
 	ButtonGroup.PlaceLabledControl("", this, &Unload);
 };
+void CSkinchangerTab::Setup()
+{
+	SetTitle("SkinChanger");
 
+	SkinActive.SetPosition(16, 16);
+	SkinActive.SetText("Active");
+	RegisterControl(&SkinActive);
+
+	SkinEnable.SetFileId("skin_enable");
+	SkinEnable.SetPosition(66, 16);
+	RegisterControl(&SkinEnable);
+
+	SkinApply.SetText("Apply");
+	SkinApply.SetCallback(KnifeApplyCallbk);
+	SkinApply.SetPosition(408, 490);
+	SkinApply.SetSize(360, 106);
+	RegisterControl(&SkinApply);
+
+#pragma region Knife
+	KnifeGroup.SetPosition(16, 48);
+	KnifeGroup.SetText("Knife");
+	KnifeGroup.SetSize(376, 80);
+	RegisterControl(&KnifeGroup);
+
+	KnifeModel.SetFileId("knife_model");
+	KnifeModel.AddItem("Bayonet");
+	KnifeModel.AddItem("Bowie Knife");
+	KnifeModel.AddItem("Butterfly Knife");
+	KnifeModel.AddItem("Falchion Knife");
+	KnifeModel.AddItem("Flip Knife");
+	KnifeModel.AddItem("Gut Knife");
+	KnifeModel.AddItem("Huntsman Knife");
+	KnifeModel.AddItem("Karambit");
+	KnifeModel.AddItem("M9 Bayonet");
+	KnifeModel.AddItem("Shadow Daggers");
+	KnifeGroup.PlaceLabledControl("Knife", this, &KnifeModel);
+
+	KnifeSkin.SetFileId("knife_skin");
+	KnifeSkin.AddItem("None");
+	KnifeSkin.AddItem("Crimson Web");
+	KnifeSkin.AddItem("Bone Mask");
+	KnifeSkin.AddItem("Fade");
+	KnifeSkin.AddItem("Night");
+	KnifeSkin.AddItem("Blue Steel");
+	KnifeSkin.AddItem("Stained");
+	KnifeSkin.AddItem("Case Hardened");
+	KnifeSkin.AddItem("Slaughter");
+	KnifeSkin.AddItem("Safari Mesh");
+	KnifeSkin.AddItem("Boreal Forest");
+	KnifeSkin.AddItem("Ultraviolet");
+	KnifeSkin.AddItem("Urban Masked");
+	KnifeSkin.AddItem("Scorched");
+	KnifeSkin.AddItem("Rust Coat");
+	KnifeSkin.AddItem("Tiger Tooth");
+	KnifeSkin.AddItem("Damascus Steel");
+	KnifeSkin.AddItem("Damascus Steel");
+	KnifeSkin.AddItem("Marble Fade");
+	KnifeSkin.AddItem("Rust Coat");
+	KnifeSkin.AddItem("Doppler Ruby");
+	KnifeSkin.AddItem("Doppler Sapphire");
+	KnifeSkin.AddItem("Doppler Blackpearl");
+	KnifeSkin.AddItem("Doppler Phase 1");
+	KnifeSkin.AddItem("Doppler Phase 2");
+	KnifeSkin.AddItem("Doppler Phase 3");
+	KnifeSkin.AddItem("Doppler Phase 4");
+	KnifeSkin.AddItem("Gamma Doppler Phase 1");
+	KnifeSkin.AddItem("Gamma Doppler Phase 2");
+	KnifeSkin.AddItem("Gamma Doppler Phase 3");
+	KnifeSkin.AddItem("Gamma Doppler Phase 4");
+	KnifeSkin.AddItem("Gamma Doppler Emerald");
+	KnifeSkin.AddItem("Lore");
+	KnifeGroup.PlaceLabledControl("Skin", this, &KnifeSkin);
+#pragma endregion
+
+#pragma region Machineguns
+	MachinegunsGroup.SetPosition(408, 48);
+	MachinegunsGroup.SetText("Machineguns");
+	MachinegunsGroup.SetSize(360, 80);
+	RegisterControl(&MachinegunsGroup);
+
+	NEGEVSkin.SetFileId("negev_skin");
+	NEGEVSkin.AddItem("Anodized Navy");
+	NEGEVSkin.AddItem("Man-o'-war");
+	NEGEVSkin.AddItem("Palm");
+	NEGEVSkin.AddItem("VariCamo");
+	NEGEVSkin.AddItem("Palm");
+	NEGEVSkin.AddItem("CaliCamo");
+	NEGEVSkin.AddItem("Terrain");
+	NEGEVSkin.AddItem("Army Sheen");
+	NEGEVSkin.AddItem("Bratatat");
+	NEGEVSkin.AddItem("Desert-Strike");
+	NEGEVSkin.AddItem("Nuclear Waste");
+	NEGEVSkin.AddItem("Loudmouth");
+	NEGEVSkin.AddItem("Power Loader");
+	MachinegunsGroup.PlaceLabledControl("Negev", this, &NEGEVSkin);
+
+	M249Skin.SetFileId("m249_skin");
+	M249Skin.AddItem("Contrast Spray");
+	M249Skin.AddItem("Blizzard Marbleized");
+	M249Skin.AddItem("Jungle DDPAT");
+	M249Skin.AddItem("Gator Mesh");
+	M249Skin.AddItem("Magma");
+	M249Skin.AddItem("System Lock");
+	M249Skin.AddItem("Shipping Forecast");
+	M249Skin.AddItem("Impact Drill");
+	M249Skin.AddItem("Nebula Crusader");
+	M249Skin.AddItem("Spectre");
+	MachinegunsGroup.PlaceLabledControl("M249", this, &M249Skin);
+
+#pragma endregion
+
+#pragma region Snipers
+	Snipergroup.SetPosition(16, 135);
+	Snipergroup.SetText("Snipers");
+	Snipergroup.SetSize(376, 125);
+	RegisterControl(&Snipergroup);
+
+	AWPSkin.SetFileId("awp_skin");
+	AWPSkin.AddItem("BOOM");
+	AWPSkin.AddItem("Dragon Lore");
+	AWPSkin.AddItem("Pink DDPAT");
+	AWPSkin.AddItem("Snake Camo");
+	AWPSkin.AddItem("Lightning Strike");
+	AWPSkin.AddItem("Safari Mesh");
+	AWPSkin.AddItem("Corticera");
+	AWPSkin.AddItem("Redline");
+	AWPSkin.AddItem("Man-o'-war");
+	AWPSkin.AddItem("Graphite");
+	AWPSkin.AddItem("Electric Hive");
+	AWPSkin.AddItem("Pit Viper");
+	AWPSkin.AddItem("Asiimov");
+	AWPSkin.AddItem("Worm God");
+	AWPSkin.AddItem("Medusa");
+	AWPSkin.AddItem("Sun in Leo");
+	AWPSkin.AddItem("Hyper Beast");
+	AWPSkin.AddItem("Elite Build");
+	Snipergroup.PlaceLabledControl("AWP", this, &AWPSkin);
+
+	SSG08Skin.SetFileId("sgg08_skin");
+	SSG08Skin.AddItem("Lichen Dashed");
+	SSG08Skin.AddItem("Dark Water");
+	SSG08Skin.AddItem("Blue Spruce");
+	SSG08Skin.AddItem("Sand Dune");
+	SSG08Skin.AddItem("Palm");
+	SSG08Skin.AddItem("Mayan Dreams");
+	SSG08Skin.AddItem("Blood in the Water");
+	SSG08Skin.AddItem("Tropical Storm");
+	SSG08Skin.AddItem("Acid Fade");
+	SSG08Skin.AddItem("Slashed");
+	SSG08Skin.AddItem("Detour");
+	SSG08Skin.AddItem("Abyss");
+	SSG08Skin.AddItem("Big Iron");
+	SSG08Skin.AddItem("Necropos");
+	SSG08Skin.AddItem("Ghost Crusader");
+	SSG08Skin.AddItem("Dragonfire");
+	Snipergroup.PlaceLabledControl("SGG 08", this, &SSG08Skin);
+
+	SCAR20Skin.SetFileId("scar20_skin");
+	SCAR20Skin.AddItem("Splash Jam");
+	SCAR20Skin.AddItem("Storm");
+	SCAR20Skin.AddItem("Contractor");
+	SCAR20Skin.AddItem("Carbon Fiber");
+	SCAR20Skin.AddItem("Sand Mesh");
+	SCAR20Skin.AddItem("Palm");
+	SCAR20Skin.AddItem("Emerald");
+	SCAR20Skin.AddItem("Crimson Web");
+	SCAR20Skin.AddItem("Cardiac");
+	SCAR20Skin.AddItem("Army Sheen");
+	SCAR20Skin.AddItem("Cyrex");
+	SCAR20Skin.AddItem("Grotto");
+	SCAR20Skin.AddItem("Emerald");
+	SCAR20Skin.AddItem("Green Marine");
+	SCAR20Skin.AddItem("Outbreak");
+	SCAR20Skin.AddItem("Bloodsport");
+	Snipergroup.PlaceLabledControl("SCAR-20", this, &SCAR20Skin);
+
+	G3SG1Skin.SetFileId("g3sg1_skin");
+	G3SG1Skin.AddItem("Desert Storm");
+	G3SG1Skin.AddItem("Arctic Camo");
+	G3SG1Skin.AddItem("Bone Mask");
+	G3SG1Skin.AddItem("Contractor");
+	G3SG1Skin.AddItem("Safari Mesh");
+	G3SG1Skin.AddItem("Polar Camo");
+	G3SG1Skin.AddItem("Jungle Dashed");
+	G3SG1Skin.AddItem("VariCamo");
+	G3SG1Skin.AddItem("Predator");
+	G3SG1Skin.AddItem("Demeter");
+	G3SG1Skin.AddItem("Azure Zebra");
+	G3SG1Skin.AddItem("Green Apple");
+	G3SG1Skin.AddItem("Orange Kimono");
+	G3SG1Skin.AddItem("Neon Kimono");
+	G3SG1Skin.AddItem("Murky");
+	G3SG1Skin.AddItem("Chronos");
+	G3SG1Skin.AddItem("Flux");
+	G3SG1Skin.AddItem("The Executioner");
+	G3SG1Skin.AddItem("Orange Crash");
+	Snipergroup.PlaceLabledControl("G3SG1", this, &G3SG1Skin);
+#pragma endregion
+
+#pragma region Shotguns
+	Shotgungroup.SetPosition(408, 135);
+	Shotgungroup.SetText("Shotguns");
+	Shotgungroup.SetSize(360, 125);
+	RegisterControl(&Shotgungroup);
+
+	MAG7Skin.SetFileId("mag7_skin");
+	MAG7Skin.AddItem("Counter Terrace");
+	MAG7Skin.AddItem("Metallic DDPAT");
+	MAG7Skin.AddItem("Silver");
+	MAG7Skin.AddItem("Storm");
+	MAG7Skin.AddItem("Bulldozer");
+	MAG7Skin.AddItem("Heat");
+	MAG7Skin.AddItem("Sand Dune");
+	MAG7Skin.AddItem("Irradiated Alert");
+	MAG7Skin.AddItem("Memento");
+	MAG7Skin.AddItem("Hazard");
+	MAG7Skin.AddItem("Heaven Guard");
+	MAG7Skin.AddItem("Firestarter");
+	MAG7Skin.AddItem("Seabird");
+	MAG7Skin.AddItem("Cobalt Core");
+	MAG7Skin.AddItem("Praetorian");
+	Shotgungroup.PlaceLabledControl("Mag-7", this, &MAG7Skin);
+
+	XM1014Skin.SetFileId("xm1014_skin");
+	XM1014Skin.AddItem("Blaze Orange");
+	XM1014Skin.AddItem("VariCamo Blue");
+	XM1014Skin.AddItem("Bone Mask");
+	XM1014Skin.AddItem("Blue Steel");
+	XM1014Skin.AddItem("Blue Spruce");
+	XM1014Skin.AddItem("Grassland");
+	XM1014Skin.AddItem("Urban Perforated");
+	XM1014Skin.AddItem("Jungle");
+	XM1014Skin.AddItem("VariCamo");
+	XM1014Skin.AddItem("VariCamo");
+	XM1014Skin.AddItem("Fallout Warning");
+	XM1014Skin.AddItem("Jungle");
+	XM1014Skin.AddItem("CaliCamo");
+	XM1014Skin.AddItem("Pit Viper");
+	XM1014Skin.AddItem("Tranquility");
+	XM1014Skin.AddItem("Red Python");
+	XM1014Skin.AddItem("Heaven Guard");
+	XM1014Skin.AddItem("Red Leather");
+	XM1014Skin.AddItem("Bone Machine");
+	XM1014Skin.AddItem("Quicksilver");
+	XM1014Skin.AddItem("Scumbria");
+	XM1014Skin.AddItem("Teclu Burner");
+	XM1014Skin.AddItem("Black Tie");
+	Shotgungroup.PlaceLabledControl("XM1014", this, &XM1014Skin);
+
+	SAWEDOFFSkin.SetFileId("sawedoff_skin");
+	SAWEDOFFSkin.AddItem("First Class");
+	SAWEDOFFSkin.AddItem("Forest DDPAT");
+	SAWEDOFFSkin.AddItem("Contrast Spray");
+	SAWEDOFFSkin.AddItem("Snake Camo");
+	SAWEDOFFSkin.AddItem("Orange DDPAT");
+	SAWEDOFFSkin.AddItem("Fade");
+	SAWEDOFFSkin.AddItem("Copper");
+	SAWEDOFFSkin.AddItem("Origami");
+	SAWEDOFFSkin.AddItem("Sage Spray");
+	SAWEDOFFSkin.AddItem("VariCamo");
+	SAWEDOFFSkin.AddItem("Irradiated Alert");
+	SAWEDOFFSkin.AddItem("Mosaico");
+	SAWEDOFFSkin.AddItem("Serenity");
+	SAWEDOFFSkin.AddItem("Amber Fade");
+	SAWEDOFFSkin.AddItem("Full Stop");
+	SAWEDOFFSkin.AddItem("Highwayman");
+	SAWEDOFFSkin.AddItem("The Kraken");
+	SAWEDOFFSkin.AddItem("Rust Coat");
+	SAWEDOFFSkin.AddItem("Bamboo Shadow");
+	SAWEDOFFSkin.AddItem("Bamboo Forest");
+	SAWEDOFFSkin.AddItem("Yorick");
+	SAWEDOFFSkin.AddItem("Fubar");
+	SAWEDOFFSkin.AddItem("Wasteland Princess");
+	Shotgungroup.PlaceLabledControl("Sawed-Off", this, &SAWEDOFFSkin);
+
+	NOVASkin.SetFileId("nova_skin");
+	NOVASkin.AddItem("Candy Apple");
+	NOVASkin.AddItem("Blaze Orange");
+	NOVASkin.AddItem("Modern Hunter");
+	NOVASkin.AddItem("Forest Leaves");
+	NOVASkin.AddItem("Bloomstick");
+	NOVASkin.AddItem("Sand Dune");
+	NOVASkin.AddItem("Polar Mesh");
+	NOVASkin.AddItem("Walnut");
+	NOVASkin.AddItem("Predator");
+	NOVASkin.AddItem("Tempest");
+	NOVASkin.AddItem("Graphite");
+	NOVASkin.AddItem("Ghost Camo");
+	NOVASkin.AddItem("Rising Skull");
+	NOVASkin.AddItem("Antique");
+	NOVASkin.AddItem("Green Apple");
+	NOVASkin.AddItem("Caged Steel");
+	NOVASkin.AddItem("Koi");
+	NOVASkin.AddItem("Moon in Libra");
+	NOVASkin.AddItem("Ranger");
+	NOVASkin.AddItem("HyperBeast");
+	Shotgungroup.PlaceLabledControl("Nova", this, &NOVASkin);
+#pragma endregion
+
+#pragma region Rifles
+	Riflegroup.SetPosition(16, 270);
+	Riflegroup.SetText("Rifles");
+	Riflegroup.SetSize(376, 195);
+	RegisterControl(&Riflegroup);
+
+	AK47Skin.SetFileId("ak47_skin");
+	AK47Skin.AddItem("First Class");
+	AK47Skin.AddItem("Red Laminate");
+	AK47Skin.AddItem("Case Hardened");
+	AK47Skin.AddItem("Black Laminate");
+	AK47Skin.AddItem("Fire Serpent");
+	AK47Skin.AddItem("Cartel");
+	AK47Skin.AddItem("Emerald Pinstripe");
+	AK47Skin.AddItem("Blue Laminate");
+	AK47Skin.AddItem("Redline");
+	AK47Skin.AddItem("Vulcan");
+	AK47Skin.AddItem("Jaguar");
+	AK47Skin.AddItem("Jet Set");
+	AK47Skin.AddItem("Wasteland Rebel");
+	AK47Skin.AddItem("Elite Build");
+	AK47Skin.AddItem("Hydroponic");
+	AK47Skin.AddItem("Aquamarine Revenge");
+	AK47Skin.AddItem("Frontside Misty");
+	AK47Skin.AddItem("Point Disarray");
+	AK47Skin.AddItem("Fuel Injector");
+	AK47Skin.AddItem("Neon Revolution");
+	Riflegroup.PlaceLabledControl("AK-47", this, &AK47Skin);
+
+	M41SSkin.SetFileId("m4a1s_skin");
+	M41SSkin.AddItem("Dark Water");
+	M41SSkin.AddItem("Hyper Beast");
+	M41SSkin.AddItem("Boreal Forest");
+	M41SSkin.AddItem("VariCamo");
+	M41SSkin.AddItem("Nitro");
+	M41SSkin.AddItem("Bright Water");
+	M41SSkin.AddItem("Atomic Alloy");
+	M41SSkin.AddItem("Blood Tiger");
+	M41SSkin.AddItem("Guardian");
+	M41SSkin.AddItem("Master Piece");
+	M41SSkin.AddItem("Knight");
+	M41SSkin.AddItem("Cyrex");
+	M41SSkin.AddItem("Basilisk");
+	M41SSkin.AddItem("Icarus Fell");
+	M41SSkin.AddItem("Hot Rod");
+	M41SSkin.AddItem("Golden Coi");
+	M41SSkin.AddItem("Chantico's Fire");
+	M41SSkin.AddItem("Mecha Industries");
+	M41SSkin.AddItem("Flashback");
+	Riflegroup.PlaceLabledControl("M4A1-S", this, &M41SSkin);
+
+	M4A4Skin.SetFileId("m4a4_skin");
+	M4A4Skin.AddItem("Bullet Rain");
+	M4A4Skin.AddItem("Zirka");
+	M4A4Skin.AddItem("Asiimov");
+	M4A4Skin.AddItem("Howl");
+	M4A4Skin.AddItem("X-Ray");
+	M4A4Skin.AddItem("Desert-Strike");
+	M4A4Skin.AddItem("Griffin");
+	M4A4Skin.AddItem("Dragon King");
+	M4A4Skin.AddItem("Poseidon");
+	M4A4Skin.AddItem("Daybreak");
+	M4A4Skin.AddItem("Evil Daimyo");
+	M4A4Skin.AddItem("Royal Paladin");
+	M4A4Skin.AddItem("The BattleStar");
+	M4A4Skin.AddItem("Desolate Space");
+	M4A4Skin.AddItem("Buzz Kill");
+	Riflegroup.PlaceLabledControl("M4A4", this, &M4A4Skin);
+
+	AUGSkin.SetFileId("aug_skin");
+	AUGSkin.AddItem("Bengal Tiger");
+	AUGSkin.AddItem("Hot Rod");
+	AUGSkin.AddItem("Chameleon");
+	AUGSkin.AddItem("Torque");
+	AUGSkin.AddItem("Radiation Hazard");
+	AUGSkin.AddItem("Asterion");
+	AUGSkin.AddItem("Daedalus");
+	AUGSkin.AddItem("Akihabara Accept");
+	AUGSkin.AddItem("Ricochet");
+	AUGSkin.AddItem("Fleet Flock");
+	AUGSkin.AddItem("Syd Mead");
+	Riflegroup.PlaceLabledControl("AUG", this, &AUGSkin);
+
+	FAMASSkin.SetFileId("famas_skin");
+	FAMASSkin.AddItem("Contrast Spray");
+	FAMASSkin.AddItem("Colony");
+	FAMASSkin.AddItem("Cyanospatter");
+	FAMASSkin.AddItem("Djinn");
+	FAMASSkin.AddItem("Afterimage");
+	FAMASSkin.AddItem("Doomkitty");
+	FAMASSkin.AddItem("Spitfire");
+	FAMASSkin.AddItem("Teardown");
+	FAMASSkin.AddItem("Hexane");
+	FAMASSkin.AddItem("Pulse");
+	FAMASSkin.AddItem("Sergeant");
+	FAMASSkin.AddItem("Styx");
+	FAMASSkin.AddItem("Neural Net");
+	FAMASSkin.AddItem("Survivor");
+	FAMASSkin.AddItem("Valence");
+	FAMASSkin.AddItem("Roll Cage");
+	FAMASSkin.AddItem("Mecha Industries");
+	Riflegroup.PlaceLabledControl("FAMAS", this, &FAMASSkin);
+
+	GALILSkin.SetFileId("galil_skin");
+	GALILSkin.AddItem("Forest DDPAT");
+	GALILSkin.AddItem("Contrast Spray");
+	GALILSkin.AddItem("Orange DDPAT");
+	GALILSkin.AddItem("Eco");
+	GALILSkin.AddItem("Winter Forest");
+	GALILSkin.AddItem("Sage Spray");
+	GALILSkin.AddItem("VariCamo");
+	GALILSkin.AddItem("VariCamo");
+	GALILSkin.AddItem("Chatterbox");
+	GALILSkin.AddItem("Shattered");
+	GALILSkin.AddItem("Kami");
+	GALILSkin.AddItem("Blue Titanium");
+	GALILSkin.AddItem("Urban Rubble");
+	GALILSkin.AddItem("Hunting Blind");
+	GALILSkin.AddItem("Sandstorm");
+	GALILSkin.AddItem("Tuxedo");
+	GALILSkin.AddItem("Cerberus");
+	GALILSkin.AddItem("Aqua Terrace");
+	GALILSkin.AddItem("Rocket Pop");
+	GALILSkin.AddItem("Stone Cold");
+	GALILSkin.AddItem("Firefight");
+	Riflegroup.PlaceLabledControl("GALIL", this, &GALILSkin);
+
+	SG553Skin.SetFileId("sg552_skin");
+	SG553Skin.AddItem("Bulldozer");
+	SG553Skin.AddItem("Ultraviolet");
+	SG553Skin.AddItem("Damascus Steel");
+	SG553Skin.AddItem("Fallout Warning");
+	SG553Skin.AddItem("Damascus Steel");
+	SG553Skin.AddItem("Pulse");
+	SG553Skin.AddItem("Army Sheen");
+	SG553Skin.AddItem("Traveler");
+	SG553Skin.AddItem("Fallout Warning");
+	SG553Skin.AddItem("Cyrex");
+	SG553Skin.AddItem("Tiger Moth");
+	SG553Skin.AddItem("Atlas");
+	Riflegroup.PlaceLabledControl("SG552", this, &SG553Skin);
+#pragma endregion
+
+#pragma region MPs
+	MPGroup.SetPosition(16, 475);
+	MPGroup.SetText("MPs");
+	MPGroup.SetSize(376, 165);
+	RegisterControl(&MPGroup);
+
+	MAC10Skin.SetFileId("mac10_skin");
+	MAC10Skin.AddItem("Tornado");
+	MAC10Skin.AddItem("Candy Apple");
+	MAC10Skin.AddItem("Silver");
+	MAC10Skin.AddItem("Forest DDPAT");
+	MAC10Skin.AddItem("Urban DDPAT");
+	MAC10Skin.AddItem("Fade");
+	MAC10Skin.AddItem("Neon Rider");
+	MAC10Skin.AddItem("Ultraviolet");
+	MAC10Skin.AddItem("Palm");
+	MAC10Skin.AddItem("Graven");
+	MAC10Skin.AddItem("Tatter");
+	MAC10Skin.AddItem("Amber Fade");
+	MAC10Skin.AddItem("Heat");
+	MAC10Skin.AddItem("Curse");
+	MAC10Skin.AddItem("Indigo");
+	MAC10Skin.AddItem("Commuter");
+	MAC10Skin.AddItem("Nuclear Garden");
+	MAC10Skin.AddItem("Malachite");
+	MAC10Skin.AddItem("Rangeen");
+	MAC10Skin.AddItem("Lapis Gator");
+	MPGroup.PlaceLabledControl("MAC-10", this, &MAC10Skin);
+
+	P90Skin.SetFileId("p90_skin");
+	P90Skin.AddItem("Leather");
+	P90Skin.AddItem("Virus");
+	P90Skin.AddItem("Contrast Spray");
+	P90Skin.AddItem("Storm");
+	P90Skin.AddItem("Cold Blooded");
+	P90Skin.AddItem("Glacier Mesh");
+	P90Skin.AddItem("Sand Spray");
+	P90Skin.AddItem("Death by Kitty");
+	P90Skin.AddItem("Ash Wood");
+	P90Skin.AddItem("Fallout Warning");
+	P90Skin.AddItem("Scorched");
+	P90Skin.AddItem("Emerald Dragon");
+	P90Skin.AddItem("Teardown");
+	P90Skin.AddItem("Blind Spot");
+	P90Skin.AddItem("Trigon");
+	P90Skin.AddItem("Desert Warfare");
+	P90Skin.AddItem("Module");
+	P90Skin.AddItem("Asiimov");
+	P90Skin.AddItem("Elite Build");
+	P90Skin.AddItem("Shapewood");
+	P90Skin.AddItem("Shallow Grave");
+	MPGroup.PlaceLabledControl("P90", this, &P90Skin);
+
+	UMP45Skin.SetFileId("ump45_skin");
+	UMP45Skin.AddItem("Blaze");
+	UMP45Skin.AddItem("Forest DDPAT");
+	UMP45Skin.AddItem("Gunsmoke");
+	UMP45Skin.AddItem("Urban DDPAT");
+	UMP45Skin.AddItem("Grand Prix");
+	UMP45Skin.AddItem("Carbon Fiber");
+	UMP45Skin.AddItem("Caramel");
+	UMP45Skin.AddItem("Fallout Warning");
+	UMP45Skin.AddItem("Scorched");
+	UMP45Skin.AddItem("Bone Pile");
+	UMP45Skin.AddItem("Delusion");
+	UMP45Skin.AddItem("Corporal");
+	UMP45Skin.AddItem("Indigo");
+	UMP45Skin.AddItem("Labyrinth");
+	UMP45Skin.AddItem("Minotaur's Labyrinth");
+	UMP45Skin.AddItem("Riot");
+	UMP45Skin.AddItem("Primal Saber");
+	MPGroup.PlaceLabledControl("UMP-45", this, &UMP45Skin);
+
+	BIZONSkin.SetFileId("bizon_skin");
+	BIZONSkin.AddItem("Blue Streak");
+	BIZONSkin.AddItem("Modern Hunter");
+	BIZONSkin.AddItem("Forest Leaves");
+	BIZONSkin.AddItem("Bone Mask");
+	BIZONSkin.AddItem("Carbon Fiber");
+	BIZONSkin.AddItem("Sand Dashed");
+	BIZONSkin.AddItem("Urban Dashed");
+	BIZONSkin.AddItem("Brass");
+	BIZONSkin.AddItem("VariCamo");
+	BIZONSkin.AddItem("Irradiated Alert");
+	BIZONSkin.AddItem("Rust Coat");
+	BIZONSkin.AddItem("Water Sigil");
+	BIZONSkin.AddItem("Night Ops");
+	BIZONSkin.AddItem("Cobalt Halftone");
+	BIZONSkin.AddItem("Antique");
+	BIZONSkin.AddItem("Rust Coat");
+	BIZONSkin.AddItem("Osiris");
+	BIZONSkin.AddItem("Chemical Green");
+	BIZONSkin.AddItem("Bamboo Print");
+	BIZONSkin.AddItem("Bamboo Forest");
+	BIZONSkin.AddItem("Fuel Rod");
+	BIZONSkin.AddItem("Photic Zone");
+	BIZONSkin.AddItem("Judgement of Anubis");
+	MPGroup.PlaceLabledControl("PP-Bizon", this, &BIZONSkin);
+
+	MP7Skin.SetFileId("mp7_skin");
+	MP7Skin.AddItem("Groundwater");
+	MP7Skin.AddItem("Whiteout");
+	MP7Skin.AddItem("Forest DDPAT");
+	MP7Skin.AddItem("Anodized Navy");
+	MP7Skin.AddItem("Skulls");
+	MP7Skin.AddItem("Gunsmoke");
+	MP7Skin.AddItem("Contrast Spray");
+	MP7Skin.AddItem("Bone Mask");
+	MP7Skin.AddItem("Ossified");
+	MP7Skin.AddItem("Orange Peel");
+	MP7Skin.AddItem("VariCamo");
+	MP7Skin.AddItem("Army Recon");
+	MP7Skin.AddItem("Groundwater");
+	MP7Skin.AddItem("Ocean Foam");
+	MP7Skin.AddItem("Full Stop");
+	MP7Skin.AddItem("Urban Hazard");
+	MP7Skin.AddItem("Olive Plaid");
+	MP7Skin.AddItem("Armor Core");
+	MP7Skin.AddItem("Asterion");
+	MP7Skin.AddItem("Nemesis");
+	MP7Skin.AddItem("Special Delivery");
+	MP7Skin.AddItem("Impire");
+	MPGroup.PlaceLabledControl("MP7", this, &MP7Skin);
+
+	MP9Skin.SetFileId("mp9_skin");
+	MP9Skin.AddItem("Ruby Poison Dart");
+	MP9Skin.AddItem("Bone Mask");
+	MP9Skin.AddItem("Hot Rod");
+	MP9Skin.AddItem("Storm");
+	MP9Skin.AddItem("Bulldozer");
+	MP9Skin.AddItem("Hypnotic");
+	MP9Skin.AddItem("Sand Dashed");
+	MP9Skin.AddItem("Orange Peel");
+	MP9Skin.AddItem("Dry Season");
+	MP9Skin.AddItem("Dark Age");
+	MP9Skin.AddItem("Rose Iron");
+	MP9Skin.AddItem("Green Plaid");
+	MP9Skin.AddItem("Setting Sun");
+	MP9Skin.AddItem("Dart");
+	MP9Skin.AddItem("Deadly Poison");
+	MP9Skin.AddItem("Pandora's Box");
+	MP9Skin.AddItem("Bioleak");
+	MP9Skin.AddItem("Airlock");
+	MPGroup.PlaceLabledControl("MP9", this, &MP9Skin);
+
+#pragma endregion
+
+#pragma region Pistols
+	PistolGroup.SetPosition(408, 270);
+	PistolGroup.SetText("Pistols");
+	PistolGroup.SetSize(360, 215);
+	RegisterControl(&PistolGroup);
+
+	GLOCKSkin.SetFileId("glock_skin");
+	GLOCKSkin.AddItem("Groundwater");
+	GLOCKSkin.AddItem("Candy Apple");
+	GLOCKSkin.AddItem("Fade");
+	GLOCKSkin.AddItem("Night");
+	GLOCKSkin.AddItem("Dragon Tattoo");
+	GLOCKSkin.AddItem("Twilight Galaxy");
+	GLOCKSkin.AddItem("Sand Dune");
+	GLOCKSkin.AddItem("Brass");
+	GLOCKSkin.AddItem("Catacombs");
+	GLOCKSkin.AddItem("Sand Dune");
+	GLOCKSkin.AddItem("Steel Disruption");
+	GLOCKSkin.AddItem("Blue Fissure");
+	GLOCKSkin.AddItem("Death Rattle");
+	GLOCKSkin.AddItem("Water Elemental");
+	GLOCKSkin.AddItem("Reactor");
+	GLOCKSkin.AddItem("Grinder");
+	GLOCKSkin.AddItem("Bunsen Burner");
+	GLOCKSkin.AddItem("Wraith");
+	GLOCKSkin.AddItem("Royal Legion");
+	GLOCKSkin.AddItem("Weasel");
+	GLOCKSkin.AddItem("Wasteland Rebel");
+	PistolGroup.PlaceLabledControl("Glock", this, &GLOCKSkin);
+
+	USPSSkin.SetFileId("usps_skin");
+	USPSSkin.AddItem("Forest Leaves");
+	USPSSkin.AddItem("Dark Water");
+	USPSSkin.AddItem("VariCamo");
+	USPSSkin.AddItem("Overgrowth");
+	USPSSkin.AddItem("Caiman");
+	USPSSkin.AddItem("Blood Tiger");
+	USPSSkin.AddItem("Serum");
+	USPSSkin.AddItem("Night Ops");
+	USPSSkin.AddItem("Stainless");
+	USPSSkin.AddItem("Guardian");
+	USPSSkin.AddItem("Orion");
+	USPSSkin.AddItem("Road Rash");
+	USPSSkin.AddItem("Royal Blue");
+	USPSSkin.AddItem("Business Class");
+	USPSSkin.AddItem("Para Green");
+	USPSSkin.AddItem("Torque");
+	USPSSkin.AddItem("Kill Confirmed");
+	USPSSkin.AddItem("Lead Conduit");
+	USPSSkin.AddItem("Cyrex");
+	PistolGroup.PlaceLabledControl("USP-S", this, &USPSSkin);
+
+	DEAGLESkin.SetFileId("deagle_skin");
+	DEAGLESkin.AddItem("Blaze");
+	DEAGLESkin.AddItem("Pilot");
+	DEAGLESkin.AddItem("Midnight Storm");
+	DEAGLESkin.AddItem("Sunset Storm");
+	DEAGLESkin.AddItem("Forest DDPAT");
+	DEAGLESkin.AddItem("Crimson Web");
+	DEAGLESkin.AddItem("Urban DDPAT");
+	DEAGLESkin.AddItem("Night");
+	DEAGLESkin.AddItem("Hypnotic");
+	DEAGLESkin.AddItem("Mudder");
+	DEAGLESkin.AddItem("VariCamo");
+	DEAGLESkin.AddItem("Golden Koi");
+	DEAGLESkin.AddItem("Cobalt Disruption");
+	DEAGLESkin.AddItem("Urban Rubble");
+	DEAGLESkin.AddItem("Naga");
+	DEAGLESkin.AddItem("Hand Cannon");
+	DEAGLESkin.AddItem("Heirloom");
+	DEAGLESkin.AddItem("Meteorite");
+	DEAGLESkin.AddItem("Conspiracy");
+	DEAGLESkin.AddItem("Bronze Deco");
+	DEAGLESkin.AddItem("Sunset Storm");
+	DEAGLESkin.AddItem("Corinthian");
+	DEAGLESkin.AddItem("Kumicho Dragon");
+	PistolGroup.PlaceLabledControl("Deagle", this, &DEAGLESkin);
+
+	DUALSSkin.SetFileId("duals_skin");
+	DUALSSkin.AddItem("Anodized Navy");
+	DUALSSkin.AddItem("Ossified");
+	DUALSSkin.AddItem("Stained");
+	DUALSSkin.AddItem("Contractor");
+	DUALSSkin.AddItem("Colony");
+	DUALSSkin.AddItem("Demolition");
+	DUALSSkin.AddItem("Black Limba");
+	DUALSSkin.AddItem("Red Quartz");
+	DUALSSkin.AddItem("Cobalt Quartz");
+	DUALSSkin.AddItem("Hemoglobin");
+	DUALSSkin.AddItem("Urban Shock");
+	DUALSSkin.AddItem("Marina");
+	DUALSSkin.AddItem("Panther");
+	DUALSSkin.AddItem("Retribution");
+	DUALSSkin.AddItem("Briar");
+	DUALSSkin.AddItem("Duelist");
+	DUALSSkin.AddItem("Moon in Libra");
+	DUALSSkin.AddItem("Dualing Dragons");
+	DUALSSkin.AddItem("Cartel");
+	DUALSSkin.AddItem("Ventilators");
+	PistolGroup.PlaceLabledControl("Duals", this, &DUALSSkin);
+
+	FIVESEVENSkin.SetFileId("fiveseven_skin");
+	FIVESEVENSkin.AddItem("Candy Apple");
+	FIVESEVENSkin.AddItem("Bone Mask");
+	FIVESEVENSkin.AddItem("Case Hardened");
+	FIVESEVENSkin.AddItem("Contractor");
+	FIVESEVENSkin.AddItem("Forest Night");
+	FIVESEVENSkin.AddItem("Orange Peel");
+	FIVESEVENSkin.AddItem("Jungle");
+	FIVESEVENSkin.AddItem("Nitro");
+	FIVESEVENSkin.AddItem("Red Quartz");
+	FIVESEVENSkin.AddItem("Anodized Gunmetal");
+	FIVESEVENSkin.AddItem("Nightshade");
+	FIVESEVENSkin.AddItem("Silver Quartz");
+	FIVESEVENSkin.AddItem("Kami");
+	FIVESEVENSkin.AddItem("Copper Galaxy");
+	FIVESEVENSkin.AddItem("Neon Kimono");
+	FIVESEVENSkin.AddItem("Fowl Play");
+	FIVESEVENSkin.AddItem("Hot Shot");
+	FIVESEVENSkin.AddItem("Urban Hazard");
+	FIVESEVENSkin.AddItem("Monkey Business");
+	FIVESEVENSkin.AddItem("Retrobution");
+	FIVESEVENSkin.AddItem("Triumvirate");
+	PistolGroup.PlaceLabledControl("Five-Seven", this, &FIVESEVENSkin);
+
+	TECNINESkin.SetFileId("tec9_skin");
+	TECNINESkin.AddItem("Tornado");
+	TECNINESkin.AddItem("Groundwater");
+	TECNINESkin.AddItem("Forest DDPAT");
+	TECNINESkin.AddItem("Terrace");
+	TECNINESkin.AddItem("Urban DDPAT");
+	TECNINESkin.AddItem("Ossified");
+	TECNINESkin.AddItem("Hades");
+	TECNINESkin.AddItem("Brass");
+	TECNINESkin.AddItem("VariCamo");
+	TECNINESkin.AddItem("Nuclear Threat");
+	TECNINESkin.AddItem("Red Quartz");
+	TECNINESkin.AddItem("Tornado");
+	TECNINESkin.AddItem("Blue Titanium");
+	TECNINESkin.AddItem("Army Mesh");
+	TECNINESkin.AddItem("Titanium Bit");
+	TECNINESkin.AddItem("Sandstorm");
+	TECNINESkin.AddItem("Isaac");
+	TECNINESkin.AddItem("Toxic");
+	TECNINESkin.AddItem("Bamboo Forest");
+	TECNINESkin.AddItem("Avalanche");
+	TECNINESkin.AddItem("Jambiya");
+	TECNINESkin.AddItem("Re-Entry");
+	TECNINESkin.AddItem("Fuel Injector");
+	PistolGroup.PlaceLabledControl("Tec-9", this, &TECNINESkin);
+
+	P2000Skin.SetFileId("p2000_skin");
+	P2000Skin.AddItem("Grassland Leaves");
+	P2000Skin.AddItem("Silver");
+	P2000Skin.AddItem("Granite Marbleized");
+	P2000Skin.AddItem("Forest Leaves");
+	P2000Skin.AddItem("Ossified");
+	P2000Skin.AddItem("Handgun");
+	P2000Skin.AddItem("Fade");
+	P2000Skin.AddItem("Scorpion");
+	P2000Skin.AddItem("Grassland");
+	P2000Skin.AddItem("Corticera");
+	P2000Skin.AddItem("Ocean Foam");
+	P2000Skin.AddItem("Pulse");
+	P2000Skin.AddItem("Amber Fade");
+	P2000Skin.AddItem("Red FragCam");
+	P2000Skin.AddItem("Chainmail");
+	P2000Skin.AddItem("Coach Class");
+	P2000Skin.AddItem("Ivory");
+	P2000Skin.AddItem("Fire Elemental");
+	P2000Skin.AddItem("Asterion");
+	P2000Skin.AddItem("Pathfinder");
+	P2000Skin.AddItem("Imperial");
+	P2000Skin.AddItem("Oceanic");
+	P2000Skin.AddItem("Imperial Dragon");
+	PistolGroup.PlaceLabledControl("P2000", this, &P2000Skin);
+
+	P250Skin.SetFileId("p250_skin");
+	P250Skin.AddItem("Whiteout");
+	P250Skin.AddItem("Metallic DDPAT");
+	P250Skin.AddItem("Splash");
+	P250Skin.AddItem("Gunsmoke");
+	P250Skin.AddItem("Modern Hunter");
+	P250Skin.AddItem("Bone Mask");
+	P250Skin.AddItem("Boreal Forest");
+	P250Skin.AddItem("Sand Dune");
+	P250Skin.AddItem("Nuclear Threat");
+	P250Skin.AddItem("Mehndi");
+	P250Skin.AddItem("Facets");
+	P250Skin.AddItem("Hive");
+	P250Skin.AddItem("Muertos");
+	P250Skin.AddItem("Steel Disruption");
+	P250Skin.AddItem("Undertow");
+	P250Skin.AddItem("Franklin");
+	P250Skin.AddItem("Neon Kimono");
+	P250Skin.AddItem("Supernova");
+	P250Skin.AddItem("Contamination");
+	P250Skin.AddItem("Cartel");
+	P250Skin.AddItem("Valence");
+	P250Skin.AddItem("Crimson Kimono");
+	P250Skin.AddItem("Mint Kimono");
+	P250Skin.AddItem("Wing Shot");
+	P250Skin.AddItem("Asiimov");
+	PistolGroup.PlaceLabledControl("P250", this, &P250Skin);
+
+#pragma endregion
+
+	
+#pragma endregion other random options
+}
 
 void Menu::SetupMenu()
 {

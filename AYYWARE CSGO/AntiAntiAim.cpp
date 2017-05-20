@@ -162,31 +162,31 @@ void Hooked_RecvProxy_Viewmodel(CRecvProxyData *pData, void *pStruct, void *pOut
 	*/
 	// Get local player (just to stop replacing spectators knifes)
 	IClientEntity* pLocal = Interfaces::EntList->GetClientEntity(Interfaces::Engine->GetLocalPlayer());
-	if (Menu::Window.MiscTab.KnifeEnable.GetState() && pLocal)
+	if (Menu::Window.SkinchangerTab.SkinEnable.GetState() && pLocal)
 	{
 		// If we are alive and holding a default knife(if we already have a knife don't worry about changing)
 		if (pLocal->IsAlive() && (pData->m_Value.m_Int == default_t || pData->m_Value.m_Int == default_ct))
 		{
 			// Set whatever knife we want
-			if (Menu::Window.MiscTab.KnifeModel.GetIndex() == 0)
-				pData->m_Value.m_Int = karam;
-			else if (Menu::Window.MiscTab.KnifeModel.GetIndex() == 1)
+			if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 0)
 				pData->m_Value.m_Int = bayonet;
-			else if (Menu::Window.MiscTab.KnifeModel.GetIndex() == 2)
-				pData->m_Value.m_Int = bayon;
-			else if (Menu::Window.MiscTab.KnifeModel.GetIndex() == 3)
-				pData->m_Value.m_Int = flip;
-			else if (Menu::Window.MiscTab.KnifeModel.GetIndex() == 4)
-				pData->m_Value.m_Int = gut;
-			else if (Menu::Window.MiscTab.KnifeModel.GetIndex() == 5)
-				pData->m_Value.m_Int = Hunts;
-			else if (Menu::Window.MiscTab.KnifeModel.GetIndex() == 6)
-				pData->m_Value.m_Int = fchion;
-			else if (Menu::Window.MiscTab.KnifeModel.GetIndex() == 7)
+			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 1)
 				pData->m_Value.m_Int = iBowie;
-			else if (Menu::Window.MiscTab.KnifeModel.GetIndex() == 8)
+			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 2)
 				pData->m_Value.m_Int = butter;
-			else if (Menu::Window.MiscTab.KnifeModel.GetIndex() == 9)
+			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 3)
+				pData->m_Value.m_Int = fchion;
+			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 4)
+				pData->m_Value.m_Int = flip;
+			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 5)
+				pData->m_Value.m_Int = gut;
+			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 6)
+				pData->m_Value.m_Int = Hunts;
+			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 7)
+				pData->m_Value.m_Int = karam;
+			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 8)
+				pData->m_Value.m_Int = bayon;
+			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 9)
 				pData->m_Value.m_Int = daggers;
 			
 		}

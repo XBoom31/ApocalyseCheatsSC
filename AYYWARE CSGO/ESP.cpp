@@ -161,8 +161,8 @@ void CEsp::SpecList()
 						{
 							char buf[255]; sprintf_s(buf, "%s => %s", pinfo.name, pinfo2.name);
 							RECT TextSize = Render::GetTextSize(Render::Fonts::ESP, buf);
-							Render::Clear(scrn.right - 260, (scrn.bottom / 2) + (16 * AC), 260, 16, Color(0, 0, 0, 140));
-							Render::Text(scrn.right - TextSize.right - 4, (scrn.bottom / 2) + (16 * AC), pTarget->GetIndex() == pLocal->GetIndex() ? Color(240, 70, 80, 255) : Color(255, 255, 255, 255), Render::Fonts::ESP, buf);
+							//Render::Clear(scrn.left, (scrn.bottom / 3) + (16 * AC), 260, 16, Color(0, 0, 0, 140));
+							Render::Text(scrn.left , (scrn.bottom / 3) + (16 * AC), pTarget->GetIndex() == pLocal->GetIndex() ? Color(240, 70, 80, 255) : Color(255, 255, 255, 255), Render::Fonts::ESP, buf);
 							AC++;
 						}
 					}
@@ -171,8 +171,8 @@ void CEsp::SpecList()
 		}
 	}
 
-	Render::Outline(scrn.right - 261, (scrn.bottom / 2) - 1, 262, (16 * AC) + 2, Color(23, 23, 23, 255));
-	Render::Outline(scrn.right - 260, (scrn.bottom / 2), 260, (16 * AC), Color(90, 90, 90, 255));
+	//Render::Outline(scrn.right - 261, (scrn.bottom / 2) - 1, 262, (16 * AC) + 2, Color(23, 23, 23, 255));
+	//Render::Outline(scrn.right - 260, (scrn.bottom / 2), 260, (16 * AC), Color(90, 90, 90, 255));
 }
 
 //  Yeah m8
@@ -378,8 +378,8 @@ void CEsp::DrawBox(CEsp::ESPBox size, Color color)
 		// Corner Box
 		//bool IsVis = GameUtils::IsVisible(hackManager.pLocal(), pEntity, (int)CSGOHitboxID::Chest);  da dream
 
-		int VertLine = (((float)size.w) * (0.20f));
-		int HorzLine = (((float)size.h) * (0.20f));
+		int VertLine = (((float)size.w) * (1.0f));
+		int HorzLine = (((float)size.h) * (1.0f));
 
 		Render::Clear(size.x, size.y - 1, VertLine, 1, Color(10, 10, 10, 150));
 		Render::Clear(size.x + size.w - VertLine, size.y - 1, VertLine, 1, Color(10, 10, 10, 150));
@@ -438,25 +438,37 @@ void CEsp::DrawHealth(IClientEntity* pEntity, CEsp::ESPBox size)
 
 	Vertex_t Verts[4];
 	Verts[0].Init(Vector2D(HealthBar.x, HealthBar.y));
-	Verts[1].Init(Vector2D(HealthBar.x + size.w + 5, HealthBar.y));
+	Verts[1].Init(Vector2D(HealthBar.x + size.w, HealthBar.y));
 	Verts[2].Init(Vector2D(HealthBar.x + size.w, HealthBar.y + 5));
-	Verts[3].Init(Vector2D(HealthBar.x - 5, HealthBar.y + 5));
+	Verts[3].Init(Vector2D(HealthBar.x, HealthBar.y + 5));
 
+	// Verts[1].Init(Vector2D(HealthBar.x + size.w + 5, HealthBar.y));
+	//Verts[2].Init(Vector2D(HealthBar.x + size.w, HealthBar.y + 5));
+	//Verts[3].Init(Vector2D(HealthBar.x - 5, HealthBar.y + 5));
 	Render::PolygonOutline(4, Verts, Color(10, 10, 10, 255), Color(255, 255, 255, 170));
 
 	Vertex_t Verts2[4];
-	Verts2[0].Init(Vector2D(HealthBar.x + 1, HealthBar.y + 1));
+	Verts2[0].Init(Vector2D(HealthBar.x, HealthBar.y + 1));
+	Verts2[1].Init(Vector2D(HealthBar.x + HealthBar.w, HealthBar.y + 1));
+	Verts2[2].Init(Vector2D(HealthBar.x + HealthBar.w, HealthBar.y + 5));
+	Verts2[3].Init(Vector2D(HealthBar.x, HealthBar.y + 5));
+
+	/*
 	Verts2[1].Init(Vector2D(HealthBar.x + HealthBar.w + 4, HealthBar.y + 1));
 	Verts2[2].Init(Vector2D(HealthBar.x + HealthBar.w, HealthBar.y + 5));
 	Verts2[3].Init(Vector2D(HealthBar.x - 4, HealthBar.y + 5));
-
+	*/
 	Color c = GetPlayerColor(pEntity);
 	Render::Polygon(4, Verts2, c);
 
 	Verts2[0].Init(Vector2D(HealthBar.x + 1, HealthBar.y + 1));
-	Verts2[1].Init(Vector2D(HealthBar.x + HealthBar.w + 2, HealthBar.y + 1));
+
+	Verts2[1].Init(Vector2D(HealthBar.x + HealthBar.w, HealthBar.y + 1));
 	Verts2[2].Init(Vector2D(HealthBar.x + HealthBar.w, HealthBar.y + 2));
-	Verts2[3].Init(Vector2D(HealthBar.x - 2, HealthBar.y + 2));
+	Verts2[3].Init(Vector2D(HealthBar.x , HealthBar.y + 2));
+	/*Verts2[1].Init(Vector2D(HealthBar.x + HealthBar.w + 2, HealthBar.y + 1));
+	Verts2[2].Init(Vector2D(HealthBar.x + HealthBar.w, HealthBar.y + 2));
+	Verts2[3].Init(Vector2D(HealthBar.x - 2, HealthBar.y + 2));*/
 
 	Render::Polygon(4, Verts2, Color(255, 255, 255, 40));
 
@@ -578,7 +590,11 @@ void CEsp::DrawBombPlanted(IClientEntity* pEntity, ClientClass* cClass)
 		float flBlow = Bomb->GetC4BlowTime();
 		float TimeRemaining = flBlow - (Interfaces::Globals->interval_per_tick * hackManager.pLocal()->GetTickBase());
 		char buffer[64];
+		ESPBox Box;
+		GetBox(pEntity, Box);
+		DrawBox(Box, Color(250, 42, 42, 255));
 		sprintf_s(buffer, "Bomb Planted", TimeRemaining);
+
 		Render::Text(vScreen.x, vScreen.y, Color(250, 42, 42, 255), Render::Fonts::ESP, buffer);
 	}
 }
@@ -607,6 +623,9 @@ void CEsp::DrawBomb(IClientEntity* pEntity, ClientClass* cClass)
 	{
 		if (Render::WorldToScreen(vOrig, vScreen))
 		{
+			ESPBox Box;
+			GetBox(pEntity, Box);
+			DrawBox(Box, Color(112, 230, 20, 255));
 			Render::Text(vScreen.x, vScreen.y, Color(112, 230, 20, 255), Render::Fonts::ESP, "Bomb");
 		}
 	}
