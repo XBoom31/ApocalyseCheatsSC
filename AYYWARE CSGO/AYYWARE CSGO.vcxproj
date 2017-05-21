@@ -192,6 +192,7 @@
     <ClCompile Include="MiscHacks.cpp" />
     <ClCompile Include="NetVarManager.cpp" />
     <ClCompile Include="NetVars.cpp" />
+    <ClCompile Include="NoSkycpp.cpp" />
     <ClCompile Include="nosmoke.cpp" />
     <ClCompile Include="Offsets.cpp" />
     <ClCompile Include="RageBot.cpp" />

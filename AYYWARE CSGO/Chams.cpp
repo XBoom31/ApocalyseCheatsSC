@@ -70,6 +70,8 @@ IMaterial *CreateMaterial(bool shouldIgnoreZ, bool isLit, bool isWireframe) //cr
 	return createdMaterial;
 }
 
+
+
 void ForceMaterial(Color color, IMaterial* material, bool useColor, bool forceMaterial)
 {
 	if (useColor)

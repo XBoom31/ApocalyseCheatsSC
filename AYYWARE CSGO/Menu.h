@@ -215,7 +215,13 @@ public:
 	CCheckBox OtherWalkbot;
 	CComboBox OtherClantag;
 	CCheckBox DisableAll;
-
+	CGroupBox MPGroup;
+	CComboBox MAC10Skin;
+	CComboBox P90Skin;
+	CComboBox UMP45Skin;
+	CComboBox BIZONSkin;
+	CComboBox MP7Skin;
+	CComboBox MP9Skin;
 	// Fake Lag Settings
 	CGroupBox FakeLagGroup;
 	CCheckBox FakeLagEnable;
@@ -305,13 +311,7 @@ public:
 	CComboBox P250Skin;
 
 	// MPs
-	CGroupBox MPGroup;
-	CComboBox MAC10Skin;
-	CComboBox P90Skin;
-	CComboBox UMP45Skin;
-	CComboBox BIZONSkin;
-	CComboBox MP7Skin;
-	CComboBox MP9Skin;
+	
 
 	// Rifles
 	CGroupBox Riflegroup;

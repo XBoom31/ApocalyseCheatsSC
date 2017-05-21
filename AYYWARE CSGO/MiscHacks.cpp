@@ -279,6 +279,18 @@ void CMiscHacks::ChatSpamInterwebz()
 	start_t = clock();
 }
 
+void SetClanTag(const char* tag, const char* name)//190% paste
+{
+	static auto pSetClanTag = reinterpret_cast<void(__fastcall*)(const char*, const char*)>(((DWORD)Utilities::Memory::FindPattern("engine.dll", (PBYTE)"\x53\x56\x57\x8B\xDA\x8B\xF9\xFF\x15\x00\x00\x00\x00\x6A\x24\x8B\xC8\x8B\x30", "xxxxxxxxx????xxxxxx")));
+	pSetClanTag(tag, name);
+}
+
+void CustomName()
+{
+
+	change_name("");
+	SetClanTag("", "");
+}
 void CMiscHacks::ChatSpamDisperseName()
 {
 	static clock_t start_t = clock();

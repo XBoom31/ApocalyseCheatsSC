@@ -20,7 +20,7 @@ Rest In Peace ApocalypseCheats
 #include "Resolver.h"
 
 #define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 580
+#define WINDOW_HEIGHT 585
 
 ApocalypseWindow Menu::Window;
 
@@ -43,10 +43,16 @@ void SaveCallbk()
 		GUI.SaveWindowState(&Menu::Window, "rage.xml");
 		break;
 	case 3:
-		GUI.SaveWindowState(&Menu::Window, "custom.xml");
+		GUI.SaveWindowState(&Menu::Window, "faceit.xml");
 		break;
 	case 4:
-		GUI.SaveWindowState(&Menu::Window, "custom1.xml");
+		GUI.SaveWindowState(&Menu::Window, "faceit1.xml");
+		break;
+	case 5:
+		GUI.SaveWindowState(&Menu::Window, "nospread.xml");
+		break;
+	case 6:
+		GUI.SaveWindowState(&Menu::Window, "nospread1.xml");
 		break;
 	}
 	
@@ -66,10 +72,16 @@ void LoadCallbk()
 		GUI.LoadWindowState(&Menu::Window, "rage.xml");
 		break;
 	case 3:
-		GUI.LoadWindowState(&Menu::Window, "custom.xml");
+		GUI.LoadWindowState(&Menu::Window, "faceit.xml");
 		break;
 	case 4:
-		GUI.LoadWindowState(&Menu::Window, "custom2.xml");
+		GUI.LoadWindowState(&Menu::Window, "faceit1.xml");
+		break;
+	case 5:
+		GUI.SaveWindowState(&Menu::Window, "nospread.xml");
+		break;
+	case 6:
+		GUI.SaveWindowState(&Menu::Window, "nospread1.xml");
 		break;
 	}
 }
@@ -805,7 +817,7 @@ void CMiscTab::Setup()
 #pragma endregion other random options
 
 #pragma region FakeLag
-	FakeLagGroup.SetPosition(16, 160);
+	FakeLagGroup.SetPosition(16, 16);
 	FakeLagGroup.SetSize(360, 141);
 	FakeLagGroup.SetText("Fake Lag");
 	RegisterControl(&FakeLagGroup);
@@ -831,7 +843,7 @@ void CMiscTab::Setup()
 #pragma endregion fakelag shit
 
 #pragma region Teleport
-	TeleportGroup.SetPosition(16, 316);
+	TeleportGroup.SetPosition(16, 156);
 	TeleportGroup.SetSize(360, 75);
 	TeleportGroup.SetText("Teleport");
 	RegisterControl(&TeleportGroup);
@@ -843,6 +855,151 @@ void CMiscTab::Setup()
 	TeleportGroup.PlaceLabledControl("Key", this, &TeleportKey);
 
 #pragma endregion
+
+#pragma region MPs
+	MPGroup.SetPosition(16, 247);
+	MPGroup.SetText("MPs");
+	MPGroup.SetSize(376, 165);
+	RegisterControl(&MPGroup);
+
+	MAC10Skin.SetFileId("mac10_skin");
+	MAC10Skin.AddItem("Tornado");
+	MAC10Skin.AddItem("Candy Apple");
+	MAC10Skin.AddItem("Silver");
+	MAC10Skin.AddItem("Forest DDPAT");
+	MAC10Skin.AddItem("Urban DDPAT");
+	MAC10Skin.AddItem("Fade");
+	MAC10Skin.AddItem("Neon Rider");
+	MAC10Skin.AddItem("Ultraviolet");
+	MAC10Skin.AddItem("Palm");
+	MAC10Skin.AddItem("Graven");
+	MAC10Skin.AddItem("Tatter");
+	MAC10Skin.AddItem("Amber Fade");
+	MAC10Skin.AddItem("Heat");
+	MAC10Skin.AddItem("Curse");
+	MAC10Skin.AddItem("Indigo");
+	MAC10Skin.AddItem("Commuter");
+	MAC10Skin.AddItem("Nuclear Garden");
+	MAC10Skin.AddItem("Malachite");
+	MAC10Skin.AddItem("Rangeen");
+	MAC10Skin.AddItem("Lapis Gator");
+	MPGroup.PlaceLabledControl("MAC-10", this, &MAC10Skin);
+
+	P90Skin.SetFileId("p90_skin");
+	P90Skin.AddItem("Leather");
+	P90Skin.AddItem("Virus");
+	P90Skin.AddItem("Contrast Spray");
+	P90Skin.AddItem("Storm");
+	P90Skin.AddItem("Cold Blooded");
+	P90Skin.AddItem("Glacier Mesh");
+	P90Skin.AddItem("Sand Spray");
+	P90Skin.AddItem("Death by Kitty");
+	P90Skin.AddItem("Ash Wood");
+	P90Skin.AddItem("Fallout Warning");
+	P90Skin.AddItem("Scorched");
+	P90Skin.AddItem("Emerald Dragon");
+	P90Skin.AddItem("Teardown");
+	P90Skin.AddItem("Blind Spot");
+	P90Skin.AddItem("Trigon");
+	P90Skin.AddItem("Desert Warfare");
+	P90Skin.AddItem("Module");
+	P90Skin.AddItem("Asiimov");
+	P90Skin.AddItem("Elite Build");
+	P90Skin.AddItem("Shapewood");
+	P90Skin.AddItem("Shallow Grave");
+	MPGroup.PlaceLabledControl("P90", this, &P90Skin);
+
+	UMP45Skin.SetFileId("ump45_skin");
+	UMP45Skin.AddItem("Blaze");
+	UMP45Skin.AddItem("Forest DDPAT");
+	UMP45Skin.AddItem("Gunsmoke");
+	UMP45Skin.AddItem("Urban DDPAT");
+	UMP45Skin.AddItem("Grand Prix");
+	UMP45Skin.AddItem("Carbon Fiber");
+	UMP45Skin.AddItem("Caramel");
+	UMP45Skin.AddItem("Fallout Warning");
+	UMP45Skin.AddItem("Scorched");
+	UMP45Skin.AddItem("Bone Pile");
+	UMP45Skin.AddItem("Delusion");
+	UMP45Skin.AddItem("Corporal");
+	UMP45Skin.AddItem("Indigo");
+	UMP45Skin.AddItem("Labyrinth");
+	UMP45Skin.AddItem("Minotaur's Labyrinth");
+	UMP45Skin.AddItem("Riot");
+	UMP45Skin.AddItem("Primal Saber");
+	MPGroup.PlaceLabledControl("UMP-45", this, &UMP45Skin);
+
+	BIZONSkin.SetFileId("bizon_skin");
+	BIZONSkin.AddItem("Blue Streak");
+	BIZONSkin.AddItem("Modern Hunter");
+	BIZONSkin.AddItem("Forest Leaves");
+	BIZONSkin.AddItem("Bone Mask");
+	BIZONSkin.AddItem("Carbon Fiber");
+	BIZONSkin.AddItem("Sand Dashed");
+	BIZONSkin.AddItem("Urban Dashed");
+	BIZONSkin.AddItem("Brass");
+	BIZONSkin.AddItem("VariCamo");
+	BIZONSkin.AddItem("Irradiated Alert");
+	BIZONSkin.AddItem("Rust Coat");
+	BIZONSkin.AddItem("Water Sigil");
+	BIZONSkin.AddItem("Night Ops");
+	BIZONSkin.AddItem("Cobalt Halftone");
+	BIZONSkin.AddItem("Antique");
+	BIZONSkin.AddItem("Rust Coat");
+	BIZONSkin.AddItem("Osiris");
+	BIZONSkin.AddItem("Chemical Green");
+	BIZONSkin.AddItem("Bamboo Print");
+	BIZONSkin.AddItem("Bamboo Forest");
+	BIZONSkin.AddItem("Fuel Rod");
+	BIZONSkin.AddItem("Photic Zone");
+	BIZONSkin.AddItem("Judgement of Anubis");
+	MPGroup.PlaceLabledControl("PP-Bizon", this, &BIZONSkin);
+
+	MP7Skin.SetFileId("mp7_skin");
+	MP7Skin.AddItem("Groundwater");
+	MP7Skin.AddItem("Whiteout");
+	MP7Skin.AddItem("Forest DDPAT");
+	MP7Skin.AddItem("Anodized Navy");
+	MP7Skin.AddItem("Skulls");
+	MP7Skin.AddItem("Gunsmoke");
+	MP7Skin.AddItem("Contrast Spray");
+	MP7Skin.AddItem("Bone Mask");
+	MP7Skin.AddItem("Ossified");
+	MP7Skin.AddItem("Orange Peel");
+	MP7Skin.AddItem("VariCamo");
+	MP7Skin.AddItem("Army Recon");
+	MP7Skin.AddItem("Groundwater");
+	MP7Skin.AddItem("Ocean Foam");
+	MP7Skin.AddItem("Full Stop");
+	MP7Skin.AddItem("Urban Hazard");
+	MP7Skin.AddItem("Olive Plaid");
+	MP7Skin.AddItem("Armor Core");
+	MP7Skin.AddItem("Asterion");
+	MP7Skin.AddItem("Nemesis");
+	MP7Skin.AddItem("Special Delivery");
+	MP7Skin.AddItem("Impire");
+	MPGroup.PlaceLabledControl("MP7", this, &MP7Skin);
+
+	MP9Skin.SetFileId("mp9_skin");
+	MP9Skin.AddItem("Ruby Poison Dart");
+	MP9Skin.AddItem("Bone Mask");
+	MP9Skin.AddItem("Hot Rod");
+	MP9Skin.AddItem("Storm");
+	MP9Skin.AddItem("Bulldozer");
+	MP9Skin.AddItem("Hypnotic");
+	MP9Skin.AddItem("Sand Dashed");
+	MP9Skin.AddItem("Orange Peel");
+	MP9Skin.AddItem("Dry Season");
+	MP9Skin.AddItem("Dark Age");
+	MP9Skin.AddItem("Rose Iron");
+	MP9Skin.AddItem("Green Plaid");
+	MP9Skin.AddItem("Setting Sun");
+	MP9Skin.AddItem("Dart");
+	MP9Skin.AddItem("Deadly Poison");
+	MP9Skin.AddItem("Pandora's Box");
+	MP9Skin.AddItem("Bioleak");
+	MP9Skin.AddItem("Airlock");
+	MPGroup.PlaceLabledControl("MP9", this, &MP9Skin);
 
 /*#pragma region OverideFov
 	FOVGroup.SetPosition(16, 365);
@@ -1210,10 +1367,11 @@ void CSettingsTab::Setup()
 	SetNr.AddItem("Legit");
 	SetNr.AddItem("Semi Rage");
 	SetNr.AddItem("Rage");
-	SetNr.AddItem("Custom 1");
-	SetNr.AddItem("Custom 2");
-	SetNr.AddItem("Disable All");
-	ButtonGroup.PlaceLabledControl("Number", this, &SetNr);
+	SetNr.AddItem("FaceIT 1");
+	SetNr.AddItem("FaceIT 2");
+	SetNr.AddItem("NoSpread 1");
+	SetNr.AddItem("Nospread 2");
+	ButtonGroup.PlaceLabledControl("Config: ", this, &SetNr);
 
 	Unload.SetText("Force Crash(time out)");
 	Unload.SetCallback(Unloadbk);
@@ -1661,150 +1819,7 @@ void CSkinchangerTab::Setup()
 	Riflegroup.PlaceLabledControl("SG552", this, &SG553Skin);
 #pragma endregion
 
-#pragma region MPs
-	MPGroup.SetPosition(16, 475);
-	MPGroup.SetText("MPs");
-	MPGroup.SetSize(376, 165);
-	RegisterControl(&MPGroup);
 
-	MAC10Skin.SetFileId("mac10_skin");
-	MAC10Skin.AddItem("Tornado");
-	MAC10Skin.AddItem("Candy Apple");
-	MAC10Skin.AddItem("Silver");
-	MAC10Skin.AddItem("Forest DDPAT");
-	MAC10Skin.AddItem("Urban DDPAT");
-	MAC10Skin.AddItem("Fade");
-	MAC10Skin.AddItem("Neon Rider");
-	MAC10Skin.AddItem("Ultraviolet");
-	MAC10Skin.AddItem("Palm");
-	MAC10Skin.AddItem("Graven");
-	MAC10Skin.AddItem("Tatter");
-	MAC10Skin.AddItem("Amber Fade");
-	MAC10Skin.AddItem("Heat");
-	MAC10Skin.AddItem("Curse");
-	MAC10Skin.AddItem("Indigo");
-	MAC10Skin.AddItem("Commuter");
-	MAC10Skin.AddItem("Nuclear Garden");
-	MAC10Skin.AddItem("Malachite");
-	MAC10Skin.AddItem("Rangeen");
-	MAC10Skin.AddItem("Lapis Gator");
-	MPGroup.PlaceLabledControl("MAC-10", this, &MAC10Skin);
-
-	P90Skin.SetFileId("p90_skin");
-	P90Skin.AddItem("Leather");
-	P90Skin.AddItem("Virus");
-	P90Skin.AddItem("Contrast Spray");
-	P90Skin.AddItem("Storm");
-	P90Skin.AddItem("Cold Blooded");
-	P90Skin.AddItem("Glacier Mesh");
-	P90Skin.AddItem("Sand Spray");
-	P90Skin.AddItem("Death by Kitty");
-	P90Skin.AddItem("Ash Wood");
-	P90Skin.AddItem("Fallout Warning");
-	P90Skin.AddItem("Scorched");
-	P90Skin.AddItem("Emerald Dragon");
-	P90Skin.AddItem("Teardown");
-	P90Skin.AddItem("Blind Spot");
-	P90Skin.AddItem("Trigon");
-	P90Skin.AddItem("Desert Warfare");
-	P90Skin.AddItem("Module");
-	P90Skin.AddItem("Asiimov");
-	P90Skin.AddItem("Elite Build");
-	P90Skin.AddItem("Shapewood");
-	P90Skin.AddItem("Shallow Grave");
-	MPGroup.PlaceLabledControl("P90", this, &P90Skin);
-
-	UMP45Skin.SetFileId("ump45_skin");
-	UMP45Skin.AddItem("Blaze");
-	UMP45Skin.AddItem("Forest DDPAT");
-	UMP45Skin.AddItem("Gunsmoke");
-	UMP45Skin.AddItem("Urban DDPAT");
-	UMP45Skin.AddItem("Grand Prix");
-	UMP45Skin.AddItem("Carbon Fiber");
-	UMP45Skin.AddItem("Caramel");
-	UMP45Skin.AddItem("Fallout Warning");
-	UMP45Skin.AddItem("Scorched");
-	UMP45Skin.AddItem("Bone Pile");
-	UMP45Skin.AddItem("Delusion");
-	UMP45Skin.AddItem("Corporal");
-	UMP45Skin.AddItem("Indigo");
-	UMP45Skin.AddItem("Labyrinth");
-	UMP45Skin.AddItem("Minotaur's Labyrinth");
-	UMP45Skin.AddItem("Riot");
-	UMP45Skin.AddItem("Primal Saber");
-	MPGroup.PlaceLabledControl("UMP-45", this, &UMP45Skin);
-
-	BIZONSkin.SetFileId("bizon_skin");
-	BIZONSkin.AddItem("Blue Streak");
-	BIZONSkin.AddItem("Modern Hunter");
-	BIZONSkin.AddItem("Forest Leaves");
-	BIZONSkin.AddItem("Bone Mask");
-	BIZONSkin.AddItem("Carbon Fiber");
-	BIZONSkin.AddItem("Sand Dashed");
-	BIZONSkin.AddItem("Urban Dashed");
-	BIZONSkin.AddItem("Brass");
-	BIZONSkin.AddItem("VariCamo");
-	BIZONSkin.AddItem("Irradiated Alert");
-	BIZONSkin.AddItem("Rust Coat");
-	BIZONSkin.AddItem("Water Sigil");
-	BIZONSkin.AddItem("Night Ops");
-	BIZONSkin.AddItem("Cobalt Halftone");
-	BIZONSkin.AddItem("Antique");
-	BIZONSkin.AddItem("Rust Coat");
-	BIZONSkin.AddItem("Osiris");
-	BIZONSkin.AddItem("Chemical Green");
-	BIZONSkin.AddItem("Bamboo Print");
-	BIZONSkin.AddItem("Bamboo Forest");
-	BIZONSkin.AddItem("Fuel Rod");
-	BIZONSkin.AddItem("Photic Zone");
-	BIZONSkin.AddItem("Judgement of Anubis");
-	MPGroup.PlaceLabledControl("PP-Bizon", this, &BIZONSkin);
-
-	MP7Skin.SetFileId("mp7_skin");
-	MP7Skin.AddItem("Groundwater");
-	MP7Skin.AddItem("Whiteout");
-	MP7Skin.AddItem("Forest DDPAT");
-	MP7Skin.AddItem("Anodized Navy");
-	MP7Skin.AddItem("Skulls");
-	MP7Skin.AddItem("Gunsmoke");
-	MP7Skin.AddItem("Contrast Spray");
-	MP7Skin.AddItem("Bone Mask");
-	MP7Skin.AddItem("Ossified");
-	MP7Skin.AddItem("Orange Peel");
-	MP7Skin.AddItem("VariCamo");
-	MP7Skin.AddItem("Army Recon");
-	MP7Skin.AddItem("Groundwater");
-	MP7Skin.AddItem("Ocean Foam");
-	MP7Skin.AddItem("Full Stop");
-	MP7Skin.AddItem("Urban Hazard");
-	MP7Skin.AddItem("Olive Plaid");
-	MP7Skin.AddItem("Armor Core");
-	MP7Skin.AddItem("Asterion");
-	MP7Skin.AddItem("Nemesis");
-	MP7Skin.AddItem("Special Delivery");
-	MP7Skin.AddItem("Impire");
-	MPGroup.PlaceLabledControl("MP7", this, &MP7Skin);
-
-	MP9Skin.SetFileId("mp9_skin");
-	MP9Skin.AddItem("Ruby Poison Dart");
-	MP9Skin.AddItem("Bone Mask");
-	MP9Skin.AddItem("Hot Rod");
-	MP9Skin.AddItem("Storm");
-	MP9Skin.AddItem("Bulldozer");
-	MP9Skin.AddItem("Hypnotic");
-	MP9Skin.AddItem("Sand Dashed");
-	MP9Skin.AddItem("Orange Peel");
-	MP9Skin.AddItem("Dry Season");
-	MP9Skin.AddItem("Dark Age");
-	MP9Skin.AddItem("Rose Iron");
-	MP9Skin.AddItem("Green Plaid");
-	MP9Skin.AddItem("Setting Sun");
-	MP9Skin.AddItem("Dart");
-	MP9Skin.AddItem("Deadly Poison");
-	MP9Skin.AddItem("Pandora's Box");
-	MP9Skin.AddItem("Bioleak");
-	MP9Skin.AddItem("Airlock");
-	MPGroup.PlaceLabledControl("MP9", this, &MP9Skin);
 
 #pragma endregion
 

@@ -302,6 +302,9 @@
     <ClCompile Include="RSP_S2DEX.cpp">
       <Filter>Source Files\Hacks</Filter>
     </ClCompile>
+    <ClCompile Include="NoSkycpp.cpp">
+      <Filter>Source Files\Hacks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
