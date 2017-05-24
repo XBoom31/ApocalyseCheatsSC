@@ -980,6 +980,26 @@ namespace AntiAims // CanOpenFire checks for fake anti aims?
 		}
 	}
 
+	void Backwards(CUserCmd *pCmd)
+	{
+		int random = rand() % 100;
+
+		// Small chance of starting fowards
+		if (random > 80)
+			// Look backwards
+			//pCmd->viewangles.y -= 180;
+			pCmd->viewangles.y = 180;
+		else
+		{
+			int glitch = rand() % 2;
+			if (glitch > 1)
+				pCmd->viewangles.y = 170;
+			else
+				pCmd->viewangles.y = -170;
+		}
+		
+	}
+
 	void FakeSideways(CUserCmd *pCmd, bool &bSendPacket)
 	{
 		static int ChokedPackets = -1;
@@ -1411,7 +1431,7 @@ void CRageBot::DoAntiAim(CUserCmd *pCmd, bool &bSendPacket) // pCmd->viewangles.
 		break;
 	case 9:
 		// T Inverse
-		pCmd->viewangles.y -= 180;
+		AntiAims::Backwards(pCmd);
 		break;
 	case 10:
 		// T Inverse

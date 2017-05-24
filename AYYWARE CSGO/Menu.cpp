@@ -18,6 +18,7 @@ Rest In Peace ApocalypseCheats
 #include "MiscHacks.h"
 #include "CRC32.h"
 #include "Resolver.h"
+#include "MiscHacks.h"
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 585
@@ -29,6 +30,10 @@ void Unloadbk()
 	DoUnload = true;
 }
 
+void NApplyCallbk()
+{
+	
+}
 void SaveCallbk()
 {
 	switch (Menu::Window.SettingsTab.SetNr.GetIndex())
@@ -119,8 +124,8 @@ void ApocalypseWindow::Setup()
 	RegisterTab(&SettingsTab);
 	RegisterTab(&SkinchangerTab);
 
-	RECT Client = GetClientArea();
-	Client.bottom -= 29;
+	//RECT Client = GetClientArea();
+	//Client.bottom -= 29;
 
 	RageBotTab.Setup();
 	LegitBotTab.Setup();
@@ -252,8 +257,10 @@ void CRageBotTab::Setup()
 	
 	AccuracyResolver.SetFileId("acc_aaa");
 	AccuracyResolver.AddItem("Off");
+	AccuracyResolver.AddItem("Ma$$A$$ Resolver");
 	AccuracyResolver.AddItem("Resolver");
 	AccuracyResolver.AddItem("Advanced Resolver");
+	AccuracyResolver.AddItem("Resolver 2");
 	AccuracyGroup.PlaceLabledControl("Anti Aim Resolver", this, &AccuracyResolver);
 
 	//AccuracyPositionAdjustment.SetFileId("acc_posadj");
@@ -560,6 +567,12 @@ void CVisualTab::Setup()
 	OptionsBox.SetFileId("opt_box");
 	OptionsGroup.PlaceLabledControl("Box", this, &OptionsBox);
 
+	OptionsBox.SetFileId("opt_boxfill");
+	OptionsGroup.PlaceLabledControl("Fill", this, &OptionsBoxFill);
+	
+	OptionsBox.SetFileId("opt_boxcolor");
+	OptionsGroup.PlaceLabledControl("Colorize fill", this, &OptionsBoxFillColor);
+
 	OptionsName.SetFileId("opt_name");
 	OptionsGroup.PlaceLabledControl("Name", this, &OptionsName);
 
@@ -772,7 +785,7 @@ void CMiscTab::Setup()
 	OtherChatSpam.AddItem("Apocalypse - CS");
 	OtherChatSpam.AddItem("Apocalypse - NS");
 	OtherChatSpam.AddItem("Rekt");
-	OtherChatSpam.AddItem("Aimware - CS");
+	OtherChatSpam.AddItem("Aimware - CS"); 
 	OtherChatSpam.AddItem("Aimware - NS");
 	OtherGroup.PlaceLabledControl("Chat Spam", this, &OtherChatSpam);
 
@@ -782,7 +795,8 @@ void CMiscTab::Setup()
 	OtherClantag.AddItem("'SlideShow'");
 	OtherClantag.AddItem("None");
 	OtherClantag.AddItem("Valve");
-	OtherGroup.PlaceLabledControl("Custom Clantag", this, &OtherClantag);
+	
+	
 
 	OtherTeamChat.SetFileId("otr_teamchat");
 	OtherGroup.PlaceLabledControl("Team Chat Only", this, &OtherTeamChat);
@@ -843,7 +857,7 @@ void CMiscTab::Setup()
 #pragma endregion fakelag shit
 
 #pragma region Teleport
-	TeleportGroup.SetPosition(16, 156);
+	TeleportGroup.SetPosition(16, 176);
 	TeleportGroup.SetSize(360, 75);
 	TeleportGroup.SetText("Teleport");
 	RegisterControl(&TeleportGroup);
@@ -857,7 +871,7 @@ void CMiscTab::Setup()
 #pragma endregion
 
 #pragma region MPs
-	MPGroup.SetPosition(16, 247);
+	MPGroup.SetPosition(16, 267);
 	MPGroup.SetText("MPs");
 	MPGroup.SetSize(376, 165);
 	RegisterControl(&MPGroup);
@@ -1338,11 +1352,39 @@ void CColorTab::Setup()
 	MenuInnerB.SetFileId("in_B");
 	MenuInnerB.SetBoundaries(0, 255);
 	MenuInnerB.SetValue(0);
-	MenuInside.PlaceLabledControl("Blue", this, &MenuInnerB);
+	MenuInside.PlaceLabledControl("Stuff", this, &MenuInnerB);
+
+	//Menu Background
+
+	MenuBackround.SetPosition(408, 379);
+	MenuBackround.SetSize(360, 135);
+	MenuBackround.SetText("Menu Backround Color");
+	RegisterControl(&MenuBackround);
+
+	MenuBGR.SetFileId("bg_R");
+	MenuBGR.SetBoundaries(0, 255);
+	MenuBGR.SetValue(30);
+	MenuBackround.PlaceLabledControl("Red", this, &MenuBGR);
+
+	MenuBGG.SetFileId("bg_G");
+	MenuBGG.SetBoundaries(0, 255);
+	MenuBGG.SetValue(30);
+	MenuBackround.PlaceLabledControl("Green", this, &MenuBGG);
+
+	MenuBGB.SetFileId("bg_B");
+	MenuBGB.SetBoundaries(0, 255);
+	MenuBGB.SetValue(30);
+	MenuBackround.PlaceLabledControl("Blue", this, &MenuBGB);
+
+	MenuOpacity.SetFileId("bg_a");
+	MenuOpacity.SetBoundaries(0, 255);
+	MenuOpacity.SetValue(255);
+	MenuBackround.PlaceLabledControl("Blue", this, &MenuOpacity);
 
 #pragma endregion
 
 }
+
 void CSettingsTab::Setup()
 {
 
@@ -2053,6 +2095,11 @@ void Menu::DoUIFrame()
 		Window.VisualsTab.FiltersChickens.SetState(true);
 		Window.VisualsTab.FiltersPlayers.SetState(true);
 		Window.VisualsTab.FiltersWeapons.SetState(true);
+	}
+
+	if (Window.MiscTab.OtherSkinChanger.GetState())
+	{
+//		RegisterTab(&ApocalypseWindow::Setup.SkinchangerTab);
 	}
 	
 

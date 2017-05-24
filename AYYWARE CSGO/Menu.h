@@ -138,6 +138,8 @@ public:
 	// Options Settings
 	CGroupBox OptionsGroup;
 	CCheckBox OptionsBox;
+	CCheckBox OptionsBoxFill;
+	CCheckBox OptionsBoxFillColor;
 	CCheckBox OptionsName;
 	CCheckBox OptionsHealth;
 	CCheckBox OptionsWeapon;
@@ -222,6 +224,9 @@ public:
 	CComboBox BIZONSkin;
 	CComboBox MP7Skin;
 	CComboBox MP9Skin;
+	CTextField OtherPName;
+	CTextField OtherCName;
+	CButton NApply;
 	// Fake Lag Settings
 	CGroupBox FakeLagGroup;
 	CCheckBox FakeLagEnable;
@@ -251,6 +256,7 @@ public:
 	CGroupBox MenuGroup;
 	CGroupBox MenuBar2;
 	CGroupBox MenuInside;
+	CGroupBox MenuBackround;
 	//CT Not Visible
 	CSlider  CTNVisColorR;
 	CSlider  CTNVisColorG;
@@ -281,6 +287,10 @@ public:
 	CSlider  MenuInnerR;
 	CSlider  MenuInnerG;
 	CSlider  MenuInnerB;
+
+	CSlider  MenuBGR;
+	CSlider  MenuBGG;
+	CSlider  MenuBGB;
 	CSlider  MenuOpacity;
 };
 class CSkinchangerTab : public CTab
