@@ -36,6 +36,8 @@
 
 -Added Menu Background Changer
 
+-Chams now take color from color tab. (thx CyclesProgramming)
+
 
 
 Contributor: FZCat1337 | XBoom31
