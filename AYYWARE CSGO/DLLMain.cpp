@@ -59,7 +59,7 @@ int InitialThread()
 
 	//---------------------------------------------------------
 	Utilities::Log("Ready");
-
+	//MessageBox(NULL, "Cheat loaded succesfully in CSGO.", "Apocalypse", MB_OK);
 	// While our cheat is running
 	while (DoUnload == false)
 	{

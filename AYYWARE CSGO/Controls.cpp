@@ -422,6 +422,7 @@ void CButton::OnClick()
 CComboBox::CComboBox()
 {
 	m_Flags = UIFlags::UI_Drawable | UIFlags::UI_Clickable | UIFlags::UI_Focusable | UIFlags::UI_SaveFile;
+	//m_Flags = UIFlags::UI_Drawable | UIFlags::UI_Clickable | UIFlags::UI_Focusable | UIFlags::UI_SaveFile;
 	FileControlType = UIControlTypes::UIC_ComboBox;
 }
 
@@ -493,7 +494,21 @@ void CComboBox::OnClick()
 	if (IsOpen)
 	{
 		// If we clicked one of the items(Not in the top bar)
-		if (!GUI.IsMouseInRegion(Region))
+		
+			// Draw the items
+			for (int i = 0; i < Items.size(); i++)
+			{
+				RECT ItemRegion = { a.x, a.y + 16 + i * 16, m_iWidth, 16 };
+
+				// Hover
+				if (GUI.IsMouseInRegion(ItemRegion))
+				{
+					SelectedIndex = i;
+				}
+			}
+		
+
+		/*if (!GUI.IsMouseInRegion(Region))
 		{
 			// Draw the items
 			for (int i = 0; i < Items.size(); i++)
@@ -506,8 +521,7 @@ void CComboBox::OnClick()
 					SelectedIndex = i;
 				}
 			}
-		}
-
+		}*/
 		// Close the drop down
 		IsOpen = false;
 	}

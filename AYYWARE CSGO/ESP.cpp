@@ -162,7 +162,7 @@ void CEsp::SpecList()
 							char buf[255]; sprintf_s(buf, "%s => %s", pinfo.name, pinfo2.name);
 							RECT TextSize = Render::GetTextSize(Render::Fonts::ESP, buf);
 							//Render::Clear(scrn.left, (scrn.bottom / 3) + (16 * AC), 260, 16, Color(0, 0, 0, 140));
-							Render::Text(scrn.left , (scrn.bottom / 3) + (16 * AC), pTarget->GetIndex() == pLocal->GetIndex() ? Color(240, 70, 80, 255) : Color(255, 255, 255, 255), Render::Fonts::ESP, buf);
+							Render::Text(scrn.left , (scrn.bottom / 2) + (16 * AC), pTarget->GetIndex() == pLocal->GetIndex() ? Color(240, 70, 80, 255) : Color(255, 255, 255, 255), Render::Fonts::ESP, buf);
 							AC++;
 						}
 					}
@@ -339,14 +339,10 @@ Color CEsp::GetPlayerColor(IClientEntity* pEntity)
 			color = Color(Menu::Window.ColorTab.TVisColorR.GetValue(), Menu::Window.ColorTab.TVisColorG.GetValue(), Menu::Window.ColorTab.TVisColorB.GetValue(), 255);
 		else
 		{
-			if (VisOnly)
-			{
-				color = Color(Menu::Window.ColorTab.TNVisColorR.GetValue(), Menu::Window.ColorTab.TNVisColorG.GetValue(), Menu::Window.ColorTab.TNVisColorB.GetValue(), 255);
-			}
-			else
-			{
-				color = Color(Menu::Window.ColorTab.TNVisColorR.GetValue(), Menu::Window.ColorTab.TNVisColorG.GetValue(), Menu::Window.ColorTab.TNVisColorB.GetValue(), 0);
-			}
+			
+			color = Color(Menu::Window.ColorTab.TNVisColorR.GetValue(), Menu::Window.ColorTab.TNVisColorG.GetValue(), Menu::Window.ColorTab.TNVisColorB.GetValue(), 255);
+			
+			
 			
 		}
 		    
@@ -366,6 +362,20 @@ Color CEsp::GetPlayerColor(IClientEntity* pEntity)
 // 2D  Esp box
 void CEsp::DrawBox(CEsp::ESPBox size, Color color)
 {
+	if (Menu::Window.VisualsTab.OptionsBoxFill.GetState())
+	{
+		//Render::Clear(size.x, size.y, size.w, size.h, color);
+		if (!Menu::Window.VisualsTab.OptionsBoxFillColor.GetState())
+		{
+			Render::Clear(size.x - 1, size.y - 1, size.w + 2, size.h + 2, Color(10, 10, 10, 100));
+			Render::Clear(size.x + 1, size.y + 1, size.w - 2, size.h - 2, Color(10, 10, 10, 100));
+		}
+		else
+		{
+			Render::Clear(size.x - 1, size.y - 1, size.w + 2, size.h + 2, Color(10, 10, 10, 150));
+			Render::Clear(size.x + 1, size.y + 1, size.w - 2, size.h - 2, Color(10, 10, 10, 150));
+		}
+	}
 	//if (PlayerBoxes->GetStringIndex() == 1)
 	//{
 		// Full Box
@@ -400,6 +410,10 @@ void CEsp::DrawBox(CEsp::ESPBox size, Color color)
 		Render::Clear(size.x, size.y + size.h - HorzLine, 1, HorzLine, color);
 		Render::Clear(size.x + size.w, size.y, 1, HorzLine, color);
 		Render::Clear(size.x + size.w, size.y + size.h - HorzLine, 1, HorzLine, color);
+
+	//	Color color23(0, 0, 0);
+		
+	//	Render::Clear(size.x + size.y ,size.w, size.h, Color(0,0,0,40));
 	}
 }
 
@@ -458,8 +472,17 @@ void CEsp::DrawHealth(IClientEntity* pEntity, CEsp::ESPBox size)
 	Verts2[2].Init(Vector2D(HealthBar.x + HealthBar.w, HealthBar.y + 5));
 	Verts2[3].Init(Vector2D(HealthBar.x - 4, HealthBar.y + 5));
 	*/
-	Color c = GetPlayerColor(pEntity);
-	Render::Polygon(4, Verts2, c);
+	
+	Color colorxd(0, 255, 0);
+	Color colorxd2(255, 255, 0);
+	Color colorxd3(255, 119, 0);
+	Color colorxd4(255, 0, 0);
+
+
+	Render::Polygon(4, Verts2, GetPlayerColor(pEntity));
+
+
+
 
 	Verts2[0].Init(Vector2D(HealthBar.x + 1, HealthBar.y + 1));
 

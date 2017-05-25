@@ -42,6 +42,7 @@ void CGUI::Draw()
 		MouseVt[2].Init(Vector2D(Mouse.x, Mouse.y + 16));
 
 		Render::PolygonOutline(3, MouseVt, Color(0, 0, 0, 230), Color(0, 0, 0, 240));
+		
 	}
 }
 
@@ -271,8 +272,8 @@ bool CGUI::DrawWindow(CWindow* window)
 	Render::Clear(window->m_x + 2, window->m_y + 2 + 26, window->m_iWidth - 4, window->m_iHeight - 4 - 26, Color(Menu::Window.ColorTab.MenuBar2R.GetValue(), Menu::Window.ColorTab.MenuBar2G.GetValue(), Menu::Window.ColorTab.MenuBar2B.GetValue(), 255));
 	Render::Outline(window->m_x + 1, window->m_y + 1, window->m_iWidth - 2, window->m_iHeight - 2, Color(0, 0, 0, 255));
 	Render::Text(window->m_x + 8, window->m_y + 8, Color(0, 0, 0, 255), Render::Fonts::MenuBold, window->Title.c_str());
-	Render::Clear(window->m_x + 8, window->m_y + 1 + 27, window->m_iWidth - 4 - 12, window->m_iHeight - 2 - 8 - 26, Color(30, 30, 30, 255));
-	Render::GradientV(window->m_x + 8, window->m_y + 1 + 27, window->m_iWidth - 4 - 12, 29, Color(49, 42, 42, 255), Color(49, 42, 42, 255));
+	Render::Clear(window->m_x + 8, window->m_y + 1 + 27, window->m_iWidth - 4 - 12, window->m_iHeight - 2 - 8 - 26, Color(Menu::Window.ColorTab.MenuBGR.GetValue(), Menu::Window.ColorTab.MenuBGG.GetValue(), Menu::Window.ColorTab.MenuBGB.GetValue(), Menu::Window.ColorTab.MenuOpacity.GetValue()));
+	Render::GradientV(window->m_x + 8, window->m_y + 1 + 27, window->m_iWidth - 4 - 12, 29, Color(49, 42, 42, Menu::Window.ColorTab.MenuOpacity.GetValue()), Color(49, 42, 42, Menu::Window.ColorTab.MenuOpacity.GetValue()));
 	int TabCount = window->Tabs.size();
 	if (TabCount) // If there are some tabs
 	{

@@ -18,34 +18,16 @@ void FixY(const CRecvProxyData *pData, void *pStruct, void *pOut)
 	float flYaw = pData->m_Value.m_Float;
 	bool bHasAA;
 	bool bSpinbot;
-	static bool last[128];
-	bool tmp = last[((IClientEntity*)(pStruct))->GetIndex()];
-	float yaw = pData->m_Value.m_Float;
-	yaw -= 0.087929;
-
-	switch (Menu::Window.RageBotTab.AccuracyResolver.GetIndex() == 5)
+#define YawResolver Menu::Window.RageBotTab.AccuracyResolver.GetIndex()
+	switch (YawResolver)
 	{
+
 	case 0:
-		// No resolver needed
+	{
 		break;
+	}
 	case 1:
-		// Normal Fix
-		yaw -= 0.087929;
-
-		last[((IClientEntity*)(pStruct))->GetIndex()] = (yaw >= 180 && yaw <= 360);
-
-		if (tmp && (yaw >= 0 && yaw <= 180))
-			yaw += 359;
-
-		yaw -= (int)(yaw / 360) * 360;
-		if (yaw < -180)
-			yaw += 360;
-		else if (yaw > 180)
-			yaw -= 360;
-
-		break;
-	case 2:
-		// Anglefix
+	{
 		bHasAA = ((*flPitch == 90.0f) || (*flPitch == 270.0f));
 		bSpinbot = false;
 
@@ -82,51 +64,75 @@ void FixY(const CRecvProxyData *pData, void *pStruct, void *pOut)
 		}
 		break;
 	}
+	case 2:
+	{
+		flYaw += 25;
+		break;
+	}
+	case 3:
+	{
+		int value = rand() % 10;
+		switch (value) {
+		case 0:flYaw = flYaw; break;
+		case 1:flYaw += 0; break;
+		case 2:flYaw = flYaw + 180; break;
+		case 3:flYaw += 15; break;
+		case 4:flYaw = flYaw + 90; break;
+		case 5:flYaw -= 15; break;
+		case 6:flYaw = flYaw + 270; break;
+		case 7:flYaw += 0; break;
+		case 8:flYaw = flYaw + 180; break;
+		case 9:flYaw -= 45; break;
+		case 10:flYaw += 45; break;
+			break;
+		}
+		break;
+	}
+	case 4:
+	{
+		int value = rand() % 3 + 0;
+		switch (value)
+		{
+		case 0:
+		{
+			flYaw = (rand() % 180);
+			break;
+		}
+		case 1:
+		{
+			flYaw = (rand() % 360);
+			break;
+		}
+		case 2:
+		{
+			flYaw = 0;
+			break;
+		}
+		}
+		break;
+	}
 
+
+	}
 	*(float*)(pOut) = flYaw;
 }
-
-// Simple fix for some Fake-Downs
-void FixX(const CRecvProxyData* pData, void* pStruct, void* pOut) // Clamp other player angles to fix fakedown or lisp
+// Simple fix for Fake-Down
+void FixX(const CRecvProxyData* pData, void* pStruct, void* pOut)
 {
 	float* ang = (float*)pOut;
 	*ang = pData->m_Value.m_Float;
-	DWORD hex = *(DWORD*)(&ang);
 
-	switch (Menu::Window.RageBotTab.AccuracyResolver.GetIndex() == 5)
-	{
-	case 0:
-		// No resolver needed
-		break;
-	case 1:
-		// Regular Pitch Resolver
-		if (hex >= 0x43330000)
-		{
-			*ang -= 360.f;
-		}
-		else if (hex <= -0x43330000)
-		{
-			*ang += 360.f;
-		}
+	if (!Menu::Window.RageBotTab.AccuracyResolver.GetIndex()) return;
 
-		if (hex == 0x42b40000)
-		{
-			*ang = 90.f;
-		}
-		else if (hex == -0x42b40000)
-		{
-			*ang = -90.f;
-		}
+	if (pData->m_Value.m_Float > 180.0f)
+		*ang -= 360.0f;
+	else if (pData->m_Value.m_Float < -180.0f)
+		*ang += 360.0f;
 
-		*(float*)(pOut) = *ang;
-		break;
-	case 2:
-		if (pData->m_Value.m_Float > 180.0f)
-			*ang -= 360.0f;
-		else if (pData->m_Value.m_Float < -180.0f)
-			*ang += 360.0f; 
-		break;
-	}
+	if (pData->m_Value.m_Float > 89.0f && pData->m_Value.m_Float < 91.0f)
+		*ang -= 90.0f;
+	else if (pData->m_Value.m_Float > -89.0f && pData->m_Value.m_Float < -91)
+		*ang += 90.0f;
 }
 
 RecvVarProxyFn oRecvnModelIndex;

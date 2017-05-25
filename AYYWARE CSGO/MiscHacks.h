@@ -14,6 +14,7 @@ public:
 	void Init();
 	void Draw();
 	void Move(CUserCmd *pCmd, bool &bSendPacket);
+	void CustomName();
 private:
 	void AutoJump(CUserCmd *pCmd);
 	void AutoJumpSMAC(CUserCmd *pCmd);
@@ -30,6 +31,7 @@ private:
 	void ChatSpamAimwareName();
 	void ChatSpamReports();
 	void ChatSpamCallout();
+	void NoName();
 	//void ChatSpamAchievement();
 	//void NameDispersion();
 	//void ChatSpamAchievement();
