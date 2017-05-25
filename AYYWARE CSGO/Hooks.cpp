@@ -414,6 +414,27 @@ void __fastcall Hooked_DrawModelExecute(void* thisptr, int edx, void* ctx, void*
 		// Player Chams
 		int ChamsStyle = Menu::Window.VisualsTab.OptionsChams.GetIndex();
 		int HandsStyle = Menu::Window.VisualsTab.OtherNoHands.GetIndex();
+
+		//terrorist red
+		float TR = Menu::Window.ColorTab.TVisColorR.GetValue();
+		float TNVR = Menu::Window.ColorTab.TNVisColorR.GetValue();
+				//terrorist green
+		float TG = Menu::Window.ColorTab.TVisColorG.GetValue();
+		float TNVG = Menu::Window.ColorTab.TNVisColorG.GetValue();
+				//terrorist green
+		float TB = Menu::Window.ColorTab.TVisColorB.GetValue();
+		float TNVB = Menu::Window.ColorTab.TNVisColorB.GetValue();
+		
+				//ct red
+		float CTR = Menu::Window.ColorTab.CTVisColorR.GetValue();
+		float CTNVR = Menu::Window.ColorTab.CTNVisColorR.GetValue();
+				//ct green
+		float CTG = Menu::Window.ColorTab.CTVisColorG.GetValue();
+		float CTNVG = Menu::Window.ColorTab.CTNVisColorG.GetValue();
+				//ct blue
+		float CTB = Menu::Window.ColorTab.CTVisColorB.GetValue();
+		float CTNVB = Menu::Window.ColorTab.CTNVisColorB.GetValue();
+
 		if (ChamsStyle != 0 && Menu::Window.VisualsTab.FiltersPlayers.GetState() && strstr(ModelName, "models/player"))
 		{
 			if (pLocal/* && (!Menu::Window.VisualsTab.FiltersEnemiesOnly.GetState() || pModelEntity->GetTeamNum() != pLocal->GetTeamNum())*/)
@@ -436,15 +457,15 @@ void __fastcall Hooked_DrawModelExecute(void* thisptr, int edx, void* ctx, void*
 
 							if (pModelEntity->GetTeamNum() == 2)
 							{
-								flColor[0] = 240.f / 255.f;
-								flColor[1] = 30.f / 255.f;
-								flColor[2] = 35.f / 255.f;
+								flColor[0] = TNVR / 255.f;
+ 				flColor[1] = TNVG / 255.f;
+    								flColor[2] = TNVB / 255.f;
 							}
 							else
 							{
-								flColor[0] = 63.f / 255.f;
-								flColor[1] = 72.f / 255.f;
-								flColor[2] = 205.f / 255.f;
+								flColor[0] = CTNVR / 255.f;
+								flColor[1] = CTNVG / 255.f;
+								flColor[2] = CTNVB / 255.f;
 							}
 
 							Interfaces::RenderView->SetColorModulation(flColor);
@@ -454,15 +475,15 @@ void __fastcall Hooked_DrawModelExecute(void* thisptr, int edx, void* ctx, void*
 
 							if (pModelEntity->GetTeamNum() == 2)
 							{
-								flColor[0] = 247.f / 255.f;
-								flColor[1] = 180.f / 255.f;
-								flColor[2] = 20.f / 255.f;
+								flColor[0] = TR / 255.f;
+								flColor[1] = TG / 255.f;
+								flColor[2] = TB / 255.f;
 							}
 							else
 							{
-								flColor[0] = 32.f / 255.f;
-								flColor[1] = 180.f / 255.f;
-								flColor[2] = 57.f / 255.f;
+								flColor[0] = CTR / 255.f;
+								flColor[1] = CTG / 255.f;
+								flColor[2] = CTB / 255.f;
 							}
 
 							Interfaces::RenderView->SetColorModulation(flColor);
@@ -682,13 +703,25 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 				Interfaces::Engine->ClientCmd_Unrestricted("fog_enable 0");
 				nosmoke = true;
 			}
-			
+
 		}
 		else if (!Menu::Window.VisualsTab.OtherNoSmoke.GetState())
 		{
 			Interfaces::Engine->ClientCmd_Unrestricted("r_drawparticles 1");
 			Interfaces::Engine->ClientCmd_Unrestricted("fog_enable 1");
 			nosmoke = false;
+		}
+		static bool xd;
+		if (Menu::Window.VisualsTab.OtherNoScope.GetState())
+		{
+			if (pLocal->IsScoped())
+			{
+				Interfaces::Engine->ClientCmd_Unrestricted("cl_drawhud 0");
+			}
+			else
+			{
+				Interfaces::Engine->ClientCmd_Unrestricted("cl_drawhud 1");
+			}
 		}
 	}
 

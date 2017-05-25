@@ -692,6 +692,8 @@ void CVisualTab::Setup()
 	OtherNoSmoke.SetFileId("otr_asus");
 	OtherGroup.PlaceLabledControl("AsusWalls", this, &OtherAsus);
 
+	OtherNoScope.SetFileId("otr_nsc");
+	OtherGroup.PlaceLabledControl("NoScope", this, &OtherNoScope);
 	
 #pragma endregion Setting up the Other controls
 }

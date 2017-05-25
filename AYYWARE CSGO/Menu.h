@@ -180,6 +180,7 @@ public:
 	CComboBox OtherNoHands;
 	CSlider OtherViewmodelFOV;
 	CSlider OtherFOV;
+	CCheckBox OtherNoScope;
 
 
 };
