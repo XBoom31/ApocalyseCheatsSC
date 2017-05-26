@@ -114,7 +114,7 @@ void ApocalypseWindow::Setup()
 {
 	SetPosition(50, 50);
 	SetSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-	SetTitle("Apocalyplse | Private");
+	SetTitle("Apocalypse | Private"); // not really private xd
 
 	RegisterTab(&RageBotTab);
 	RegisterTab(&LegitBotTab);
@@ -138,7 +138,6 @@ void ApocalypseWindow::Setup()
 
 void CRageBotTab::Setup()
 {
-	
 	SetTitle("RageBot");
 
 	ActiveLabel.SetPosition(16, 16);
@@ -791,15 +790,17 @@ void CMiscTab::Setup()
 	OtherChatSpam.AddItem("Aimware - NS");
 	OtherGroup.PlaceLabledControl("Chat Spam", this, &OtherChatSpam);
 
+	// TODO: fix clantags
+	// Apocalypse = pasteware clantag
+	// SlideShow = poorly made skeet clantag
 	OtherClantag.SetFileId("otr_spam");
 	OtherClantag.AddItem("Off");
 	OtherClantag.AddItem("Apocalypse");
 	OtherClantag.AddItem("'SlideShow'");
 	OtherClantag.AddItem("None");
 	OtherClantag.AddItem("Valve");
+	OtherGroup.PlaceLabledControl("ClanTag", this, &OtherClantag);
 	
-	
-
 	OtherTeamChat.SetFileId("otr_teamchat");
 	OtherGroup.PlaceLabledControl("Team Chat Only", this, &OtherTeamChat);
 
@@ -819,12 +820,8 @@ void CMiscTab::Setup()
 
 	OtherSpectators.SetFileId("otr_skin");
 	OtherGroup.PlaceLabledControl("SkinChanger", this, &OtherSkinChanger);
-
-	bool wmon;
-
 	
-    OtherWatermark.SetFileId("otr_watermark");
-	
+	OtherWatermark.SetFileId("otr_watermark");
 	OtherGroup.PlaceLabledControl("Watermark", this, &OtherWatermark);
 
 	//DisableAll.SetFileId("otr_disableall");
@@ -1216,8 +1213,6 @@ void CColorTab::Setup()
 	CTNVisColorB.SetValue(220);
 	CTNVisGroup.PlaceLabledControl("Blue", this, &CTNVisColorB);
 
-
-
 	//CT VISIBLE
 	CTVisGroup.SetPosition(408, 16);
 	CTVisGroup.SetSize(360, 100);
@@ -1284,7 +1279,6 @@ void CColorTab::Setup()
 
 
 #pragma endregion
-	/**/
 #pragma MenuGroup
 	MenuGroup.SetPosition(16, 258);
 	MenuGroup.SetSize(360, 100);
@@ -1389,7 +1383,6 @@ void CColorTab::Setup()
 
 void CSettingsTab::Setup()
 {
-
 	SetTitle("Settings");
 #pragma ButtonGroup
 	ButtonGroup.SetPosition(16, 16);
@@ -1406,8 +1399,6 @@ void CSettingsTab::Setup()
 	ButtonGroup.PlaceLabledControl("Load", this, &LoadButton);
 
 	//Options
-
-
 	SetNr.AddItem("Legit");
 	SetNr.AddItem("Semi Rage");
 	SetNr.AddItem("Rage");
@@ -1863,10 +1854,6 @@ void CSkinchangerTab::Setup()
 	Riflegroup.PlaceLabledControl("SG552", this, &SG553Skin);
 #pragma endregion
 
-
-
-#pragma endregion
-
 #pragma region Pistols
 	PistolGroup.SetPosition(408, 270);
 	PistolGroup.SetText("Pistols");
@@ -2107,8 +2094,6 @@ void Menu::DoUIFrame()
 
 	GUI.Update();
 	GUI.Draw();
-
-	
 }
 
 
