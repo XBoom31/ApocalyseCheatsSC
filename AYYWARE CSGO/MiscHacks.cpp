@@ -99,7 +99,8 @@ void CMiscHacks::Move(CUserCmd *pCmd, bool &bSendPacket)
 	
 	// Bhop
 	bool bhop = Menu::Window.MiscTab.OtherAutoJump.GetState();
-			AutoJump(pCmd);
+	if (bhop)
+		AutoJump(pCmd);
 
 
    /* if (Menu::Window.MiscTab.OtherAutoCounterStafe.GetState())
@@ -169,16 +170,35 @@ void change_name(const char* name)
 
 void CMiscHacks::AutoJump(CUserCmd *pCmd)
 {
-	if (pCmd->buttons & IN_JUMP && GUI.GetKeyState(VK_SPACE))
-	{
-		int iFlags = hackManager.pLocal()->GetFlags();
-		if (!(iFlags & FL_ONGROUND))
-			pCmd->buttons &= ~IN_JUMP;
+	static bool bLastJumped = false;
+	static bool bShouldFake = false;
 
+	if (!bLastJumped && bShouldFake)
+	{
+		bShouldFake = false;
+		pCmd->buttons |= IN_JUMP;
+	}
+	else if (pCmd->buttons & IN_JUMP)
+	{
+		if (hackManager.pLocal()->GetFlags() & FL_ONGROUND)
+		{
+			bLastJumped = true;
+			bShouldFake = true;
+		}
+		else
+		{
+			pCmd->buttons &= ~IN_JUMP;
+			bLastJumped = false;
+		}
 		if (hackManager.pLocal()->GetVelocity().Length() <= 50)
 		{
 			pCmd->forwardmove = 450.f;
 		}
+	}
+	else
+	{
+		bLastJumped = false;
+		bShouldFake = false;
 	}
 }
 
