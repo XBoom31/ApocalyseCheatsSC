@@ -201,7 +201,7 @@ void CRageBotTab::Setup()
 	TargetGroup.PlaceLabledControl("Selection", this, &TargetSelection);
 
 	TargetFriendlyFire.SetFileId("tgt_friendlyfire");
-	TargetGroup.PlaceLabledControl("Shot Trought Team", this, &TargetFriendlyFire);
+	TargetGroup.PlaceLabledControl("Friendly Fire", this, &TargetFriendlyFire);
 
 	TargetHitbox.SetFileId("tgt_hitbox");
 	TargetHitbox.AddItem("Head");
