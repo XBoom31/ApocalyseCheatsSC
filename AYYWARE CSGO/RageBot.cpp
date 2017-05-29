@@ -960,24 +960,44 @@ namespace AntiAims // CanOpenFire checks for fake anti aims?
 
 	void BackJitter(CUserCmd *pCmd)
 	{
-		int random = rand() % 100;
-
-		// Small chance of starting fowards
-		if (random < 98)
-			// Look backwards
+		
+        #define RandomInt(min, max) (rand() % (max - min + 1) + min)
+		
+		int lmao = RandomInt(1, 4);
+		if (lmao = 1)
 			pCmd->viewangles.y -= 180;
+		else if (lmao = 2)
+		{
+			int lmao2v = RandomInt(0, 10);
+			int lmao2b = RandomInt(1, 2);
+			if (lmao2b = 1)
+				pCmd->viewangles.y -= lmao2v;
+			else
+				pCmd->viewangles.y -= 180 - lmao2v;
 
-		// Some gitter
-		if (random < 15)
-		{
-			float change = -70 + (rand() % (int)(140 + 1));
-			pCmd->viewangles.y += change;
 		}
-		if (random == 69)
+		else if (lmao = 3)
 		{
-			float change = -90 + (rand() % (int)(180 + 1));
-			pCmd->viewangles.y += change;
+			int lmao2v = RandomInt(0, 20);
+			int lmao2b = RandomInt(1, 2);
+			if (lmao2b = 1)
+				pCmd->viewangles.y -= lmao2v;
+			else
+				pCmd->viewangles.y -= 180 - lmao2v;
+
 		}
+		else if (lmao = 4)
+		{
+			int lmao2v = RandomInt(0, 30);
+			int lmao2b = RandomInt(1, 2);
+			if (lmao2b = 1)
+				pCmd->viewangles.y -= lmao2v;
+			else
+				pCmd->viewangles.y -= 180 - lmao2v;
+
+		}
+
+		
 	}
 
 	void Backwards(CUserCmd *pCmd)
@@ -1013,6 +1033,23 @@ namespace AntiAims // CanOpenFire checks for fake anti aims?
 		{
 			bSendPacket = true;
 			pCmd->viewangles.y -= 180;
+			ChokedPackets = -1;
+		}
+	}
+	void fakelowerbody2(CUserCmd *pCmd, bool &bSendPacket)
+	{
+		static int ChokedPackets = -1;
+		ChokedPackets++;
+        #define RandomInt(min, max) (rand() % (max - min + 1) + min)
+		if (ChokedPackets < 1)
+		{
+			bSendPacket = false;
+			pCmd->viewangles.y -= hackManager.pLocal()->GetLowerBodyYaw() + RandomInt(30, 61);
+		}
+		else
+		{
+			bSendPacket = true;
+			pCmd->viewangles.y += hackManager.pLocal()->GetLowerBodyYaw() - RandomInt(180, 360);
 			ChokedPackets = -1;
 		}
 	}
@@ -1411,15 +1448,16 @@ void CRageBot::DoAntiAim(CUserCmd *pCmd, bool &bSendPacket) // pCmd->viewangles.
 		break;
 	case 4:
 		// Fake Inverse
-		AntiAims::TFake(pCmd, bSendPacket);
+		AntiAims::BackJitter(pCmd);
+	//	AntiAims::TFake(pCmd, bSendPacket);
 		break;
 	case 5:
 		// Fake Jitter
-		AntiAims::FakeJitter(pCmd, bSendPacket);
+        AntiAims::fakelowerbody2(pCmd, bSendPacket);
 		break;
 	case 6:
 		// Jitter
-		AntiAims::Static(pCmd);
+		AntiAims::BackJitter(pCmd);
 		break;
 	case 7:
 		// T Jitter

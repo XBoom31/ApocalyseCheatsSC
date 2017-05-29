@@ -297,9 +297,9 @@ void CRageBotTab::Setup()
 	AntiAimYaw.AddItem("Fake Edge");
 	AntiAimYaw.AddItem("Fake Sideways");
 	AntiAimYaw.AddItem("Fake Static");
-	AntiAimYaw.AddItem("T Fake");
-	AntiAimYaw.AddItem("Fake Jitter");
-	AntiAimYaw.AddItem("Jitter");
+	AntiAimYaw.AddItem("BackWards X");
+	AntiAimYaw.AddItem("Fake Lowerbody");
+	AntiAimYaw.AddItem("Back Jitter");
 	AntiAimYaw.AddItem("T Jitter");
 	AntiAimYaw.AddItem("Back Jitter");
 	AntiAimYaw.AddItem("Backwards");
@@ -330,7 +330,7 @@ void CRageBotTab::Setup()
 
 void CLegitBotTab::Setup()
 {
-	SetTitle("LegitBot");
+	SetTitle("Legit Bot");
 
 	ActiveLabel.SetPosition(16, 16);
 	ActiveLabel.SetText("Active");
@@ -385,6 +385,32 @@ void CLegitBotTab::Setup()
 	TriggerDelay.SetBoundaries(1.f, 1000.f);
 	TriggerDelay.SetValue(1.f);
 	TriggerGroup.PlaceLabledControl("Delay (ms)", this, &TriggerDelay);
+
+	TriggerRecoil.SetFileId("trig_recoil");
+	TriggerGroup.PlaceLabledControl("Recoil", this, &TriggerRecoil);
+
+	TriggerFilterGroup.SetPosition(528, 48);
+	TriggerFilterGroup.SetText("Triggerbot Filter");
+	TriggerFilterGroup.SetSize(240, 210);
+	RegisterControl(&TriggerFilterGroup);
+
+	TriggerHead.SetFileId("trig_head");
+	TriggerFilterGroup.PlaceLabledControl("Head", this, &TriggerHead);
+
+	TriggerChest.SetFileId("trig_chest");
+	TriggerFilterGroup.PlaceLabledControl("Chest", this, &TriggerChest);
+
+	TriggerStomach.SetFileId("trig_stomach");
+	TriggerFilterGroup.PlaceLabledControl("Stomach", this, &TriggerStomach);
+
+	TriggerArms.SetFileId("trig_arms");
+	TriggerFilterGroup.PlaceLabledControl("Arms", this, &TriggerArms);
+
+	TriggerLegs.SetFileId("trig_legs");
+	TriggerFilterGroup.PlaceLabledControl("Legs", this, &TriggerLegs);
+
+	TriggerTeammates.SetFileId("trig_teammates");
+	TriggerFilterGroup.PlaceLabledControl("Friendly Fire", this, &TriggerTeammates);
 #pragma endregion Triggerbot stuff
 
 #pragma region Main Weapon
@@ -496,51 +522,7 @@ void CLegitBotTab::Setup()
 #pragma endregion
 
 #pragma More
-	AimMoreGroup.SetPosition(528, 48);
-	AimMoreGroup.SetText("More");
-	AimMoreGroup.SetSize(240, 210);
-	RegisterControl(&AimMoreGroup);
-
-	FoVRadius.SetFileId("fov_aim");
-	AimMoreGroup.PlaceLabledControl("FoV Radius", this, &FoVRadius);
-
-	WeaponConfig.SetFileId("wconf_toggle");
-	AimMoreGroup.PlaceLabledControl("Weapon Configs", this, &WeaponConfig);
-	WeaponConf.SetFileId("wconf_weapon");
-	WeaponConf.AddItem("AK-47");
-	WeaponConf.AddItem("AUG");
-	WeaponConf.AddItem("AWP");
-	WeaponConf.AddItem("CZ75-Auto");
-	WeaponConf.AddItem("Desert Eagle");
-	WeaponConf.AddItem("Dual Beretas");
-	WeaponConf.AddItem("Famas");
-	WeaponConf.AddItem("Five-SeveN");
-	WeaponConf.AddItem("Galil AR");
-	WeaponConf.AddItem("G3SG1");
-	WeaponConf.AddItem("Glock-18");
-	WeaponConf.AddItem("M249");
-	WeaponConf.AddItem("M4A1-S");
-	WeaponConf.AddItem("M4A4");
-	WeaponConf.AddItem("MAC-10");
-	WeaponConf.AddItem("MAG-7");
-	WeaponConf.AddItem("MP7");
-	WeaponConf.AddItem("MP9");
-	WeaponConf.AddItem("Negev");
-	WeaponConf.AddItem("Nova");
-	WeaponConf.AddItem("P2000");
-	WeaponConf.AddItem("P250");
-	WeaponConf.AddItem("P90");
-	WeaponConf.AddItem("PP-Bizon");
-	WeaponConf.AddItem("R8 Revolver");
-	WeaponConf.AddItem("Sawed-Off");
-	WeaponConf.AddItem("SCAR-20");
-	WeaponConf.AddItem("SSG 08");
-	WeaponConf.AddItem("SG 553");
-	WeaponConf.AddItem("TEC-9");
-	WeaponConf.AddItem("UMP-45");
-	WeaponConf.AddItem("USP-S");
-	WeaponConf.AddItem("XM-1014");
-	AimMoreGroup.PlaceLabledControl("Weapon", this, &WeaponConf);
+	
 
 
 #pragma endregion
@@ -548,7 +530,7 @@ void CLegitBotTab::Setup()
 
 void CVisualTab::Setup()
 {
-	SetTitle("ESP");
+	SetTitle("Visuals");
 
 	ActiveLabel.SetPosition(16, 16);
 	ActiveLabel.SetText("Active");
@@ -692,8 +674,8 @@ void CVisualTab::Setup()
 	OtherNoSmoke.SetFileId("otr_asus");
 	OtherGroup.PlaceLabledControl("AsusWalls", this, &OtherAsus);
 
-	OtherNoScope.SetFileId("otr_nsc");
-	OtherGroup.PlaceLabledControl("NoScope", this, &OtherNoScope);
+	NightMode.SetFileId("otr_night");
+	OtherGroup.PlaceLabledControl("NightMode", this, &NightMode);
 	
 #pragma endregion Setting up the Other controls
 }
@@ -1423,7 +1405,7 @@ void CSettingsTab::Setup()
 };
 void CSkinchangerTab::Setup()
 {
-	SetTitle("SkinChanger");
+	SetTitle("Skin Changer");
 
 	SkinActive.SetPosition(16, 16);
 	SkinActive.SetText("Active");

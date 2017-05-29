@@ -146,7 +146,7 @@ void CGroupBox::Draw(bool hover)
 	Render::Text(a.x + 15, a.y - (txtSize.bottom / 2), Color(255, 255, 255, 255), Render::Fonts::MenuBold, Text.c_str());
 
 	Render::Line(a.x, a.y, a.x + 12, a.y, Color(129, 129, 129, 255));
-	Render::Line(a.x + 15 + txtSize.right + 5, a.y, a.x + m_iWidth, a.y, Color(129, 129, 129, 255));
+    Render::Line(a.x + 15 + txtSize.right + 5, a.y, a.x + m_iWidth, a.y, Color(129, 129, 129, 255));
 	Render::Line(a.x, a.y, a.x, a.y + m_iHeight, Color(129, 129, 129, 255));
 	Render::Line(a.x, a.y + m_iHeight, a.x + m_iWidth, a.y + m_iHeight, Color(129, 129, 129, 255));
 	Render::Line(a.x + m_iWidth, a.y, a.x + m_iWidth, a.y + m_iHeight, Color(129, 129, 129, 255));

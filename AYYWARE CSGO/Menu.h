@@ -119,6 +119,15 @@ public:
 	CSlider   WeaponSnipInacc;
 	CComboBox WeaponSnipHitbox;
 
+	CGroupBox TriggerFilterGroup;
+
+	CCheckBox TriggerHead;
+	CCheckBox TriggerChest;
+	CCheckBox TriggerStomach;
+	CCheckBox TriggerArms;
+	CCheckBox TriggerLegs;
+	CCheckBox TriggerTeammates;
+	CCheckBox TriggerRecoil;
 	//More
 	CGroupBox AimMoreGroup;
 	CCheckBox FoVRadius;
@@ -175,6 +184,7 @@ public:
 	CCheckBox OtherNoSky; 
 	CCheckBox OtherNoFlash; 
 	CSlider   OtherNoFlashVal;
+	CCheckBox NightMode;
 	CCheckBox OtherNoSmoke;
 	CCheckBox OtherAsusWalls;
 	CComboBox OtherNoHands;

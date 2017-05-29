@@ -297,6 +297,8 @@ bool CGUI::DrawWindow(CWindow* window)
 	}
 
 
+
+
 	// Controls 
 	if (window->SelectedTab != nullptr)
 	{

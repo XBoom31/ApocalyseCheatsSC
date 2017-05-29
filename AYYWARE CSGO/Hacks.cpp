@@ -213,6 +213,8 @@ void HackManager::Draw()
 	}
 }
 
+
+
 // Handle all the move hakes
 void HackManager::Move(CUserCmd *pCmd,bool &bSendPacket)
 {

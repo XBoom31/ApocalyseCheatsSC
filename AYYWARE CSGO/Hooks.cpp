@@ -321,6 +321,84 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 			LastAngleAA = pCmd->viewangles;
 	}
 
+	if (Menu::Window.VisualsTab.NightMode.GetState()) {
+		{
+			for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
+			{
+				IMaterial *pMaterial = Interfaces::MaterialSystem->GetMaterial(i);
+
+				if (!pMaterial)
+					continue;
+
+				if (strstr(pMaterial->GetTextureGroupName(), "World")) {
+					//	pMaterial->AlphaModulate(0 / 255);
+					pMaterial->ColorModulate(0.1, 0.1, 0.4);
+				}
+
+			}
+		}
+	}
+	else
+	{
+		for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
+		{
+			IMaterial *pMaterial = Interfaces::MaterialSystem->GetMaterial(i);
+
+			if (!pMaterial)
+				continue;
+
+			if (strstr(pMaterial->GetTextureGroupName(), "World")) {
+				//	pMaterial->AlphaModulate(0 / 255);
+				pMaterial->ColorModulate(1, 1, 1);
+			}
+
+		}
+	}
+	if (Menu::Window.VisualsTab.OtherAsus.GetState()) {
+		{
+			for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
+			{
+				IMaterial *pMaterial = Interfaces::MaterialSystem->GetMaterial(i);
+
+				if (!pMaterial)
+					continue;
+
+				if (strstr(pMaterial->GetTextureGroupName(), "World")) {
+					//	pMaterial->AlphaModulate(0 / 255);
+					pMaterial->ColorModulate(255, 255, 255);
+				}
+
+			}
+		}
+	}
+	else
+	{
+		for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
+		{
+			IMaterial *pMaterial = Interfaces::MaterialSystem->GetMaterial(i);
+
+			if (!pMaterial)
+				continue;
+
+			if (strstr(pMaterial->GetTextureGroupName(), "World")) {
+				//	pMaterial->AlphaModulate(0 / 255);
+				pMaterial->ColorModulate(1, 1, 1);
+			}
+
+		}
+	}
+	if (Menu::Window.VisualsTab.OtherNoSky.GetState())
+	{
+		ConVar* NoSkybox = Interfaces::CVar->FindVar("sv_skyname"); /*No-Skybox*/
+		*(float*)((DWORD)&NoSkybox->fnChangeCallback + 0xC) = NULL;
+		NoSkybox->SetValue("sky_l4d_rural02_ldr");
+	}
+	if (!Menu::Window.VisualsTab.OtherNoSky.GetState())
+	{
+		ConVar* NoSkybox = Interfaces::CVar->FindVar("sv_skyname"); /*No-Skybox*/
+		*(float*)((DWORD)&NoSkybox->fnChangeCallback + 0xC) = NULL;
+		NoSkybox->SetValue("jungle");
+	}
 	return false;
 }
 
@@ -414,6 +492,10 @@ void __fastcall Hooked_DrawModelExecute(void* thisptr, int edx, void* ctx, void*
 		// Player Chams
 		int ChamsStyle = Menu::Window.VisualsTab.OptionsChams.GetIndex();
 		int HandsStyle = Menu::Window.VisualsTab.OtherNoHands.GetIndex();
+
+
+		//MADE BY CyclesProgramming
+		//
 
 		//terrorist red
 		float TR = Menu::Window.ColorTab.TVisColorR.GetValue();
@@ -621,7 +703,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 		}
 
 		static bool rekt = false;
-		if (!Menu::Window.MiscTab.OtherThirdperson.GetState() || pLocal->IsAlive() == 0 || pLocal->IsScoped())
+		if (!Menu::Window.MiscTab.OtherThirdperson.GetState() || pLocal->IsAlive() == 0)
 		{
 			if (!rekt)
 			{
@@ -631,13 +713,13 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 		}
 
 
-		else if (Menu::Window.MiscTab.OtherThirdperson.GetState() || pLocal->IsAlive() || pLocal->IsScoped() == 0)
+		else if (Menu::Window.MiscTab.OtherThirdperson.GetState() || pLocal->IsAlive())
 		{
 			rekt = false;
 		}
 
 		static bool meme = false;
-		if (Menu::Window.MiscTab.OtherThirdperson.GetState() && pLocal->IsScoped() == 0)
+		if (Menu::Window.MiscTab.OtherThirdperson.GetState())
 		{
 			if (!meme)
 			{
@@ -645,10 +727,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 				meme = true;
 			}
 		}
-		else if (pLocal->IsScoped())
-		{
-			meme = false;
-		}
+		
 
 		static bool kek = false;
 		if (Menu::Window.MiscTab.OtherThirdperson.GetState() && pLocal->IsAlive())
@@ -664,23 +743,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 			kek = false;
 		}
 
-		static bool asuswallz;
-		if ((Menu::Window.VisualsTab.OtherAsus.GetState()))
-		{
 
-			if (!asuswallz)
-			{
-				Interfaces::Engine->ClientCmd_Unrestricted("mat_fullbright 2");
-				asuswallz = true;
-			}
-
-
-		}
-		else if (!Menu::Window.VisualsTab.OtherAsus.GetState())
-		{
-			Interfaces::Engine->ClientCmd_Unrestricted("mat_fullbright 0");
-			asuswallz = false;
-		}
 		static bool wireframe;
 		if (Menu::Window.VisualsTab.OtherWireframe.GetState())
 		{

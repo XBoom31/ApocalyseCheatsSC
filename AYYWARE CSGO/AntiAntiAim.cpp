@@ -5,7 +5,7 @@ Rest In Peace ApocalypseCheats
 // Credits to Valve and Shad0w
 #include "Interfaces.h"
 #include "Menu.h"
-
+#include "Hacks.h"
 // Shad0ws Yaw fix
 // (FIX ME UP LATER)
 void FixY(const CRecvProxyData *pData, void *pStruct, void *pOut)
@@ -134,6 +134,8 @@ void FixX(const CRecvProxyData* pData, void* pStruct, void* pOut)
 	else if (pData->m_Value.m_Float > -89.0f && pData->m_Value.m_Float < -91)
 		*ang += 90.0f;
 }
+
+
 
 RecvVarProxyFn oRecvnModelIndex;
 

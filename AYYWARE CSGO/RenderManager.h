@@ -35,6 +35,7 @@ namespace Render
 		extern DWORD Menu;
 		extern DWORD MenuBold;
 		extern DWORD ESP;
+		extern DWORD Untitled1;
 		extern DWORD MenuText;
 	};
 

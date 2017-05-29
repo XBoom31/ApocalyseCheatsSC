@@ -169,15 +169,18 @@ void change_name(const char* name)
 
 void CMiscHacks::AutoJump(CUserCmd *pCmd)
 {
-	if (pCmd->buttons & IN_JUMP && GUI.GetKeyState(VK_SPACE))
+	if (Menu::Window.MiscTab.OtherAutoJump.GetState())
 	{
-		int iFlags = hackManager.pLocal()->GetFlags();
-		if (!(iFlags & FL_ONGROUND))
-			pCmd->buttons &= ~IN_JUMP;
-
-		if (hackManager.pLocal()->GetVelocity().Length() <= 50)
+		if (pCmd->buttons & IN_JUMP && GUI.GetKeyState(VK_SPACE))
 		{
-			pCmd->forwardmove = 450.f;
+			int iFlags = hackManager.pLocal()->GetFlags();
+			if (!(iFlags & FL_ONGROUND))
+				pCmd->buttons &= ~IN_JUMP;
+
+			if (hackManager.pLocal()->GetVelocity().Length() <= 50)
+			{
+				pCmd->forwardmove = 450.f;
+			}
 		}
 	}
 }

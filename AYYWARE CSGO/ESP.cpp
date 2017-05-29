@@ -159,10 +159,10 @@ void CEsp::SpecList()
 					{
 						if (Interfaces::Engine->GetPlayerInfo(pTarget->GetIndex(), &pinfo2))
 						{
-							char buf[255]; sprintf_s(buf, "%s => %s", pinfo.name, pinfo2.name);
+							char buf[255]; sprintf_s(buf, "%s", pinfo.name, pinfo2.name);
 							RECT TextSize = Render::GetTextSize(Render::Fonts::ESP, buf);
 							//Render::Clear(scrn.left, (scrn.bottom / 3) + (16 * AC), 260, 16, Color(0, 0, 0, 140));
-							Render::Text(scrn.left , (scrn.bottom / 2) + (16 * AC), pTarget->GetIndex() == pLocal->GetIndex() ? Color(240, 70, 80, 255) : Color(255, 255, 255, 255), Render::Fonts::ESP, buf);
+							Render::Text(scrn.left , (scrn.bottom / 2) + (16 * AC), pTarget->GetIndex() == pLocal->GetIndex() ? Color(240, 70, 80, 255) : Color(255, 255, 255, 0), Render::Fonts::ESP, buf);
 							AC++;
 						}
 					}
@@ -616,7 +616,8 @@ void CEsp::DrawBombPlanted(IClientEntity* pEntity, ClientClass* cClass)
 		ESPBox Box;
 		GetBox(pEntity, Box);
 		DrawBox(Box, Color(250, 42, 42, 255));
-		sprintf_s(buffer, "Bomb Planted", TimeRemaining);
+		
+		sprintf_s(buffer, "Bomb Planted | %.1f", TimeRemaining);
 
 		Render::Text(vScreen.x, vScreen.y, Color(250, 42, 42, 255), Render::Fonts::ESP, buffer);
 	}
