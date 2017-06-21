@@ -2118,6 +2118,15 @@ void Menu::SetupMenu()
 
 void Menu::DoUIFrame()
 {
+	static bool sumfuk = false;
+	if (!sumfuk)
+	{
+		if (Menu::Window.SkinchangerTab.SkinEnable.GetState())
+		{
+			KnifeApplyCallbk();
+		}
+		sumfuk = true;
+	}
 	// General Processing
 
 	// If the "all filter is selected tick all the others

@@ -23,6 +23,8 @@ UC Community <3
 #include "CRC32.h"
 #include "Resolver.h"
 #include "Utilities.h"
+#include <string>;;;;;;;;;;;;;;;
+
 Vector LastAngleAA;
 #define MakePtr(cast, ptr, addValue) (cast)( (DWORD)(ptr) + (DWORD)(addValue))
 // Funtion Typedefs
@@ -306,6 +308,7 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 		{
 			GameUtils::NormaliseViewAngle(pCmd->viewangles);
 
+
 			if (pCmd->viewangles.z != 0.0f)
 			{
 				pCmd->viewangles.z = 0.00;
@@ -341,10 +344,8 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 
 	if (Menu::Window.VisualsTab.NightMode.GetState()) {
 		{
-			
-			
-			
-			if (HooksXD::night = 1)
+			static bool memes = false;
+			if  (memes = false)
 			{
 				for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
 				{
@@ -356,7 +357,7 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 					if (strstr(pMaterial->GetTextureGroupName(), "World")) {
 						//	pMaterial->AlphaModulate(0 / 255);
 						pMaterial->ColorModulate(0.1, 0.1, 0.4);
-						HooksXD::night++;
+						memes = true;
 					}
 
 				}
@@ -367,8 +368,8 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 	else
 	{
 		
-		
-		if (HooksXD::night2 = 1)
+		static bool memes;
+		if (memes = false)
 		{
 			 
 			for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
@@ -381,25 +382,39 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 				if (strstr(pMaterial->GetTextureGroupName(), "World")) {
 					//	pMaterial->AlphaModulate(0 / 255);
 					pMaterial->ColorModulate(1, 1, 1);
-					HooksXD::night2++;
+					memes = true;
 				}
 
 			}
 		}
 		
 	}
-
+	static bool nlag1 = false;
+	static bool nlag2 = false;
 	if (Menu::Window.VisualsTab.OtherNoSky.GetState())
 	{
-		ConVar* NoSkybox = Interfaces::CVar->FindVar("sv_skyname"); /*No-Skybox*/
-		*(float*)((DWORD)&NoSkybox->fnChangeCallback + 0xC) = NULL;
-		NoSkybox->SetValue("sky_l4d_rural02_ldr");
+		if (!nlag1)
+		{
+			ConVar* NoSkybox = Interfaces::CVar->FindVar("sv_skyname"); /*No-Skybox*/
+			*(float*)((DWORD)&NoSkybox->fnChangeCallback + 0xC) = NULL;
+			NoSkybox->SetValue("sky_l4d_rural02_ldr");
+			nlag1 = true;
+		}
+		
 	}
-	if (!Menu::Window.VisualsTab.OtherNoSky.GetState())
+	if (nlag1)
 	{
-		ConVar* NoSkybox = Interfaces::CVar->FindVar("sv_skyname"); /*No-Skybox*/
-		*(float*)((DWORD)&NoSkybox->fnChangeCallback + 0xC) = NULL;
-		NoSkybox->SetValue("jungle");
+		if (!Menu::Window.VisualsTab.OtherNoSky.GetState())
+		{
+			if (!nlag2)
+			{
+				ConVar* NoSkybox = Interfaces::CVar->FindVar("sv_skyname"); /*No-Skybox*/
+				*(float*)((DWORD)&NoSkybox->fnChangeCallback + 0xC) = NULL;
+				NoSkybox->SetValue("jungle");
+				nlag2 = true;
+			}
+
+		}
 	}
 	return false;
 }
@@ -701,7 +716,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 				*(Vector*)((DWORD)pLocal + 0x31C8) = LastAngleAA;
 		}
 
-		if ((Menu::Window.MiscTab.OtherThirdperson.GetState()) || Menu::Window.VisualsTab.OtherAsus.GetState() || Menu::Window.VisualsTab.OtherWireframe.GetState())
+		if ((Menu::Window.MiscTab.OtherThirdperson.GetState()) || Menu::Window.VisualsTab.OtherAsus.GetState() || Menu::Window.VisualsTab.OtherWireframe.GetState() || Menu::Window.VisualsTab.OtherNoSmoke.GetState())
 		{
 			static bool rekt = false;
 			if (!rekt)
