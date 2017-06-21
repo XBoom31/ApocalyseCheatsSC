@@ -22,7 +22,6 @@ UC Community <3
 #define TICK_INTERVAL			( Interfaces::Globals->interval_per_tick )
 #define TIME_TO_TICKS( dt )		( (int)( 0.5f + (float)(dt) / TICK_INTERVAL ) )
 
-bool wot;
 
 void CRageBot::Init()
 {
@@ -293,7 +292,6 @@ void CRageBot::DoAimbot(CUserCmd *pCmd, bool &bSendPacket) // Creds to encore133
 		// Lets open fire
 		if (GameUtils::IsScopedWeapon(pWeapon) && !pWeapon->IsScoped() && Menu::Window.RageBotTab.AccuracyAutoScope.GetState()) // Autoscope
 		{
-			wot = true;
 			pCmd->buttons |= IN_ATTACK2;
 		}
 		else
@@ -304,10 +302,7 @@ void CRageBot::DoAimbot(CUserCmd *pCmd, bool &bSendPacket) // Creds to encore133
 				{
 					if (Menu::Window.RageBotTab.AimbotAutoFire.GetState() && !(pCmd->buttons & IN_ATTACK))
 					{
-						if (wot)
-						{
-							Sleep(50);
-						}
+
 						pCmd->buttons |= IN_ATTACK;
 					}
 					else
@@ -317,10 +312,7 @@ void CRageBot::DoAimbot(CUserCmd *pCmd, bool &bSendPacket) // Creds to encore133
 				}
 				else if (Menu::Window.RageBotTab.AimbotAutoFire.GetState() && !(pCmd->buttons & IN_ATTACK))
 				{
-					if (wot)
-					{
-						Sleep(50);
-					}
+
 					pCmd->buttons |= IN_ATTACK;
 				}
 			}
