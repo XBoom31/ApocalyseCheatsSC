@@ -825,7 +825,6 @@ void CMiscTab::Setup()
 	OtherSafeMode.SetState(true);
 	OtherGroup.PlaceLabledControl("Safe Mode", this, &OtherSafeMode);
 
-	OtherChatSpam.SetFileId("otr_spam");
 	OtherChatSpam.AddItem("Off");
 	OtherChatSpam.AddItem("Namestealer");
 	OtherChatSpam.AddItem("Apocalypse - CS");
@@ -835,14 +834,15 @@ void CMiscTab::Setup()
 	OtherChatSpam.AddItem("Aimware - NS");
 	OtherGroup.PlaceLabledControl("Chat Spam", this, &OtherChatSpam);
 
-	OtherClantag.SetFileId("otr_spam");
+	OtherClantag.SetFileId("otr_clantag");
 	OtherClantag.AddItem("Off");
 	OtherClantag.AddItem("Apocalypse");
 	OtherClantag.AddItem("'SlideShow'");
 	OtherClantag.AddItem("None");
 	OtherClantag.AddItem("Valve");
-	
-	
+	OtherClantag.AddItem("splashgang");
+	OtherClantag.AddItem("STAINLESS");
+	OtherGroup.PlaceLabledControl("ClanTag", this, &OtherClantag);
 
 	OtherTeamChat.SetFileId("otr_teamchat");
 	OtherGroup.PlaceLabledControl("Team Chat Only", this, &OtherTeamChat);

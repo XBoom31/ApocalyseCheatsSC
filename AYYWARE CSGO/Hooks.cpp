@@ -160,7 +160,7 @@ void ClanTag()
 	switch (Menu::Window.MiscTab.OtherClantag.GetIndex())
 	{
 	case 0:
-		// No 
+		SetClanTag("", "");
 		break;
 	case 1:
 	{
@@ -171,26 +171,26 @@ void ClanTag()
 			motion++;
 		int value = ServerTime % 19;
 		switch (value) {
-		case 0:SetClanTag("          ", "pasteware"); break;
-		case 1:SetClanTag("         p", "pasteware"); break;
-		case 2:SetClanTag("        pa", "pasteware"); break;
-		case 3:SetClanTag("       pas", "pasteware"); break;
-		case 4:SetClanTag("      past", "pasteware"); break;
-		case 5:SetClanTag("     paste", "pasteware"); break;
-		case 6:SetClanTag("    pastew", "pasteware"); break;
-		case 7:SetClanTag("   pastewa", "pasteware"); break;
-		case 8:SetClanTag("  pastewar", "pasteware"); break;
-		case 9:SetClanTag(" pasteware", "pasteware"); break;
-		case 10:SetClanTag("pasteware ", "pasteware"); break;
-		case 11:SetClanTag("asteware  ", "pasteware"); break;
-		case 12:SetClanTag("steware   ", "pasteware"); break;
-		case 13:SetClanTag("teware    ", "pasteware"); break;
-		case 14:SetClanTag("eware     ", "pasteware"); break;
-		case 15:SetClanTag("ware      ", "pasteware"); break;
-		case 16:SetClanTag("are       ", "pasteware"); break;
-		case 17:SetClanTag("re        ", "pasteware"); break;
-		case 18:SetClanTag("e         ", "pasteware"); break;
-		case 19:SetClanTag("          ", "pasteware"); break;
+		case 0:SetClanTag("          ", "apocalypse"); break;
+		case 1:SetClanTag("         a", "apocalypse"); break;
+		case 2:SetClanTag("        ap", "apocalypse"); break;
+		case 3:SetClanTag("       apo", "apocalypse"); break;
+		case 4:SetClanTag("      apoc", "apocalypse"); break;
+		case 5:SetClanTag("     apoca", "apocalypse"); break;
+		case 6:SetClanTag("    apocal", "apocalypse"); break;
+		case 7:SetClanTag("   apocaly", "apocalypse"); break;
+		case 8:SetClanTag("  apocalyp", "apocalypse"); break;
+		case 9:SetClanTag(" apocalyps", "apocalypse"); break;
+		case 10:SetClanTag("apocalypse", "apocalypse"); break;
+		case 11:SetClanTag("pocalypse ", "apocalypse"); break;
+		case 12:SetClanTag("ocalypse  ", "apocalypse"); break;
+		case 13:SetClanTag("calypse   ", "apocalypse"); break;
+		case 14:SetClanTag("alypse    ", "apocalypse"); break;
+		case 15:SetClanTag("lypse     ", "apocalypse"); break;
+		case 16:SetClanTag("ypse      ", "apocalypse"); break;
+		case 17:SetClanTag("pse       ", "apocalypse"); break;
+		case 18:SetClanTag("se        ", "apocalypse"); break;
+		case 19:SetClanTag("e         ", "apocalypse"); break;
 		}
 		counter++;
 	}
@@ -202,26 +202,15 @@ void ClanTag()
 
 		if (counter % 48 == 0)
 			motion++;
-		int value = ServerTime % 17;
+		int value = ServerTime % 6;
 		switch (value) {
-		case 0:SetClanTag("          ", "skeet.cc"); break;
-		case 1:SetClanTag("         s", "skeet.cc"); break;
-		case 2:SetClanTag("        sk", "skeet.cc"); break;
-		case 3:SetClanTag("       ske", "skeet.cc"); break;
-		case 4:SetClanTag("      skee", "skeet.cc"); break;
-		case 5:SetClanTag("     skeet", "skeet.cc"); break;
-		case 6:SetClanTag("    skeet.", "skeet.cc"); break;
-		case 7:SetClanTag("   skeet.c", "skeet.cc"); break;
-		case 8:SetClanTag(" skeet.cc", "skeet.cc"); break;
-		case 9:SetClanTag("skeet.cc ", "skeet.cc"); break;
-		case 10:SetClanTag("keet.cc  ", "skeet.cc"); break;
-		case 11:SetClanTag("eet.cc   ", "skeet.cc"); break;
-		case 12:SetClanTag("et.cc    ", "skeet.cc"); break;
-		case 13:SetClanTag("t.cc     ", "skeet.cc"); break;
-		case 14:SetClanTag(".cc      ", "skeet.cc"); break;
-		case 15:SetClanTag("cc       ", "skeet.cc"); break;
-		case 16:SetClanTag("c        ", "skeet.cc"); break;
-		case 17:SetClanTag("         ", "skeet.cc"); break;
+		case 0:SetClanTag("Apocalypse", "Apocalypse"); break;
+		case 1:SetClanTag("Apocalypse > VACWAVE", "Apocalypse > VACWAVE"); break;
+		case 2:SetClanTag("UnknownCheats", "UnknownCheats"); break;
+		case 3:SetClanTag("fag", "fag"); break;
+		case 4:SetClanTag("Pro Baimer", "Pro Baimer"); break;
+		case 5:SetClanTag("Incredible sad", "Incredible sad"); break;
+		case 6:SetClanTag("me > you", "me > you"); break;
 		}
 		counter++;
 	}
@@ -232,6 +221,12 @@ void ClanTag()
 		break;
 	case 4:
 		SetClanTag("[VALV\xE1\xB4\xB1]", "Valve");
+		break;
+	case 5:
+		SetClanTag("splashgang", "splashgang");
+		break;
+	case 6:
+		SetClanTag("STAINLESS", "STAINLESS");
 		break;
 	}
 }
