@@ -26,10 +26,10 @@ namespace Interfaces
 	extern ISurface* Surface;
 	extern IVDebugOverlay* DebugOverlay;
 	extern IClientModeShared* ClientMode;
-
+	extern IInputSystem* InputSystem;
 	extern CGlobalVarsBase *Globals;
 	extern DWORD *Prediction;
-	extern CMaterialSystem* MaterialSystem;
+	extern CMaterialSystem*	MaterialSystem;
 	extern CVRenderView* RenderView;
 	extern IVModelRender* ModelRender;
 	extern CModelInfo* ModelInfo;

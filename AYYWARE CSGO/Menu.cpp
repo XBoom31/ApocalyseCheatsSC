@@ -1,5 +1,14 @@
 /*
-Rest In Peace ApocalypseCheats
+ApocalypseCheats
+------------------------------
+Contributors:
+XBoom
+Ma$$A$
+madlifer
+control1337
+CyclesPrograming
+FZCat1337
+UC Community <3
 */
 
 #include "Menu.h"
@@ -33,6 +42,10 @@ void Unloadbk()
 void NApplyCallbk()
 {
 	
+}
+void Memz()
+{
+//	Hooks::XD3();
 }
 void SaveCallbk()
 {
@@ -114,7 +127,7 @@ void ApocalypseWindow::Setup()
 {
 	SetPosition(50, 50);
 	SetSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-	SetTitle("Apocalyplse | Private");
+	SetTitle("Apocalyplse | Alpha GUI 8.5.2017");
 
 	RegisterTab(&RageBotTab);
 	RegisterTab(&LegitBotTab);
@@ -175,6 +188,11 @@ void CRageBotTab::Setup()
 
 	AimbotAutoPistol.SetFileId("aim_autopistol");
 	AimbotGroup.PlaceLabledControl("Auto Pistol", this, &AimbotAutoPistol);
+
+	AimbotAutoPistolD.SetFileId("aim_autopistold");
+	AimbotAutoPistolD.SetBoundaries(0.f, 500.f);
+	AimbotAutoPistolD.SetValue(0.f);
+	AimbotGroup.PlaceLabledControl("Auto Pistol Delay", this, &AimbotAutoPistolD);
 
 	AimbotAimStep.SetFileId("aim_aimstep");
 	AimbotGroup.PlaceLabledControl("Aim Step", this, &AimbotAimStep);
@@ -330,7 +348,7 @@ void CRageBotTab::Setup()
 
 void CLegitBotTab::Setup()
 {
-	SetTitle("Legit Bot");
+	SetTitle("LegitBot");
 
 	ActiveLabel.SetPosition(16, 16);
 	ActiveLabel.SetText("Active");
@@ -415,7 +433,7 @@ void CLegitBotTab::Setup()
 
 #pragma region Main Weapon
 	WeaponMainGroup.SetPosition(16, 274);
-	WeaponMainGroup.SetText("Rifles/Other - DONT USE");
+	WeaponMainGroup.SetText("Rifles/Other");
 	WeaponMainGroup.SetSize(240, 210);
 	RegisterControl(&WeaponMainGroup);
 
@@ -444,7 +462,16 @@ void CLegitBotTab::Setup()
 	WeaponMainHitbox.AddItem("Neck");
 	WeaponMainHitbox.AddItem("Chest");
 	WeaponMainHitbox.AddItem("Stomach");
-	WeaponMainGroup.PlaceLabledControl("Hitbox", this, &WeaponMainHitbox);
+	WeaponMainGroup.PlaceLabledControl("Primary Hitbox", this, &WeaponMainHitbox);
+
+	WeaponMainSecHitbox.SetFileId("sec_hitbox");
+	WeaponMainSecHitbox.AddItem("None");
+	WeaponMainSecHitbox.AddItem("Head");
+	WeaponMainSecHitbox.AddItem("Neck");
+	WeaponMainSecHitbox.AddItem("Chest");
+	WeaponMainSecHitbox.AddItem("Stomach");
+	WeaponMainGroup.PlaceLabledControl("Secondary Hitbox", this, &WeaponMainSecHitbox);
+
 #pragma endregion
 
 #pragma region Pistols
@@ -479,7 +506,15 @@ void CLegitBotTab::Setup()
 	WeaponPistHitbox.AddItem("Neck");
 	WeaponPistHitbox.AddItem("Chest");
 	WeaponPistHitbox.AddItem("Stomach");
-	WeaponPistGroup.PlaceLabledControl("Hitbox", this, &WeaponPistHitbox);
+	WeaponPistGroup.PlaceLabledControl("Primary Hitbox", this, &WeaponPistHitbox);
+
+	WeaponPistSecHitbox.SetFileId("pist_sec_hitbox");
+	WeaponPistSecHitbox.AddItem("None");
+	WeaponPistSecHitbox.AddItem("Head");
+	WeaponPistSecHitbox.AddItem("Neck");
+	WeaponPistSecHitbox.AddItem("Chest");
+	WeaponPistSecHitbox.AddItem("Stomach");
+	WeaponPistGroup.PlaceLabledControl("Seconday Hitbox", this, &WeaponPistSecHitbox);
 #pragma endregion
 
 #pragma region Snipers
@@ -515,10 +550,15 @@ void CLegitBotTab::Setup()
 	WeaponSnipHitbox.AddItem("Neck");
 	WeaponSnipHitbox.AddItem("Chest");
 	WeaponSnipHitbox.AddItem("Stomach");
-	WeaponSnipGroup.PlaceLabledControl("Hitbox", this, &WeaponSnipHitbox);
+	WeaponSnipGroup.PlaceLabledControl("Primary Hitbox", this, &WeaponSnipHitbox);
 
-	WeaponSnipEnable.SetFileId("wconf_enable_ak");
-	WeaponSnipGroup.PlaceLabledControl("Aimbot Unscoped", this, &WeaponSnipEnable);
+	WeaponSnipSecHitbox.SetFileId("wconf_hitbox_sec_ak");
+	WeaponSnipSecHitbox.AddItem("None");
+	WeaponSnipSecHitbox.AddItem("Head");
+	WeaponSnipSecHitbox.AddItem("Neck");
+	WeaponSnipSecHitbox.AddItem("Chest");
+	WeaponSnipSecHitbox.AddItem("Stomach");
+	WeaponSnipGroup.PlaceLabledControl("Secondary Hitbox", this, &WeaponSnipSecHitbox);
 #pragma endregion
 
 #pragma More
@@ -571,6 +611,9 @@ void CVisualTab::Setup()
 	OptionsChams.AddItem("Off");
 	OptionsChams.AddItem("Normal");
 	OptionsChams.AddItem("Flat");
+	OptionsChams.AddItem("Visible Only - Normal");
+	OptionsChams.AddItem("Visible Only - Flat");
+
 	OptionsGroup.PlaceLabledControl("Chams", this, &OptionsChams);
 
 	OptionsSkeleton.SetFileId("opt_bone");
@@ -588,6 +631,9 @@ void CVisualTab::Setup()
 
 	OtherWireframe.SetFileId("opt_wireframe");
 	OptionsGroup.PlaceLabledControl("Wireframe", this, &OtherWireframe);
+
+	OtherGlow.SetFileId("opt_glow");
+	OptionsGroup.PlaceLabledControl("Glow", this, &OtherGlow);
 	
 #pragma endregion Setting up the Options controls
 
@@ -614,6 +660,12 @@ void CVisualTab::Setup()
 
 	FiltersC4.SetFileId("ftr_c4");
 	FiltersGroup.PlaceLabledControl("C4", this, &FiltersC4);
+
+	FiltersDead.SetFileId("ftr_spec");
+	FiltersGroup.PlaceLabledControl("Only Dead", this, &FiltersDead);
+
+
+
 #pragma endregion Setting up the Filters controls
 
 #pragma region Other
@@ -668,6 +720,9 @@ void CVisualTab::Setup()
 	OtherNoSky.SetFileId("otr_nosky");
 	OtherGroup.PlaceLabledControl("NoSky", this, &OtherNoSky);
 
+	OtherNoScope.SetFileId("otr_noscope");
+	OtherGroup.PlaceLabledControl("NoSocpe", this, &OtherNoScope);
+
 	OtherNoSmoke.SetFileId("otr_nosmoke");
 	OtherGroup.PlaceLabledControl("NoSmoke", this, &OtherNoSmoke);
 
@@ -676,6 +731,10 @@ void CVisualTab::Setup()
 
 	NightMode.SetFileId("otr_night");
 	OtherGroup.PlaceLabledControl("NightMode", this, &NightMode);
+
+	ResetXD.SetText("Reset Stuff");
+	ResetXD.SetCallback(HooksXD::XD3);
+	OtherGroup.PlaceLabledControl("", this, &ResetXD);
 	
 #pragma endregion Setting up the Other controls
 }
@@ -743,6 +802,9 @@ void CMiscTab::Setup()
 
 	OtherAutoJump.SetFileId("otr_autojump");
 	OtherGroup.PlaceLabledControl("Bhop", this, &OtherAutoJump);
+
+	OtherAutoJump.SetFileId("otr_hautojump");
+	OtherGroup.PlaceLabledControl("Humanized Bhop", this, &OtherHAutoJump); 
 
 	OtherEdgeJump.SetFileId("otr_edgejump");
 	OtherGroup.PlaceLabledControl("Edge Jump", this, &OtherEdgeJump);
@@ -1342,28 +1404,14 @@ void CColorTab::Setup()
 
 	MenuBackround.SetPosition(408, 379);
 	MenuBackround.SetSize(360, 135);
-	MenuBackround.SetText("Menu Backround Color");
+	MenuBackround.SetText("More");
 	RegisterControl(&MenuBackround);
 
-	MenuBGR.SetFileId("bg_R");
-	MenuBGR.SetBoundaries(0, 255);
-	MenuBGR.SetValue(30);
-	MenuBackround.PlaceLabledControl("Red", this, &MenuBGR);
+	CharmsA.SetFileId("charms_a");
+	CharmsA.SetBoundaries(0, 255);
+	CharmsA.SetValue(255);
+	MenuBackround.PlaceLabledControl("Charms Alpha", this, &CharmsA);
 
-	MenuBGG.SetFileId("bg_G");
-	MenuBGG.SetBoundaries(0, 255);
-	MenuBGG.SetValue(30);
-	MenuBackround.PlaceLabledControl("Green", this, &MenuBGG);
-
-	MenuBGB.SetFileId("bg_B");
-	MenuBGB.SetBoundaries(0, 255);
-	MenuBGB.SetValue(30);
-	MenuBackround.PlaceLabledControl("Blue", this, &MenuBGB);
-
-	MenuOpacity.SetFileId("bg_a");
-	MenuOpacity.SetBoundaries(0, 255);
-	MenuOpacity.SetValue(255);
-	MenuBackround.PlaceLabledControl("Blue", this, &MenuOpacity);
 
 #pragma endregion
 
@@ -1405,7 +1453,7 @@ void CSettingsTab::Setup()
 };
 void CSkinchangerTab::Setup()
 {
-	SetTitle("Skin Changer");
+	SetTitle("SkinChanger");
 
 	SkinActive.SetPosition(16, 16);
 	SkinActive.SetText("Active");
@@ -2084,6 +2132,15 @@ void Menu::DoUIFrame()
 	if (Window.MiscTab.OtherSkinChanger.GetState())
 	{
 //		RegisterTab(&ApocalypseWindow::Setup.SkinchangerTab);
+	}
+	if (Window.MiscTab.OtherHAutoJump.GetState())
+	{
+		Window.MiscTab.OtherAutoJump.SetState(false);
+	}
+
+	if (Window.MiscTab.OtherAutoJump.GetState())
+	{
+		Window.MiscTab.OtherHAutoJump.SetState(false);
 	}
 	
 

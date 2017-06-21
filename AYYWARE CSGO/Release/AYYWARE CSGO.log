@@ -1,29 +1,5 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (AYYWARE CSGO.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  AntiAntiAim.cpp
-  Autowall.cpp
-  Chams.cpp
-  Controls.cpp
-  DLLMain.cpp
-  Dumping.cpp
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (AYYWARE CSGO.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   ESP.cpp
-  GUI.cpp
-  Hacks.cpp
-  Hooks.cpp
-  Interfaces.cpp
-  LegitBot.cpp
-  MathFunctions.cpp
-  Menu.cpp
-  MiscHacks.cpp
-  NetVarManager.cpp
-  NetVars.cpp
-  Offsets.cpp
-  RageBot.cpp
-  RenderManager.cpp
-  Resolver.cpp
-  SpoofedConvar.cpp
-  UTIL Functions.cpp
-  Visual.cpp
-  Window.cpp
-     Creating library C:\Users\WZKY\Desktop\C+P\ApocalyseCheatsSC-master\Release\Apocalypse.lib and object C:\Users\WZKY\Desktop\C+P\ApocalyseCheatsSC-master\Release\Apocalypse.exp
-  AYYWARE CSGO.vcxproj -> C:\Users\WZKY\Desktop\C+P\ApocalyseCheatsSC-master\Release\Apocalypse.dll
-  AYYWARE CSGO.vcxproj -> C:\Users\WZKY\Desktop\C+P\ApocalyseCheatsSC-master\Release\Apocalypse.pdb (Full PDB)
+     Creating library C:\Users\XBoom\Desktop\AC Fixed\AYYWARE CSGO\ApocalyseCheatsSC\Release\Apocalypse.lib and object C:\Users\XBoom\Desktop\AC Fixed\AYYWARE CSGO\ApocalyseCheatsSC\Release\Apocalypse.exp
+  AYYWARE CSGO.vcxproj -> C:\Users\XBoom\Desktop\AC Fixed\AYYWARE CSGO\ApocalyseCheatsSC\Release\Apocalypse.dll
+  AYYWARE CSGO.vcxproj -> C:\Users\XBoom\Desktop\AC Fixed\AYYWARE CSGO\ApocalyseCheatsSC\Release\Apocalypse.pdb (Full PDB)

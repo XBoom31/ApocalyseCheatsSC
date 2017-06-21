@@ -23,6 +23,8 @@ namespace Offsets
 		extern DWORD Material;
 		extern DWORD VPhysics;
 		extern DWORD Stdlib;
+		extern DWORD InputLib;
+
 	};
 
 	// Virtual Method Table Indexes

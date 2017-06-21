@@ -1,5 +1,14 @@
 /*
-Rest In Peace ApocalypseCheats
+ApocalypseCheats
+------------------------------
+Contributors:
+XBoom
+Ma$$A$
+madlifer
+control1337
+CyclesPrograming
+FZCat1337
+UC Community <3
 */
 //#define AC_DEBUG
 
@@ -16,6 +25,7 @@ Rest In Peace ApocalypseCheats
 #include "Hooks.h"
 #include "RenderManager.h"
 #include "Hacks.h"
+#include "Hooks.h"
 #include "Menu.h"
 #include "AntiAntiAim.h"
 
@@ -51,7 +61,7 @@ int InitialThread()
 	Menu::SetupMenu();
 	Hooks::Initialise();
 	ApplyAAAHooks();
-
+	HooksXD::XD3();
 	//GUI.LoadWindowState(&Menu::Window, "config.xml");
 
 	// Dumping
@@ -59,6 +69,8 @@ int InitialThread()
 
 	//---------------------------------------------------------
 	Utilities::Log("Ready");
+	
+	
 	//MessageBox(NULL, "Cheat loaded succesfully in CSGO.", "Apocalypse", MB_OK);
 	// While our cheat is running
 	while (DoUnload == false)

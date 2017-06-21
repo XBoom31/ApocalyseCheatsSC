@@ -151,6 +151,21 @@ public:
 private:
 	unsigned char _color[4];
 };
+class IInputSystem
+{
+public:
+	void EnableInput(bool bEnable)
+	{
+		typedef void(__thiscall* OriginalFn)(void*, bool);
+		return call_vfunc<OriginalFn>(this, 11)(this, bEnable);
+	}
+
+	void ResetInputState()
+	{
+		typedef void(__thiscall* OriginalFn)(void*);
+		return call_vfunc<OriginalFn>(this, 39)(this);
+	}
+};
 
 // Debug Overlay
 class IVDebugOverlay

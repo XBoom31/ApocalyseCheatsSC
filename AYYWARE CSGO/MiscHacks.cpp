@@ -11,7 +11,7 @@ Rest In Peace ApocalypseCheats
 #include "string.h"
 #include <wchar.h>
 #include <time.h>
-#include "Hooks.h"
+//#include "Hooks.h"
 #include "Hacks.h"
 #include "Chams.h"
 #include "Menu.h"
@@ -175,6 +175,25 @@ void CMiscHacks::AutoJump(CUserCmd *pCmd)
 		{
 			int iFlags = hackManager.pLocal()->GetFlags();
 			if (!(iFlags & FL_ONGROUND))
+				pCmd->buttons &= ~IN_JUMP;
+
+			if (hackManager.pLocal()->GetVelocity().Length() <= 50)
+			{
+				pCmd->forwardmove = 450.f;
+			}
+		}
+	}
+}
+
+void CMiscHacks::HAutoJump(CUserCmd *pCmd)
+{
+	if (Menu::Window.MiscTab.OtherHAutoJump.GetState())
+	{
+		if (pCmd->buttons & IN_JUMP && GUI.GetKeyState(VK_SPACE))
+		{
+			int iFlags = hackManager.pLocal()->GetFlags();
+			if (!(iFlags & FL_ONGROUND))
+				//if ()
 				pCmd->buttons &= ~IN_JUMP;
 
 			if (hackManager.pLocal()->GetVelocity().Length() <= 50)

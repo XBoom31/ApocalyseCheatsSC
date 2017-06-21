@@ -1,5 +1,14 @@
 /*
-Syn's AyyWare Framework 2015
+ApocalypseCheats
+------------------------------
+Contributors:
+XBoom
+Ma$$A$
+madlifer
+control1337
+CyclesPrograming
+FZCat1337
+UC Community <3
 */
 
 #pragma once
@@ -778,7 +787,7 @@ class CCSBomb
 {
 public:
 	CNETVAR_FUNC(HANDLE, GetOwnerHandle, 0xC32DF98D); //m_hOwner 0x29BC
-	CNETVAR_FUNC(float, GetC4BlowTime, 0x297C); //m_flC4Blow 0x297C
+	CNETVAR_FUNC(float, GetC4BlowTime, 0xB5E0CA1C);
 	CNETVAR_FUNC(float, GetC4DefuseCountDown, 0x2994); //m_flDefuseCountDown 0x2994
 };
 

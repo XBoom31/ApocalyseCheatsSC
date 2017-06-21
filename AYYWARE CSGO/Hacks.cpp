@@ -1,5 +1,14 @@
 /*
-Syn's Payhake Framework for Insanity & Razor
+ApocalypseCheats
+------------------------------
+Contributors:
+XBoom
+Ma$$A$
+madlifer
+control1337
+CyclesPrograming
+FZCat1337
+UC Community <3
 */
 
 #define _CRT_SECURE_NO_WARNINGS

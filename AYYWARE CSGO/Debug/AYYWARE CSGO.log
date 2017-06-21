@@ -1,0 +1,295 @@
+﻿  Window.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+  Visual.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\visual.cpp(69): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\visual.cpp(70): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\visual.cpp(71): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\visual.cpp(72): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+  Utilities.cpp
+  UTIL Functions.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\util functions.cpp(126): warning C4305: '=': truncation from 'double' to 'vec_t'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\util functions.cpp(127): warning C4305: '=': truncation from 'double' to 'vec_t'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\util functions.cpp(152): warning C4101: 'shit3': unreferenced local variable
+  tinyxml2.cpp
+  SpoofedConvar.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\spoofedconvar.cpp(133): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\spoofedconvar.cpp(149): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\spoofedconvar.cpp(150): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\spoofedconvar.cpp(168): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+  RSP_S2DEX.cpp
+  Resolver.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+  RenderManager.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\rendermanager.cpp(182): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\rendermanager.cpp(184): warning C4244: 'initializing': conversion from 'float' to 'DWORD', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\rendermanager.cpp(197): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\rendermanager.cpp(199): warning C4244: 'initializing': conversion from 'float' to 'DWORD', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\rendermanager.cpp(225): warning C4244: '=': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\rendermanager.cpp(226): warning C4244: '=': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\rendermanager.cpp(239): warning C4244: '=': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\rendermanager.cpp(240): warning C4244: '=': conversion from 'vec_t' to 'int', possible loss of data
+  RageBot.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\ragebot.cpp(50): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\ragebot.cpp(448): warning C4244: 'initializing': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\ragebot.cpp(502): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\ragebot.cpp(689): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\ragebot.cpp(856): warning C4244: '=': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\ragebot.cpp(941): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\ragebot.cpp(1099): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\ragebot.cpp(1106): warning C4244: '=': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\ragebot.cpp(1311): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\ragebot.cpp(1312): warning C4305: 'argument': truncation from 'double' to 'float'
+  Offsets.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+  nosmoke.cpp
+  NoSkycpp.cpp
+  NetVars.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+  NetVarManager.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\netvarmanager.cpp(151): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\netvarmanager.cpp(162): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\netvarmanager.cpp(175): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\netvarmanager.cpp(193): warning C4018: '<': signed/unsigned mismatch
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\netvarmanager.cpp(196): warning C4018: '<': signed/unsigned mismatch
+  MiscHacks.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\mischacks.cpp(196): error C2059: syntax error: ')'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\mischacks.cpp(316): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\mischacks.cpp(338): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\mischacks.cpp(392): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\mischacks.cpp(414): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\mischacks.cpp(420): warning C4566: character represented by universal-character-name '\uFEFF' cannot be represented in the current code page (1252)
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\mischacks.cpp(467): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  MetaInfo.cpp
+  Menu.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\menu.cpp(322): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\menu.cpp(524): warning C4068: unknown pragma
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\menu.cpp(792): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\menu.cpp(808): warning C4101: 'wmon': unreferenced local variable
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\menu.cpp(1273): warning C4068: unknown pragma
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\menu.cpp(1379): warning C4068: unknown pragma
+  MathFunctions.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(219): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\mathfunctions.cpp(138): warning C4244: '=': conversion from 'double' to 'vec_t', possible loss of data
+  LegitBot.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\legitbot.cpp(576): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+  Generating Code...
+  Compiling...
+  Interfaces.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+  ReflectiveLoader.cpp
+  Hooks.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\hooks.cpp(18): warning C4005: 'MakePtr': macro redefinition
+  c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\utilities.h(26): note: see previous definition of 'MakePtr'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\hooks.cpp(159): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\hooks.cpp(192): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\hooks.cpp(335): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\hooks.cpp(430): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\hooks.cpp(431): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\hooks.cpp(592): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\hooks.cpp(646): warning C4305: 'argument': truncation from 'double' to 'float'
+  Hacks.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\hacks.cpp(184): warning C4305: '=': truncation from 'double' to 'vec_t'
+  GUI.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(40): warning C4244: 'argument': conversion from 'LONG' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(41): warning C4244: 'argument': conversion from 'LONG' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(42): warning C4244: 'argument': conversion from 'LONG' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(57): warning C4800: 'SHORT': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(271): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(272): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(275): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(276): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(294): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(295): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\gui.cpp(527): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  ESP.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(162): warning C4474: 'sprintf_s' : too many arguments passed for format string
+  c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(162): note: placeholders and their parameters expect 1 variadic arguments, but 2 were provided
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(319): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(320): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(321): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(322): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(339): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(343): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(353): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(355): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(391): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(392): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(446): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(449): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(454): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(455): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(456): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(457): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(465): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(466): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(467): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(468): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(487): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(489): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(490): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(491): warning C4244: 'argument': conversion from 'int' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(555): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(556): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(557): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(558): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(572): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(573): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(580): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(622): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(653): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(670): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(687): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\esp.cpp(712): warning C4244: 'argument': conversion from 'vec_t' to 'int', possible loss of data
+  Dumping.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+  DLLMain.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+  CRC32.cpp
+  Controls.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(86): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(96): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(196): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(201): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(202): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(221): warning C4244: '=': conversion from 'LONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(223): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(451): warning C4018: '<': signed/unsigned mismatch
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(499): warning C4018: '<': signed/unsigned mismatch
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(541): warning C4018: '<': signed/unsigned mismatch
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\controls.cpp(551): warning C4018: '<': signed/unsigned mismatch
+  Chams.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\chams.cpp(84): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\chams.cpp(84): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\chams.cpp(91): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Autowall.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\autowall.cpp(100): warning C4244: '*=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\autowall.cpp(121): warning C4244: '*=': conversion from 'double' to 'float', possible loss of data
+  AntiAntiAim.cpp
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(192): warning C4244: 'argument': conversion from 'double' to 'vec_t', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(199): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\vector.h(200): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\entities.h(951): warning C4244: 'argument': conversion from 'ULONGLONG' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\antiantiaim.cpp(98): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\xboom\desktop\ac fixed\ayyware csgo\apocalysecheatssc\ayyware csgo\antiantiaim.cpp(103): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...

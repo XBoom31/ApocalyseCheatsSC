@@ -31,6 +31,7 @@ private:
 	bool IsLocked;
 	int TargetID;
 	int HitBox;
+	int HitBox2;
 	Vector AimPoint;
 
 	float Speed;

@@ -1,19 +1,20 @@
-/*
-Rest In Peace ApocalypseCheats
-*/
-
 #pragma once
 
 #include "CommonIncludes.h"
 
 #include <map>
 
+extern bool SaveFile;
+extern bool LoadFile;
+
 class CControl;
 class CTab;
 class CWindow;
 class CGUI;
+class CSkinChanger;
 
 extern CGUI GUI;
+//extern CSkinChanger *Radar;
 
 enum UIFlags
 {
@@ -60,21 +61,67 @@ protected:
 	virtual void OnClick() = 0;
 
 	POINT GetAbsolutePos();
-};
 
+	POINT GetAbsolutePos2();
+
+};
+#pragma once
+
+#define UI_CURSORSIZE		12
+#define UI_CURSORFILL		Color(255,255,255)
+#define UI_CURSOROUTLINE	Color(20,20,20,140)
+
+#define UI_WIN_TOPHEIGHT	26
+#define UI_WIN_TITLEHEIGHT	32
+
+
+#define UI_TAB_HEIGHT		32
+
+#define UI_WIN_CLOSE_X		20
+#define UI_WIN_CLOSE_Y      6
+
+#define UI_CHK_SIZE			16
+
+#define UI_CURSORSIZE		12
+#define UI_CURSORFILL		Color(255,255,255)
+#define UI_CURSOROUTLINE	Color(20,20,20,140)
+
+
+
+#define UI_TAB_WIDTH		100
+
+#define UI_WIN_CLOSE_Y      6
+
+#define UI_CHK_SIZE			16
+
+#define COL_WHITE			Color(255, 255, 255)
+//#define UI_COL_MAIN			Color(37, 137, 255, 255)
+#define UI_COL_MAINDARK		Color(28,136,0, 255)
+#define UI_COL_FADEMAIN		Color(28,136,0, 255)
+#define UI_COL_SHADOW		Color(0, 0, 0, 255)
+#define UI_COL_CLIENTBACK	Color(30, 30, 30, 255)
+#define UI_COL_TABSEPERATOR	Color(132, 132, 132, 200)
+#define UI_COL_TABTEXT		Color(145, 145, 145, 255)
+#define UI_COL_GROUPOUTLINE Color(222, 222, 222, 255)
 // A GUI Control Container
 class CTab
 {
 	friend class CControl;
 	friend class CGUI;
 	friend class CWindow;
+	friend class CSkinChanger;
 public:
 	void SetTitle(std::string name);
+	void SetTitle2(std::string name);
+
 	void RegisterControl(CControl* control);
 private:
 	std::string Title;
+	std::string Title2;
+
 	std::vector<CControl*> Controls;
 	CWindow* parent;
+	CSkinChanger* parent1;
 };
 
 // Base class for a simple GUI window
@@ -94,6 +141,8 @@ public:
 	void RegisterTab(CTab* Tab);
 
 	RECT GetClientArea();
+	RECT GetTabArea1();
+	RECT GetClientArea1();
 	RECT GetTabArea();
 
 private:
@@ -113,6 +162,45 @@ private:
 	int m_iWidth;
 	int m_iHeight;
 
+
+
+
+};
+class CSkinChanger {
+	friend class CControl;
+	friend class CGUI;
+public:
+	void SetPosition(int x, int y);
+	void SetSize(int w, int h);
+	void SetTitle(std::string title);
+	void Open();
+	void Close();
+	void Toggle();
+	CControl* GetFocus();
+
+	void RegisterTab(CTab* Tab);
+
+	RECT GetClientArea();
+	RECT GetTabArea1();
+	RECT GetClientArea1();
+	RECT GetTabArea();
+
+private:
+	void DrawControls();
+
+	bool m_bIsOpen;
+
+	std::vector<CTab*> Tabs;
+	CTab* SelectedTab;
+
+	bool IsFocusingControl;
+	CControl* FocusedControl;
+
+	std::string Title;
+	int m_x;
+	int m_y;
+	int m_iWidth;
+	int m_iHeight;
 };
 
 // User interface manager
@@ -129,6 +217,9 @@ public:
 
 	// Draws a single window
 	bool DrawWindow(CWindow* window);
+	bool DrawRadar(CSkinChanger * Radar);
+	// Draws radar window
+	bool DrawRadar();
 
 	// Registers a window
 	void RegisterWindow(CWindow* window);
@@ -157,8 +248,10 @@ private:
 	bool MenuOpen;
 
 	// Window Dragging
-	bool IsDraggingWindow;
+	bool IsDragging;
 	CWindow* DraggingWindow;
+	CSkinChanger* DraggingRadar;
+
 	int DragOffsetX; int DragOffsetY;
 
 	// Windows

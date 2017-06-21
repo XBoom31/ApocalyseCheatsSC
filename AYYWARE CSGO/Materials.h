@@ -1,5 +1,5 @@
 /*
-Syn's AyyWare Framework 2015
+ApocalypseCheats
 */
 
 #pragma once

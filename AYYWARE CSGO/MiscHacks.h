@@ -16,6 +16,7 @@ public:
 	void Move(CUserCmd *pCmd, bool &bSendPacket);
 	void CustomName();
 private:
+	void HAutoJump(CUserCmd *pCmd);
 	void AutoJump(CUserCmd *pCmd);
 	void AutoJumpSMAC(CUserCmd *pCmd);
 	void EdgeJump(CUserCmd *pCmd);

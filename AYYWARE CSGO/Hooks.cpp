@@ -1,5 +1,14 @@
 /*
-Syn's AyyWare Framework 2015
+ApocalypseCheats
+------------------------------
+Contributors:
+XBoom
+Ma$$A$
+madlifer
+control1337
+CyclesPrograming
+FZCat1337
+UC Community <3
 */
 
 #include "Hooks.h"
@@ -226,9 +235,23 @@ void ClanTag()
 		break;
 	}
 }
+HooksXD lmao;
+int HooksXD::night;
+int HooksXD::night2;
+#include "Entities.h"
+void HooksXD::XD3()
+{
+	CSGOClassID::CMaterialModifyControl;
+	//int HooksXD::night;
+	//int HooksXD::night2;
+	 
+	 HooksXD::night = 1;
+	 HooksXD::night2 = 1;
+};
 
 bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime, CUserCmd* pCmd)
 {
+	
 	if (!pCmd->command_number)
 		return true;
 
@@ -323,6 +346,36 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 
 	if (Menu::Window.VisualsTab.NightMode.GetState()) {
 		{
+			
+			
+			
+			if (HooksXD::night = 1)
+			{
+				for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
+				{
+					IMaterial *pMaterial = Interfaces::MaterialSystem->GetMaterial(i);
+
+					if (!pMaterial)
+						continue;
+
+					if (strstr(pMaterial->GetTextureGroupName(), "World")) {
+						//	pMaterial->AlphaModulate(0 / 255);
+						pMaterial->ColorModulate(0.1, 0.1, 0.4);
+						HooksXD::night++;
+					}
+
+				}
+			}
+			
+		}
+	}
+	else
+	{
+		
+		
+		if (HooksXD::night2 = 1)
+		{
+			 
 			for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
 			{
 				IMaterial *pMaterial = Interfaces::MaterialSystem->GetMaterial(i);
@@ -332,61 +385,15 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 
 				if (strstr(pMaterial->GetTextureGroupName(), "World")) {
 					//	pMaterial->AlphaModulate(0 / 255);
-					pMaterial->ColorModulate(0.1, 0.1, 0.4);
+					pMaterial->ColorModulate(1, 1, 1);
+					HooksXD::night2++;
 				}
 
 			}
 		}
+		
 	}
-	else
-	{
-		for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
-		{
-			IMaterial *pMaterial = Interfaces::MaterialSystem->GetMaterial(i);
 
-			if (!pMaterial)
-				continue;
-
-			if (strstr(pMaterial->GetTextureGroupName(), "World")) {
-				//	pMaterial->AlphaModulate(0 / 255);
-				pMaterial->ColorModulate(1, 1, 1);
-			}
-
-		}
-	}
-	if (Menu::Window.VisualsTab.OtherAsus.GetState()) {
-		{
-			for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
-			{
-				IMaterial *pMaterial = Interfaces::MaterialSystem->GetMaterial(i);
-
-				if (!pMaterial)
-					continue;
-
-				if (strstr(pMaterial->GetTextureGroupName(), "World")) {
-					//	pMaterial->AlphaModulate(0 / 255);
-					pMaterial->ColorModulate(255, 255, 255);
-				}
-
-			}
-		}
-	}
-	else
-	{
-		for (MaterialHandle_t i = Interfaces::MaterialSystem->FirstMaterial(); i != Interfaces::MaterialSystem->InvalidMaterial(); i = Interfaces::MaterialSystem->NextMaterial(i))
-		{
-			IMaterial *pMaterial = Interfaces::MaterialSystem->GetMaterial(i);
-
-			if (!pMaterial)
-				continue;
-
-			if (strstr(pMaterial->GetTextureGroupName(), "World")) {
-				//	pMaterial->AlphaModulate(0 / 255);
-				pMaterial->ColorModulate(1, 1, 1);
-			}
-
-		}
-	}
 	if (Menu::Window.VisualsTab.OtherNoSky.GetState())
 	{
 		ConVar* NoSkybox = Interfaces::CVar->FindVar("sv_skyname"); /*No-Skybox*/
@@ -500,22 +507,24 @@ void __fastcall Hooked_DrawModelExecute(void* thisptr, int edx, void* ctx, void*
 		//terrorist red
 		float TR = Menu::Window.ColorTab.TVisColorR.GetValue();
 		float TNVR = Menu::Window.ColorTab.TNVisColorR.GetValue();
-				//terrorist green
+		//terrorist green
 		float TG = Menu::Window.ColorTab.TVisColorG.GetValue();
 		float TNVG = Menu::Window.ColorTab.TNVisColorG.GetValue();
-				//terrorist green
+		//terrorist green
 		float TB = Menu::Window.ColorTab.TVisColorB.GetValue();
 		float TNVB = Menu::Window.ColorTab.TNVisColorB.GetValue();
-		
-				//ct red
+
+		//ct red
 		float CTR = Menu::Window.ColorTab.CTVisColorR.GetValue();
 		float CTNVR = Menu::Window.ColorTab.CTNVisColorR.GetValue();
-				//ct green
+		//ct green
 		float CTG = Menu::Window.ColorTab.CTVisColorG.GetValue();
 		float CTNVG = Menu::Window.ColorTab.CTNVisColorG.GetValue();
-				//ct blue
+		//ct blue
 		float CTB = Menu::Window.ColorTab.CTVisColorB.GetValue();
 		float CTNVB = Menu::Window.ColorTab.CTNVisColorB.GetValue();
+
+
 
 		if (ChamsStyle != 0 && Menu::Window.VisualsTab.FiltersPlayers.GetState() && strstr(ModelName, "models/player"))
 		{
@@ -532,22 +541,43 @@ void __fastcall Hooked_DrawModelExecute(void* thisptr, int edx, void* ctx, void*
 					{
 						if (pModelEntity->IsAlive() && pModelEntity->GetHealth() > 0 /*&& pModelEntity->GetTeamNum() != local->GetTeamNum()*/)
 						{
-							float alpha = 1.f;
+							int alpharaw = Menu::Window.ColorTab.CharmsA.GetValue();
+
+							float alpha2 = alpharaw / 255;
+							float alpha;
 
 							if (pModelEntity->HasGunGameImmunity())
-								alpha = 0.5f;
+								alpha2 = 0.5f;
 
+							
 							if (pModelEntity->GetTeamNum() == 2)
 							{
 								flColor[0] = TNVR / 255.f;
- 				flColor[1] = TNVG / 255.f;
-    								flColor[2] = TNVB / 255.f;
+								flColor[1] = TNVG / 255.f;
+								flColor[2] = TNVB / 255.f;
+								if (ChamsStyle == 3 || ChamsStyle == 4)
+								{
+									alpha = 0;
+								}
+								else
+								{
+									alpha = alpha2;
+								}
+
 							}
 							else
 							{
 								flColor[0] = CTNVR / 255.f;
 								flColor[1] = CTNVG / 255.f;
 								flColor[2] = CTNVB / 255.f;
+								if (ChamsStyle == 3 || ChamsStyle == 4)
+								{
+									alpha = 0;
+								}
+								else
+								{
+									alpha = alpha2;
+								}
 							}
 
 							Interfaces::RenderView->SetColorModulation(flColor);
@@ -727,7 +757,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 				meme = true;
 			}
 		}
-		
+
 
 		static bool kek = false;
 		if (Menu::Window.MiscTab.OtherThirdperson.GetState() && pLocal->IsAlive())
@@ -755,12 +785,17 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 		}
 		else if (!Menu::Window.VisualsTab.OtherWireframe.GetState())
 		{
-			Interfaces::Engine->ClientCmd_Unrestricted("r_drawothermodels 1");
-			wireframe = false;
+			if (wireframe)
+			{
+				Interfaces::Engine->ClientCmd_Unrestricted("r_drawothermodels 1");
+				wireframe = false;
+			}
+			
 		}
 		static bool nosmoke;
 		if (Menu::Window.VisualsTab.OtherNoSmoke.GetState())
 		{
+
 			if (!nosmoke) {
 				Interfaces::Engine->ClientCmd_Unrestricted("r_drawparticles 0");
 				Interfaces::Engine->ClientCmd_Unrestricted("fog_enable 0");
@@ -770,20 +805,31 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 		}
 		else if (!Menu::Window.VisualsTab.OtherNoSmoke.GetState())
 		{
-			Interfaces::Engine->ClientCmd_Unrestricted("r_drawparticles 1");
-			Interfaces::Engine->ClientCmd_Unrestricted("fog_enable 1");
-			nosmoke = false;
+			if (nosmoke)
+			{
+				Interfaces::Engine->ClientCmd_Unrestricted("r_drawparticles 1");
+				Interfaces::Engine->ClientCmd_Unrestricted("fog_enable 1");
+				nosmoke = false;
+			}
+			
 		}
 		static bool xd;
-		if (Menu::Window.VisualsTab.OtherNoScope.GetState())
-		{
-			if (pLocal->IsScoped())
+		if (Menu::Window.VisualsTab.OtherNoScope.GetState() && hackManager.pLocal()) {
+			if (hackManager.pLocal()->IsScoped())
 			{
-				Interfaces::Engine->ClientCmd_Unrestricted("cl_drawhud 0");
+				int width, height;
+				Interfaces::Engine->GetScreenSize(width, height);
+				Render::Line(width / 2, 0, width / 2, height, Color(0, 0, 0, 255));
+				Render::Line(0, height / 2, width, height / 2, Color(0, 0, 0, 255));
+
+				ConVar* drawhud = Interfaces::CVar->FindVar("cl_DrawHud");
+				*(int*)((DWORD)&drawhud->fnChangeCallback + 0xC) = 0;
+				drawhud->SetValue(0);
 			}
 			else
 			{
-				Interfaces::Engine->ClientCmd_Unrestricted("cl_drawhud 1");
+				ConVar* drawhud = Interfaces::CVar->FindVar("cl_DrawHud");
+				drawhud->SetValue(1);
 			}
 		}
 	}
@@ -893,22 +939,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 							int SSG08 = Menu::Window.SkinchangerTab.SSG08Skin.GetIndex();
 							int Magnum = Menu::Window.SkinchangerTab.DEAGLESkin.GetIndex();
 
-							if (pEntity->GetClientClass()->m_ClassID != (int)CSGOClassID::CKnife)
-							{
-								if (Menu::Window.SkinchangerTab.SkinName.getText().length() > 1)
-								{
-									auto pCustomName = MakePtr(char*, pWeapon, 0x301C);
-									strcpy_s(pCustomName, 32, Menu::Window.SkinchangerTab.SkinName.getText().c_str());
-								}
-							}
 
-							if (Menu::Window.SkinchangerTab.StatTrackAmount.getText().c_str() != NULL && Menu::Window.SkinchangerTab.StatTrackAmount.getText().c_str() != "")
-							{
-								int st = atoi(Menu::Window.SkinchangerTab.StatTrackAmount.getText().c_str());
-
-								if (Menu::Window.SkinchangerTab.StatTrakEnable.GetState())
-									*pWeapon->FallbackStatTrak() = st;
-							}
 
 							int weapon = *pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex();
 
@@ -2903,10 +2934,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 							if (pEntity->GetClientClass()->m_ClassID == (int)CSGOClassID::CKnife)
 							{
 								auto pCustomName1 = MakePtr(char*, pWeapon, 0x301C);
-								if (Menu::Window.SkinchangerTab.KnifeName.getText().length() > 1)
-								{
-									strcpy_s(pCustomName1, 32, Menu::Window.SkinchangerTab.KnifeName.getText().c_str());
-								}
+
 
 								if (Model == 0) // Bayonet
 								{

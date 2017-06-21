@@ -18,4 +18,5 @@ private:
 	void DrawCrosshair();
 	void DrawRecoilCrosshair();
 	void DrawCenterRadar();
+	void DrawHitCrosshair();
 };

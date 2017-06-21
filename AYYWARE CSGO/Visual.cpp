@@ -42,6 +42,11 @@ void CVisuals::DrawCrosshair()
 	Render::Line(MidX + 4, MidY - 4, MidX - 4, MidY + 4, Color(0, 255, 0, 255));
 }
 
+void CVisuals::DrawHitCrosshair()
+{
+
+}
+
 // Recoil crosshair
 void CVisuals::DrawRecoilCrosshair()
 {

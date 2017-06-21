@@ -18,6 +18,7 @@ CGUI::CGUI()
 
 }
 
+
 // Draws all windows 
 void CGUI::Draw()
 {
@@ -35,20 +36,36 @@ void CGUI::Draw()
 
 	if (ShouldDrawCursor)
 	{
-		static Vertex_t MouseVt[3];
-
-		MouseVt[0].Init(Vector2D(Mouse.x, Mouse.y));
-		MouseVt[1].Init(Vector2D(Mouse.x + 16, Mouse.y));
-		MouseVt[2].Init(Vector2D(Mouse.x, Mouse.y + 16));
-
-		Render::PolygonOutline(3, MouseVt, Color(0, 0, 0, 230), Color(0, 0, 0, 240));
-		
+		Render::Clear(Mouse.x + 1, Mouse.y, 1, 17, Color(3, 6, 26, 255));
+		for (int i = 0; i < 11; i++)
+			Render::Clear(Mouse.x + 2 + i, Mouse.y + 1 + i, 1, 1, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 8, Mouse.y + 12, 5, 1, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 8, Mouse.y + 13, 1, 1, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 9, Mouse.y + 14, 1, 2, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 10, Mouse.y + 16, 1, 2, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 8, Mouse.y + 18, 2, 1, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 7, Mouse.y + 16, 1, 2, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 6, Mouse.y + 14, 1, 2, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 5, Mouse.y + 13, 1, 1, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 4, Mouse.y + 14, 1, 1, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 3, Mouse.y + 15, 1, 1, Color(3, 6, 26, 255));
+		Render::Clear(Mouse.x + 2, Mouse.y + 16, 1, 1, Color(3, 6, 26, 255));
+		for (int i = 0; i < 4; i++)
+			Render::Clear(Mouse.x + 2 + i, Mouse.y + 2 + i, 1, 14 - (i * 2), Color(37 - (i * 4), 137 - (i * 4), 255 - (i * 4), 255));
+		Render::Clear(Mouse.x + 6, Mouse.y + 6, 1, 8, Color(0, 150, 255, 255));
+		Render::Clear(Mouse.x + 7, Mouse.y + 7, 1, 9, Color(0, 150, 255, 255));
+		for (int i = 0; i < 4; i++)
+			Render::Clear(Mouse.x + 8 + i, Mouse.y + 8 + i, 1, 4 - i, Color(37 - (i * 4), 137 - (i * 4), 255 - (i * 4), 255));
+		Render::Clear(Mouse.x + 8, Mouse.y + 14, 1, 4, Color(0, 150, 255, 255));
+		Render::Clear(Mouse.x + 9, Mouse.y + 16, 1, 2, Color(0, 150, 255, 255));
 	}
+
 }
 
 // Handle all input etc
 void CGUI::Update()
 {
+	bool IsDraggingWindow;
 	//Key Array
 	std::copy(keys, keys + 255, oldKeys);
 	for (int x = 0; x < 255; x++)
@@ -272,8 +289,8 @@ bool CGUI::DrawWindow(CWindow* window)
 	Render::Clear(window->m_x + 2, window->m_y + 2 + 26, window->m_iWidth - 4, window->m_iHeight - 4 - 26, Color(Menu::Window.ColorTab.MenuBar2R.GetValue(), Menu::Window.ColorTab.MenuBar2G.GetValue(), Menu::Window.ColorTab.MenuBar2B.GetValue(), 255));
 	Render::Outline(window->m_x + 1, window->m_y + 1, window->m_iWidth - 2, window->m_iHeight - 2, Color(0, 0, 0, 255));
 	Render::Text(window->m_x + 8, window->m_y + 8, Color(0, 0, 0, 255), Render::Fonts::MenuBold, window->Title.c_str());
-	Render::Clear(window->m_x + 8, window->m_y + 1 + 27, window->m_iWidth - 4 - 12, window->m_iHeight - 2 - 8 - 26, Color(Menu::Window.ColorTab.MenuBGR.GetValue(), Menu::Window.ColorTab.MenuBGG.GetValue(), Menu::Window.ColorTab.MenuBGB.GetValue(), Menu::Window.ColorTab.MenuOpacity.GetValue()));
-	Render::GradientV(window->m_x + 8, window->m_y + 1 + 27, window->m_iWidth - 4 - 12, 29, Color(49, 42, 42, Menu::Window.ColorTab.MenuOpacity.GetValue()), Color(49, 42, 42, Menu::Window.ColorTab.MenuOpacity.GetValue()));
+	Render::Clear(window->m_x + 8, window->m_y + 1 + 27, window->m_iWidth - 4 - 12, window->m_iHeight - 2 - 8 - 26, Color(30, 30, 30, 255));
+	Render::GradientV(window->m_x + 8, window->m_y + 1 + 27, window->m_iWidth - 4 - 12, 29, Color(49, 42, 42, 255), Color(49, 42, 42, 255));
 	int TabCount = window->Tabs.size();
 	if (TabCount) // If there are some tabs
 	{
@@ -295,8 +312,6 @@ bool CGUI::DrawWindow(CWindow* window)
 			Render::Clear(window->m_x + 8, window->m_y + 1 + 27, window->m_iWidth - 4 - 12, 2, Color(62, 55, 55, Menu::Window.ColorTab.MenuOpacity.GetValue()));
 		}
 	}
-
-
 
 
 	// Controls 

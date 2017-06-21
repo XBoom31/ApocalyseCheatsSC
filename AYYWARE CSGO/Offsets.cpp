@@ -17,6 +17,7 @@ void Offsets::Initialise()
 	Modules::Material = Utilities::Memory::WaitOnModuleHandle("materialsystem.dll");
 	Modules::VPhysics = Utilities::Memory::WaitOnModuleHandle("vphysics.dll");
 	Modules::Stdlib = Utilities::Memory::WaitOnModuleHandle("vstdlib.dll");
+	Modules::InputLib = Utilities::Memory::WaitOnModuleHandle("inputsystem.dll");
 
 	//------------------------------------------------------------------------
 	// VTables
@@ -109,6 +110,7 @@ namespace Offsets
 		DWORD Material;
 		DWORD VPhysics;
 		DWORD Stdlib;
+		DWORD Offsets::Modules::InputLib;
 	};
 
 	// Virtual Method Table Indexes

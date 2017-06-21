@@ -1,10 +1,12 @@
 /*
-Syn's AyyWare Framework 2015
+ApocalypseCheats
 */
 
 #include "LegitBot.h"
 #include "RenderManager.h"
 #include <iostream>
+#include "MiscHacks.h"
+#include "Interfaces.h"
 
 #define    HITGROUP_GENERIC    0
 #define    HITGROUP_HEAD        1
@@ -58,22 +60,75 @@ void CLegitBot::SyncWeaponSettings()
 		RecoilControl = Menu::Window.LegitBotTab.WeaponPistRecoil.GetState();
 		PSilent = Menu::Window.LegitBotTab.WeaponPistPSilent.GetState();
 		Inacc = Menu::Window.LegitBotTab.WeaponPistInacc.GetValue();
-
-		switch (Menu::Window.LegitBotTab.WeaponPistHitbox.GetIndex())
+		int hitboxmainid = Menu::Window.LegitBotTab.WeaponPistHitbox.GetIndex();
+		int hitboxsecid = Menu::Window.LegitBotTab.WeaponPistSecHitbox.GetIndex();
+		if (hitboxsecid = 0)
 		{
-		case 0:
-			HitBox = ((int)CSGOHitboxID::Head);
-			break;
-		case 1:
-			HitBox = ((int)CSGOHitboxID::Neck);
-			break;
-		case 2:
-			HitBox = ((int)CSGOHitboxID::Chest);
-			break;
-		case 3:
-			HitBox = ((int)CSGOHitboxID::Stomach);
-			break;
+			switch (hitboxmainid)
+			{
+			case 0:
+				HitBox = ((int)CSGOHitboxID::Head);
+				break;
+			case 1:
+				HitBox = ((int)CSGOHitboxID::Neck);
+				break;
+			case 2:
+				HitBox = ((int)CSGOHitboxID::Chest);
+				break;
+			case 3:
+				HitBox = ((int)CSGOHitboxID::Stomach);
+				break;
+			}
 		}
+		else
+		{
+			IClientEntity *pEntity2;
+			for (int i = 0; i < Interfaces::EntList->GetHighestEntityIndex(); i++)
+			{
+				// Get the entity
+				IClientEntity *pEntity = Interfaces::EntList->GetClientEntity(i);
+				pEntity2 = pEntity;
+			}
+			switch (hitboxmainid)
+			{
+			case 0:
+				HitBox2 = ((int)CSGOHitboxID::Head);
+				break;
+			case 1:
+				HitBox2 = ((int)CSGOHitboxID::Neck);
+				break;
+			case 2:
+				HitBox2 = ((int)CSGOHitboxID::Chest);
+				break;
+			case 3:
+				HitBox2 = ((int)CSGOHitboxID::Stomach);
+				break;
+			}
+			if (!GameUtils::IsVisible(hackManager.pLocal(), pEntity2, HitBox2))
+			{
+				switch (hitboxsecid)
+				{
+				case 1:
+					HitBox = ((int)CSGOHitboxID::Head);
+					break;
+				case 2:
+					HitBox = ((int)CSGOHitboxID::Neck);
+					break;
+				case 3:
+					HitBox = ((int)CSGOHitboxID::Chest);
+					break;
+				case 4:
+					HitBox = ((int)CSGOHitboxID::Stomach);
+					break;
+				}
+			}
+			else
+			{
+				HitBox = HitBox2;
+			}
+		}
+
+		
 	}
 	else if (GameUtils::IsSniper(pWeapon))
 	{
@@ -82,21 +137,72 @@ void CLegitBot::SyncWeaponSettings()
 		RecoilControl = Menu::Window.LegitBotTab.WeaponSnipRecoil.GetState();
 		PSilent = Menu::Window.LegitBotTab.WeaponSnipPSilent.GetState();
 		Inacc = Menu::Window.LegitBotTab.WeaponSnipInacc.GetValue();
-
-		switch (Menu::Window.LegitBotTab.WeaponSnipHitbox.GetIndex())
+		int hitboxmainid = Menu::Window.LegitBotTab.WeaponSnipHitbox.GetIndex();
+		int hitboxsecid = Menu::Window.LegitBotTab.WeaponSnipSecHitbox.GetIndex();
+		if (hitboxsecid = 0)
 		{
-		case 0:
-			HitBox = ((int)CSGOHitboxID::Head);
-			break;
-		case 1:
-			HitBox = ((int)CSGOHitboxID::Neck);
-			break;
-		case 2:
-			HitBox = ((int)CSGOHitboxID::Chest);
-			break;
-		case 3:
-			HitBox = ((int)CSGOHitboxID::Stomach);
-			break;
+			switch (hitboxmainid)
+			{
+			case 0:
+				HitBox = ((int)CSGOHitboxID::Head);
+				break;
+			case 1:
+				HitBox = ((int)CSGOHitboxID::Neck);
+				break;
+			case 2:
+				HitBox = ((int)CSGOHitboxID::Chest);
+				break;
+			case 3:
+				HitBox = ((int)CSGOHitboxID::Stomach);
+				break;
+			}
+		}
+		else
+		{
+			IClientEntity *pEntity2;
+			for (int i = 0; i < Interfaces::EntList->GetHighestEntityIndex(); i++)
+			{
+				// Get the entity
+				IClientEntity *pEntity = Interfaces::EntList->GetClientEntity(i);
+				pEntity2 = pEntity;
+			}
+			switch (hitboxmainid)
+			{
+			case 0:
+				HitBox2 = ((int)CSGOHitboxID::Head);
+				break;
+			case 1:
+				HitBox2 = ((int)CSGOHitboxID::Neck);
+				break;
+			case 2:
+				HitBox2 = ((int)CSGOHitboxID::Chest);
+				break;
+			case 3:
+				HitBox2 = ((int)CSGOHitboxID::Stomach);
+				break;
+			}
+			if (!GameUtils::IsVisible(hackManager.pLocal(), pEntity2, HitBox2))
+			{
+				switch (hitboxsecid)
+				{
+				case 1:
+					HitBox = ((int)CSGOHitboxID::Head);
+					break;
+				case 2:
+					HitBox = ((int)CSGOHitboxID::Neck);
+					break;
+				case 3:
+					HitBox = ((int)CSGOHitboxID::Chest);
+					break;
+				case 4:
+					HitBox = ((int)CSGOHitboxID::Stomach);
+					break;
+				}
+			}
+			else
+			{
+				HitBox = HitBox2;
+			}
 		}
 	}
 	else
@@ -106,21 +212,72 @@ void CLegitBot::SyncWeaponSettings()
 		RecoilControl = Menu::Window.LegitBotTab.WeaponMainRecoil.GetState();
 		PSilent = Menu::Window.LegitBotTab.WeaponMainPSilent.GetState();
 		Inacc = Menu::Window.LegitBotTab.WeaponMainInacc.GetValue();
-
-		switch (Menu::Window.LegitBotTab.WeaponMainHitbox.GetIndex())
+		int hitboxmainid = Menu::Window.LegitBotTab.WeaponMainHitbox.GetIndex();
+		int hitboxsecid = Menu::Window.LegitBotTab.WeaponMainSecHitbox.GetIndex();
+		if (hitboxsecid = 0)
 		{
-		case 0:
-			HitBox = ((int)CSGOHitboxID::Head);
-			break;
-		case 1:
-			HitBox = ((int)CSGOHitboxID::Neck);
-			break;
-		case 2:
-			HitBox = ((int)CSGOHitboxID::Chest);
-			break;
-		case 3:
-			HitBox = ((int)CSGOHitboxID::Stomach);
-			break;
+			switch (hitboxmainid)
+			{
+			case 0:
+				HitBox = ((int)CSGOHitboxID::Head);
+				break;
+			case 1:
+				HitBox = ((int)CSGOHitboxID::Neck);
+				break;
+			case 2:
+				HitBox = ((int)CSGOHitboxID::Chest);
+				break;
+			case 3:
+				HitBox = ((int)CSGOHitboxID::Stomach);
+				break;
+			}
+		}
+		else
+		{
+			IClientEntity *pEntity2;
+			for (int i = 0; i < Interfaces::EntList->GetHighestEntityIndex(); i++)
+			{
+				// Get the entity
+				IClientEntity *pEntity = Interfaces::EntList->GetClientEntity(i);
+				pEntity2 = pEntity;
+			}
+			switch (hitboxmainid)
+			{
+			case 0:
+				HitBox2 = ((int)CSGOHitboxID::Head);
+				break;
+			case 1:
+				HitBox2 = ((int)CSGOHitboxID::Neck);
+				break;
+			case 2:
+				HitBox2 = ((int)CSGOHitboxID::Chest);
+				break;
+			case 3:
+				HitBox2 = ((int)CSGOHitboxID::Stomach);
+				break;
+			}
+			if (!GameUtils::IsVisible(hackManager.pLocal(), pEntity2, HitBox2))
+			{
+				switch (hitboxsecid)
+				{
+				case 1:
+					HitBox = ((int)CSGOHitboxID::Head);
+					break;
+				case 2:
+					HitBox = ((int)CSGOHitboxID::Neck);
+					break;
+				case 3:
+					HitBox = ((int)CSGOHitboxID::Chest);
+					break;
+				case 4:
+					HitBox = ((int)CSGOHitboxID::Stomach);
+					break;
+				}
+			}
+			else
+			{
+				HitBox = HitBox2;
+			}
 		}
 	}
 }

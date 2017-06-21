@@ -7,6 +7,7 @@ Syn's Apocalypse Framework
 // Includes
 #include "CommonIncludes.h"
 #include <time.h>
+#include "Xor.h"
 
 // Colors for the console
 //Define extra colours
@@ -29,6 +30,7 @@ Syn's Apocalypse Framework
 // Purpose: Contains misc functionality for memory related functionality
 namespace Utilities
 {
+	typedef void* (*CreateInterface_t)(const char*, int*);
 	// Debug console controls
 	void OpenConsole(std::string Title);
 	void CloseConsole();
@@ -45,6 +47,26 @@ namespace Utilities
 	// Purpose: Provides memeory related functionality (pattern scanning ect)
 	namespace Memory
 	{
+		inline void* CaptureInterface(const char* chHandle, const char* chInterfaceName)
+		{
+			volatile auto handlegotten = (GetModuleHandleA(chHandle) != nullptr);
+			while (!GetModuleHandleA(chHandle)) Sleep(100);
+			void* fnFinal = nullptr;
+			auto PossibleInterfaceName = new char[strlen(chInterfaceName) + 4];
+			auto TestInterface = reinterpret_cast<CreateInterface_t>(GetProcAddress(GetModuleHandleA(chHandle), XorStr("CreateInterface")));
+			for (auto i = 100; i > 0; i--)
+			{
+				XorCompileTime::w_sprintf(PossibleInterfaceName, XorStr("%s%03i"), chInterfaceName, i);
+				fnFinal = static_cast<void*>(TestInterface(PossibleInterfaceName, nullptr));
+
+				if (fnFinal != nullptr)
+					break;
+
+			}
+			delete PossibleInterfaceName;
+			return fnFinal;
+		}
+
 		// Waits for a module to be available, before returning it's base address
 		DWORD WaitOnModuleHandle(std::string moduleName);
 

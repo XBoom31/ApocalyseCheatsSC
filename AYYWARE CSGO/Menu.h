@@ -37,7 +37,7 @@ public:
 	CCheckBox TargetHitscan;
 	CCheckBox TargetMultipoint;
 	CSlider   TargetPointscale;
-
+	CSlider AimbotAutoPistolD;
 	// Accuracy Settings
 	CGroupBox AccuracyGroup;
 	CCheckBox AccuracyRecoil;
@@ -89,7 +89,7 @@ public:
 	CCheckBox TriggerEnable;
 	CCheckBox TriggerKeyPress;
 	CKeyBind  TriggerKeyBind;
-	CSlider   TriggerDelay;
+	CSlider  TriggerDelay;
 
 	// Main
 	CGroupBox WeaponMainGroup;
@@ -99,6 +99,7 @@ public:
 	CCheckBox WeaponMainPSilent;
 	CSlider   WeaponMainInacc;
 	CComboBox WeaponMainHitbox;
+	CComboBox WeaponMainSecHitbox;
 
 	// Pistol
 	CGroupBox WeaponPistGroup;
@@ -108,7 +109,7 @@ public:
 	CCheckBox WeaponPistPSilent;
 	CSlider   WeaponPistInacc;
 	CComboBox WeaponPistHitbox;
-
+	CComboBox WeaponPistSecHitbox;
 	// Sniper
 	CCheckBox WeaponSnipEnable;
 	CGroupBox WeaponSnipGroup;
@@ -118,6 +119,7 @@ public:
 	CCheckBox WeaponSnipPSilent;
 	CSlider   WeaponSnipInacc;
 	CComboBox WeaponSnipHitbox;
+	CComboBox WeaponSnipSecHitbox;
 
 	CGroupBox TriggerFilterGroup;
 
@@ -173,6 +175,7 @@ public:
 	CCheckBox FiltersWeapons;
 	CCheckBox FiltersChickens;
 	CCheckBox FiltersC4;
+	CCheckBox FiltersDead;
 
 	// Other Settings
 	CGroupBox OtherGroup;
@@ -184,7 +187,9 @@ public:
 	CCheckBox OtherNoSky; 
 	CCheckBox OtherNoFlash; 
 	CSlider   OtherNoFlashVal;
+	CCheckBox OtherGlow;
 	CCheckBox NightMode;
+	CButton ResetXD;
 	CCheckBox OtherNoSmoke;
 	CCheckBox OtherAsusWalls;
 	CComboBox OtherNoHands;
@@ -210,6 +215,7 @@ public:
 	// Other Settings
 	CGroupBox OtherGroup;
 	CCheckBox OtherAutoJump;
+	CCheckBox OtherHAutoJump;
 	CCheckBox OtherEdgeJump;
 	CComboBox OtherAutoStrafe;
 	CCheckBox OtherSafeMode;
@@ -235,14 +241,13 @@ public:
 	CComboBox BIZONSkin;
 	CComboBox MP7Skin;
 	CComboBox MP9Skin;
-	CTextField OtherPName;
-	CTextField OtherCName;
+	
 	CButton NApply;
 	// Fake Lag Settings
 	CGroupBox FakeLagGroup;
 	CCheckBox FakeLagEnable;
-	CSlider   FakeLagChoke;
-	CSlider	  FakeLagSend;
+	CSlider  FakeLagChoke;
+	CSlider  FakeLagSend;
 	CCheckBox ChokeRandomize;
 	CCheckBox SendRandomize;
 	//CCheckBox FakeLagWhileShooting;
@@ -258,6 +263,7 @@ public:
 	void Setup();
 
 	//Groups
+	CSlider CharmsA;
 	CGroupBox ColorsGroup;
 	CGroupBox CTNVisGroup;
 	CGroupBox CTVisGroup;
@@ -369,9 +375,7 @@ public:
 	CCheckBox StatTrakEnable;
 	/*
 */
-	CTextField StatTrackAmount;
-	CTextField2 SkinName;
-	CTextField2 KnifeName;
+	
 };
 
 class CSettingsTab : public CTab

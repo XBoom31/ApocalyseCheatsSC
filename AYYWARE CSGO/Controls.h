@@ -1,39 +1,7 @@
-/*
-Rest In Peace ApocalypseCheats
-*/
-
 #pragma once
 
-#include "GUI.h"
+#include "Gui.h"
 
-
-class CTextField : public CControl
-{
-public:
-	CTextField();
-	std::string getText();
-	void SetText(std::string);
-private:
-	std::string text;
-	bool IsGettingKey;
-	void Draw(bool hover);
-	void OnUpdate();
-	void OnClick();
-};
-
-class CTextField2 : public CControl
-{
-public:
-	CTextField2();
-	std::string getText();
-	void SetText(std::string);
-private:
-	std::string text;
-	bool IsGettingKey;
-	void Draw(bool hover);
-	void OnUpdate();
-	void OnClick();
-};
 class CCheckBox : public CControl
 {
 public:
@@ -65,6 +33,7 @@ public:
 	CGroupBox();
 	void SetText(std::string text);
 	void PlaceLabledControl(std::string Label, CTab *Tab, CControl* control);
+	void PlaceLabledControl2(std::string Label, CTab * Tab, CControl * control);
 protected:
 	int Items;
 	std::string Text;
@@ -89,6 +58,7 @@ protected:
 	void OnUpdate();
 	void OnClick();
 };
+
 
 class CKeyBind : public CControl
 {
@@ -135,3 +105,6 @@ protected:
 	void OnUpdate();
 	void OnClick();
 };
+
+
+
