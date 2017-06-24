@@ -739,16 +739,11 @@ public:
 
 	CNETVAR_FUNC(int, GetZoomLevel, 0x26553F1A);
 
+
 	float GetInaccuracy()
 	{
 		typedef float(__thiscall* oInaccuracy)(PVOID);
-		return call_vfunc< oInaccuracy >(this, 484)(this);
-	}
-
-	float GetInnacc()
-	{
-		typedef float(__thiscall *OrigFn)(void *);
-		return call_vfunc<OrigFn>(this, 484)(this);
+		return call_vfunc< oInaccuracy >(this, 483)(this);
 	}
 
 	void UpdateAccPenalty()

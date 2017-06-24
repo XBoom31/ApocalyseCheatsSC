@@ -142,61 +142,61 @@ RecvVarProxyFn oRecvnModelIndex;
 void Hooked_RecvProxy_Viewmodel(CRecvProxyData *pData, void *pStruct, void *pOut)
 {
 	// Get the knife view model id's
-	static int default_t = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_default_t.mdl");
-	static int default_ct = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_default_ct.mdl");
-	static int bayonet = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_bayonet.mdl");
-	static int karam = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_karam.mdl");
-	
-	static int bayon = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_m9_bay.mdl");
-	static int Hunts = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_tactical.mdl");
-	static int fchion = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_falchion_advanced.mdl");
-	
-	static int iBowie = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_survival_bowie.mdl");
-	static int flip = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_flip.mdl");
-	static int gut = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_gut.mdl");
-	static int butter = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_butterfly.mdl");
-	static int daggers = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_push.mdl");
-	/*
+	int default_t = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_default_t.mdl");
+	int default_ct = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_default_ct.mdl");
 	int iBayonet = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_bayonet.mdl");
-			int iButterfly = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_butterfly.mdl");
-			int iFlip = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_flip.mdl");
-			int iGut = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_gut.mdl");
-			int iKarambit = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_karam.mdl");
-			int iM9Bayonet = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_m9_bay.mdl");
-			int iHuntsman = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_tactical.mdl");
-			int iFalchion = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_falchion_advanced.mdl");
-			int iDagger = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_push.mdl");
-			int iBowie = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_survival_bowie.mdl");
-	*/
+	int iButterfly = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_butterfly.mdl");
+	int iFlip = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_flip.mdl");
+	int iGut = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_gut.mdl");
+	int iKarambit = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_karam.mdl");
+	int iM9Bayonet = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_m9_bay.mdl");
+	int iHuntsman = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_tactical.mdl");
+	int iFalchion = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_falchion_advanced.mdl");
+	int iDagger = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_push.mdl");
+	int iBowie = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_survival_bowie.mdl");
+	int iGunGame = Interfaces::ModelInfo->GetModelIndex("models/weapons/v_knife_gg.mdl");
+
 	// Get local player (just to stop replacing spectators knifes)
 	IClientEntity* pLocal = Interfaces::EntList->GetClientEntity(Interfaces::Engine->GetLocalPlayer());
 	if (Menu::Window.SkinchangerTab.SkinEnable.GetState() && pLocal)
 	{
 		// If we are alive and holding a default knife(if we already have a knife don't worry about changing)
-		if (pLocal->IsAlive() && (pData->m_Value.m_Int == default_t || pData->m_Value.m_Int == default_ct))
+		if (pLocal->IsAlive() && (
+			pData->m_Value.m_Int == default_t ||
+			pData->m_Value.m_Int == default_ct ||
+			pData->m_Value.m_Int == iBayonet ||
+			pData->m_Value.m_Int == iButterfly ||
+			pData->m_Value.m_Int == iFlip ||
+			pData->m_Value.m_Int == iGunGame ||
+			pData->m_Value.m_Int == iGut ||
+			pData->m_Value.m_Int == iKarambit ||
+			pData->m_Value.m_Int == iM9Bayonet ||
+			pData->m_Value.m_Int == iHuntsman ||
+			pData->m_Value.m_Int == iFalchion ||
+			pData->m_Value.m_Int == iDagger ||
+			pData->m_Value.m_Int == iBowie))
 		{
 			// Set whatever knife we want
 			if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 0)
-				pData->m_Value.m_Int = bayonet;
+				pData->m_Value.m_Int = iBayonet;
 			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 1)
 				pData->m_Value.m_Int = iBowie;
 			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 2)
-				pData->m_Value.m_Int = butter;
+				pData->m_Value.m_Int = iButterfly;
 			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 3)
-				pData->m_Value.m_Int = fchion;
+				pData->m_Value.m_Int = iFalchion;
 			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 4)
-				pData->m_Value.m_Int = flip;
+				pData->m_Value.m_Int = iFlip;
 			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 5)
-				pData->m_Value.m_Int = gut;
+				pData->m_Value.m_Int = iGut;
 			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 6)
-				pData->m_Value.m_Int = Hunts;
+				pData->m_Value.m_Int = iHuntsman;
 			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 7)
-				pData->m_Value.m_Int = karam;
+				pData->m_Value.m_Int = iKarambit;
 			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 8)
-				pData->m_Value.m_Int = bayon;
+				pData->m_Value.m_Int = iM9Bayonet;
 			else if (Menu::Window.SkinchangerTab.KnifeModel.GetIndex() == 9)
-				pData->m_Value.m_Int = daggers;
-			
+				pData->m_Value.m_Int = iDagger;
 		}
 	}
 

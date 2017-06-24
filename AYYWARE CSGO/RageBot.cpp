@@ -914,43 +914,25 @@ namespace AntiAims // CanOpenFire checks for fake anti aims?
 	void BackJitter(CUserCmd *pCmd)
 	{
 		
-        #define RandomInt(min, max) (rand() % (max - min + 1) + min)
-		
-		static int lmao = RandomInt(1, 4);
-		if (lmao = 1)
+		switch ((int)rand % 5)
+		{
+		case 0:
 			pCmd->viewangles.y -= 180;
-		else if (lmao = 2)
-		{
-			static int lmao2v = RandomInt(0, 10);
-			static int lmao2b = RandomInt(1, 2);
-			if (lmao2b = 1)
-				pCmd->viewangles.y -= lmao2v;
-			else
-				pCmd->viewangles.y -= 180 - lmao2v;
-
-		}
-		else if (lmao = 3)
-		{
-			static int lmao2v = RandomInt(0, 20);
-			static int lmao2b = RandomInt(1, 2);
-			if (lmao2b = 1)
-				pCmd->viewangles.y -= lmao2v;
-			else
-				pCmd->viewangles.y -= 180 - lmao2v;
-
-		}
-		else if (lmao = 4)
-		{
-			static int lmao2v = RandomInt(0, 30);
-			static int lmao2b = RandomInt(1, 2);
-			if (lmao2b = 1)
-				pCmd->viewangles.y -= lmao2v;
-			else
-				pCmd->viewangles.y -= 180 - lmao2v;
-
-		}
-
-		
+		case 1:
+			pCmd->viewangles.y -= 180;
+		case 2:
+			pCmd->viewangles.y -= 180;
+		case 3:
+			switch ((int)rand % 2)
+			{
+			case 0:
+				pCmd->viewangles.y -= (int)rand % 45;
+			case 1:
+				pCmd->viewangles.y = (int)rand % 360;
+			}
+		case 4:
+			pCmd->viewangles.y -= (int)rand % 30;
+		}		
 	}
 
 	void Backwards(CUserCmd *pCmd)
