@@ -214,6 +214,7 @@ public:
 	}
 
 };
+
 template <typename Fn> __forceinline Fn GetVirtualFunction(void* pClassBase, int nFunctionIndex) {
 	return (Fn)((PDWORD)*(PDWORD*)pClassBase)[nFunctionIndex];
 }
@@ -221,10 +222,8 @@ template <typename Fn> __forceinline Fn GetVirtualFunction(void* pClassBase, int
 class CModelInfo
 {
 public:
-	
-	inline void* GetModel(int Index)
-	{
-		return GetVirtualFunction<void*(__thiscall)(void, int)>(this, 1)(this, Index);
+	inline void* GetModel(int Index) {
+		return GetVirtualFunction<void*(__thiscall *)(void*, int)>(this, 1)(this, Index);
 	}
 
 	int	GetModelIndex(const char *name)
