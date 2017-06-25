@@ -214,25 +214,37 @@ public:
 	}
 
 };
+template <typename Fn> __forceinline Fn GetVirtualFunction(void* pClassBase, int nFunctionIndex) {
+	return (Fn)((PDWORD)*(PDWORD*)pClassBase)[nFunctionIndex];
+}
 
 class CModelInfo
 {
 public:
+	
+	inline void* GetModel(int Index)
+	{
+		return GetVirtualFunction<void*(__thiscall)(void, int)>(this, 1)(this, Index);
+	}
+
 	int	GetModelIndex(const char *name)
 	{
 		typedef int(__thiscall* oGetModelName)(PVOID, const char *);
 		return call_vfunc< oGetModelName >(this, 2)(this, name);
 	}
-	const char *GetModelName(const model_t *mod)
-	{
-		typedef const char *(__thiscall* oGetModelName)(PVOID, const model_t*);
-		return call_vfunc< oGetModelName >(this, Offsets::VMT::ModelInfo_GetModelName)(this, mod);
+	inline const char* GetModelName(const void* Model) {
+		return GetVirtualFunction<const char*(__thiscall *)(void*, const void*)>(this, 3)(this, Model);
 	}
 
 	studiohdr_t	*GetStudiomodel(const model_t *mod)
 	{
 		typedef studiohdr_t *(__stdcall* oGetStudiomodel)(const model_t*);
 		return call_vfunc< oGetStudiomodel >(this, Offsets::VMT::ModelInfo_GetStudiomodel)(mod);
+	}
+	void GetModelMaterials(const model_t *model, int count, IMaterial** ppMaterial)
+	{
+		typedef studiohdr_t* (*oGetModelMaterials)(void*, const model_t*, int, IMaterial**);
+		call_vfunc<oGetModelMaterials>(this, 18)(this, model, count, ppMaterial);
 	}
 };
 

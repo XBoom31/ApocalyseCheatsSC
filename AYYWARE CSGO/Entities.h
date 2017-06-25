@@ -777,6 +777,24 @@ public:
 		}
 	}
 };
+class CBaseViewModel : public IClientUnknown, public IClientRenderable, public IClientNetworkable {
+public:
+	inline int GetModelIndex() {
+		// DT_BaseViewModel -> m_nModelIndex
+		return (int)((DWORD)this + 0x254);
+	}
+	inline DWORD GetOwner() {
+		// DT_BaseViewModel -> m_hOwner
+		return (PDWORD)((DWORD)this + 0x29BC);
+	}
+	inline DWORD GetWeapon() {
+		// DT_BaseViewModel -> m_hWeapon
+		return (PDWORD)((DWORD)this + 0x29B8);
+	}
+	inline void SetWeaponModel(const char Filename, IClientUnknown Weapon) {
+		return call_vfunc<void(__thiscall*)(void*, const char*, IClientUnknown*)>(this, 242)(this, Filename, Weapon);
+	}
+};
 
 class CCSBomb
 {

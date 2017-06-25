@@ -587,6 +587,9 @@ void CVisualTab::Setup()
 	RegisterControl(&OptionsGroup);
 
 	OptionsBox.SetFileId("opt_box");
+	OptionsBox.AddItem("None");
+	OptionsBox.AddItem("Corners");
+	OptionsBox.AddItem("Full");
 	OptionsGroup.PlaceLabledControl("Box", this, &OptionsBox);
 
 	OptionsBox.SetFileId("opt_boxfill");
@@ -600,6 +603,12 @@ void CVisualTab::Setup()
 
 	OptionsHealth.SetFileId("opt_hp");
 	OptionsGroup.PlaceLabledControl("Health", this, &OptionsHealth);
+
+	OptionsArmor.SetFileId("opt_arm");
+	OptionsGroup.PlaceLabledControl("Armor", this, &OptionsArmor);
+
+	OptionsDistance.SetFileId("opt_dist");
+	OptionsGroup.PlaceLabledControl("Distance", this, &OptionsDistance);
 
 	OptionsWeapon.SetFileId("opt_weapon");
 	OptionsGroup.PlaceLabledControl("Weapon", this, &OptionsWeapon);
@@ -864,11 +873,8 @@ void CMiscTab::Setup()
 	OtherSpectators.SetFileId("otr_skin");
 	OtherGroup.PlaceLabledControl("SkinChanger", this, &OtherSkinChanger);
 
-	bool wmon;
-
-	
     OtherWatermark.SetFileId("otr_watermark");
-	
+	OtherWatermark.SetState(true);
 	OtherGroup.PlaceLabledControl("Watermark", this, &OtherWatermark);
 
 	//DisableAll.SetFileId("otr_disableall");
