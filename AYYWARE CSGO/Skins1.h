@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include "ClientRecvProps.h"
@@ -38,4 +37,4 @@ extern RecvVarProxyFn fnSequenceProxyFn;
 
 #define RandomInt(nMin, nMax) (rand() % (nMax - nMin + 1) + nMin);
 
-extern void SetViewModelSequence(const CRecvProxyData *pDataConst, void *pStruct, void *pOut); 
+extern void SetViewModelSequence(const CRecvProxyData *pDataConst, void *pStruct, void *pOut);

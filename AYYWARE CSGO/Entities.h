@@ -708,6 +708,7 @@ public:
 	CPNETVAR_FUNC(int*, ItemDefinitionIndex, 0xE67AB3B8); //m_iItemDefinitionIndex
 	CPNETVAR_FUNC(int*, ItemIDHigh, 0x714778A); //m_iItemIDHigh
 	CPNETVAR_FUNC(int*, ItemIDLow, 0x3A3DFC74); //m_iItemIDLow
+	CPNETVAR_FUNC(int*, EntityQuality, 0x110be6fe); //m_iEntityQuality
 };
 
 class AttributeContainer
@@ -777,24 +778,6 @@ public:
 		}
 	}
 };
-class CBaseViewModel : public IClientUnknown, public IClientRenderable, public IClientNetworkable {
-public:
-	inline int GetModelIndex() {
-		// DT_BaseViewModel -> m_nModelIndex
-		return (int)((DWORD)this + 0x254);
-	}
-	inline DWORD GetOwner() {
-		// DT_BaseViewModel -> m_hOwner
-		return (PDWORD)((DWORD)this + 0x29BC);
-	}
-	inline DWORD GetWeapon() {
-		// DT_BaseViewModel -> m_hWeapon
-		return (PDWORD)((DWORD)this + 0x29B8);
-	}
-	inline void SetWeaponModel(const char Filename, IClientUnknown Weapon) {
-		return call_vfunc<void(__thiscall*)(void*, const char*, IClientUnknown*)>(this, 242)(this, Filename, Weapon);
-	}
-};
 
 class CCSBomb
 {
@@ -839,7 +822,7 @@ public:
 	virtual bool					UsesFullFrameBufferTexture() = 0;
 	virtual void					GetShadowHandle() const = 0;
 	virtual void*					RenderHandle() = 0;
-	virtual const model_t*				GetModel() const = 0;
+	virtual const model_t*			GetModel() const = 0;
 	virtual int						DrawModel(int flags) = 0;
 	virtual int						GetBody() = 0;
 	virtual void					ComputeFxBlend() = 0;
@@ -904,7 +887,7 @@ public:
 
 	int GetGlowIndex()
 	{
-		return *(int*)(this + 0xA310);
+		return *(int*)(this + 0x0000A320);
 	}
 
 	CPNETVAR_FUNC(CLocalPlayerExclusive*, localPlayerExclusive, 0x7177BC3E);// m_Local
@@ -1034,5 +1017,24 @@ public:
 	}
 	HANDLE GetWeaponHandle() {
 		return *(HANDLE*)((DWORD)this + 0x00002EE8);
+	}
+};
+
+class CBaseViewModel : public IClientUnknown, public IClientRenderable, public IClientNetworkable {
+public:
+	inline int GetModelIndex() {
+		// DT_BaseViewModel -> m_nModelIndex
+		return *(int*)((DWORD)this + 0x254);
+	}
+	inline DWORD GetOwner() {
+		// DT_BaseViewModel -> m_hOwner
+		return *(PDWORD)((DWORD)this + 0x29BC);
+	}
+	inline DWORD GetWeapon() {
+		// DT_BaseViewModel -> m_hWeapon
+		return *(PDWORD)((DWORD)this + 0x29B8);
+	}
+	inline void SetWeaponModel(const char* Filename, IClientUnknown* Weapon) {
+		return call_vfunc<void(__thiscall*)(void*, const char*, IClientUnknown*)>(this, 242)(this, Filename, Weapon);
 	}
 };

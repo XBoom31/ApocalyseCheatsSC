@@ -1,17 +1,16 @@
 #pragma once
-#pragma once
 #include "Skins1.h"
 #include "Entities.h"
 #include "Interfaces.h"
 #include "ClientRecvProps.h"
-#include "Materials.h"
+
 // Store the original proxy functions.
 RecvVarProxyFn fnSequenceProxyFn = NULL;
 
 // Function to fix sequences for certain models.
-void SetViewModelSequence(const CRecvProxyData *pDataConst, void pStruct, void pOut) {
+void SetViewModelSequence(const CRecvProxyData *pDataConst, void *pStruct, void *pOut) {
 	// Make the incoming data editable.
-	CRecvProxyData pData = const_cast<CRecvProxyData>(pDataConst);
+	CRecvProxyData* pData = const_cast<CRecvProxyData*>(pDataConst);
 
 	// Confirm that we are replacing our view model and not someone elses.
 	CBaseViewModel* pViewModel = (CBaseViewModel*)pStruct;
