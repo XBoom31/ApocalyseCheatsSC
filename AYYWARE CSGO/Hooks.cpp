@@ -423,6 +423,13 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 // Paint Traverse Hooked function
 void __fastcall PaintTraverse_Hooked(PVOID pPanels, int edx, unsigned int vguiPanel, bool forceRepaint, bool allowForce)
 {
+	IClientEntity *pLocal = Interfaces::EntList->GetClientEntity(Interfaces::Engine->GetLocalPlayer());
+
+	if (!strcmp(("HudZoom"), Interfaces::Panels->GetName(vguiPanel)) && Menu::Window.VisualsTab.OtherNoScope.GetState() > 0 && pLocal->IsScoped() && Interfaces::Engine->IsConnected() && Interfaces::Engine->IsInGame() && pLocal->IsAlive())
+	{
+		return;
+	}
+
 	oPaintTraverse(pPanels, vguiPanel, forceRepaint, allowForce);
 
 	static unsigned int FocusOverlayPanel = 0;
@@ -700,6 +707,12 @@ void __fastcall Hooked_DrawModelExecute(void* thisptr, int edx, void* ctx, void*
 	Interfaces::ModelRender->ForcedMaterialOverride(NULL);
 }
 
+std::vector<const char*> smoke_materials = {
+	"particle/vistasmokev1/vistasmokev1_smokegrenade",
+	"particle/vistasmokev1/vistasmokev1_emods",
+	"particle/vistasmokev1/vistasmokev1_emods_impactdust",
+	"particle/vistasmokev1/vistasmokev1_fire",
+};
 
 // Hooked FrameStageNotify for removing visual recoil
 void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
@@ -783,6 +796,25 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 			kek = false;
 		}
 
+		if (curStage == FRAME_RENDER_START)
+		{
+			for (int i = 1; i <= Interfaces::Globals->maxClients; i++)
+			{
+				if (i == Interfaces::Engine->GetLocalPlayer()) continue;
+
+				IClientEntity* pCurEntity = Interfaces::EntList->GetClientEntity(i);
+				if (!pCurEntity) continue;
+
+				*(int*)((uintptr_t)pCurEntity + 0xA30) = Interfaces::Globals->framecount; //we'll skip occlusion checks now
+				*(int*)((uintptr_t)pCurEntity + 0xA28) = 0;//clear occlusion flags
+			}
+			for (auto matName : smoke_materials)
+			{
+				IMaterial* mat = Interfaces::MaterialSystem->FindMaterial(matName, "Other textures");
+				mat->SetMaterialVarFlag(MATERIAL_VAR_NO_DRAW, Menu::Window.VisualsTab.OtherNoSmoke.GetState());
+			}
+		}
+
 
 		static bool wireframe;
 		if (Menu::Window.VisualsTab.OtherWireframe.GetState())
@@ -801,46 +833,6 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 				wireframe = false;
 			}
 			
-		}
-		static bool nosmoke;
-		if (Menu::Window.VisualsTab.OtherNoSmoke.GetState())
-		{
-
-			if (!nosmoke) {
-				Interfaces::Engine->ClientCmd_Unrestricted("r_drawparticles 0");
-				Interfaces::Engine->ClientCmd_Unrestricted("fog_enable 0");
-				nosmoke = true;
-			}
-
-		}
-		else if (!Menu::Window.VisualsTab.OtherNoSmoke.GetState())
-		{
-			if (nosmoke)
-			{
-				Interfaces::Engine->ClientCmd_Unrestricted("r_drawparticles 1");
-				Interfaces::Engine->ClientCmd_Unrestricted("fog_enable 1");
-				nosmoke = false;
-			}
-			
-		}
-		static bool xd;
-		if (Menu::Window.VisualsTab.OtherNoScope.GetState() && hackManager.pLocal()) {
-			if (hackManager.pLocal()->IsScoped())
-			{
-				int width, height;
-				Interfaces::Engine->GetScreenSize(width, height);
-				Render::Line(width / 2, 0, width / 2, height, Color(0, 0, 0, 255));
-				Render::Line(0, height / 2, width, height / 2, Color(0, 0, 0, 255));
-
-				ConVar* drawhud = Interfaces::CVar->FindVar("cl_DrawHud");
-				*(int*)((DWORD)&drawhud->fnChangeCallback + 0xC) = 0;
-				drawhud->SetValue(0);
-			}
-			else
-			{
-				ConVar* drawhud = Interfaces::CVar->FindVar("cl_DrawHud");
-				drawhud->SetValue(1);
-			}
 		}
 	}
 
@@ -2952,6 +2944,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									*pWeapon->ViewModelIndex() = iBayonet;
 									*pWeapon->WorldModelIndex() = iBayonet + 1;
 									*pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 500;
+									*pWeapon->m_AttributeManager()->m_Item()->EntityQuality() = 3;
 
 									int Skin = Menu::Window.SkinchangerTab.KnifeSkin.GetIndex();
 
@@ -3094,6 +3087,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									*pWeapon->ViewModelIndex() = iBowie;
 									*pWeapon->WorldModelIndex() = iBowie + 1;
 									*pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 514;
+									*pWeapon->m_AttributeManager()->m_Item()->EntityQuality() = 3;
 
 									int Skin = Menu::Window.SkinchangerTab.KnifeSkin.GetIndex();
 
@@ -3237,6 +3231,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									*pWeapon->ViewModelIndex() = iButterfly;
 									*pWeapon->WorldModelIndex() = iButterfly + 1;
 									*pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 515;
+									*pWeapon->m_AttributeManager()->m_Item()->EntityQuality() = 3;
 
 									int Skin = Menu::Window.SkinchangerTab.KnifeSkin.GetIndex();
 
@@ -3380,6 +3375,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									*pWeapon->ViewModelIndex() = iFalchion;
 									*pWeapon->WorldModelIndex() = iFalchion + 1;
 									*pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 512;
+									*pWeapon->m_AttributeManager()->m_Item()->EntityQuality() = 3;
 
 									int Skin = Menu::Window.SkinchangerTab.KnifeSkin.GetIndex();
 
@@ -3522,6 +3518,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									*pWeapon->ViewModelIndex() = iFlip;
 									*pWeapon->WorldModelIndex() = iFlip + 1;
 									*pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 505;
+									*pWeapon->m_AttributeManager()->m_Item()->EntityQuality() = 3;
 
 									int Skin = Menu::Window.SkinchangerTab.KnifeSkin.GetIndex();
 
@@ -3665,6 +3662,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									*pWeapon->ViewModelIndex() = iGut;
 									*pWeapon->WorldModelIndex() = iGut + 1;
 									*pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 506;
+									*pWeapon->m_AttributeManager()->m_Item()->EntityQuality() = 3;
 
 									int Skin = Menu::Window.SkinchangerTab.KnifeSkin.GetIndex();
 
@@ -3809,6 +3807,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									*pWeapon->ViewModelIndex() = iHuntsman;
 									*pWeapon->WorldModelIndex() = iHuntsman + 1;
 									*pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 509;
+									*pWeapon->m_AttributeManager()->m_Item()->EntityQuality() = 3;
 
 									int Skin = Menu::Window.SkinchangerTab.KnifeSkin.GetIndex();
 
@@ -3953,6 +3952,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									*pWeapon->ViewModelIndex() = iKarambit;
 									*pWeapon->WorldModelIndex() = iKarambit + 1;
 									*pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 507;
+									*pWeapon->m_AttributeManager()->m_Item()->EntityQuality() = 3;
 
 									int Skin = Menu::Window.SkinchangerTab.KnifeSkin.GetIndex();
 
@@ -4104,6 +4104,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									*pWeapon->ViewModelIndex() = iM9Bayonet;
 									*pWeapon->WorldModelIndex() = iM9Bayonet + 1;
 									*pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 508;
+									*pWeapon->m_AttributeManager()->m_Item()->EntityQuality() = 3;
 
 									int Skin = Menu::Window.SkinchangerTab.KnifeSkin.GetIndex();
 
@@ -4251,12 +4252,13 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								}
 
 
-								else if (Model == 10) // Shadow Daggers
+								else if (Model == 9) // Shadow Daggers
 								{
 									*pWeapon->ModelIndex() = iDagger; // m_nModelIndex
 									*pWeapon->ViewModelIndex() = iDagger;
 									*pWeapon->WorldModelIndex() = iDagger + 1;
 									*pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex() = 516;
+									*pWeapon->m_AttributeManager()->m_Item()->EntityQuality() = 3;
 
 									int Skin = Menu::Window.SkinchangerTab.KnifeSkin.GetIndex();
 
