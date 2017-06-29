@@ -336,6 +336,7 @@ public:
 	CComboBox TECNINESkin;
 	CComboBox P2000Skin;
 	CComboBox P250Skin;
+	CComboBox CZSkin;
 
 	// MPs
 	
