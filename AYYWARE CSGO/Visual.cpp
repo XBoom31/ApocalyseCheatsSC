@@ -26,7 +26,35 @@ void CVisuals::Draw()
 	if (Menu::Window.VisualsTab.OtherRecoilCrosshair.GetIndex())
 		DrawRecoilCrosshair();
 
+	NoScopeBorder();
+
 	
+}
+
+/* NoScopeBorder */
+void CVisuals::NoScopeBorder()
+{
+	ConVar* matpostprocessing = Interfaces::CVar->FindVar("mat_postprocess_enable");
+
+	if (Menu::Window.VisualsTab.OtherNoScope.GetState())
+	{
+		matpostprocessing->SetValue("0");
+		if (hackManager.pLocal()->IsScoped() && hackManager.pLocal()->IsAlive())
+		{
+			int Width;
+			int Height;
+			Interfaces::Engine->GetScreenSize(Width, Height);
+
+			Color cColor = Color(0, 0, 0, 255);
+			Render::Line(Width / 2, 0, Width / 2, Height, cColor);
+			Render::Line(0, Height / 2, Width, Height / 2, cColor);
+
+		}
+		else
+		{
+
+		}
+	}
 }
 
 // Draw a basic crosshair
