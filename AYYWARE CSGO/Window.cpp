@@ -54,6 +54,16 @@ RECT CWindow::GetTabArea()
 	return client;
 }
 
+RECT CWindow::GetClientArea1()
+{
+	RECT client;
+	client.left = m_x + 8;
+	client.top = m_y + 1 + 27;
+	client.right = m_iWidth - 4 - 12;
+	client.bottom = m_iHeight - 2 - 8 - 26 + 500;
+	return client;
+}
+
 void CWindow::Open()
 {
 	m_bIsOpen = true;

@@ -76,6 +76,7 @@ void CGUI::Update()
 
 	// Mouse Location
 	POINT mp; GetCursorPos(&mp);
+	ScreenToClient(GetForegroundWindow(), &mp);
 	Mouse.x = mp.x; Mouse.y = mp.y;
 
 	RECT Screen = Render::GetViewport();
@@ -117,10 +118,10 @@ void CGUI::Update()
 			// If the user clicks inside the window
 			if (GetKeyPress(VK_LBUTTON))
 			{
-				if (IsMouseInRegion(window->m_x, window->m_y, window->m_x + window->m_iWidth, window->m_y + window->m_iHeight))
-				{
+				//if (IsMouseInRegion(window->m_x, window->m_y, window->m_x + window->m_iWidth, window->m_y + window->m_iHeight))
+				//{
 					// Is it inside the client area?
-					if (IsMouseInRegion(window->GetClientArea()))
+					if (IsMouseInRegion(window->GetClientArea1()))
 					{
 						// User is selecting a new tab
 						if (IsMouseInRegion(window->GetTabArea()))
@@ -150,7 +151,7 @@ void CGUI::Update()
 						else
 							bCheckWidgetClicks = true;
 					}
-					else
+					else if (IsMouseInRegion(window->m_x, window->m_y, window->m_x + window->m_iWidth, window->m_y + window->m_iHeight))
 					{
 						// Must be in the around the title or side of the window
 						// So we assume the user is trying to drag the window
@@ -163,13 +164,13 @@ void CGUI::Update()
 						window->IsFocusingControl = false;
 						window->FocusedControl = nullptr;
 					}
-				}
-				else
-				{
+				
+				//else
+				//{
 					// Loose focus on the control
-					window->IsFocusingControl = false;
-					window->FocusedControl = nullptr;
-				}
+					//window->IsFocusingControl = false;
+					//window->FocusedControl = nullptr;
+				//}
 			}
 
 

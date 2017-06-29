@@ -28,7 +28,7 @@ void FixY(const CRecvProxyData *pData, void *pStruct, void *pOut)
 	}
 	case 1:
 	{
-		bHasAA = ((*flPitch == 90.0f) || (*flPitch == 270.0f));
+		bHasAA = ((*flPitch == 89.0f) || (*flPitch == 270.0f));
 		bSpinbot = false;
 
 		if (!bShotLastTime[((IClientEntity*)(pStruct))->GetIndex()]
