@@ -13,6 +13,7 @@ class CVisuals : public CHack
 public:
 	void Init();
 	void Draw();
+	void NoScopeBorder();
 	void Move(CUserCmd *pCmd, bool &bSendPacket);
 private:
 	void DrawCrosshair();
