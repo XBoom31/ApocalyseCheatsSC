@@ -8,6 +8,7 @@ madlifer
 control1337
 CyclesPrograming
 FZCat1337
+eeioruewo0iruwe
 UC Community <3
 */
 
@@ -940,6 +941,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 							int SG553 = Menu::Window.SkinchangerTab.SG553Skin.GetIndex();
 							int SSG08 = Menu::Window.SkinchangerTab.SSG08Skin.GetIndex();
 							int Magnum = Menu::Window.SkinchangerTab.DEAGLESkin.GetIndex();
+							int CZ = Menu::Window.SkinTab.CZSkin.GetIndex();
 
 
 
@@ -2912,16 +2914,106 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								{
 								case 0:
 									*pWeapon->FallbackPaintKit() = 27;
+									*pWeapon->FallbackWear() = .0000000000000001;
 									break;
 								case 1:
 									*pWeapon->FallbackPaintKit() = 12;
+									*pWeapon->FallbackWear() = .0000000000000001;
 									break;
 								case 2:
 									*pWeapon->FallbackPaintKit() = 522;
+									*pWeapon->FallbackWear() = .0000000000000001;
 									break;
 								case 3:
 									*pWeapon->FallbackPaintKit() = 523;
+									*pWeapon->FallbackWear() = .0000000000000001;
 									break;
+								case 4:
+									*pWeapon->FallbackPaintKit() = 595;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								default:
+									break;
+								}
+							}
+							break;
+							case 63: // CZ-75
+							{
+								switch (CZ)
+								{
+								case 0:
+									*pWeapon->FallbackPaintKit() = 270;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 1:
+									*pWeapon->FallbackPaintKit() = 12;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 2:
+									*pWeapon->FallbackPaintKit() = 476;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 3:
+									*pWeapon->FallbackPaintKit() = 269;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 4:
+									*pWeapon->FallbackPaintKit() = 643;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 5:
+									*pWeapon->FallbackPaintKit() = 435;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 6:
+									*pWeapon->FallbackPaintKit() = 350;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 7:
+									*pWeapon->FallbackPaintKit() = 543;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 8:
+									*pWeapon->FallbackPaintKit() = 268;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 9:
+									*pWeapon->FallbackPaintKit() = 325;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 10:
+									*pWeapon->FallbackPaintKit() = 602;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 11:
+									*pWeapon->FallbackPaintKit() = 334;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 12:
+									*pWeapon->FallbackPaintKit() = 622;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 13:
+									*pWeapon->FallbackPaintKit() = 218;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 14:
+									*pWeapon->FallbackPaintKit() = 297;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 15:
+									*pWeapon->FallbackPaintKit() = 322;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 16:
+									*pWeapon->FallbackPaintKit() = 453;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+								case 17:
+									*pWeapon->FallbackPaintKit() = 315;
+									*pWeapon->FallbackWear() = .0000000000000001;
+									break;
+
 								default:
 									break;
 								}
@@ -2930,6 +3022,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 							default:
 								break;
 							}
+
 
 
 
