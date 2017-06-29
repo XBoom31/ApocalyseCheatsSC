@@ -204,6 +204,8 @@ void Hooked_RecvProxy_Viewmodel(CRecvProxyData *pData, void *pStruct, void *pOut
 	oRecvnModelIndex(pData, pStruct, pOut);
 }
 
+#include "Proxies.h"
+
 void ApplyAAAHooks()
 {
 	ClientClass *pClass = Interfaces::Client->GetAllClasses();
@@ -243,6 +245,29 @@ void ApplyAAAHooks()
 				{
 					oRecvnModelIndex = (RecvVarProxyFn)pProp->m_ProxyFn;
 					pProp->m_ProxyFn = Hooked_RecvProxy_Viewmodel;
+				}
+			}
+			for (ClientClass* pClass = Interfaces::Client->GetAllClasses(); pClass; pClass = pClass->m_pNext) {
+				if (!strcmp(pClass->m_pNetworkName, "CBaseViewModel")) {
+					// Search for the 'm_nModelIndex' property.
+					RecvTable* pClassTable = pClass->m_pRecvTable;
+
+					for (int nIndex = 0; nIndex < pClassTable->m_nProps; nIndex++) {
+						RecvProp* pProp = &pClassTable->m_pProps[nIndex];
+
+						if (!pProp || strcmp(pProp->m_pVarName, "m_nSequence"))
+							continue;
+
+						// Store the original proxy function.
+						fnSequenceProxyFn = (RecvVarProxyFn)pProp->m_ProxyFn;
+
+						// Replace the proxy function with our sequence changer.
+						pProp->m_ProxyFn = SetViewModelSequence;
+
+						break;
+					}
+
+					break;
 				}
 			}
 		}

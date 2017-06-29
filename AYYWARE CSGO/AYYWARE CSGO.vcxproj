@@ -143,7 +143,9 @@
     <ClInclude Include="ESP.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="Hacks.h" />
+    <ClInclude Include="Proxies.h" />
     <ClInclude Include="Resolver.h" />
+    <ClInclude Include="Skins1.h" />
     <ClInclude Include="UcodeDefs.h" />
     <ClInclude Include="winwindef.h" />
     <ClInclude Include="Hooks.h" />

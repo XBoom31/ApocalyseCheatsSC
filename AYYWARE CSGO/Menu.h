@@ -148,11 +148,13 @@ public:
 
 	// Options Settings
 	CGroupBox OptionsGroup;
-	CCheckBox OptionsBox;
+	CComboBox OptionsBox;
 	CCheckBox OptionsBoxFill;
 	CCheckBox OptionsBoxFillColor;
 	CCheckBox OptionsName;
 	CCheckBox OptionsHealth;
+	CCheckBox OptionsArmor;
+	CCheckBox OptionsDistance;
 	CCheckBox OptionsWeapon;
 	CCheckBox OptionsInfo;
 	CCheckBox OptionsHelmet;

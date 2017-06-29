@@ -268,6 +268,25 @@ void CEsp::DrawPlayer(IClientEntity* pEntity, player_info_t pinfo)
 
 	ESPBox Box;
 	Color Color;
+	//terrorist red
+	int TR = Menu::Window.ColorTab.TVisColorR.GetValue();
+	int TNVR = Menu::Window.ColorTab.TNVisColorR.GetValue();
+	//terrorist green
+	int TG = Menu::Window.ColorTab.TVisColorG.GetValue();
+	int TNVG = Menu::Window.ColorTab.TNVisColorG.GetValue();
+	//terrorist green
+	int TB = Menu::Window.ColorTab.TVisColorB.GetValue();
+	int TNVB = Menu::Window.ColorTab.TNVisColorB.GetValue();
+
+	//ct red
+	int CTR = Menu::Window.ColorTab.CTVisColorR.GetValue();
+	int CTNVR = Menu::Window.ColorTab.CTNVisColorR.GetValue();
+	//ct green
+	int CTG = Menu::Window.ColorTab.CTVisColorG.GetValue();
+	int CTNVG = Menu::Window.ColorTab.CTNVisColorG.GetValue();
+	//ct blue
+	int CTB = Menu::Window.ColorTab.CTVisColorB.GetValue();
+	int CTNVB = Menu::Window.ColorTab.CTNVisColorB.GetValue();
 
 	// Show own team false? well gtfo teammate lol
 	if (Menu::Window.VisualsTab.FiltersEnemiesOnly.GetState() && (pEntity->GetTeamNum() == hackManager.pLocal()->GetTeamNum()))
@@ -277,21 +296,22 @@ void CEsp::DrawPlayer(IClientEntity* pEntity, player_info_t pinfo)
 	{
 		Color = GetPlayerColor(pEntity);
 
-		/*if (Menu::Window.VisualsTab.OptionsGlow.GetState())
+		if (Menu::Window.VisualsTab.OtherGlow.GetState())
 		{
 		int TeamNum = pEntity->GetTeamNum();
 
 		if (TeamNum == TEAM_CS_T)
 		{
-		DrawGlow(pEntity, 255, 0, 0, 160);
+
+		DrawGlow(pEntity, TNVR, TNVG, TNVB, 255);
 		}
 		else if (TeamNum == TEAM_CS_CT)
 		{
-		DrawGlow(pEntity, 0, 0, 255, 160);
+		DrawGlow(pEntity, CTNVR, CTNVG, CTNVB, 255);
 		}
-		}*/
+		}
 
-		if (Menu::Window.VisualsTab.OptionsBox.GetState())
+		if (!Menu::Window.VisualsTab.OptionsBox.GetIndex() == 0)
 			DrawBox(Box, Color);
 
 		if (Menu::Window.VisualsTab.OptionsName.GetState())
@@ -300,7 +320,11 @@ void CEsp::DrawPlayer(IClientEntity* pEntity, player_info_t pinfo)
 		if (Menu::Window.VisualsTab.OptionsHealth.GetState())
 			DrawHealth2(pEntity, Box);
 
+		if (Menu::Window.VisualsTab.OptionsArmor.GetState())
+			DrawArmor(pEntity, Box);
 
+		if (Menu::Window.VisualsTab.OptionsDistance.GetState())
+			DrawDistanse(pEntity, Box);
 
 		if (Menu::Window.VisualsTab.OptionsInfo.GetState() || Menu::Window.VisualsTab.OptionsWeapon.GetState())
 			DrawInfo(pEntity, Box);
@@ -371,6 +395,32 @@ void CEsp::DrawPlayer(IClientEntity* pEntity, player_info_t pinfo)
 		}
 	}
 }
+void CEsp::DrawDistanse(IClientEntity* pEntity, CEsp::ESPBox size)
+{
+	IClientEntity *pLocal = hackManager.pLocal();
+
+	Vector vecOrigin = pEntity->GetOrigin();
+	Vector vecOriginLocal = pLocal->GetOrigin();
+	static RECT defSize = Render::GetTextSize(Render::Fonts::Default, "");
+
+	char dist_to[32];
+	sprintf_s(dist_to, "%.0fm", DistanceTo(vecOrigin, vecOriginLocal));
+
+	Render::Text(size.x + size.w + 3, size.y + (0.6*(defSize.bottom + 28)), Color(255, 255, 255, 255), Render::Fonts::ESP, dist_to);
+}
+
+float CEsp::DistanceTo(Vector vecDst, Vector vecSrc)
+{
+	Vector vDelta = vecDst - vecSrc;
+
+	float fDistance = ::sqrtf((vDelta.Length()));
+
+	if (fDistance < 1.0f)
+		return 1.0f;
+
+	return fDistance;
+}
+
 // glow shit
 struct Glowobject
 {
@@ -403,7 +453,7 @@ void CEsp::DrawGlow(IClientEntity *pEntity, int r, int g, int b, int a)
 			float glowb = b;
 			float glowa = (1);
 			GlowObject->Color = Vector(r, g, b);
-			GlowObject->Alpha = a;
+			GlowObject->Alpha = 255;
 		}
 	}
 }
@@ -539,11 +589,21 @@ void CEsp::DrawBox(CEsp::ESPBox size, Color color)
 	//}
 	//else
 	{
+		int VertLine;
+		int HorzLine;
 		// Corner Box
 		//bool IsVis = GameUtils::IsVisible(hackManager.pLocal(), pEntity, (int)CSGOHitboxID::Chest);  da dream
-
-		int VertLine = (((float)size.w) * (1.0f));
-		int HorzLine = (((float)size.h) * (1.0f));
+		int xd = Menu::Window.VisualsTab.OptionsBox.GetIndex();
+		if (Menu::Window.VisualsTab.OptionsBox.GetIndex() == 1)
+		{
+			VertLine = (((float)size.w) * (0.2f));
+			HorzLine = (((float)size.h) * (0.2f));
+		}
+		if (Menu::Window.VisualsTab.OptionsBox.GetIndex() == 2)
+		{
+			VertLine = (((float)size.w) * (1.0f));
+			HorzLine = (((float)size.h) * (1.0f));
+		}
 
 		Render::Clear(size.x, size.y - 1, VertLine, 1, Color(10, 10, 10, 150));
 		Render::Clear(size.x + size.w - VertLine, size.y - 1, VertLine, 1, Color(10, 10, 10, 150));
@@ -579,6 +639,34 @@ static wchar_t* CharToWideChar(const char* text)
 	wchar_t* wa = new wchar_t[size];
 	mbstowcs_s(NULL, wa, size/4, text, size);
 	return wa;
+}
+void CEsp::DrawArmor(IClientEntity* pEntity, CEsp::ESPBox size)
+{
+	ESPBox ArmorBar = size;
+	ArmorBar.y += (ArmorBar.h + 6);
+	ArmorBar.h = 4;
+
+	float ArmorValue = pEntity->ArmorValue();
+	float ArmorPerc = ArmorValue / 100.f;
+	float Width = (size.w * ArmorPerc);
+	ArmorBar.w = Width;
+
+	int armor = pEntity->ArmorValue();
+
+	if (armor > 100)
+		armor = 100;
+	/* I dont want a change yellow is good */
+	//int r = 255 - armor * 2.55;
+	//int g = armor * 2.55;
+
+	int armorBar = size.h / 100 * armor;
+	int armorBarDelta = size.h - armorBar;
+
+	if (!armor < 1)
+	{
+		Render::Clear(size.x - 10, size.y - 1, 2, size.h + 2, Color(0, 0, 0, 150));
+		Render::Clear(size.x - 9, size.y + 1, 1, size.h * 0.01 * armor, Color(0, 150, 255, 255));
+	}
 }
 
 // Player name
@@ -764,7 +852,7 @@ void CEsp::DrawDrop(IClientEntity* pEntity, ClientClass* cClass)
 	IClientEntity* plr = Interfaces::EntList->GetClientEntityFromHandle((HANDLE)Weapon->GetOwnerHandle());
 	if (!plr && Render::WorldToScreen(Weapon->GetOrigin(), Box))
 	{
-		if (Menu::Window.VisualsTab.OptionsBox.GetState())
+		if (!Menu::Window.VisualsTab.OptionsBox.GetIndex() == 0)
 		{
 			Render::Outline(Box.x - 2, Box.y - 2, 4, 4, Color(255, 255, 255, 255));
 			Render::Outline(Box.x - 3, Box.y - 3, 6, 6, Color(10, 10, 10, 150));
@@ -787,7 +875,7 @@ void CEsp::DrawChicken(IClientEntity* pEntity, ClientClass* cClass)
 	if (GetBox(pEntity, Box))
 	{
 		player_info_t pinfo; strcpy_s(pinfo.name, "Chicken");
-		if (Menu::Window.VisualsTab.OptionsBox.GetState())
+		if (!Menu::Window.VisualsTab.OptionsBox.GetIndex() == 0)
 			DrawBox(Box, Color(255,255,255,255));
 
 		if (Menu::Window.VisualsTab.OptionsName.GetState())

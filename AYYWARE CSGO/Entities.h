@@ -709,6 +709,7 @@ public:
 	CPNETVAR_FUNC(int*, ItemDefinitionIndex, 0xE67AB3B8); //m_iItemDefinitionIndex
 	CPNETVAR_FUNC(int*, ItemIDHigh, 0x714778A); //m_iItemIDHigh
 	CPNETVAR_FUNC(int*, ItemIDLow, 0x3A3DFC74); //m_iItemIDLow
+	CPNETVAR_FUNC(int*, EntityQuality, 0x110be6fe); //m_iEntityQuality
 };
 
 class AttributeContainer
@@ -822,7 +823,7 @@ public:
 	virtual bool					UsesFullFrameBufferTexture() = 0;
 	virtual void					GetShadowHandle() const = 0;
 	virtual void*					RenderHandle() = 0;
-	virtual const model_t*				GetModel() const = 0;
+	virtual const model_t*			GetModel() const = 0;
 	virtual int						DrawModel(int flags) = 0;
 	virtual int						GetBody() = 0;
 	virtual void					ComputeFxBlend() = 0;
@@ -887,7 +888,7 @@ public:
 
 	int GetGlowIndex()
 	{
-		return *(int*)(this + 0xA310);
+		return *(int*)(this + 0x0000A320);
 	}
 
 	CPNETVAR_FUNC(CLocalPlayerExclusive*, localPlayerExclusive, 0x7177BC3E);// m_Local

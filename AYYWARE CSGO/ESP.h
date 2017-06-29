@@ -49,6 +49,9 @@ private:
 	void DrawBox(ESPBox size, Color color);
 	void DrawName(player_info_t pinfo, ESPBox size, IClientEntity* pEntity);
 	void DrawHealth(IClientEntity* pEntity, ESPBox size);
+	void DrawArmor(IClientEntity* pEntity, CEsp::ESPBox size);
+	void DrawDistanse(IClientEntity* pEntity, CEsp::ESPBox size);
+	float DistanceTo(Vector vecDst, Vector vecSrc);
 	void DrawHealth2(IClientEntity* pEntity, ESPBox size);
 	void DrawInfo(IClientEntity* pEntity, ESPBox size);
 	void DrawCross(IClientEntity* pEntity);
