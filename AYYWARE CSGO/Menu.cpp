@@ -722,7 +722,7 @@ void CVisualTab::Setup()
 	OtherGroup.PlaceLabledControl("NoSky", this, &OtherNoSky);
 
 	OtherNoScope.SetFileId("otr_noscope");
-	OtherGroup.PlaceLabledControl("NoSocpe", this, &OtherNoScope);
+	OtherGroup.PlaceLabledControl("NoScope", this, &OtherNoScope);
 
 	OtherNoSmoke.SetFileId("otr_nosmoke");
 	OtherGroup.PlaceLabledControl("NoSmoke", this, &OtherNoSmoke);
