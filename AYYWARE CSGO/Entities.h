@@ -8,6 +8,7 @@ madlifer
 control1337
 CyclesPrograming
 FZCat1337
+eeioruewo0iruwe
 UC Community <3
 */
 
@@ -961,7 +962,7 @@ public:
 
 	Vector GetHeadPos()
 	{
-		return this->GetBonePos(6);
+		return this->GetBonePos(8);
 	}
 
 	Vector GetHeadAngle()
