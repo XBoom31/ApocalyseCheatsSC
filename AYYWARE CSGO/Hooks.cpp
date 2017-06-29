@@ -941,7 +941,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 							int SG553 = Menu::Window.SkinchangerTab.SG553Skin.GetIndex();
 							int SSG08 = Menu::Window.SkinchangerTab.SSG08Skin.GetIndex();
 							int Magnum = Menu::Window.SkinchangerTab.DEAGLESkin.GetIndex();
-							int CZ = Menu::Window.SkinTab.CZSkin.GetIndex();
+							int CZ = Menu::Window.SkinchangerTab.CZSkin.GetIndex();
 
 
 
