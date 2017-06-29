@@ -8,6 +8,7 @@ madlifer
 control1337
 CyclesPrograming
 FZCat1337
+eeioruewo0iruwe
 UC Community <3
 */
 
@@ -2101,6 +2102,29 @@ void CSkinchangerTab::Setup()
 	P250Skin.AddItem("Wing Shot");
 	P250Skin.AddItem("Asiimov");
 	PistolGroup.PlaceLabledControl("P250", this, &P250Skin);
+	
+	CZSkin.SetFileId("cz_skin");
+	CZSkin.AddItem("Victoria");
+	CZSkin.AddItem("Crimson Web");
+	CZSkin.AddItem("Yellow Jacket");
+	CZSkin.AddItem("Fuschia");
+	CZSkin.AddItem("Xiangliu");
+	CZSkin.AddItem("Pole Position");
+	CZSkin.AddItem("Tigris");
+	CZSkin.AddItem("Red Astor");
+	CZSkin.AddItem("Tread Plate");
+	CZSkin.AddItem("Chalice");
+	CZSkin.AddItem("Imprint");
+	CZSkin.AddItem("Twist");
+	CZSkin.AddItem("Polymer");
+	CZSkin.AddItem("Hexane");
+	CZSkin.AddItem("Tuxedo");
+	CZSkin.AddItem("Nitro");
+	CZSkin.AddItem("Emerald");
+	CZSkin.AddItem("Poison Dart");
+	PistolGroup.PlaceLabledControl("CZ75", this, &CZSkin);
+	
+	
 
 #pragma endregion
 
