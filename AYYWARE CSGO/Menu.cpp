@@ -1,3 +1,4 @@
+@@ -0,0 +1,2224 @@
 /*
 ApocalypseCheats
 ------------------------------
@@ -950,6 +951,8 @@ void CMiscTab::Setup()
 	MAC10Skin.AddItem("Malachite");
 	MAC10Skin.AddItem("Rangeen");
 	MAC10Skin.AddItem("Lapis Gator");
+	MAC10Skin.AddItem("Last Dive");
+	MAC10Skin.AddItem("Aloha");
 	MPGroup.PlaceLabledControl("MAC-10", this, &MAC10Skin);
 
 	P90Skin.SetFileId("p90_skin");
@@ -974,6 +977,7 @@ void CMiscTab::Setup()
 	P90Skin.AddItem("Elite Build");
 	P90Skin.AddItem("Shapewood");
 	P90Skin.AddItem("Shallow Grave");
+	P90Skin.AddItem("Drath Grip");
 	MPGroup.PlaceLabledControl("P90", this, &P90Skin);
 
 	UMP45Skin.SetFileId("ump45_skin");
@@ -994,6 +998,8 @@ void CMiscTab::Setup()
 	UMP45Skin.AddItem("Minotaur's Labyrinth");
 	UMP45Skin.AddItem("Riot");
 	UMP45Skin.AddItem("Primal Saber");
+	UMP45Skin.AddItem("Scaffold");
+	UMP45Skin.AddItem("Metal Flowers");
 	MPGroup.PlaceLabledControl("UMP-45", this, &UMP45Skin);
 
 	BIZONSkin.SetFileId("bizon_skin");
@@ -1020,6 +1026,8 @@ void CMiscTab::Setup()
 	BIZONSkin.AddItem("Fuel Rod");
 	BIZONSkin.AddItem("Photic Zone");
 	BIZONSkin.AddItem("Judgement of Anubis");
+	BIZONSkin.AddItem("Jungle Slipstream");
+
 	MPGroup.PlaceLabledControl("PP-Bizon", this, &BIZONSkin);
 
 	MP7Skin.SetFileId("mp7_skin");
@@ -1045,6 +1053,7 @@ void CMiscTab::Setup()
 	MP7Skin.AddItem("Nemesis");
 	MP7Skin.AddItem("Special Delivery");
 	MP7Skin.AddItem("Impire");
+	MP7Skin.AddItem("Akoben");
 	MPGroup.PlaceLabledControl("MP7", this, &MP7Skin);
 
 	MP9Skin.SetFileId("mp9_skin");
@@ -1565,6 +1574,7 @@ void CSkinchangerTab::Setup()
 	M249Skin.AddItem("Impact Drill");
 	M249Skin.AddItem("Nebula Crusader");
 	M249Skin.AddItem("Spectre");
+	M249Skin.AddItem("Emerald Poison Dart");
 	MachinegunsGroup.PlaceLabledControl("M249", this, &M249Skin);
 
 #pragma endregion
@@ -1594,6 +1604,8 @@ void CSkinchangerTab::Setup()
 	AWPSkin.AddItem("Sun in Leo");
 	AWPSkin.AddItem("Hyper Beast");
 	AWPSkin.AddItem("Elite Build");
+	AWPSkin.AddItem("Fever Dream");
+	AWPSkin.AddItem("Oni Taiji");
 	Snipergroup.PlaceLabledControl("AWP", this, &AWPSkin);
 
 	SSG08Skin.SetFileId("sgg08_skin");
@@ -1613,6 +1625,7 @@ void CSkinchangerTab::Setup()
 	SSG08Skin.AddItem("Necropos");
 	SSG08Skin.AddItem("Ghost Crusader");
 	SSG08Skin.AddItem("Dragonfire");
+	SSG08Skin.AddItem("Death's Head");
 	Snipergroup.PlaceLabledControl("SGG 08", this, &SSG08Skin);
 
 	SCAR20Skin.SetFileId("scar20_skin");
@@ -1632,6 +1645,7 @@ void CSkinchangerTab::Setup()
 	SCAR20Skin.AddItem("Green Marine");
 	SCAR20Skin.AddItem("Outbreak");
 	SCAR20Skin.AddItem("Bloodsport");
+	SCAR20Skin.AddItem("Blueprint");
 	Snipergroup.PlaceLabledControl("SCAR-20", this, &SCAR20Skin);
 
 	G3SG1Skin.SetFileId("g3sg1_skin");
@@ -1679,6 +1693,7 @@ void CSkinchangerTab::Setup()
 	MAG7Skin.AddItem("Seabird");
 	MAG7Skin.AddItem("Cobalt Core");
 	MAG7Skin.AddItem("Praetorian");
+	MAG7Skin.AddItem("Hard Water");
 	Shotgungroup.PlaceLabledControl("Mag-7", this, &MAG7Skin);
 
 	XM1014Skin.SetFileId("xm1014_skin");
@@ -1705,6 +1720,7 @@ void CSkinchangerTab::Setup()
 	XM1014Skin.AddItem("Scumbria");
 	XM1014Skin.AddItem("Teclu Burner");
 	XM1014Skin.AddItem("Black Tie");
+	XM1014Skin.AddItem("Seasons");
 	Shotgungroup.PlaceLabledControl("XM1014", this, &XM1014Skin);
 
 	SAWEDOFFSkin.SetFileId("sawedoff_skin");
@@ -1731,6 +1747,7 @@ void CSkinchangerTab::Setup()
 	SAWEDOFFSkin.AddItem("Yorick");
 	SAWEDOFFSkin.AddItem("Fubar");
 	SAWEDOFFSkin.AddItem("Wasteland Princess");
+	SAWEDOFFSkin.AddItem("Zander");
 	Shotgungroup.PlaceLabledControl("Sawed-Off", this, &SAWEDOFFSkin);
 
 	NOVASkin.SetFileId("nova_skin");
@@ -1784,6 +1801,8 @@ void CSkinchangerTab::Setup()
 	AK47Skin.AddItem("Point Disarray");
 	AK47Skin.AddItem("Fuel Injector");
 	AK47Skin.AddItem("Neon Revolution");
+	AK47Skin.AddItem("BloodSport");
+	AK47Skin.AddItem("Orbit Mk01");
 	Riflegroup.PlaceLabledControl("AK-47", this, &AK47Skin);
 
 	M41SSkin.SetFileId("m4a1s_skin");
@@ -1806,6 +1825,8 @@ void CSkinchangerTab::Setup()
 	M41SSkin.AddItem("Chantico's Fire");
 	M41SSkin.AddItem("Mecha Industries");
 	M41SSkin.AddItem("Flashback");
+	M41SSkin.AddItem("Decimator");
+	M41SSkin.AddItem("Briefing");
 	Riflegroup.PlaceLabledControl("M4A1-S", this, &M41SSkin);
 
 	M4A4Skin.SetFileId("m4a4_skin");
@@ -1824,6 +1845,7 @@ void CSkinchangerTab::Setup()
 	M4A4Skin.AddItem("The BattleStar");
 	M4A4Skin.AddItem("Desolate Space");
 	M4A4Skin.AddItem("Buzz Kill");
+	M4A4Skin.AddItem("Hell Fire");
 	Riflegroup.PlaceLabledControl("M4A4", this, &M4A4Skin);
 
 	AUGSkin.SetFileId("aug_skin");
@@ -1858,6 +1880,7 @@ void CSkinchangerTab::Setup()
 	FAMASSkin.AddItem("Valence");
 	FAMASSkin.AddItem("Roll Cage");
 	FAMASSkin.AddItem("Mecha Industries");
+	FAMASSkin.AddItem("Macabre");
 	Riflegroup.PlaceLabledControl("FAMAS", this, &FAMASSkin);
 
 	GALILSkin.SetFileId("galil_skin");
@@ -1882,6 +1905,8 @@ void CSkinchangerTab::Setup()
 	GALILSkin.AddItem("Rocket Pop");
 	GALILSkin.AddItem("Stone Cold");
 	GALILSkin.AddItem("Firefight");
+	GALILSkin.AddItem("Crimson Tsunami");
+	GALILSkin.AddItem("Suger Rush");
 	Riflegroup.PlaceLabledControl("GALIL", this, &GALILSkin);
 
 	SG553Skin.SetFileId("sg552_skin");
@@ -1954,6 +1979,8 @@ void CSkinchangerTab::Setup()
 	USPSSkin.AddItem("Kill Confirmed");
 	USPSSkin.AddItem("Lead Conduit");
 	USPSSkin.AddItem("Cyrex");
+	USPSSkin.AddItem("Neo-Noir");
+	USPSSkin.AddItem("Blueprint");
 	PistolGroup.PlaceLabledControl("USP-S", this, &USPSSkin);
 
 	DEAGLESkin.SetFileId("deagle_skin");
@@ -1980,17 +2007,16 @@ void CSkinchangerTab::Setup()
 	DEAGLESkin.AddItem("Sunset Storm");
 	DEAGLESkin.AddItem("Corinthian");
 	DEAGLESkin.AddItem("Kumicho Dragon");
+	DEAGLESkin.AddItem("Oxide Blaze");
 	PistolGroup.PlaceLabledControl("Deagle", this, &DEAGLESkin);
 
 	DUALSSkin.SetFileId("duals_skin");
 	DUALSSkin.AddItem("Anodized Navy");
-	DUALSSkin.AddItem("Ossified");
 	DUALSSkin.AddItem("Stained");
 	DUALSSkin.AddItem("Contractor");
 	DUALSSkin.AddItem("Colony");
 	DUALSSkin.AddItem("Demolition");
 	DUALSSkin.AddItem("Black Limba");
-	DUALSSkin.AddItem("Red Quartz");
 	DUALSSkin.AddItem("Cobalt Quartz");
 	DUALSSkin.AddItem("Hemoglobin");
 	DUALSSkin.AddItem("Urban Shock");
@@ -2003,6 +2029,7 @@ void CSkinchangerTab::Setup()
 	DUALSSkin.AddItem("Dualing Dragons");
 	DUALSSkin.AddItem("Cartel");
 	DUALSSkin.AddItem("Ventilators");
+	DUALSSkin.AddItem("Cobra Strike");
 	PistolGroup.PlaceLabledControl("Duals", this, &DUALSSkin);
 
 	FIVESEVENSkin.SetFileId("fiveseven_skin");
@@ -2027,6 +2054,8 @@ void CSkinchangerTab::Setup()
 	FIVESEVENSkin.AddItem("Monkey Business");
 	FIVESEVENSkin.AddItem("Retrobution");
 	FIVESEVENSkin.AddItem("Triumvirate");
+	FIVESEVENSkin.AddItem("Capillary");
+	FIVESEVENSkin.AddItem("Hyper Beast");
 	PistolGroup.PlaceLabledControl("Five-Seven", this, &FIVESEVENSkin);
 
 	TECNINESkin.SetFileId("tec9_skin");
@@ -2053,6 +2082,7 @@ void CSkinchangerTab::Setup()
 	TECNINESkin.AddItem("Jambiya");
 	TECNINESkin.AddItem("Re-Entry");
 	TECNINESkin.AddItem("Fuel Injector");
+	TECNINESkin.AddItem("Cut Out");
 	PistolGroup.PlaceLabledControl("Tec-9", this, &TECNINESkin);
 
 	P2000Skin.SetFileId("p2000_skin");
@@ -2079,6 +2109,7 @@ void CSkinchangerTab::Setup()
 	P2000Skin.AddItem("Imperial");
 	P2000Skin.AddItem("Oceanic");
 	P2000Skin.AddItem("Imperial Dragon");
+	P2000Skin.AddItem("Woodsman");
 	PistolGroup.PlaceLabledControl("P2000", this, &P2000Skin);
 
 	P250Skin.SetFileId("p250_skin");
@@ -2107,6 +2138,8 @@ void CSkinchangerTab::Setup()
 	P250Skin.AddItem("Mint Kimono");
 	P250Skin.AddItem("Wing Shot");
 	P250Skin.AddItem("Asiimov");
+	P250Skin.AddItem("Ripple");
+	P250Skin.AddItem("Red Rock");
 	PistolGroup.PlaceLabledControl("P250", this, &P250Skin);
 	
 	CZSkin.SetFileId("cz_skin");
@@ -2188,5 +2221,4 @@ void Menu::DoUIFrame()
 
 	
 }
-
 
