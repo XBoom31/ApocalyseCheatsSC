@@ -1,3 +1,4 @@
+@@ -0,0 +1,4732 @@
 /*
 ApocalypseCheats
 ------------------------------
@@ -942,13 +943,75 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 							int SSG08 = Menu::Window.SkinchangerTab.SSG08Skin.GetIndex();
 							int Magnum = Menu::Window.SkinchangerTab.DEAGLESkin.GetIndex();
 							int CZ = Menu::Window.SkinchangerTab.CZSkin.GetIndex();
-
+							int dualies = CZ = Menu::Window.SkinchangerTab.DUALSSkin.GetIndex();
 
 
 							int weapon = *pWeapon->m_AttributeManager()->m_Item()->ItemDefinitionIndex();
 
 							switch (weapon)
 							{
+							case 2:
+								switch (dualies)
+								{
+								case 0:
+									*pWeapon->FallbackPaintKit() = 28;
+									break;
+								case 1:
+									*pWeapon->FallbackPaintKit() = 43;
+									break;
+								case 2:
+									*pWeapon->FallbackPaintKit() = 46;
+									break;
+								case 3:
+									*pWeapon->FallbackPaintKit() = 47;
+									break;
+								case 4:
+									*pWeapon->FallbackPaintKit() = 153;
+									break;
+								case 5:
+									*pWeapon->FallbackPaintKit() = 190;
+									break;
+								case 6:
+									*pWeapon->FallbackPaintKit() = 249;
+									break;
+								case 7:
+									*pWeapon->FallbackPaintKit() = 220;
+									break;
+								case 8:
+									*pWeapon->FallbackPaintKit() = 336;
+									break;
+								case 9:
+									*pWeapon->FallbackPaintKit() = 261;
+									break;
+								case 10:
+									*pWeapon->FallbackPaintKit() = 276;
+									break;
+								case 11:
+									*pWeapon->FallbackPaintKit() = 307;
+									break;
+								case 12:
+									*pWeapon->FallbackPaintKit() = 330;
+									break;
+								case 13:
+									*pWeapon->FallbackPaintKit() = 447;
+									break;
+								case 14:
+									*pWeapon->FallbackPaintKit() = 450;
+									break;
+								case 15:
+									*pWeapon->FallbackPaintKit() = 491;
+									break;
+								case 16:
+									*pWeapon->FallbackPaintKit() = 528;
+									break;
+								case 17:
+									*pWeapon->FallbackPaintKit() = 544;
+									break;
+								case 18:
+									*pWeapon->FallbackPaintKit() = 658;
+									break;
+								}
+								break;
 							case 7: // AK47 
 							{
 								switch (AK47)
@@ -1013,6 +1076,13 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 19:
 									*pWeapon->FallbackPaintKit() = 600;
 									break;
+								case 20:
+									*pWeapon->FallbackPaintKit() = 597;
+									break;
+								case 21:
+									*pWeapon->FallbackPaintKit() = 656;
+									break;
+
 								default:
 									break;
 								}
@@ -1066,6 +1136,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									break;
 								case 14:
 									*pWeapon->FallbackPaintKit() = 632;
+									break;
+								case 16:
+									*pWeapon->FallbackPaintKit() = 664;
 									break;
 								default:
 									break;
@@ -1133,6 +1206,12 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 18:
 									*pWeapon->FallbackPaintKit() = 631;
 									break;
+								case 19:
+									*pWeapon->FallbackPaintKit() = 644;
+									break;
+								case 20:
+									*pWeapon->FallbackPaintKit() = 663;
+									break;
 								default:
 									break;
 								}
@@ -1196,6 +1275,13 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 17:
 									*pWeapon->FallbackPaintKit() = 525;
 									break;
+								case 18:
+									*pWeapon->FallbackPaintKit() = 640;
+									break;
+								case 19:
+									*pWeapon->FallbackPaintKit() = 662;
+									break;
+									
 								default:
 									break;
 								}
@@ -1261,6 +1347,12 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									break;
 								case 18:
 									*pWeapon->FallbackPaintKit() = 637;
+									break;
+								case 20:
+									*pWeapon->FallbackPaintKit() = 653;
+									break;
+								case 21:
+									*pWeapon->FallbackPaintKit() = 657;
 									break;
 								default:
 									break;
@@ -1412,6 +1504,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 22:
 									*pWeapon->FallbackPaintKit() = 527;
 									break;
+								case 23:
+									*pWeapon->FallbackPaintKit() = 645;
+									break;
 								default:
 									break;
 								}
@@ -1483,6 +1578,12 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									break;
 								case 20:
 									*pWeapon->FallbackPaintKit() = 530;
+									break;
+								case 21:
+									*pWeapon->FallbackPaintKit() = 643;
+									break;
+								case 22:
+									*pWeapon->FallbackPaintKit() = 660;
 									break;
 								default:
 									break;
@@ -1585,6 +1686,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									break;
 								case 16:
 									*pWeapon->FallbackPaintKit() = 626;
+									break;
+								case 17:
+									*pWeapon->FallbackPaintKit() = 659;
 									break;
 								default:
 									break;
@@ -1724,6 +1828,12 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 20:
 									*pWeapon->FallbackPaintKit() = 546;
 									break;
+								case 21:
+									*pWeapon->FallbackPaintKit() = 647;
+									break;
+								case 22:
+									*pWeapon->FallbackPaintKit() = 661;
+									break;
 								default:
 									break;
 								}
@@ -1762,6 +1872,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									break;
 								case 9:
 									*pWeapon->FallbackPaintKit() = 547;
+									break;
+								case 10:
+									*pWeapon->FallbackPaintKit() = 648;
 									break;
 								default:
 									break;
@@ -1831,6 +1944,12 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									break;
 								case 19:
 									*pWeapon->FallbackPaintKit() = 534;
+									break;
+								case 20:
+									*pWeapon->FallbackPaintKit() = 651;
+									break;
+								case 21:
+									*pWeapon->FallbackPaintKit() = 665;
 									break;
 								default:
 									break;
@@ -1904,6 +2023,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 20:
 									*pWeapon->FallbackPaintKit() = 636;
 									break;
+								case 21:
+									*pWeapon->FallbackPaintKit() = 669; //ayy lmao
+									break;
 								default:
 									break;
 								}
@@ -1963,6 +2085,12 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									break;
 								case 16:
 									*pWeapon->FallbackPaintKit() = 556;
+									break;
+								case 17:
+									*pWeapon->FallbackPaintKit() = 652;
+									break;
+								case 18:
+									*pWeapon->FallbackPaintKit() = 672;
 									break;
 								default:
 									break;
@@ -2042,6 +2170,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 22:
 									*pWeapon->FallbackPaintKit() = 557;
 									break;
+								case 23:
+									*pWeapon->FallbackPaintKit() = 654;
+									break;
 								default:
 									break;
 								}
@@ -2120,6 +2251,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 22:
 									*pWeapon->FallbackPaintKit() = 542;
 									break;
+								case 23:
+									*pWeapon->FallbackPaintKit() = 641;
+									break;
 								default:
 									break;
 								}
@@ -2174,6 +2308,10 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 14:
 									*pWeapon->FallbackPaintKit() = 535;
 									break;
+								case 15:
+									*pWeapon->FallbackPaintKit() = 666;
+									break;
+
 								default:
 									break;
 								}
@@ -2300,6 +2438,10 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 22:
 									*pWeapon->FallbackPaintKit() = 638;
 									break;
+								case 23:
+									*pWeapon->FallbackPaintKit() = 655;
+									break;
+
 								default:
 									break;
 								}
@@ -2377,6 +2519,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									break;
 								case 22:
 									*pWeapon->FallbackPaintKit() = 614;
+									break;
+								case 23:
+									*pWeapon->FallbackPaintKit() = 671;
 									break;
 								default:
 									break;
@@ -2456,6 +2601,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 22:
 									*pWeapon->FallbackPaintKit() = 591;
 									break;
+								case 23:
+									*pWeapon->FallbackPaintKit() = 667;
+									break;
 								default:
 									break;
 								}
@@ -2530,6 +2678,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									break;
 								case 21:
 									*pWeapon->FallbackPaintKit() = 536;
+									break;
+								case 22:
+									*pWeapon->FallbackPaintKit() = 649;
 									break;
 								default:
 									break;
@@ -2747,6 +2898,13 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 24:
 									*pWeapon->FallbackPaintKit() = 551;
 									break;
+								case 25:
+									*pWeapon->FallbackPaintKit() = 650;
+									break;
+								case 26:
+									*pWeapon->FallbackPaintKit() = 668;
+									break;
+
 								default:
 									break;
 								}
@@ -2803,6 +2961,9 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 									break;
 								case 15:
 									*pWeapon->FallbackPaintKit() = 597;
+									break;
+								case 16:
+									*pWeapon->FallbackPaintKit() = 642;
 									break;
 								default:
 									break;
@@ -2903,6 +3064,10 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 								case 15:
 									*pWeapon->FallbackPaintKit() = 624;
 									break;
+								case 16:
+									*pWeapon->FallbackPaintKit() = 670;
+									break;
+
 								default:
 									break;
 								}
