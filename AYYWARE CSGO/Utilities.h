@@ -78,6 +78,8 @@ namespace Utilities
 		// Returns the address at which it has been found
 		DWORD FindTextPattern(std::string moduleName, char* string);
 
+		DWORD FindPatternV2(std::string moduleName, std::string pattern);
+
 		class VMTManager
 		{
 		private:

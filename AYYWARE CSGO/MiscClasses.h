@@ -74,7 +74,6 @@ public:
 class Color
 {
 public:
-	// constructors
 	Color()
 	{
 		*((int *)this) = 0;
@@ -113,10 +112,15 @@ public:
 		return *((int *)this);
 	}
 
-	inline int r() const	{ return _color[0]; }
-	inline int g() const	{ return _color[1]; }
-	inline int b() const	{ return _color[2]; }
-	inline int a() const	{ return _color[3]; }
+	inline int r() const { return _color[0]; }
+	inline int g() const { return _color[1]; }
+	inline int b() const { return _color[2]; }
+	inline int a() const { return _color[3]; }
+
+	inline float rBase() const { return _color[0] / 255.0f; }
+	inline float gBase() const { return _color[1] / 255.0f; }
+	inline float bBase() const { return _color[2] / 255.0f; }
+	inline float aBase() const { return _color[3] / 255.0f; }
 
 	void SetAlpha(int a) { _color[0] = (unsigned char)a; }
 	int  GetAlpha() { return _color[0]; }
@@ -147,6 +151,85 @@ public:
 		SetRawColor(rhs.GetRawColor());
 		return *this;
 	}
+
+	static Color FromHSB(float hue, float saturation, float brightness)
+	{
+		float h = hue == 1.0f ? 0 : hue * 6.0f;
+		float f = h - (int)h;
+		float p = brightness * (1.0f - saturation);
+		float q = brightness * (1.0f - saturation * f);
+		float t = brightness * (1.0f - (saturation * (1.0f - f)));
+
+		if (h < 1)
+		{
+			return Color(
+				(unsigned char)(brightness * 255),
+				(unsigned char)(t * 255),
+				(unsigned char)(p * 255)
+			);
+		}
+		else if (h < 2)
+		{
+			return Color(
+				(unsigned char)(q * 255),
+				(unsigned char)(brightness * 255),
+				(unsigned char)(p * 255)
+			);
+		}
+		else if (h < 3)
+		{
+			return Color(
+				(unsigned char)(p * 255),
+				(unsigned char)(brightness * 255),
+				(unsigned char)(t * 255)
+			);
+		}
+		else if (h < 4)
+		{
+			return Color(
+				(unsigned char)(p * 255),
+				(unsigned char)(q * 255),
+				(unsigned char)(brightness * 255)
+			);
+		}
+		else if (h < 5)
+		{
+			return Color(
+				(unsigned char)(t * 255),
+				(unsigned char)(p * 255),
+				(unsigned char)(brightness * 255)
+			);
+		}
+		else
+		{
+			return Color(
+				(unsigned char)(brightness * 255),
+				(unsigned char)(p * 255),
+				(unsigned char)(q * 255)
+			);
+		}
+	}
+
+	static Color Red() { return Color(255, 0, 0); }
+	static Color Green() { return Color(0, 255, 0); }
+	static Color Blue() { return Color(0, 0, 255); }
+	static Color LightBlue() { return Color(100, 100, 255); }
+	static Color Grey() { return Color(128, 128, 128); }
+	static Color DarkGrey() { return Color(45, 45, 45); }
+	static Color Black() { return Color(0, 0, 0); }
+	static Color White() { return Color(255, 255, 255); }
+	static Color Purple() { return Color(220, 0, 220); }
+
+	//Menu
+	static Color Background() { return Color(55, 55, 55); }
+	static Color FrameBorder() { return Color(80, 80, 80); }
+	static Color MainText() { return Color(230, 230, 230); }
+	static Color HeaderText() { return Color(49, 124, 230); }
+	static Color CurrentTab() { return Color(18, 18, 18); }
+	static Color Tabs() { return Color(18, 18, 18); }
+	static Color Highlight() { return Color(49, 124, 230); }
+	static Color ElementBorder() { return Color(0, 0, 0); }
+	static Color SliderScroll() { return Color(78, 143, 230); }
 
 private:
 	unsigned char _color[4];

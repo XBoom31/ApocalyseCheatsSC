@@ -1,4 +1,3 @@
-@@ -0,0 +1,2224 @@
 /*
 ApocalypseCheats
 ------------------------------
@@ -645,6 +644,11 @@ void CVisualTab::Setup()
 
 	OtherGlow.SetFileId("opt_glow");
 	OptionsGroup.PlaceLabledControl("Glow", this, &OtherGlow);
+
+	OtherGlowAlpha.SetFileId("otp_glowalpha");
+	OptionsGroup.PlaceLabledControl("Glow Opacity", this, &OtherGlowAlpha);
+	OtherGlowAlpha.SetBoundaries(0.f, 255.f);
+	OtherGlowAlpha.SetValue(200.f);
 	
 #pragma endregion Setting up the Options controls
 

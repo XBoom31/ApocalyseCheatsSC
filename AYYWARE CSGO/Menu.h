@@ -190,6 +190,7 @@ public:
 	CCheckBox OtherNoFlash; 
 	CSlider   OtherNoFlashVal;
 	CCheckBox OtherGlow;
+	CSlider   OtherGlowAlpha;
 	CCheckBox NightMode;
 	CButton ResetXD;
 	CCheckBox OtherNoSmoke;
