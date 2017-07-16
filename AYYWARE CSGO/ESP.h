@@ -4,6 +4,7 @@ ApocalypseCheats
 Contributors:
 XBoom
 Ma$$A$
+Fldy.
 madlifer
 control1337
 CyclesPrograming
@@ -45,7 +46,7 @@ private:
 
 	// Draw shit about player
 	void SpecList();
-	void DrawGlow(IClientEntity *pEntity, int r, int g, int b, int a);
+	void DrawGlow(Color color);
 	void DrawBox(ESPBox size, Color color);
 	void DrawName(player_info_t pinfo, ESPBox size, IClientEntity* pEntity);
 	void DrawHealth(IClientEntity* pEntity, ESPBox size);
