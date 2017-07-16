@@ -356,7 +356,7 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 					if (!pMaterial)
 						continue;
 
-					if (strstr(pMaterial->GetTextureGroupName(), "World")) {
+					if (strstr(pMaterial->GetTextureGroupName(), "World textures")) { //"World" is incorrect this is why it doesn't work. Changed to "World textures".
 						//	pMaterial->AlphaModulate(0 / 255);
 						pMaterial->ColorModulate(0.1, 0.1, 0.4);
 						memes = true;
@@ -381,7 +381,7 @@ bool __stdcall CreateMoveClient_Hooked(/*void* self, int edx,*/ float frametime,
 				if (!pMaterial)
 					continue;
 
-				if (strstr(pMaterial->GetTextureGroupName(), "World")) {
+				if (strstr(pMaterial->GetTextureGroupName(), "World textures")) { //"World" is incorrect this is why it doesn't work. Changed to "World textures".
 					//	pMaterial->AlphaModulate(0 / 255);
 					pMaterial->ColorModulate(1, 1, 1);
 					memes = true;
