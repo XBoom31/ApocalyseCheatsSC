@@ -3,7 +3,11 @@ ApocalypseCheats
 ------------------------------
 Contributors:
 XBoom
+<<<<<<< HEAD
+Ma$$A$1
+=======
 Ma$$A$
+>>>>>>> bc4adc16f1b06ad6c11ae9ebda09eb00d2e430b0
 Fldy.
 madlifer
 control1337
@@ -870,7 +874,7 @@ void  __stdcall Hooked_FrameStageNotify(ClientFrameStage_t curStage)
 					{
 						std::string sWeapon = Interfaces::ModelInfo->GetModelName(pEntity->GetModel());
 
-						if (!(sWeapon.find("models/weapons", 0) != std::string::npos))
+						if ((sWeapon.find("models/weapons", 0) != std::string::npos))
 							continue;
 
 						if (sWeapon.find("c4_planted", 0) != std::string::npos)
