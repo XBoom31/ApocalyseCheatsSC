@@ -1,10 +1,9 @@
 #include "AutoWall.h"
-//#include "R.h"
-//1
-#define    HITGROUP_GENERIC    0
-#define    HITGROUP_HEAD        1
-#define    HITGROUP_CHEST        2
-#define    HITGROUP_STOMACH    3
+
+#define HITGROUP_GENERIC    0
+#define HITGROUP_HEAD        1
+#define HITGROUP_CHEST        2
+#define HITGROUP_STOMACH    3
 #define HITGROUP_LEFTARM    4    
 #define HITGROUP_RIGHTARM    5
 #define HITGROUP_LEFTLEG    6
@@ -46,10 +45,47 @@ float GetHitgroupDamageMult(int iHitGroup)
 	case HITGROUP_GEAR:
 		return 0.5f;
 	default:
-		return 1.0f;
-
+		break;
 	}
-
+	/*
+	switch (iHitGroup)
+	{
+	case HITGROUP_GENERIC:
+	{
+	return 1.0f;
+	}
+	case HITGROUP_HEAD:
+	{
+	return 4.0f;
+	}
+	case HITGROUP_CHEST:
+	{
+	return 1.0f;
+	}
+	case HITGROUP_STOMACH:
+	{
+	return 1.25f;
+	}
+	case HITGROUP_LEFTARM:
+	{
+	return 1.0f;
+	}
+	case HITGROUP_RIGHTARM:
+	{
+	return 1.0f;
+	}
+	case HITGROUP_LEFTLEG:
+	{
+	return 0.75f;
+	}
+	case HITGROUP_RIGHTLEG:
+	{
+	return 0.75f;
+	}
+	case HITGROUP_GEAR:
+	{
+	return 1.0f;
+	}*/
 	return 1.0f;
 }
 
@@ -79,7 +115,7 @@ bool SimulateFireBullet(IClientEntity *local, CBaseCombatWeapon *weapon, FireBul
 	data.current_damage = (float)wpn_data->iDamage;// Set Damage Memes
 	while ((data.penetrate_count > 0) && (data.current_damage >= 1.0f))
 	{
-		data.trace_length_remaining = wpn_data->flRange - data.trace_length;
+		data.trace_length_remaining = wpn_data->m_flRange - data.trace_length;
 		Vector End_Point = data.src + data.direction * data.trace_length_remaining;
 		UTIL_TraceLine(data.src, End_Point, 0x4600400B, local, 0, &data.enter_trace);
 		UTIL_ClipTraceToPlayers(data.src, End_Point * 40.f, 0x4600400B, &data.filter, &data.enter_trace);
@@ -136,12 +172,12 @@ bool HandleBulletPenetration(CSWeaponInfo *wpn_data, FireBulletData &data)
 	return true;
 }
 
-
 /*
 *    CanHit() - example of how to use the code
 *     @in  point: target hitbox vector
 *     @out damage_given: amount of damage the shot would do
 */
+
 bool CanHit(const Vector &point, float *damage_given)
 {
 	//Utils::ToLog("CANHIT");
