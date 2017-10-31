@@ -83,6 +83,7 @@ public:
 	CCheckBox AimbotAutoPistol;
 	CSlider   AimbotInaccuracy;
 	CKeyBind  AimbotDisableVis;
+	CCheckBox SmokeCheck;
 
 	// Main
 	CGroupBox TriggerGroup;
