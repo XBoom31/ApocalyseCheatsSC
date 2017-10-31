@@ -14,13 +14,15 @@ eeioruewo0iruwe
 UC Community <3
 */
 
-
 #pragma once
+
+
 
 #include "MiscDefinitions.h"
 #include "ClientRecvProps.h"
 #include "offsets.h"
 #include "Vector.h"
+extern float intervalPerTick;
 
 #define TEAM_CS_T 2
 #define TEAM_CS_CT 3
@@ -87,7 +89,7 @@ public:
 	float		flPenetration;			// 0x00F8
 	float		flFlinchVelocityModifierLarge;	// 0x00FC
 	float		flFlinchVelocityModifierSmall;	// 0x0100
-	float		flRange;				// 0x0104
+	float		m_flRange;				// 0x0104
 	float		flRangeModifier;		// 0x0108
 	float		flThrowVelocity;		// 0x010C
 	char		pad_0x010C[12];			// 0x0110
@@ -420,6 +422,7 @@ enum class CSGOClassID
 	SporeTrail = 252
 };
 
+
 enum moveTypes
 {
 	MOVETYPE_NONE = 0,			// never moves
@@ -716,18 +719,19 @@ enum class CSGOHitboxID
 };
 
 // Weapon IDs
-enum ItemDefinitionIndex : int
+enum ItemDefinitionIndex
 {
+	ITEM_NONE = 0,
 	WEAPON_DEAGLE = 1,
-	WEAPON_ELITE = 2,
-	WEAPON_FIVESEVEN = 3,
+	WEAPON_DUALS = 2,
+	WEAPON_FIVE7 = 3,
 	WEAPON_GLOCK = 4,
 	WEAPON_AK47 = 7,
 	WEAPON_AUG = 8,
 	WEAPON_AWP = 9,
 	WEAPON_FAMAS = 10,
 	WEAPON_G3SG1 = 11,
-	WEAPON_GALILAR = 13,
+	WEAPON_GALIL = 13,
 	WEAPON_M249 = 14,
 	WEAPON_M4A1 = 16,
 	WEAPON_MAC10 = 17,
@@ -740,38 +744,41 @@ enum ItemDefinitionIndex : int
 	WEAPON_SAWEDOFF = 29,
 	WEAPON_TEC9 = 30,
 	WEAPON_TASER = 31,
-	WEAPON_HKP2000 = 32,
+	WEAPON_P2000 = 32,
 	WEAPON_MP7 = 33,
 	WEAPON_MP9 = 34,
 	WEAPON_NOVA = 35,
 	WEAPON_P250 = 36,
 	WEAPON_SCAR20 = 38,
-	WEAPON_SG556 = 39,
-	WEAPON_SSG08 = 40,
-	WEAPON_KNIFE_CT = 42,
-	WEAPON_FLASHBANG = 43,
-	WEAPON_HEGRENADE = 44,
-	WEAPON_SMOKEGRENADE = 45,
+	WEAPON_SG553 = 39,
+	WEAPON_SCOUT = 40,
+	WEAPON_KNIFE_T = 42,
+	WEAPON_FLASH = 43,
+	WEAPON_HE = 44,
+	WEAPON_SMOKE = 45,
 	WEAPON_MOLOTOV = 46,
 	WEAPON_DECOY = 47,
-	WEAPON_INCGRENADE = 48,
+	WEAPON_INC = 48,
 	WEAPON_C4 = 49,
-	WEAPON_KNIFE_T = 59,
-	WEAPON_M4A1_SILENCER = 60,
-	WEAPON_USP_SILENCER = 61,
-	WEAPON_CZ75A = 63,
+	WEAPON_KNIFE_CT = 59,
+	WEAPON_M4A1S = 60,
+	WEAPON_USPS = 61,
+	WEAPON_CZ75 = 63,
 	WEAPON_REVOLVER = 64,
 	WEAPON_KNIFE_BAYONET = 500,
 	WEAPON_KNIFE_FLIP = 505,
 	WEAPON_KNIFE_GUT = 506,
 	WEAPON_KNIFE_KARAMBIT = 507,
-	WEAPON_KNIFE_M9_BAYONET = 508,
-	WEAPON_KNIFE_TACTICAL = 509,
+	WEAPON_KNIFE_M9BAYONET = 508,
+	WEAPON_KNIFE_HUNTSMAN = 509,
 	WEAPON_KNIFE_FALCHION = 512,
 	WEAPON_KNIFE_BOWIE = 514,
 	WEAPON_KNIFE_BUTTERFLY = 515,
-	WEAPON_KNIFE_PUSH = 516
+	WEAPON_KNIFE_DAGGER = 516,
+	WEAPON_MAX
 };
+
+
 
 class ScriptCreatedItem
 {
@@ -780,7 +787,11 @@ public:
 	CPNETVAR_FUNC(int*, ItemIDHigh, 0x714778A); //m_iItemIDHigh
 	CPNETVAR_FUNC(int*, ItemIDLow, 0x3A3DFC74); //m_iItemIDLow
 	CPNETVAR_FUNC(int*, EntityQuality, 0x110be6fe); //m_iEntityQuality
+	CPNETVAR_FUNC(int*, AccountID, 0x24abbea8); //m_iAccountID
+
+
 };
+
 
 class AttributeContainer
 {
@@ -796,6 +807,7 @@ public:
 	virtual void				SetThinkHandle(void* hThink) = 0;
 	virtual void				Release() = 0;
 };
+
 
 class CBaseCombatWeapon
 {
@@ -814,15 +826,36 @@ public:
 	CPNETVAR_FUNC(int*, ModelIndex, 0x27016F83);
 	CPNETVAR_FUNC(int*, WorldModelIndex, 0x4D8AD9F3);
 	CPNETVAR_FUNC(char*, szCustomName, 0x0);
+	CPNETVAR_FUNC(char*, hWeaponWorldModel, 0x31f4);
 
 	CPNETVAR_FUNC(AttributeContainer*, m_AttributeManager, 0xCFFCE089);
 
 	CNETVAR_FUNC(int, GetZoomLevel, 0x26553F1A);
 
+
+
 	float GetInaccuracy()
 	{
 		typedef float(__thiscall* oInaccuracy)(PVOID);
 		return call_vfunc< oInaccuracy >(this, 469)(this);
+	}
+
+	HANDLE m_hWeaponWorldModel()
+	{
+		return *(HANDLE*)((uintptr_t)this + 0x31f4);
+	}
+
+	float GetWeaponSpread() 
+	{
+		typedef float(__thiscall* OriginalFn)(void*);
+		return call_vfunc<OriginalFn>(this, 439)(this);
+	}
+
+	void UpdateAccuracyPenalty()
+	{
+		typedef void(__thiscall* UpdateAccuracyPenaltyFn)(void*);
+		UpdateAccuracyPenaltyFn Update = (UpdateAccuracyPenaltyFn)((*(PDWORD_PTR*)this)[485]);
+		return Update(this);
 	}
 
 	float GetInnacc()
@@ -831,11 +864,26 @@ public:
 		return call_vfunc<OrigFn>(this, 469)(this);
 	}
 
+
+
 	void UpdateAccPenalty()
 	{
 		typedef void(__thiscall *OrigFn)(void *);
 		return call_vfunc<OrigFn>(this, 470)(this);
 	}
+
+	void PreDataUpdate(int updateType)
+	{
+		PVOID pNetworkable = (PVOID)((DWORD)(this) + 0x8);
+		typedef void(__thiscall* OriginalFn)(PVOID, int);
+		return call_vfunc<OriginalFn>(pNetworkable, 6)(pNetworkable, updateType);
+	}
+
+	void SetModelIndex(int modelIndex) {
+		typedef void(__thiscall* OriginalFn)(PVOID, int);
+		return call_vfunc<OriginalFn>(this, 75)(this, modelIndex);
+	}
+
 
 	bool IsScoped(int x = 0)
 	{
@@ -849,14 +897,45 @@ public:
 		typedef CSWeaponInfo*(__thiscall* OriginalFn)(void*);
 		return  call_vfunc<OriginalFn>(this, 446)(this);
 	}
+
+
+
+	int* GetEntityQuality() {
+		// DT_BaseAttributableItem -> m_AttributeManager -> m_Item -> m_iEntityQuality
+		return (int*)((DWORD)this + 0x2D70 + 0x40 + 0x1DC);
+	}
+
+
+
+
+
+
 };
 
 class CCSBomb
 {
+private:
+	template< class T >
+	inline T GetFieldValue(int offset)
+	{
+		return *(T*)((DWORD)this + offset);
+	}
+
+	template< class T >
+	T* GetFieldPointer(int offset)
+	{
+		return (T*)((DWORD)this + offset);
+	}
 public:
 	CNETVAR_FUNC(HANDLE, GetOwnerHandle, 0xC32DF98D); //m_hOwner 0x29BC
-	CNETVAR_FUNC(float, GetC4BlowTime, 0x297C); //m_flC4Blow 0x297C
-	CNETVAR_FUNC(float, GetC4DefuseCountDown, 0x2994); //m_flDefuseCountDown 0x2994
+	CNETVAR_FUNC(float, GetC4BlowTime, 0xB5E0CA1C); //m_flC4Blow 0x297C
+	CNETVAR_FUNC(float, GetC4DefuseCountDown, 0xB959B4A6); //m_flDefuseCountDown 0x2994
+
+	float* GetTimerLength()
+	{
+		return (float*)((DWORD)this + GET_NETVAR("DT_PlantedC4", "m_flTimerLength"));
+	}
+
 };
 
 class CLocalPlayerExclusive
@@ -928,12 +1007,14 @@ public:
 class IClientUnknown
 {
 public:
-	virtual void*		GetCollideable() = 0;
-	virtual IClientNetworkable*	GetClientNetworkable() = 0;
-	virtual IClientRenderable*	GetClientRenderable() = 0;
-	virtual IClientEntity*		GetIClientEntity() = 0;
-	virtual IClientEntity*		GetBaseEntity() = 0;
-	virtual IClientThinkable*	GetClientThinkable() = 0;
+	virtual void*       GetCollideable() = 0;
+	virtual IClientNetworkable* GetClientNetworkable() = 0;
+	virtual IClientRenderable*  GetClientRenderable() = 0;
+	virtual IClientEntity*      GetIClientEntity() = 0;
+	virtual IClientEntity*      GetBaseEntity() = 0;
+
+
+
 };
 
 
@@ -945,6 +1026,12 @@ public:
 	virtual void			blahblahpad(void) = 0;
 	virtual Vector&	GetAbsOrigin(void) const = 0;//in broken place use GetOrigin Below
 	virtual const Vector&	GetAbsAngles(void) const = 0;
+	Vector				GetPredicted(Vector p0);
+	template< class T >
+	inline T GetFieldValue(int offset)
+	{
+		return *(T*)((DWORD)this + offset);
+	}
 
 	//---                 NetVars                  ---//
 
@@ -955,10 +1042,12 @@ public:
 
 	CPNETVAR_FUNC(CLocalPlayerExclusive*, localPlayerExclusive, 0x7177BC3E);// m_Local
 	CPNETVAR_FUNC(CollisionProperty*, collisionProperty, 0xE477CBD0);//m_Collision
-
+	CPNETVAR_FUNC(int*, GetPointerFlags, 0xE456D580); //m_fFlags
 	CNETVAR_FUNC(float, GetLowerBodyYaw, 0xE6996CCF); //m_flLowerBodyYawTarget
 	CNETVAR_FUNC(int, GetFlags, 0xE456D580); //m_fFlags
+	CNETVAR_FUNC(int, GetAmmoInClip, 0x97B6F70C); //m_iClip
 	CNETVAR_FUNC(float, GetTargetYaw, 0xE6996CCF)
+		CPNETVAR_FUNC(char*, GetLastPlaceName, 0x9911c2d7);
 		CNETVAR_FUNC(Vector, GetOrigin, 0x1231CE10); //m_vecOrigin 0x0134
 	CNETVAR_FUNC(Vector, GetRotation, 0x6BEA197A); //m_angRotation
 	CNETVAR_FUNC(int, GetTeamNum, 0xC08B6C6E); //m_iTeamNum
@@ -982,13 +1071,18 @@ public:
 	CNETVAR_FUNC(float, GetSimulationTime, 0xC4560E44); //m_flSimulationTime
 	CNETVAR_FUNC(float, GetAnimTime, 0xD27E8416);
 	CNETVAR_FUNC(bool, IsScoped, 0x61B9C22C); //m_bIsScoped
-											  //CNETVAR_FUNC(int, GetPlayerCompRank, 0x75671F7F);
-											  // ----------------------------------------------//
+	CNETVAR_FUNC(bool, HasDefuser, 0x32D0F325);
+	CNETVAR_FUNC(bool, IsDefusing, 0xA2C14106);
+	CNETVAR_FUNC(float, LowerBodyYawTarget, 0xE6996CCF);//m_flLowerBodyYawTarget
+												//CNETVAR_FUNC(int, GetPlayerCompRank, 0x75671F7F);
+												// ----------------------------------------------//
 
 	bool IsAlive()
 	{
 		return (GetLifeState() == LIFE_ALIVE && GetHealth() > 0);
 	}
+
+
 
 	int GetMoveType()
 	{
@@ -998,19 +1092,67 @@ public:
 		return ptr(int, this, 0x258);
 	}
 
+	HANDLE* Weapons() 
+	{
+		return (HANDLE*)((DWORD)this + 0x2DE8);
+	}
+
+	virtual IClientThinkable*   GetClientThinkable() = 0;
+
+	CBaseCombatWeapon* GetWeapon();
+
+
+
 	QAngle* GetEyeAnglesPointer()
 	{
-		return reinterpret_cast<QAngle*>((DWORD)this + (DWORD)0xAA08);
+		return reinterpret_cast<QAngle*>((DWORD)this + (DWORD)0x528C);
+	}
+
+	float* BombTimer()
+	{
+		return (float*)((DWORD)this + GET_NETVAR("DT_PlantedC4", "m_flC4Blow"));
+
+	}
+
+	bool IsHostage()
+	{
+		if (!this)
+		{
+			return false;
+		}
+		ClientClass* cClass = (ClientClass*)this->GetClientClass();
+
+		return cClass->m_ClassID == (int)CSGOClassID::CHostage;
+	}
+
+	bool IsChicken()
+	{
+		if (!this)
+		{
+			return false;
+		}
+		ClientClass* cClass = (ClientClass*)this->GetClientClass();
+
+		return cClass->m_ClassID == (int)CSGOClassID::CChicken;
 	}
 
 	QAngle GetEyeAngles()
 	{
-		return *reinterpret_cast<QAngle*>((DWORD)this + (DWORD)0xAA08);
+		return *reinterpret_cast<QAngle*>((DWORD)this + (DWORD)0x528C);
 	}
 
-	QAngle GetEyeAnglesXY()
+	QAngle* GetEyeAnglesXY()
 	{
-		return *(QAngle*)((DWORD)this + GET_NETVAR("DT_CSPlayer", "m_angEyeAngles"));
+		return (QAngle*)((DWORD)this + GET_NETVAR("DT_CSPlayer", "m_angEyeAngles"));
+	}
+
+	float* GetLowerBodyYawTarget() /*m_flLowerBodyYawTarget*/
+	{
+		return (float*)((DWORD)this + GET_NETVAR("DT_CSPlayer", "m_flLowerBodyYawTarget"));
+	}
+	Vector *GetEyeAngles3() /*m_angEyeAngles*/
+	{
+		return (Vector*)((DWORD)this + GET_NETVAR("DT_CSPlayer", "m_angEyeAngles[0]"));
 	}
 
 	Vector GetBonePos(int i)
@@ -1021,6 +1163,11 @@ public:
 			return Vector(boneMatrix[i][0][3], boneMatrix[i][1][3], boneMatrix[i][2][3]);
 		}
 		return Vector(0, 0, 0);
+	}
+
+	bool IsFlashed()
+	{
+		return GetFlashDuration() > 0;
 	}
 
 	Vector GetHeadPos()
@@ -1038,6 +1185,10 @@ public:
 		return GetClientClass()->m_ClassID == (int)CSGOClassID::CCSPlayer;
 	}
 
+	int lastpelvisang = 0;
+	float difference = 0;
+
+
 	Vector GetOrigin2() {
 		return *(Vector*)((DWORD)this + 0x00000134);
 	}
@@ -1045,6 +1196,10 @@ public:
 	Vector GetViewAngles2() {
 		return *(Vector*)((DWORD)this + 0x00000104);
 	}
+
+
+
+
 
 	Vector GetAbsOrigin2() {
 		__asm {
@@ -1061,6 +1216,96 @@ public:
 		}
 	}
 
+	float getCycle()
+	{
+		return *(float*)((DWORD)this + 0xA14);
+	}
+
+	int getSequence()
+	{
+		return *(int*)((DWORD)this + 0x28AC);
+	}
+
+	float getPoseParams(int idx)
+	{
+		return *reinterpret_cast<float*>(reinterpret_cast<uintptr_t>(this) + 0x2764 + sizeof(float) * idx);
+	}
+
+	float getPoseParams1()
+	{
+		return *reinterpret_cast<float*>(reinterpret_cast<uintptr_t>(this) + 0x2764 + sizeof(float));
+	}
+
+	std::array<float, 24> GetPoseParameters() {
+		return *(std::array<float, 24>*)((uintptr_t)this + 0x2764); // + m_flPoseParameter
+	}
+
+	void SetPoseParameters(std::array<float, 24> arr) {
+		*(std::array<float, 24>*)((uintptr_t)this + 0x2764) = arr; // +m_flPoseParameter
+	}
+	Vector getAbsOriginal()
+	{
+		typedef Vector&(__thiscall *o_getAbsOriginal)(void*);
+		return call_vfunc<o_getAbsOriginal>(this, 10)(this);
+	}
+
+	float GetDuckSpeed() {
+		return *(float*)((uintptr_t)this + 0x2FA0); //+ m_flDuckSpeed
+	}
+
+	float GetDuckAmount() {
+		return *(float*)((uintptr_t)this + 0x2F9C); // + m_flDuckAmount
+	}
+
+	Vector getAbsAechse()
+	{
+		typedef Vector&(__thiscall *o_getAbsAechse)(void*);
+		return call_vfunc<o_getAbsAechse>(this, 11)(this);
+	}
+	Vector getAbsOrigin()
+	{
+		typedef Vector&(__thiscall *o_getAbsOriginal)(void*);
+		return call_vfunc<o_getAbsOriginal>(this, 10)(this);
+	}
+	void setAbsOriginal(Vector origin) // 55 8B EC 83 E4 F8 51 53 56 57 8B F1
+	{
+		using SetAbsOriginFn = void(__thiscall*)(void*, const Vector &origin);
+		static SetAbsOriginFn SetAbsOrigin;
+
+		if (!SetAbsOrigin)                                                           // ("client.dll", (PBYTE)"\x55\x8B\xEC\x83\xE4\xF8\x51\x53\x56\x57\x8B\xF1\xE8\x00\x00", "xxxxxxxxxxxxx??");
+			SetAbsOrigin = (SetAbsOriginFn)(Utilities::Memory::FindPattern("client.dll", (PBYTE)"\x55\x8B\xEC\x83\xE4\xF8\x51\x53\x56\x57\x8B\xF1\xE8\x00\x00", "xxxxxxxxxxxxx??"));
+
+		SetAbsOrigin(this, origin);
+	}
+
+	void InvalidateBoneCache() {
+		static DWORD dwBoneCache = Utilities::Memory::FindPattern("client.dll", (BYTE*)"\x80\x3D\x00\x00\x00\x00\x00\x74\x16\xA1\x00\x00\x00\x00\x48\xC7\x81", "xx?????xxx????xxx");
+		static DWORD dwForceBone = 0x267C;
+		unsigned long iModelBoneCounter = **(unsigned long**)(dwBoneCache + 10);
+
+		*(int*)((DWORD)this + dwForceBone + 0x20) = 0;
+		*(unsigned int*)((DWORD)this + 0x2914) = 0xFF7FFFFF;
+		*(unsigned int*)((DWORD)this + 0x2680) = (iModelBoneCounter - 1);
+	}
+
+	void setAbsAechse(Vector aechse)
+	{
+		using SetAbsAnglesFn = void(__thiscall*)(IClientEntity*, const Vector &angles);
+		static SetAbsAnglesFn SetAbsAngles;
+
+		if (!SetAbsAngles)
+			SetAbsAngles = (SetAbsAnglesFn)(Utilities::Memory::FindPattern("client.dll", (BYTE*)"\x55\x8B\xEC\x83\xE4\xF8\x83\xEC\x64\x53\x56\x57\x8B\xF1\xE8", "xxxxxxxxxxxxxxx"));
+
+		SetAbsAngles(this, aechse);
+
+	}
+	void updateClientSideAnimation()
+	{
+		typedef void(__thiscall *o_updateClientSideAnimation)(void*);
+		call_vfunc<o_updateClientSideAnimation>(this, 218)(this);
+	}
+
+
 
 	Vector GetEyePosition() {
 		Vector Origin = *(Vector*)((DWORD)this + 0x00000134);
@@ -1069,6 +1314,10 @@ public:
 	}
 	Vector GetAimPunch() {
 		return *(Vector*)((DWORD)this + 0x00003018);
+	}
+	Vector GetVecOrigin()
+	{
+		return *(Vector*)((DWORD)this + 0x134);
 	}
 	bool IsImmune() {
 		return *(bool*)((DWORD)this + 0x000038A0);
@@ -1080,6 +1329,10 @@ public:
 	}
 	HANDLE GetWeaponHandle() {
 		return *(HANDLE*)((DWORD)this + 0x00002EE8);
+	}
+	Vector GetVecVelocity()
+	{
+		return *(Vector*)((DWORD)this + 0x110);
 	}
 };
 class CBaseViewModel : public IClientUnknown, public IClientRenderable, public IClientNetworkable {
@@ -1099,4 +1352,91 @@ public:
 	inline void SetWeaponModel(const char* Filename, IClientUnknown* Weapon) {
 		return call_vfunc<void(__thiscall*)(void*, const char*, IClientUnknown*)>(this, 242)(this, Filename, Weapon);
 	}
+};
+
+
+
+enum class CSPlayerBones : int {
+	pelvis = 0,
+	spine_0,
+	spine_1,
+	spine_2,
+	spine_3,
+	neck_0,
+	head_0,
+	clavicle_L,
+	arm_upper_L,
+	arm_lower_L,
+	hand_L,
+	finger_middle_meta_L,
+	finger_middle_0_L,
+	finger_middle_1_L,
+	finger_middle_2_L,
+	finger_pinky_meta_L,
+	finger_pinky_0_L,
+	finger_pinky_1_L,
+	finger_pinky_2_L,
+	finger_index_meta_L,
+	finger_index_0_L,
+	finger_index_1_L,
+	finger_index_2_L,
+	finger_thumb_0_L,
+	finger_thumb_1_L,
+	finger_thumb_2_L,
+	finger_ring_meta_L,
+	finger_ring_0_L,
+	finger_ring_1_L,
+	finger_ring_2_L,
+	weapon_hand_L,
+	arm_lower_L_TWIST,
+	arm_lower_L_TWIST1,
+	arm_upper_L_TWIST,
+	arm_upper_L_TWIST1,
+	clavicle_R,
+	arm_upper_R,
+	arm_lower_R,
+	hand_R,
+	finger_middle_meta_R,
+	finger_middle_0_R,
+	finger_middle_1_R,
+	finger_middle_2_R,
+	finger_pinky_meta_R,
+	finger_pinky_0_R,
+	finger_pinky_1_R,
+	finger_pinky_2_R,
+	finger_index_meta_R,
+	finger_index_0_R,
+	finger_index_1_R,
+	finger_index_2_R,
+	finger_thumb_0_R,
+	finger_thumb_1_R,
+	finger_thumb_2_R,
+	finger_ring_meta_R,
+	finger_ring_0_R,
+	finger_ring_1_R,
+	finger_ring_2_R,
+	weapon_hand_R,
+	arm_lower_R_TWIST,
+	arm_lower_R_TWIST1,
+	arm_upper_R_TWIST,
+	arm_upper_R_TWIST1,
+	leg_upper_L,
+	leg_lower_L,
+	ankle_L,
+	ball_L,
+	leg_upper_L_TWIST,
+	leg_upper_L_TWIST1,
+	leg_upper_R,
+	leg_lower_R,
+	ankle_R,
+	ball_R,
+	leg_upper_R_TWIST,
+	leg_upper_R_TWIST1,
+	weapon_bone,
+	lh_ik_driver,
+	lean_root,
+	lfoot_lock,
+	rfoot_lock,
+	primary_jiggle_jnt,
+	primary_smg_jiggle_jnt
 };
