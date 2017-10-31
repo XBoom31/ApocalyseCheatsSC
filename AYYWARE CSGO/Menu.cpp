@@ -383,6 +383,9 @@ void CLegitBotTab::Setup()
 	
 	AimbotAutoPistol.SetFileId("aim_apistol");
 	AimbotGroup.PlaceLabledControl("Auto Pistol", this, &AimbotAutoPistol);
+	
+	SmokeCheck.SetFileId("aim_smokecheck");
+	AimbotGroup.PlaceLabledControl("Smoke Check", this, &SmokeCheck);
 
 #pragma endregion Aimbot shit
 
