@@ -18,6 +18,10 @@ void Offsets::Initialise()
 	Modules::VPhysics = Utilities::Memory::WaitOnModuleHandle("vphysics.dll");
 	Modules::Stdlib = Utilities::Memory::WaitOnModuleHandle("vstdlib.dll");
 	Modules::InputLib = Utilities::Memory::WaitOnModuleHandle("inputsystem.dll");
+//	Modules::DataCaches = Utilities::Memory::WaitOnModuleHandle("datacache.dll");
+
+
+
 
 	//------------------------------------------------------------------------
 	// VTables
@@ -82,18 +86,20 @@ void Offsets::Initialise()
 
 	// I cbf trying to get the KeyValues part of the SDK working solo, so we'll just
 	// Do some dirty shit
-	Functions::KeyValues_KeyValues = Utilities::Memory::FindPattern("client.dll", (PBYTE)"\x68\x00\x00\x00\x00\x8B\xC8\xE8\x00\x00\x00\x00\x89\x45\xFC\xEB\x07\xC7\x45\x00\x00\x00\x00\x00\x8B\x03\x56", "x????xxx????xxxxxxx?????xxx");
-	Functions::KeyValues_KeyValues += 7;
-	Functions::KeyValues_KeyValues = Functions::KeyValues_KeyValues + *reinterpret_cast< PDWORD_PTR >(Functions::KeyValues_KeyValues + 1) + 5;
+	Functions::KeyValues_KeyValues = Utilities::Memory::FindPatternV2("client.dll", "55 8B EC 51 33 C0 C7 45");
 
-	Functions::KeyValues_LoadFromBuffer = Utilities::Memory::FindPattern("client.dll", (PBYTE)"\xE8\x00\x00\x00\x00\x80\x7D\xF8\x00\x00\x00\x85\xDB", "x????xxxx??xx");
-	Functions::KeyValues_LoadFromBuffer = Functions::KeyValues_LoadFromBuffer + *reinterpret_cast< PDWORD_PTR >(Functions::KeyValues_LoadFromBuffer + 1) + 5;
+	//Functions::KeyValues_KeyValues += 7;
+	//Functions::KeyValues_KeyValues = Functions::KeyValues_KeyValues + *reinterpret_cast< PDWORD_PTR >(Functions::KeyValues_KeyValues + 1) + 5;
+
+	Functions::KeyValues_LoadFromBuffer = Utilities::Memory::FindPatternV2("client.dll", "55 8B EC 83 E4 F8 83 EC 34 53 8B 5D 0C 89 4C 24 04");
+
+	//Functions::KeyValues_LoadFromBuffer = Functions::KeyValues_LoadFromBuffer + *reinterpret_cast< PDWORD_PTR >(Functions::KeyValues_LoadFromBuffer + 1) + 5;
 
 	Functions::dwCalcPlayerView = Utilities::Memory::FindPattern("client.dll", (PBYTE)"\x84\xC0\x75\x08\x57\x8B\xCE\xE8\x00\x00\x00\x00\x8B\x06", "xxxxxxxx????xx");
 
 	Functions::dwGetPlayerCompRank = GameUtils::FindPattern1(strenc("client.dll"), strenc("55 8B EC 8B 0D ? ? ? ? 68 ? ? ? ? "));
 
-	Functions::dwIsReady = GameUtils::FindPattern1(strenc("client.dll"), strenc("55 8B EC 51 56 8B 35 ? ? ? ? 80 7E 58 00"));
+	Functions::dwIsReady = GameUtils::FindPattern1(strenc("client.dll"), strenc("55 8B EC 83 E4 F8 83 EC 08 56 8B 35 ? ? ? ? 57 83 BE"));
 
 	Utilities::Log("Offsets/Indexes Up to Date");
 }
@@ -111,6 +117,7 @@ namespace Offsets
 		DWORD VPhysics;
 		DWORD Stdlib;
 		DWORD Offsets::Modules::InputLib;
+		DWORD DataCaches;
 	};
 
 	// Virtual Method Table Indexes
@@ -175,6 +182,7 @@ namespace Offsets
 		DWORD ModelInfo_GetStudiomodel;
 
 		DWORD RenderView_SetBlend;
+		DWORD ModelRender_SetBlend;
 		DWORD RenderView_SetColorModulation;
 
 		// Weapon entities
