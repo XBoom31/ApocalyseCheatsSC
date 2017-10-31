@@ -254,6 +254,18 @@ bool TargetMeetsTriggerRequirements(IClientEntity* pEntity)
 			// Team Check
 			if (pEntity->GetTeamNum() != hackManager.pLocal()->GetTeamNum() || Menu::Window.LegitBotTab.AimbotFriendlyFire.GetState())
 			{
+							{
+				if (Menu::Window.LegitBotTab.AimbotSmokeCheck.GetState())
+				{
+					typedef bool(__cdecl* GoesThroughSmoke)(Vector, Vector);
+
+					static uint32_t GoesThroughSmokeOffset = (uint32_t)Utilities::Memory::FindPatternV2("client.dll", "55 8B EC 83 EC 08 8B 15 ? ? ? ? 0F 57 C0");
+					static GoesThroughSmoke GoesThroughSmokeFunction = (GoesThroughSmoke)GoesThroughSmokeOffset;
+				
+
+				if (GoesThroughSmokeFunction(hackManager.pLocal()->GetEyePosition(), pEntity->GetBonePos(8)))
+					return false;
+			}
 				// Spawn Check
 				if (!pEntity->HasGunGameImmunity())
 				{
