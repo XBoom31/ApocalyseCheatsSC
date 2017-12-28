@@ -266,6 +266,7 @@ bool TargetMeetsTriggerRequirements(IClientEntity* pEntity)
 				if (GoesThroughSmokeFunction(hackManager.pLocal()->GetEyePosition(), pEntity->GetBonePos(8)))
 					return false;
 			}
+							}
 				// Spawn Check
 				if (!pEntity->HasGunGameImmunity())
 				{
